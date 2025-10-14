@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Linux Tutorials | Studio{Linux}</title>
+<meta name="keywords" content="">
+<meta name="description" content="Comprehensive tutorials on Linux, programming, and open-source software">
+<meta name="author" content="Studio{Linux} Team">
+<link rel="canonical" href="https://studiolinux.com/tutorials/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d0049500090a8b5b522a30f4bc70f815df41595125d25503dff47281216974cb.css" integrity="sha256-0ASVAAkKi1tSKjD0vHD4Fd9BWVEl0lUD3/RygSFpdMs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://studiolinux.com/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://studiolinux.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://studiolinux.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://studiolinux.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://studiolinux.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://studiolinux.com/tutorials/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://studiolinux.com/tutorials/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://studiolinux.com/tutorials/">
+  <meta property="og:site_name" content="Studio{Linux}">
+  <meta property="og:title" content="Linux Tutorials">
+  <meta property="og:description" content="Comprehensive tutorials on Linux, programming, and open-source software">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://studiolinux.com/images/logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://studiolinux.com/images/logo.svg">
+<meta name="twitter:title" content="Linux Tutorials">
+<meta name="twitter:description" content="Comprehensive tutorials on Linux, programming, and open-source software">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Linux Tutorials",
+      "item": "https://studiolinux.com/tutorials/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://studiolinux.com/" accesskey="h" title="Studio{Linux} (Alt + H)">Studio{Linux}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://studiolinux.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/tutorials/" title="Tutorials">
+                    <span class="active">Tutorials</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/resources/" title="Resources">
+                    <span>Resources</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://studiolinux.com/">Home</a></div>
+  <h1>
+    Linux Tutorials
+  </h1>
+  <div class="post-description">
+    Comprehensive tutorials on Linux, programming, and open-source software
+  </div>
+</header>
+<div class="post-content"><p>Welcome to the Studio{Linux} tutorials section! Here you&rsquo;ll find in-depth, step-by-step guides on various Linux topics, from beginner to advanced levels.</p>
+<p>Our tutorials are designed to be practical and hands-on, allowing you to follow along and learn by doing. We cover everything from basic Linux usage to advanced system administration, development, and customization.</p>
+<p>Browse through our available tutorials below, and check back regularly as we add new content!</p>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Setting Up a Perfect Development Environment on Linux
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Setting Up a Perfect Development Environment on Linux A well-configured development environment can significantly improve your productivity and make coding more enjoyable. In this tutorial, we’ll walk through setting up a comprehensive development environment on Linux with all the essential tools and configurations.
+Step 1: Install Essential Development Tools First, let’s install the basic development tools:
+For Debian/Ubuntu-based distributions: # Update package lists sudo apt update # Install development essentials sudo apt install build-essential git curl wget unzip # Install version control systems sudo apt install git git-lfs For Fedora/RHEL-based distributions: # Install development tools sudo dnf groupinstall &#34;Development Tools&#34; sudo dnf install git curl wget unzip # Install version control systems sudo dnf install git git-lfs For Arch-based distributions: # Install development tools sudo pacman -S base-devel git curl wget unzip Step 2: Set Up Your Shell Environment A powerful shell setup can boost your productivity significantly.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-10-14 00:00:00 +0000 UTC'>October 14, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Studio{Linux} Team</span></footer>
+  <a class="entry-link" aria-label="post link to Setting Up a Perfect Development Environment on Linux" href="https://studiolinux.com/tutorials/setting-up-development-environment/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mastering Vim: A Modern Guide
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Mastering Vim: A Modern Guide Vim has been around for decades, but it remains one of the most powerful text editors available today. In this tutorial, we’ll take you from basic Vim usage to advanced productivity techniques that will transform the way you edit text.
+Why Learn Vim in 2025? You might wonder why you should invest time in learning Vim when there are modern editors like VS Code or JetBrains IDEs. Here are some compelling reasons:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-10-13 00:00:00 +0000 UTC'>October 13, 2025</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Studio{Linux} Team</span></footer>
+  <a class="entry-link" aria-label="post link to Mastering Vim: A Modern Guide" href="https://studiolinux.com/tutorials/mastering-vim/"></a>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2025 <a href="https://studiolinux.com/">Studio{Linux}</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+    <br>
+    <span>
+        <a href="https://studiolinux.com/contact">Contact</a> |
+        <a href="https://studiolinux.com/about">About</a> |
+        <a href="https://studiolinux.com/resources">Resources</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+        });
+    }
+</script>
+</body>
+
+</html>

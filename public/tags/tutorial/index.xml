@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tutorial on Studio{Linux}</title>
+    <link>https://studiolinux.com/tags/tutorial/</link>
+    <description>Recent content in Tutorial on Studio{Linux}</description>
+    <image>
+      <title>Studio{Linux}</title>
+      <url>https://studiolinux.com/images/logo.svg</url>
+      <link>https://studiolinux.com/images/logo.svg</link>
+    </image>
+    <generator>Hugo -- 0.148.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://studiolinux.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Linux: A Beginner&#39;s Guide</title>
+      <link>https://studiolinux.com/posts/getting-started-with-linux/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://studiolinux.com/posts/getting-started-with-linux/</guid>
+      <description>Everything you need to know to get started with Linux as a complete beginner</description>
+    </item>
+    <item>
+      <title>Setting Up a Perfect Development Environment on Linux</title>
+      <link>https://studiolinux.com/tutorials/setting-up-development-environment/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://studiolinux.com/tutorials/setting-up-development-environment/</guid>
+      <description>A step-by-step guide to setting up a complete development environment on Linux</description>
+    </item>
+  </channel>
+</rss>

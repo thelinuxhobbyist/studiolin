@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Mastering Vim: A Modern Guide | Studio{Linux}</title>
+<meta name="keywords" content="Vim, Text Editor, Productivity, Tools">
+<meta name="description" content="A comprehensive guide to mastering Vim for modern developers">
+<meta name="author" content="Studio{Linux} Team">
+<link rel="canonical" href="https://studiolinux.com/tutorials/mastering-vim/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d0049500090a8b5b522a30f4bc70f815df41595125d25503dff47281216974cb.css" integrity="sha256-0ASVAAkKi1tSKjD0vHD4Fd9BWVEl0lUD3/RygSFpdMs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://studiolinux.com/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://studiolinux.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://studiolinux.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://studiolinux.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://studiolinux.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://studiolinux.com/tutorials/mastering-vim/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://studiolinux.com/tutorials/mastering-vim/">
+  <meta property="og:site_name" content="Studio{Linux}">
+  <meta property="og:title" content="Mastering Vim: A Modern Guide">
+  <meta property="og:description" content="A comprehensive guide to mastering Vim for modern developers">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="tutorials">
+    <meta property="article:published_time" content="2025-10-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-13T00:00:00+00:00">
+    <meta property="article:tag" content="Vim">
+    <meta property="article:tag" content="Text Editor">
+    <meta property="article:tag" content="Productivity">
+    <meta property="article:tag" content="Tools">
+      <meta property="og:image" content="https://studiolinux.com/images/logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://studiolinux.com/images/logo.svg">
+<meta name="twitter:title" content="Mastering Vim: A Modern Guide">
+<meta name="twitter:description" content="A comprehensive guide to mastering Vim for modern developers">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Linux Tutorials",
+      "item": "https://studiolinux.com/tutorials/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Mastering Vim: A Modern Guide",
+      "item": "https://studiolinux.com/tutorials/mastering-vim/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Mastering Vim: A Modern Guide",
+  "name": "Mastering Vim: A Modern Guide",
+  "description": "A comprehensive guide to mastering Vim for modern developers",
+  "keywords": [
+    "Vim", "Text Editor", "Productivity", "Tools"
+  ],
+  "articleBody": "Mastering Vim: A Modern Guide Vim has been around for decades, but it remains one of the most powerful text editors available today. In this tutorial, we’ll take you from basic Vim usage to advanced productivity techniques that will transform the way you edit text.\nWhy Learn Vim in 2025? You might wonder why you should invest time in learning Vim when there are modern editors like VS Code or JetBrains IDEs. Here are some compelling reasons:\nAvailable everywhere: Vim is pre-installed on virtually every Unix-like system. Keyboard-driven efficiency: Once mastered, editing with Vim is incredibly fast. Highly customizable: You can tailor Vim precisely to your needs. Low resource usage: Vim runs smoothly even on low-spec machines. Modern features: With Neovim and plugins, Vim can do everything modern editors can. Getting Started with Vim Installation Vim is likely already installed on your Linux system. If not, you can install it with:\n# Debian/Ubuntu sudo apt install vim # Fedora sudo dnf install vim # Arch Linux sudo pacman -S vim For a more modern experience, consider Neovim:\n# Debian/Ubuntu sudo apt install neovim # Fedora sudo dnf install neovim # Arch Linux sudo pacman -S neovim Vim’s Modes Vim has different modes, each with its own purpose:\nNormal mode: For navigating and manipulating text (default mode) Insert mode: For typing text (entered with i, a, o, etc.) Visual mode: For selecting text (entered with v, V, or Ctrl+v) Command mode: For executing commands (entered with :) Basic Movement In normal mode:\nh, j, k, l: Move left, down, up, right w: Move forward by word b: Move backward by word 0: Move to the beginning of the line $: Move to the end of the line gg: Move to the beginning of the file G: Move to the end of the file Ctrl+f: Page down Ctrl+b: Page up Basic Editing i: Enter insert mode before the cursor a: Enter insert mode after the cursor o: Open a new line below and enter insert mode O: Open a new line above and enter insert mode x: Delete character under cursor dd: Delete current line yy: Yank (copy) current line p: Paste after cursor P: Paste before cursor u: Undo Ctrl+r: Redo Intermediate Vim Techniques Text Objects Text objects let you operate on logical chunks of text:\nw: Word s: Sentence p: Paragraph t: HTML/XML tag \", ', (, {, [: Quoted or bracketed text Combine with operators:\ndiw: Delete inside word ci\": Change inside quotes ya{: Yank (copy) around curly braces vip: Visually select inside paragraph Operators Operators perform actions on text:\nd: Delete c: Change (delete and enter insert mode) y: Yank (copy) \u003e: Indent right \u003c: Indent left g~: Toggle case Search and Replace /pattern: Search forward for pattern ?pattern: Search backward for pattern n: Go to next match N: Go to previous match :%s/old/new/g: Replace all occurrences of “old” with “new” :%s/old/new/gc: Replace with confirmation Multiple Files :e filename: Edit a file :split filename: Split window horizontally :vsplit filename: Split window vertically Ctrl+w followed by h, j, k, l: Navigate between windows :tabnew filename: Open a file in a new tab gt: Go to next tab gT: Go to previous tab Advanced Vim Configuration Creating Your Vimrc Your ~/.vimrc file (or ~/.config/nvim/init.vim for Neovim) is where you customize Vim. Here’s a starter configuration:\n\" Basic settings set nocompatible \" Use Vim settings, not Vi syntax enable \" Enable syntax highlighting set number \" Show line numbers set relativenumber \" Show relative line numbers set incsearch \" Incremental search set hlsearch \" Highlight search results set ignorecase \" Case-insensitive search set smartcase \" Case-sensitive if search contains uppercase set mouse=a \" Enable mouse support set expandtab \" Use spaces instead of tabs set tabstop=4 \" Tab width set shiftwidth=4 \" Indent width set softtabstop=4 \" Backspace removes spaces set autoindent \" Copy indent from current line set smartindent \" Smart indentation set wrap \" Wrap lines set linebreak \" Wrap at word boundaries set scrolloff=8 \" Minimum lines above/below cursor set sidescrolloff=8 \" Minimum columns left/right of cursor set clipboard=unnamedplus \" Use system clipboard set hidden \" Allow switching buffers without saving set nobackup \" No backup files set nowritebackup \" No backup while editing set undofile \" Persistent undo set undodir=~/.vim/undodir \" Undo directory set updatetime=300 \" Faster completion set timeoutlen=500 \" Faster key sequence completion set backspace=indent,eol,start \" Backspace through everything \" Key remappings let mapleader = \" \" \" Space as leader key nnoremap \u003cleader\u003ew :w\u003cCR\u003e \" Save with space+w nnoremap \u003cleader\u003eq :q\u003cCR\u003e \" Quit with space+q nnoremap \u003cC-h\u003e \u003cC-w\u003eh \" Navigate windows with Ctrl+h,j,k,l nnoremap \u003cC-j\u003e \u003cC-w\u003ej nnoremap \u003cC-k\u003e \u003cC-w\u003ek nnoremap \u003cC-l\u003e \u003cC-w\u003el Using a Plugin Manager Vim plugins extend functionality. Let’s use vim-plug:\n# For Vim curl -fLo ~/.vim/autoload/plug.vim --create-dirs \\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # For Neovim sh -c 'curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs \\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' Add this to your vimrc:\ncall plug#begin('~/.vim/plugged') \" Essential plugins Plug 'tpope/vim-surround' \" Surround text objects Plug 'tpope/vim-commentary' \" Comment code Plug 'tpope/vim-repeat' \" Repeat plugin commands Plug 'jiangmiao/auto-pairs' \" Auto-close pairs Plug 'vim-airline/vim-airline' \" Status line Plug 'junegunn/fzf', { 'do': { -\u003e fzf#install() } } Plug 'junegunn/fzf.vim' \" Fuzzy finder Plug 'preservim/nerdtree' \" File explorer Plug 'neoclide/coc.nvim', {'branch': 'release'} \" Language server \" Color schemes Plug 'morhetz/gruvbox' \" Gruvbox theme call plug#end() \" Plugin settings colorscheme gruvbox \" Set color scheme let g:airline_powerline_fonts = 1 \" Use powerline fonts \" NERDTree settings nnoremap \u003cleader\u003en :NERDTreeToggle\u003cCR\u003e let NERDTreeShowHidden=1 \" FZF settings nnoremap \u003cleader\u003ef :Files\u003cCR\u003e nnoremap \u003cleader\u003eb :Buffers\u003cCR\u003e nnoremap \u003cleader\u003eg :Rg\u003cCR\u003e Install plugins by opening Vim and running :PlugInstall.\nVim for Modern Development Configuring CoC for Intellisense CoC (Conquer of Completion) brings VSCode-like intellisense to Vim:\n\" CoC settings let g:coc_global_extensions = [ \\ 'coc-json', \\ 'coc-tsserver', \\ 'coc-eslint', \\ 'coc-prettier', \\ 'coc-pyright', \\ 'coc-rust-analyzer', \\ 'coc-go', \\ ] \" Use tab for trigger completion inoremap \u003csilent\u003e\u003cexpr\u003e \u003cTAB\u003e \\ pumvisible() ? \"\\\" : \\ \u003cSID\u003echeck_back_space() ? \"\\\" : \\ coc#refresh() inoremap \u003cexpr\u003e\u003cS-TAB\u003e pumvisible() ? \"\\\" : \"\\\" function! s:check_back_space() abort let col = col('.') - 1 return !col || getline('.')[col - 1] =~# '\\s' endfunction \" GoTo code navigation nmap \u003csilent\u003e gd \u003cPlug\u003e(coc-definition) nmap \u003csilent\u003e gy \u003cPlug\u003e(coc-type-definition) nmap \u003csilent\u003e gi \u003cPlug\u003e(coc-implementation) nmap \u003csilent\u003e gr \u003cPlug\u003e(coc-references) \" Show documentation in preview window nnoremap \u003csilent\u003e K :call \u003cSID\u003eshow_documentation()\u003cCR\u003e function! s:show_documentation() if (index(['vim','help'], \u0026filetype) \u003e= 0) execute 'h '.expand('') elseif (coc#rpc#ready()) call CocActionAsync('doHover') else execute '!' . \u0026keywordprg . \" \" . expand('') endif endfunction Git Integration Add Git support with vim-fugitive:\nPlug 'tpope/vim-fugitive' \" Git integration Use these commands:\n:G: Git status :G commit: Commit changes :G blame: Show git blame :G difftool: Show diffs :G log: View log Terminal Integration Use Vim’s built-in terminal:\n\" Open terminal in vertical split nnoremap \u003cleader\u003et :vertical terminal\u003cCR\u003e \" Exit terminal mode with Escape tnoremap \u003cEsc\u003e \u003cC-\\\u003e\u003cC-n\u003e Advanced Vim Techniques Macros Record and replay complex sequences:\nq followed by a register (a-z) to start recording (e.g., qa) Perform your actions Press q again to stop recording Use @ followed by the register to replay (e.g., @a) Marks Set bookmarks in your text:\nm followed by a letter sets a mark (e.g., ma sets mark a) `a jumps to mark a’s position 'a jumps to the start of the line containing mark a Text Folding Collapse sections of text:\nzf{motion}: Create a fold zo: Open fold zc: Close fold za: Toggle fold zR: Open all folds zM: Close all folds Conclusion Vim has a steep learning curve, but the productivity gains are well worth the effort. Start with the basics, gradually incorporate new techniques into your workflow, and before you know it, you’ll be editing text at the speed of thought.\nRemember: The key to mastering Vim is practice. Consider using plugins like vim-tutor-mode for interactive lessons, or run vimtutor in your terminal for a built-in tutorial.\nAre you a Vim user? Share your favorite tips, plugins, or configurations in the comments below!\n",
+  "wordCount" : "1315",
+  "inLanguage": "en",
+  "image": "https://studiolinux.com/images/logo.svg","datePublished": "2025-10-13T00:00:00Z",
+  "dateModified": "2025-10-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Studio{Linux} Team"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://studiolinux.com/tutorials/mastering-vim/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Studio{Linux}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://studiolinux.com/images/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://studiolinux.com/" accesskey="h" title="Studio{Linux} (Alt + H)">Studio{Linux}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://studiolinux.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/tutorials/" title="Tutorials">
+                    <span>Tutorials</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/resources/" title="Resources">
+                    <span>Resources</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://studiolinux.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://studiolinux.com/">Home</a>&nbsp;»&nbsp;<a href="https://studiolinux.com/tutorials/">Linux Tutorials</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Mastering Vim: A Modern Guide
+    </h1>
+    <div class="post-description">
+      A comprehensive guide to mastering Vim for modern developers
+    </div>
+    <div class="post-meta"><span title='2025-10-13 00:00:00 +0000 UTC'>October 13, 2025</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Studio{Linux} Team</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#mastering-vim-a-modern-guide" aria-label="Mastering Vim: A Modern Guide">Mastering Vim: A Modern Guide</a><ul>
+                        
+                <li>
+                    <a href="#why-learn-vim-in-2025" aria-label="Why Learn Vim in 2025?">Why Learn Vim in 2025?</a></li>
+                <li>
+                    <a href="#getting-started-with-vim" aria-label="Getting Started with Vim">Getting Started with Vim</a><ul>
+                        
+                <li>
+                    <a href="#installation" aria-label="Installation">Installation</a></li>
+                <li>
+                    <a href="#vims-modes" aria-label="Vim&rsquo;s Modes">Vim&rsquo;s Modes</a></li>
+                <li>
+                    <a href="#basic-movement" aria-label="Basic Movement">Basic Movement</a></li>
+                <li>
+                    <a href="#basic-editing" aria-label="Basic Editing">Basic Editing</a></li></ul>
+                </li>
+                <li>
+                    <a href="#intermediate-vim-techniques" aria-label="Intermediate Vim Techniques">Intermediate Vim Techniques</a><ul>
+                        
+                <li>
+                    <a href="#text-objects" aria-label="Text Objects">Text Objects</a></li>
+                <li>
+                    <a href="#operators" aria-label="Operators">Operators</a></li>
+                <li>
+                    <a href="#search-and-replace" aria-label="Search and Replace">Search and Replace</a></li>
+                <li>
+                    <a href="#multiple-files" aria-label="Multiple Files">Multiple Files</a></li></ul>
+                </li>
+                <li>
+                    <a href="#advanced-vim-configuration" aria-label="Advanced Vim Configuration">Advanced Vim Configuration</a><ul>
+                        
+                <li>
+                    <a href="#creating-your-vimrc" aria-label="Creating Your Vimrc">Creating Your Vimrc</a></li>
+                <li>
+                    <a href="#using-a-plugin-manager" aria-label="Using a Plugin Manager">Using a Plugin Manager</a></li></ul>
+                </li>
+                <li>
+                    <a href="#vim-for-modern-development" aria-label="Vim for Modern Development">Vim for Modern Development</a><ul>
+                        
+                <li>
+                    <a href="#configuring-coc-for-intellisense" aria-label="Configuring CoC for Intellisense">Configuring CoC for Intellisense</a></li>
+                <li>
+                    <a href="#git-integration" aria-label="Git Integration">Git Integration</a></li>
+                <li>
+                    <a href="#terminal-integration" aria-label="Terminal Integration">Terminal Integration</a></li></ul>
+                </li>
+                <li>
+                    <a href="#advanced-vim-techniques" aria-label="Advanced Vim Techniques">Advanced Vim Techniques</a><ul>
+                        
+                <li>
+                    <a href="#macros" aria-label="Macros">Macros</a></li>
+                <li>
+                    <a href="#marks" aria-label="Marks">Marks</a></li>
+                <li>
+                    <a href="#text-folding" aria-label="Text Folding">Text Folding</a></li></ul>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="mastering-vim-a-modern-guide">Mastering Vim: A Modern Guide<a hidden class="anchor" aria-hidden="true" href="#mastering-vim-a-modern-guide">#</a></h1>
+<p>Vim has been around for decades, but it remains one of the most powerful text editors available today. In this tutorial, we&rsquo;ll take you from basic Vim usage to advanced productivity techniques that will transform the way you edit text.</p>
+<h2 id="why-learn-vim-in-2025">Why Learn Vim in 2025?<a hidden class="anchor" aria-hidden="true" href="#why-learn-vim-in-2025">#</a></h2>
+<p>You might wonder why you should invest time in learning Vim when there are modern editors like VS Code or JetBrains IDEs. Here are some compelling reasons:</p>
+<ol>
+<li><strong>Available everywhere</strong>: Vim is pre-installed on virtually every Unix-like system.</li>
+<li><strong>Keyboard-driven efficiency</strong>: Once mastered, editing with Vim is incredibly fast.</li>
+<li><strong>Highly customizable</strong>: You can tailor Vim precisely to your needs.</li>
+<li><strong>Low resource usage</strong>: Vim runs smoothly even on low-spec machines.</li>
+<li><strong>Modern features</strong>: With Neovim and plugins, Vim can do everything modern editors can.</li>
+</ol>
+<h2 id="getting-started-with-vim">Getting Started with Vim<a hidden class="anchor" aria-hidden="true" href="#getting-started-with-vim">#</a></h2>
+<h3 id="installation">Installation<a hidden class="anchor" aria-hidden="true" href="#installation">#</a></h3>
+<p>Vim is likely already installed on your Linux system. If not, you can install it with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Debian/Ubuntu</span>
+</span></span><span style="display:flex;"><span>sudo apt install vim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fedora</span>
+</span></span><span style="display:flex;"><span>sudo dnf install vim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Arch Linux</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S vim
+</span></span></code></pre></div><p>For a more modern experience, consider Neovim:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Debian/Ubuntu</span>
+</span></span><span style="display:flex;"><span>sudo apt install neovim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fedora</span>
+</span></span><span style="display:flex;"><span>sudo dnf install neovim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Arch Linux</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S neovim
+</span></span></code></pre></div><h3 id="vims-modes">Vim&rsquo;s Modes<a hidden class="anchor" aria-hidden="true" href="#vims-modes">#</a></h3>
+<p>Vim has different modes, each with its own purpose:</p>
+<ol>
+<li><strong>Normal mode</strong>: For navigating and manipulating text (default mode)</li>
+<li><strong>Insert mode</strong>: For typing text (entered with <code>i</code>, <code>a</code>, <code>o</code>, etc.)</li>
+<li><strong>Visual mode</strong>: For selecting text (entered with <code>v</code>, <code>V</code>, or <code>Ctrl+v</code>)</li>
+<li><strong>Command mode</strong>: For executing commands (entered with <code>:</code>)</li>
+</ol>
+<h3 id="basic-movement">Basic Movement<a hidden class="anchor" aria-hidden="true" href="#basic-movement">#</a></h3>
+<p>In normal mode:</p>
+<ul>
+<li><code>h</code>, <code>j</code>, <code>k</code>, <code>l</code>: Move left, down, up, right</li>
+<li><code>w</code>: Move forward by word</li>
+<li><code>b</code>: Move backward by word</li>
+<li><code>0</code>: Move to the beginning of the line</li>
+<li><code>$</code>: Move to the end of the line</li>
+<li><code>gg</code>: Move to the beginning of the file</li>
+<li><code>G</code>: Move to the end of the file</li>
+<li><code>Ctrl+f</code>: Page down</li>
+<li><code>Ctrl+b</code>: Page up</li>
+</ul>
+<h3 id="basic-editing">Basic Editing<a hidden class="anchor" aria-hidden="true" href="#basic-editing">#</a></h3>
+<ul>
+<li><code>i</code>: Enter insert mode before the cursor</li>
+<li><code>a</code>: Enter insert mode after the cursor</li>
+<li><code>o</code>: Open a new line below and enter insert mode</li>
+<li><code>O</code>: Open a new line above and enter insert mode</li>
+<li><code>x</code>: Delete character under cursor</li>
+<li><code>dd</code>: Delete current line</li>
+<li><code>yy</code>: Yank (copy) current line</li>
+<li><code>p</code>: Paste after cursor</li>
+<li><code>P</code>: Paste before cursor</li>
+<li><code>u</code>: Undo</li>
+<li><code>Ctrl+r</code>: Redo</li>
+</ul>
+<h2 id="intermediate-vim-techniques">Intermediate Vim Techniques<a hidden class="anchor" aria-hidden="true" href="#intermediate-vim-techniques">#</a></h2>
+<h3 id="text-objects">Text Objects<a hidden class="anchor" aria-hidden="true" href="#text-objects">#</a></h3>
+<p>Text objects let you operate on logical chunks of text:</p>
+<ul>
+<li><code>w</code>: Word</li>
+<li><code>s</code>: Sentence</li>
+<li><code>p</code>: Paragraph</li>
+<li><code>t</code>: HTML/XML tag</li>
+<li><code>&quot;</code>, <code>'</code>, <code>(</code>, <code>{</code>, <code>[</code>: Quoted or bracketed text</li>
+</ul>
+<p>Combine with operators:</p>
+<ul>
+<li><code>diw</code>: Delete inside word</li>
+<li><code>ci&quot;</code>: Change inside quotes</li>
+<li><code>ya{</code>: Yank (copy) around curly braces</li>
+<li><code>vip</code>: Visually select inside paragraph</li>
+</ul>
+<h3 id="operators">Operators<a hidden class="anchor" aria-hidden="true" href="#operators">#</a></h3>
+<p>Operators perform actions on text:</p>
+<ul>
+<li><code>d</code>: Delete</li>
+<li><code>c</code>: Change (delete and enter insert mode)</li>
+<li><code>y</code>: Yank (copy)</li>
+<li><code>&gt;</code>: Indent right</li>
+<li><code>&lt;</code>: Indent left</li>
+<li><code>g~</code>: Toggle case</li>
+</ul>
+<h3 id="search-and-replace">Search and Replace<a hidden class="anchor" aria-hidden="true" href="#search-and-replace">#</a></h3>
+<ul>
+<li><code>/pattern</code>: Search forward for pattern</li>
+<li><code>?pattern</code>: Search backward for pattern</li>
+<li><code>n</code>: Go to next match</li>
+<li><code>N</code>: Go to previous match</li>
+<li><code>:%s/old/new/g</code>: Replace all occurrences of &ldquo;old&rdquo; with &ldquo;new&rdquo;</li>
+<li><code>:%s/old/new/gc</code>: Replace with confirmation</li>
+</ul>
+<h3 id="multiple-files">Multiple Files<a hidden class="anchor" aria-hidden="true" href="#multiple-files">#</a></h3>
+<ul>
+<li><code>:e filename</code>: Edit a file</li>
+<li><code>:split filename</code>: Split window horizontally</li>
+<li><code>:vsplit filename</code>: Split window vertically</li>
+<li><code>Ctrl+w</code> followed by <code>h</code>, <code>j</code>, <code>k</code>, <code>l</code>: Navigate between windows</li>
+<li><code>:tabnew filename</code>: Open a file in a new tab</li>
+<li><code>gt</code>: Go to next tab</li>
+<li><code>gT</code>: Go to previous tab</li>
+</ul>
+<h2 id="advanced-vim-configuration">Advanced Vim Configuration<a hidden class="anchor" aria-hidden="true" href="#advanced-vim-configuration">#</a></h2>
+<h3 id="creating-your-vimrc">Creating Your Vimrc<a hidden class="anchor" aria-hidden="true" href="#creating-your-vimrc">#</a></h3>
+<p>Your <code>~/.vimrc</code> file (or <code>~/.config/nvim/init.vim</code> for Neovim) is where you customize Vim. Here&rsquo;s a starter configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#75715e">&#34; Basic settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nocompatible</span>              <span style="color:#75715e">&#34; Use Vim settings, not Vi</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">enable</span>                 <span style="color:#75715e">&#34; Enable syntax highlighting</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">number</span>                    <span style="color:#75715e">&#34; Show line numbers</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">relativenumber</span>            <span style="color:#75715e">&#34; Show relative line numbers</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">incsearch</span>                 <span style="color:#75715e">&#34; Incremental search</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hlsearch</span>                  <span style="color:#75715e">&#34; Highlight search results</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">ignorecase</span>                <span style="color:#75715e">&#34; Case-insensitive search</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartcase</span>                 <span style="color:#75715e">&#34; Case-sensitive if search contains uppercase</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">mouse</span>=<span style="color:#a6e22e">a</span>                   <span style="color:#75715e">&#34; Enable mouse support</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">expandtab</span>                 <span style="color:#75715e">&#34; Use spaces instead of tabs</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">tabstop</span>=<span style="color:#ae81ff">4</span>                 <span style="color:#75715e">&#34; Tab width</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shiftwidth</span>=<span style="color:#ae81ff">4</span>              <span style="color:#75715e">&#34; Indent width</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">softtabstop</span>=<span style="color:#ae81ff">4</span>             <span style="color:#75715e">&#34; Backspace removes spaces</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autoindent</span>                <span style="color:#75715e">&#34; Copy indent from current line</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartindent</span>               <span style="color:#75715e">&#34; Smart indentation</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">wrap</span>                      <span style="color:#75715e">&#34; Wrap lines</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">linebreak</span>                 <span style="color:#75715e">&#34; Wrap at word boundaries</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">scrolloff</span>=<span style="color:#ae81ff">8</span>               <span style="color:#75715e">&#34; Minimum lines above/below cursor</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">sidescrolloff</span>=<span style="color:#ae81ff">8</span>           <span style="color:#75715e">&#34; Minimum columns left/right of cursor</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">clipboard</span>=<span style="color:#a6e22e">unnamedplus</span>     <span style="color:#75715e">&#34; Use system clipboard</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hidden</span>                    <span style="color:#75715e">&#34; Allow switching buffers without saving</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nobackup</span>                  <span style="color:#75715e">&#34; No backup files</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nowritebackup</span>             <span style="color:#75715e">&#34; No backup while editing</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undofile</span>                  <span style="color:#75715e">&#34; Persistent undo</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">undodir</span>=~<span style="color:#e6db74">/.vim/</span><span style="color:#a6e22e">undodir</span>    <span style="color:#75715e">&#34; Undo directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">updatetime</span>=<span style="color:#ae81ff">300</span>            <span style="color:#75715e">&#34; Faster completion</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">timeoutlen</span>=<span style="color:#ae81ff">500</span>            <span style="color:#75715e">&#34; Faster key sequence completion</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backspace</span>=<span style="color:#a6e22e">indent</span>,<span style="color:#a6e22e">eol</span>,<span style="color:#a6e22e">start</span> <span style="color:#75715e">&#34; Backspace through everything</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Key remappings</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mapleader</span> = <span style="color:#e6db74">&#34; &#34;</span>           <span style="color:#75715e">&#34; Space as leader key</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">w</span> :<span style="color:#a6e22e">w</span>&lt;<span style="color:#a6e22e">CR</span>&gt;     <span style="color:#75715e">&#34; Save with space+w</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">q</span> :<span style="color:#a6e22e">q</span>&lt;<span style="color:#a6e22e">CR</span>&gt;     <span style="color:#75715e">&#34; Quit with space+q</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">h</span>&gt; &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">w</span>&gt;<span style="color:#a6e22e">h</span>         <span style="color:#75715e">&#34; Navigate windows with Ctrl+h,j,k,l</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">j</span>&gt; &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">w</span>&gt;<span style="color:#a6e22e">j</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">k</span>&gt; &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">w</span>&gt;<span style="color:#a6e22e">k</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">l</span>&gt; &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">w</span>&gt;<span style="color:#a6e22e">l</span>
+</span></span></code></pre></div><h3 id="using-a-plugin-manager">Using a Plugin Manager<a hidden class="anchor" aria-hidden="true" href="#using-a-plugin-manager">#</a></h3>
+<p>Vim plugins extend functionality. Let&rsquo;s use vim-plug:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># For Vim</span>
+</span></span><span style="display:flex;"><span>curl -fLo ~/.vim/autoload/plug.vim --create-dirs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For Neovim</span>
+</span></span><span style="display:flex;"><span>sh -c <span style="color:#e6db74">&#39;curl -fLo &#34;${XDG_DATA_HOME:-$HOME/.local/share}&#34;/nvim/site/autoload/plug.vim --create-dirs \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
+</span></span></code></pre></div><p>Add this to your vimrc:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">begin</span>(<span style="color:#e6db74">&#39;~/.vim/plugged&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Essential plugins</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;tpope/vim-surround&#39;</span>           <span style="color:#75715e">&#34; Surround text objects</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;tpope/vim-commentary&#39;</span>         <span style="color:#75715e">&#34; Comment code</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;tpope/vim-repeat&#39;</span>             <span style="color:#75715e">&#34; Repeat plugin commands</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;jiangmiao/auto-pairs&#39;</span>         <span style="color:#75715e">&#34; Auto-close pairs</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;vim-airline/vim-airline&#39;</span>      <span style="color:#75715e">&#34; Status line</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;junegunn/fzf&#39;</span>, { <span style="color:#e6db74">&#39;do&#39;</span>: { -&gt; <span style="color:#a6e22e">fzf</span>#<span style="color:#a6e22e">install</span>() } }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;junegunn/fzf.vim&#39;</span>             <span style="color:#75715e">&#34; Fuzzy finder</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;preservim/nerdtree&#39;</span>           <span style="color:#75715e">&#34; File explorer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;neoclide/coc.nvim&#39;</span>, {<span style="color:#e6db74">&#39;branch&#39;</span>: <span style="color:#e6db74">&#39;release&#39;</span>} <span style="color:#75715e">&#34; Language server</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Color schemes</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;morhetz/gruvbox&#39;</span>              <span style="color:#75715e">&#34; Gruvbox theme</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">end</span>()
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Plugin settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">colorscheme</span> <span style="color:#a6e22e">gruvbox</span>                  <span style="color:#75715e">&#34; Set color scheme</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">airline_powerline_fonts</span> = <span style="color:#ae81ff">1</span>    <span style="color:#75715e">&#34; Use powerline fonts</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; NERDTree settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">n</span> :<span style="color:#a6e22e">NERDTreeToggle</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">NERDTreeShowHidden</span>=<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; FZF settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">f</span> :<span style="color:#a6e22e">Files</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">b</span> :<span style="color:#a6e22e">Buffers</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">g</span> :<span style="color:#a6e22e">Rg</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span></code></pre></div><p>Install plugins by opening Vim and running <code>:PlugInstall</code>.</p>
+<h2 id="vim-for-modern-development">Vim for Modern Development<a hidden class="anchor" aria-hidden="true" href="#vim-for-modern-development">#</a></h2>
+<h3 id="configuring-coc-for-intellisense">Configuring CoC for Intellisense<a hidden class="anchor" aria-hidden="true" href="#configuring-coc-for-intellisense">#</a></h3>
+<p>CoC (Conquer of Completion) brings VSCode-like intellisense to Vim:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#75715e">&#34; CoC settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">coc_global_extensions</span> = [
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-json&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-tsserver&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-eslint&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-prettier&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-pyright&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-rust-analyzer&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ <span style="color:#e6db74">&#39;coc-go&#39;</span>,
+</span></span><span style="display:flex;"><span>  \ ]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Use tab for trigger completion</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">inoremap</span> &lt;<span style="color:#a6e22e">silent</span>&gt;&lt;<span style="color:#a6e22e">expr</span>&gt; &lt;<span style="color:#a6e22e">TAB</span>&gt;
+</span></span><span style="display:flex;"><span>      \ <span style="color:#a6e22e">pumvisible</span>() ? <span style="color:#e6db74">&#34;\&lt;C-n&gt;&#34;</span> :
+</span></span><span style="display:flex;"><span>      \ &lt;<span style="color:#a6e22e">SID</span>&gt;<span style="color:#a6e22e">check_back_space</span>() ? <span style="color:#e6db74">&#34;\&lt;TAB&gt;&#34;</span> :
+</span></span><span style="display:flex;"><span>      \ <span style="color:#a6e22e">coc</span>#<span style="color:#a6e22e">refresh</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">inoremap</span> &lt;<span style="color:#a6e22e">expr</span>&gt;&lt;<span style="color:#a6e22e">S</span>-<span style="color:#a6e22e">TAB</span>&gt; <span style="color:#a6e22e">pumvisible</span>() ? <span style="color:#e6db74">&#34;\&lt;C-p&gt;&#34;</span> : <span style="color:#e6db74">&#34;\&lt;C-h&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span>! <span style="color:#a6e22e">s</span>:<span style="color:#a6e22e">check_back_space</span>() <span style="color:#a6e22e">abort</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">col</span> = <span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;.&#39;</span>) - <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span> !<span style="color:#a6e22e">col</span> || <span style="color:#a6e22e">getline</span>(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#a6e22e">col</span> - <span style="color:#ae81ff">1</span>]  =~# <span style="color:#e6db74">&#39;\s&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endfunction</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; GoTo code navigation</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nmap</span> &lt;<span style="color:#a6e22e">silent</span>&gt; <span style="color:#a6e22e">gd</span> &lt;<span style="color:#a6e22e">Plug</span>&gt;(<span style="color:#a6e22e">coc</span>-<span style="color:#a6e22e">definition</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nmap</span> &lt;<span style="color:#a6e22e">silent</span>&gt; <span style="color:#a6e22e">gy</span> &lt;<span style="color:#a6e22e">Plug</span>&gt;(<span style="color:#a6e22e">coc</span>-<span style="color:#a6e22e">type</span>-<span style="color:#a6e22e">definition</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nmap</span> &lt;<span style="color:#a6e22e">silent</span>&gt; <span style="color:#a6e22e">gi</span> &lt;<span style="color:#a6e22e">Plug</span>&gt;(<span style="color:#a6e22e">coc</span>-<span style="color:#a6e22e">implementation</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nmap</span> &lt;<span style="color:#a6e22e">silent</span>&gt; <span style="color:#a6e22e">gr</span> &lt;<span style="color:#a6e22e">Plug</span>&gt;(<span style="color:#a6e22e">coc</span>-<span style="color:#a6e22e">references</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Show documentation in preview window</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">silent</span>&gt; <span style="color:#a6e22e">K</span> :<span style="color:#a6e22e">call</span> &lt;<span style="color:#a6e22e">SID</span>&gt;<span style="color:#a6e22e">show_documentation</span>()&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span>! <span style="color:#a6e22e">s</span>:<span style="color:#a6e22e">show_documentation</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">index</span>([<span style="color:#e6db74">&#39;vim&#39;</span>,<span style="color:#e6db74">&#39;help&#39;</span>], &amp;<span style="color:#66d9ef">filetype</span>) &gt;= <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">execute</span> <span style="color:#e6db74">&#39;h &#39;</span>.<span style="color:#a6e22e">expand</span>(<span style="color:#e6db74">&#39;&lt;cword&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elseif</span> (<span style="color:#a6e22e">coc</span>#<span style="color:#a6e22e">rpc</span>#<span style="color:#a6e22e">ready</span>())
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">CocActionAsync</span>(<span style="color:#e6db74">&#39;doHover&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">execute</span> <span style="color:#e6db74">&#39;!&#39;</span> . &amp;<span style="color:#a6e22e">keywordprg</span> . <span style="color:#e6db74">&#34; &#34;</span> . <span style="color:#a6e22e">expand</span>(<span style="color:#e6db74">&#39;&lt;cword&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">endif</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endfunction</span>
+</span></span></code></pre></div><h3 id="git-integration">Git Integration<a hidden class="anchor" aria-hidden="true" href="#git-integration">#</a></h3>
+<p>Add Git support with vim-fugitive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;tpope/vim-fugitive&#39;</span>           <span style="color:#75715e">&#34; Git integration</span>
+</span></span></code></pre></div><p>Use these commands:</p>
+<ul>
+<li><code>:G</code>: Git status</li>
+<li><code>:G commit</code>: Commit changes</li>
+<li><code>:G blame</code>: Show git blame</li>
+<li><code>:G difftool</code>: Show diffs</li>
+<li><code>:G log</code>: View log</li>
+</ul>
+<h3 id="terminal-integration">Terminal Integration<a hidden class="anchor" aria-hidden="true" href="#terminal-integration">#</a></h3>
+<p>Use Vim&rsquo;s built-in terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#75715e">&#34; Open terminal in vertical split</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">t</span> :<span style="color:#a6e22e">vertical</span> <span style="color:#a6e22e">terminal</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; Exit terminal mode with Escape</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tnoremap</span> &lt;<span style="color:#a6e22e">Esc</span>&gt; &lt;<span style="color:#a6e22e">C</span>-\&gt;&lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">n</span>&gt;
+</span></span></code></pre></div><h2 id="advanced-vim-techniques">Advanced Vim Techniques<a hidden class="anchor" aria-hidden="true" href="#advanced-vim-techniques">#</a></h2>
+<h3 id="macros">Macros<a hidden class="anchor" aria-hidden="true" href="#macros">#</a></h3>
+<p>Record and replay complex sequences:</p>
+<ol>
+<li><code>q</code> followed by a register (a-z) to start recording (e.g., <code>qa</code>)</li>
+<li>Perform your actions</li>
+<li>Press <code>q</code> again to stop recording</li>
+<li>Use <code>@</code> followed by the register to replay (e.g., <code>@a</code>)</li>
+</ol>
+<h3 id="marks">Marks<a hidden class="anchor" aria-hidden="true" href="#marks">#</a></h3>
+<p>Set bookmarks in your text:</p>
+<ul>
+<li><code>m</code> followed by a letter sets a mark (e.g., <code>ma</code> sets mark a)</li>
+<li><code>`a</code> jumps to mark a&rsquo;s position</li>
+<li><code>'a</code> jumps to the start of the line containing mark a</li>
+</ul>
+<h3 id="text-folding">Text Folding<a hidden class="anchor" aria-hidden="true" href="#text-folding">#</a></h3>
+<p>Collapse sections of text:</p>
+<ul>
+<li><code>zf{motion}</code>: Create a fold</li>
+<li><code>zo</code>: Open fold</li>
+<li><code>zc</code>: Close fold</li>
+<li><code>za</code>: Toggle fold</li>
+<li><code>zR</code>: Open all folds</li>
+<li><code>zM</code>: Close all folds</li>
+</ul>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Vim has a steep learning curve, but the productivity gains are well worth the effort. Start with the basics, gradually incorporate new techniques into your workflow, and before you know it, you&rsquo;ll be editing text at the speed of thought.</p>
+<p>Remember: The key to mastering Vim is practice. Consider using plugins like vim-tutor-mode for interactive lessons, or run <code>vimtutor</code> in your terminal for a built-in tutorial.</p>
+<hr>
+<p><em>Are you a Vim user? Share your favorite tips, plugins, or configurations in the comments below!</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://studiolinux.com/tags/vim/">Vim</a></li>
+      <li><a href="https://studiolinux.com/tags/text-editor/">Text Editor</a></li>
+      <li><a href="https://studiolinux.com/tags/productivity/">Productivity</a></li>
+      <li><a href="https://studiolinux.com/tags/tools/">Tools</a></li>
+    </ul>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on x"
+            href="https://x.com/intent/tweet/?text=Mastering%20Vim%3a%20A%20Modern%20Guide&amp;url=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f&amp;hashtags=Vim%2cTextEditor%2cProductivity%2cTools">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f&amp;title=Mastering%20Vim%3a%20A%20Modern%20Guide&amp;summary=Mastering%20Vim%3a%20A%20Modern%20Guide&amp;source=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f&title=Mastering%20Vim%3a%20A%20Modern%20Guide">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on whatsapp"
+            href="https://api.whatsapp.com/send?text=Mastering%20Vim%3a%20A%20Modern%20Guide%20-%20https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on telegram"
+            href="https://telegram.me/share/url?text=Mastering%20Vim%3a%20A%20Modern%20Guide&amp;url=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Mastering Vim: A Modern Guide on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Mastering%20Vim%3a%20A%20Modern%20Guide&u=https%3a%2f%2fstudiolinux.com%2ftutorials%2fmastering-vim%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2025 <a href="https://studiolinux.com/">Studio{Linux}</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+    <br>
+    <span>
+        <a href="https://studiolinux.com/contact">Contact</a> |
+        <a href="https://studiolinux.com/about">About</a> |
+        <a href="https://studiolinux.com/resources">Resources</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+        });
+    }
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
