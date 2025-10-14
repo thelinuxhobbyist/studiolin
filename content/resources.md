@@ -159,4 +159,4 @@ Welcome to our curated collection of Linux resources! Whether you're a beginner 
 
 ---
 
-*Do you have a favorite Linux resource that's not listed here? Let us know in the comments below!*
+*This resource list is regularly updated with new Linux tools and learning materials.*

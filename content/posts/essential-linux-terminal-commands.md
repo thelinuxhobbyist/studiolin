@@ -163,4 +163,4 @@ In future posts, we'll dive deeper into each of these commands and explore more 
 
 ---
 
-*What are your favorite terminal commands for productivity? Share in the comments below!*
+*Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more Linux tips!*

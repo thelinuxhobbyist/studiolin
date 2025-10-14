@@ -349,4 +349,4 @@ Remember: The key to mastering Vim is practice. Consider using plugins like vim-
 
 ---
 
-*Are you a Vim user? Share your favorite tips, plugins, or configurations in the comments below!*
+*Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more Vim tips and tricks!*

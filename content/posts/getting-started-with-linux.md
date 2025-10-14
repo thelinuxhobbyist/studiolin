@@ -88,4 +88,4 @@ Stay tuned for more Linux tutorials on Studio{Linux}!
 
 ---
 
-*Have questions about getting started with Linux? Let us know in the comments below!*
+*Check out our other tutorials for more Linux guides and tips!*
