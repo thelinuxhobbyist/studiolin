@@ -9,8 +9,8 @@ pagination:
 params:
   env: production
   title: "Studio{Linux}"
-  description: "A modern Linux blog about tips, tricks, tutorials, and insights"
-  keywords: [Linux, Open Source, Programming, Tutorials, Tech]
+  description: "A beginner-friendly Linux blog sharing tips, tricks, tutorials, and insights for new users and tech enthusiasts."
+  keywords: [Linux, Open Source, Programming, Tutorials, Tech, Beginners]
   author: "Studio{Linux} Team"
   images: ["images/logo.svg"]
   defaultTheme: auto
