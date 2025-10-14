@@ -29,6 +29,6 @@ Have questions, suggestions, or want to contribute to our blog? We'd love to hea
 
 - **Email**: contact@studiolinux.com
 - **GitHub**: [github.com/studiolinux](https://github.com/studiolinux)
-- **Twitter**: [@studiolinux](https://twitter.com/studiolinux)
+- **Twitter**: [@studiolinuxblog](https://twitter.com/studiolinuxblog)
 
 Thank you for visiting Studio{Linux}!

@@ -21,16 +21,13 @@ params:
     customCSS: ["css/custom.css"]
   
   label:
-    text: ""
-    icon: "/images/header-logo.svg"
-    iconHeight: 35
+    text: "Studio{Linux}"
+    icon: ""
 
   profileMode:
     enabled: true
     title: "Studio{Linux}"
     subtitle: "Modern Linux tutorials, tips, and insights for developers and enthusiasts"
-    imageUrl: "/images/logo.svg"
-    imageTitle: "Studio{Linux}"
     buttons:
       - name: Blog
         url: posts
@@ -46,6 +43,8 @@ params:
   socialIcons:
     - name: twitter
       url: "https://twitter.com/studiolinuxblog"
+    - name: linkedin
+      url: "https://linkedin.com/company/studiolinux"
 
   ShowReadingTime: true
   ShowShareButtons: true

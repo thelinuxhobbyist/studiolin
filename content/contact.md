@@ -12,7 +12,7 @@ We'd love to hear from you! Whether you have a question about Linux, want to sug
 ## Get in Touch
 
 - **Email**: contact@studiolinux.com
-- **Twitter**: [@studiolinux](https://twitter.com/studiolinux)
+- **Twitter**: [@studiolinuxblog](https://twitter.com/studiolinuxblog)
 - **GitHub**: [github.com/studiolinux](https://github.com/studiolinux)
 
 ## Join Our Community
