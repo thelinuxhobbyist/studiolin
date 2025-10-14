@@ -4,7 +4,7 @@ theme: "PaperMod"
 languageCode: "en-us"
 
 pagination:
-  pagerSize: 10
+  pagerSize: 5
 
 params:
   env: production
@@ -25,20 +25,16 @@ params:
     icon: ""
 
   profileMode:
-    enabled: true
-    title: "Studio{Linux}"
-    subtitle: "Modern Linux tutorials, tips, and insights for developers and enthusiasts"
-    buttons:
-      - name: Blog
-        url: posts
-      - name: Tutorials
-        url: tutorials
-      - name: About
-        url: about
-
-  homeInfoParams:
-    Title: "Welcome to Studio{Linux}"
-    Content: "A modern blog dedicated to Linux tips, tutorials, and insights for both beginners and advanced users"
+    enabled: false
+    
+  # Disable homeInfoParams to use our custom index.html template
+  # homeInfoParams:
+  #   Title: "Welcome to Studio{Linux}"
+  #   Content: "A modern blog dedicated to Linux tips, tutorials, and insights for developers and enthusiasts"
+  
+  # Show most recent posts on home page
+  mainSections:
+    - posts
 
   socialIcons:
     - name: twitter
@@ -65,26 +61,22 @@ menu:
       name: Home
       url: /
       weight: 10
-    - identifier: posts
-      name: Blog
-      url: /posts/
-      weight: 20
     - identifier: tutorials
       name: Tutorials
       url: /tutorials/
-      weight: 30
+      weight: 20
     - identifier: resources
       name: Resources
       url: /resources/
-      weight: 40
+      weight: 30
     - identifier: about
       name: About
       url: /about/
-      weight: 50
+      weight: 40
     - identifier: search
       name: Search
       url: /search/
-      weight: 60
+      weight: 50
 
 outputs:
   home:

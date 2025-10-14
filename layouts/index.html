@@ -1,0 +1,47 @@
+{{ define "main" }}
+<main class="main">
+  <header class="page-header">
+    <h1>{{ .Site.Title }}</h1>
+    {{ if .Site.Params.description }}
+    <div class="post-description">
+      {{ .Site.Params.description }}
+      <div class="terminal">
+        <span class="command-prompt">$ </span><span class="command-text">cat welcome.txt</span>
+        <span class="cursor">_</span>
+      </div>
+    </div>
+    {{ end }}
+  </header>
+
+  {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+  {{ $paginator := .Paginate $pages }}
+  
+  <div class="posts-list">
+    {{ range $paginator.Pages }}
+    <article class="post-entry">
+      <header class="entry-header">
+        <h2>{{ .Title }}</h2>
+      </header>
+      <div class="entry-content">
+        <p>{{ .Summary }}</p>
+      </div>
+      <footer class="entry-footer">
+        <span class="post-info">
+          <span class="post-date">{{- .Date.Format "January 2, 2006" -}}</span>
+          {{ if .Params.tags }}
+          <span class="post-tags">
+            {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="post-tag">#{{ . }}</a>
+            {{ end }}
+          </span>
+          {{ end }}
+        </span>
+        <a class="entry-link" href="{{ .Permalink }}"></a>
+      </footer>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ partial "pagination.html" . }}
+</main>
+{{ end }}
