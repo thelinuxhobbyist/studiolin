@@ -2,43 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blog on Studio{Linux}</title>
-    <link>https://studiolinux.com/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Blog on Studio{Linux}</description>
     <image>
       <title>Studio{Linux}</title>
-      <url>https://studiolinux.com/images/logo.svg</url>
-      <link>https://studiolinux.com/images/logo.svg</link>
+      <url>http://localhost:1313/images/logo.svg</url>
+      <link>http://localhost:1313/images/logo.svg</link>
     </image>
     <generator>Hugo -- 0.148.0</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://studiolinux.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ansible for Absolute Beginners: Automation Made Simple</title>
-      <link>https://studiolinux.com/posts/ansible-for-beginners/</link>
+      <link>http://localhost:1313/posts/ansible-for-beginners/</link>
       <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://studiolinux.com/posts/ansible-for-beginners/</guid>
+      <guid>http://localhost:1313/posts/ansible-for-beginners/</guid>
       <description>A super simple guide to Ansible automation for complete beginners, explained like you&amp;#39;re five years old</description>
     </item>
     <item>
       <title>Getting Started with Linux: A Beginner&#39;s Guide</title>
-      <link>https://studiolinux.com/posts/getting-started-with-linux/</link>
+      <link>http://localhost:1313/posts/getting-started-with-linux/</link>
       <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://studiolinux.com/posts/getting-started-with-linux/</guid>
+      <guid>http://localhost:1313/posts/getting-started-with-linux/</guid>
       <description>Everything you need to know to get started with Linux as a complete beginner</description>
     </item>
     <item>
       <title>10 Essential Linux Terminal Commands for Productivity</title>
-      <link>https://studiolinux.com/posts/essential-linux-terminal-commands/</link>
+      <link>http://localhost:1313/posts/essential-linux-terminal-commands/</link>
       <pubDate>Mon, 13 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://studiolinux.com/posts/essential-linux-terminal-commands/</guid>
+      <guid>http://localhost:1313/posts/essential-linux-terminal-commands/</guid>
       <description>Master these powerful terminal commands to boost your productivity on Linux</description>
     </item>
     <item>
       <title>The Best Linux Distributions for Developers in 2025</title>
-      <link>https://studiolinux.com/posts/best-linux-distributions-for-developers/</link>
+      <link>http://localhost:1313/posts/best-linux-distributions-for-developers/</link>
       <pubDate>Sun, 12 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://studiolinux.com/posts/best-linux-distributions-for-developers/</guid>
+      <guid>http://localhost:1313/posts/best-linux-distributions-for-developers/</guid>
       <description>A comprehensive review of the best Linux distributions for software developers in 2025</description>
     </item>
   </channel>
