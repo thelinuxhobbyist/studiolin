@@ -13,6 +13,24 @@
     {{ end }}
   </header>
 
+  <!-- Popular Topics Section -->
+  <div class="topics-container">
+    <h2>Browse by Topic</h2>
+    <div class="topics-grid">
+      {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      {{ if gt (len $taxonomy) 1 }}
+      <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}/" class="topic-card">
+        <span class="topic-name">{{ $name | humanize }}</span>
+        <span class="topic-count">{{ len $taxonomy }} posts</span>
+      </a>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2 class="recent-posts-title">Recent Articles</h2>
   {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
   {{ $paginator := .Paginate $pages }}
   
