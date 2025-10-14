@@ -14,6 +14,20 @@
     <lastBuildDate>Tue, 14 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://studiolinux.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Ansible</title>
+      <link>https://studiolinux.com/tags/ansible/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://studiolinux.com/tags/ansible/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>https://studiolinux.com/tags/automation/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://studiolinux.com/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Beginners</title>
       <link>https://studiolinux.com/tags/beginners/</link>
       <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
@@ -25,6 +39,13 @@
       <link>https://studiolinux.com/tags/development/</link>
       <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://studiolinux.com/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>https://studiolinux.com/tags/devops/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://studiolinux.com/tags/devops/</guid>
       <description></description>
     </item>
     <item>
