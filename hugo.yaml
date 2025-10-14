@@ -47,7 +47,7 @@ params:
       url: "https://linkedin.com/company/studiolinux"
 
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
