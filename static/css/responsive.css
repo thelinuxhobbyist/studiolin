@@ -1,12 +1,32 @@
 /* Responsive design improvements */
 
-/* Mobile menu container */
+/* Ensure desktop menu is visible on larger screens */
+@media (min-width: 769px) {
+  #menu {
+    display: flex !important;
+  }
+  
+  .mobile-menu-container {
+    display: none !important;
+  }
+}
+
+/* Mobile menu container - hide by default on all screen sizes */
 .mobile-menu-container {
-  display: none;
+  display: none !important;
+}
+
+/* Desktop menu - show by default */
+#menu {
+  display: flex !important;
 }
 
 /* Mobile menu enhancements */
 @media (max-width: 768px) {
+  /* Hide desktop menu on mobile */
+  #menu {
+    display: none !important;
+  }
   /* Show mobile menu container */
   .mobile-menu-container {
     display: block !important;
@@ -23,25 +43,27 @@
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
+    border-radius: 6px;
+    padding: 10px 14px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-size: 14px;
+    font-weight: 500;
   }
   
   .hamburger-text {
     font-size: 14px;
-    font-weight: bold;
-    margin-left: 5px;
+    font-weight: 600;
+    margin-left: 8px;
   }
   
   .hamburger-icon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20px;
-    height: 16px;
+    width: 18px;
+    height: 14px;
   }
 
   .hamburger-icon span {
@@ -50,7 +72,7 @@
     height: 2px;
     background-color: white;
     transition: all 0.3s ease-in-out;
-    border-radius: 2px;
+    border-radius: 1px;
   }
 
   /* Hamburger menu animation */
@@ -91,30 +113,26 @@
     width: 100%;
   }
 
-  #menu {
-    display: none; /* Hide by default on mobile */
+  #menu.show {
+    display: flex !important;
     position: fixed;
-    top: 60px;
+    top: 70px;
     left: 0;
     right: 0;
     background-color: var(--background-color);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 8px 8px;
     z-index: 1000;
-    padding: 10px 0;
+    padding: 15px 0;
     margin: 0;
     flex-direction: column;
     text-align: center;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: slideDown 0.3s ease-in-out;
   }
   
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-
-  #menu.show {
-    display: flex !important;
   }
 
   #menu li {

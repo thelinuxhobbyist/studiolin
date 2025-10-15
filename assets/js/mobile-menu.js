@@ -4,6 +4,7 @@ console.log('Mobile menu script loading...');
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Mobile menu script DOM loaded');
   
+  // Get menu elements
   const hamburgerMenu = document.querySelector('.hamburger-menu');
   const menu = document.getElementById('menu');
   
@@ -11,55 +12,36 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Menu element:', menu);
   
   if (!hamburgerMenu || !menu) {
-    console.error('Mobile menu elements not found! Attempting alternative selector...');
-    
-    // Try alternative selectors
-    const alternativeMenu = document.querySelector('.menu');
-    const alternativeHamburger = document.querySelector('[aria-label="Toggle menu"]');
-    
-    console.log('Alternative hamburger:', alternativeHamburger);
-    console.log('Alternative menu:', alternativeMenu);
-    
-    if (!alternativeHamburger && !alternativeMenu) {
-      console.error('No menu elements found at all!');
-      return;
-    }
+    console.error('Required menu elements not found!');
+    return;
   }
-  
-  // Force add click handler to all possible menu buttons
-  document.addEventListener('click', function(e) {
-    if (e.target && (e.target.classList.contains('hamburger-menu') || 
-                     e.target.closest('.hamburger-menu') || 
-                     e.target.getAttribute('aria-label') === 'Toggle menu')) {
-      console.log('Hamburger clicked via global handler');
-      e.preventDefault();
-      
-      const clickedHamburger = e.target.classList.contains('hamburger-menu') ? 
-                               e.target : 
-                               e.target.closest('.hamburger-menu') || e.target;
-      
-      clickedHamburger.classList.toggle('is-active');
-      menu.classList.toggle('show');
-      
-      // Set aria-expanded attribute for accessibility
-      const expanded = menu.classList.contains('show');
-      clickedHamburger.setAttribute('aria-expanded', expanded);
-      console.log('Menu visible:', expanded);
-    }
+
+  // Add click handler to hamburger menu
+  hamburgerMenu.addEventListener('click', function(e) {
+    e.preventDefault();
+    console.log('Hamburger menu clicked');
+    
+    // Toggle menu visibility
+    menu.classList.toggle('show');
+    hamburgerMenu.classList.toggle('is-active');
+    
+    // Update aria-expanded for accessibility
+    const isExpanded = menu.classList.contains('show');
+    hamburgerMenu.setAttribute('aria-expanded', isExpanded);
+    
+    console.log('Menu is now:', isExpanded ? 'visible' : 'hidden');
   });
   
   // Close menu when clicking outside
-  document.addEventListener('click', function(event) {
-    if (!menu.contains(event.target) && 
-        !hamburgerMenu.contains(event.target) && 
-        menu.classList.contains('show')) {
+  document.addEventListener('click', function(e) {
+    if (!hamburgerMenu.contains(e.target) && !menu.contains(e.target) && menu.classList.contains('show')) {
       menu.classList.remove('show');
       hamburgerMenu.classList.remove('is-active');
       hamburgerMenu.setAttribute('aria-expanded', 'false');
     }
   });
   
-  // Close menu when resizing to desktop
+  // Close menu when window is resized to desktop size
   window.addEventListener('resize', function() {
     if (window.innerWidth > 768 && menu.classList.contains('show')) {
       menu.classList.remove('show');
@@ -109,4 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
       link.classList.add('active');
     }
   });
+  
+  console.log('Mobile menu initialized successfully');
 });
