@@ -1,0 +1,20 @@
+{{/* Simple sidebar with recent posts and tag list */}}
+<aside class="sidebar" role="complementary" aria-label="Sidebar navigation">
+  <div class="sidebar-section">
+    <h3>Recent Posts</h3>
+    <ul>
+      {{ $recent := first 8 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+      {{ range $recent }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="sidebar-section">
+    <h3>Tags</h3>
+    <ul>
+      {{ range $name, $items := site.Taxonomies.tags }}
+      <li><a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}/">{{ $name }} ({{ len $items }})</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</aside>
