@@ -54,6 +54,13 @@
                 {{- end }}
             </a>
             {{- end }}
+            
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger-menu" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo-switches">
                 {{- if (not site.Params.disableThemeToggle) }}
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
