@@ -233,12 +233,12 @@
 .footer a {
   color: inherit; /* match surrounding footer text */
   text-decoration: none;
-  border-bottom: 1px solid var(--primary-color);
+  border-bottom: none; /* remove underline */
 }
 
 .footer a:hover {
   color: var(--primary-color);
-  border-bottom: 1px solid var(--primary-color);
+  border-bottom: none;
 }
 
 /* Dark mode: keep footer green as well */
