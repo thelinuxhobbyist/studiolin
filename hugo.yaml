@@ -9,7 +9,7 @@ pagination:
 params:
   env: production
   title: "Studio{Linux}"
-  description: "A beginner-friendly Linux blog sharing tips, tricks, tutorials, and insights for new users and tech enthusiasts."
+  description: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
   keywords: [Linux, Open Source, Programming, Tutorials, Tech, Beginners]
   author: "Studio{Linux} Team"
   images: ["images/logo.svg"]
@@ -31,7 +31,7 @@ params:
   # Enable homeInfoParams for the home page
   homeInfoParams:
     Title: "Explore the Linux Universe"
-    Content: "A beginner-friendly Linux blog sharing tips, tricks, tutorials, and insights for new users and tech enthusiasts."
+    Content: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
   
   # Main sections
   mainSections:
