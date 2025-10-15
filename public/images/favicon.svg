@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#212121"/>
-  <text x="12" y="42" style="font: bold 32px sans-serif; fill: #ffffff;">S</text>
-  <text x="32" y="42" style="font: bold 32px sans-serif; fill: #4CAF50;">{L}</text>
-</svg>

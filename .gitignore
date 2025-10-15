@@ -1,0 +1,15 @@
+# Ignore Hugo generated output
+public/
+
+# Ignore common editor and OS files
+.DS_Store
+*.swp
+*.swo
+node_modules/
+dist/
+__pycache__/
+.idea/
+.vscode/
+
+# Optional: build artifacts
+*.log
