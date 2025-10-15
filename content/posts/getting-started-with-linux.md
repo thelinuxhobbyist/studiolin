@@ -84,7 +84,7 @@ Now that you have a basic understanding of Linux, here are some next steps:
 3. Customize your system
 4. Join Linux communities like Reddit's r/linux4noobs
 
-Stay tuned for more Linux tutorials on studiolinux!
+Stay tuned for more Linux tutorials on Studio{Linux}!
 
 ---
 

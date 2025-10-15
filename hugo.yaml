@@ -1,5 +1,5 @@
 baseURL: "https://studiolinux.com/"
-title: "studiolinux"
+title: "Studio{Linux}"
 theme: "PaperMod"
 languageCode: "en-us"
 
@@ -8,39 +8,38 @@ pagination:
 
 params:
   env: production
-  title: "studiolinux"
-  description: "studiolinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
+  title: "Studio{Linux}"
+  description: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
   keywords: [Linux, Open Source, Programming, Tutorials, Tech, Beginners]
-  author: "studiolinux team"
+  author: "Studio{Linux} Team"
   images: ["images/logo.svg"]
   defaultTheme: auto
   disableThemeToggle: false
-
+  
   assets:
     favicon: "images/favicon.svg"
     customCSS: ["css/custom.css", "css/spacing-fix.css", "css/responsive.css"]
     customJS: ["js/mobile-menu.js"]
-
+  
   label:
-    text: "studiolinux"
+    text: "Studio{Linux}"
     icon: ""
-    title: "studiolinux"
 
   profileMode:
     enabled: false
-    author: "studiolinux team"
-
+    
+  # Enable homeInfoParams for the home page
   homeInfoParams:
     Title: "Explore the Linux Universe"
-    Content: "studiolinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
-
+    Content: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
+  
   # Main sections
   mainSections:
     - posts
 
   # Disable all social icons
   socialIcons: []
-
+      
   # Disable social icons in header and footer
   social:
     enabled: false

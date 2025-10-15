@@ -2,12 +2,12 @@
 title: "Contact Us"
 date: 2025-10-14
 draft: false
-description: "Get in touch with the studiolinux team"
+description: "Get in touch with the Studio{Linux} team"
 ---
 
 # Contact Us
 
-We'd love to hear from you! Whether you have a question about Linux, want to suggest a topic for a future post, or are interested in contributing to studiolinux, please don't hesitate to reach out.
+We'd love to hear from you! Whether you have a question about Linux, want to suggest a topic for a future post, or are interested in contributing to Studio{Linux}, please don't hesitate to reach out.
 
 ## Get in Touch
 
@@ -22,7 +22,7 @@ We'd love to hear from you! Whether you have a question about Linux, want to sug
 
 ## Write for Us
 
-We're always looking for talented writers who are passionate about Linux and open source software. If you'd like to contribute to studiolinux, please send us an email with:
+We're always looking for talented writers who are passionate about Linux and open source software. If you'd like to contribute to Studio{Linux}, please send us an email with:
 
 1. A brief introduction about yourself
 2. Your areas of expertise in Linux/open source
@@ -39,4 +39,4 @@ Found an issue with our website? Please report it on our [GitHub repository](htt
 
 ---
 
-We aim to respond to all inquiries within 48 hours. Thank you for your interest in studiolinux!
+We aim to respond to all inquiries within 48 hours. Thank you for your interest in Studio{Linux}!
