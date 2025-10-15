@@ -231,8 +231,14 @@
 
 /* Ensure footer links remain readable and clickable */
 .footer a {
+  color: inherit; /* match surrounding footer text */
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.footer a:hover {
   color: var(--primary-color);
-  text-decoration: underline;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 /* Dark mode: keep footer green as well */
