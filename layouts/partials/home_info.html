@@ -1,9 +1,9 @@
 {{- with site.Params.homeInfoParams }}
-<article class="first-entry home-info">
+<article class="first-entry home-info" style="margin-bottom: -30px;">
     <header class="entry-header">
-        <h1 style="margin-bottom: 10px;">{{ .Title | markdownify }}</h1>
+        <h1 style="margin-bottom: 5px; padding-bottom: 0;">{{ .Title | markdownify }}</h1>
     </header>
-    <div class="entry-content" style="margin-bottom: 0;">
+    <div class="entry-content" style="margin-bottom: 0; padding-bottom: 5px;">
         {{ .Content | markdownify }}
     </div>
 </article>

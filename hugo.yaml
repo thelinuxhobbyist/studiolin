@@ -18,7 +18,7 @@ params:
   
   assets:
     favicon: "images/favicon.svg"
-    customCSS: ["css/custom.css"]
+    customCSS: ["css/custom.css", "css/spacing-fix.css"]
   
   label:
     text: "Studio{Linux}"
