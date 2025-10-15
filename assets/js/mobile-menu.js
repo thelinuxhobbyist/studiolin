@@ -1,18 +1,29 @@
 // Simple and direct mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Mobile menu script loaded');
+  
   const hamburgerMenu = document.querySelector('.hamburger-menu');
   const menu = document.getElementById('menu');
   
-  if (!hamburgerMenu || !menu) return;
+  console.log('Hamburger menu element:', hamburgerMenu);
+  console.log('Menu element:', menu);
+  
+  if (!hamburgerMenu || !menu) {
+    console.error('Mobile menu elements not found');
+    return;
+  }
   
   // Toggle menu when clicking the hamburger button
-  hamburgerMenu.addEventListener('click', function() {
+  hamburgerMenu.addEventListener('click', function(e) {
+    console.log('Hamburger clicked');
+    e.preventDefault();
     this.classList.toggle('is-active');
     menu.classList.toggle('show');
     
     // Set aria-expanded attribute for accessibility
     const expanded = menu.classList.contains('show');
     this.setAttribute('aria-expanded', expanded);
+    console.log('Menu visible:', expanded);
   });
   
   // Close menu when clicking outside
