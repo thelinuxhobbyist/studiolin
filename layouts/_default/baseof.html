@@ -26,6 +26,11 @@
     </main>
     {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
     
+    <!-- Load custom scripts -->
+    {{- range site.Params.assets.customJS -}}
+    <script src="{{ (resources.Get . | resources.Fingerprint "sha512").RelPermalink }}" integrity="{{ (resources.Get . | resources.Fingerprint "sha512").Data.Integrity }}"></script>
+    {{- end -}}
+    
     <!-- Custom cursor effect for Studio{Linux} identity -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
