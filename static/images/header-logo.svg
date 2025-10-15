@@ -3,12 +3,10 @@
   <style>
     .studio { fill: #000000; font-weight: bold; font-size: 24px; }
     .linux { fill: #4CAF50; font-weight: bold; font-size: 24px; }
-    .brackets { fill: #4CAF50; font-weight: bold; font-size: 24px; }
   </style>
   <g>
     <text x="5" y="35" class="studio">Studio</text>
     <text x="98" y="35" class="linux">Linux</text>
-    <text x="85" y="35" class="brackets">{</text>
-    <text x="165" y="35" class="brackets">}</text>
+    
   </g>
 </svg>

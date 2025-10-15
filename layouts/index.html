@@ -1,0 +1,65 @@
+{{ define "main" }}
+<main class="main">
+  <header class="page-header">
+    <h1>Explore the Linux Universe</h1>
+    {{ if .Site.Params.description }}
+    <div class="post-description">
+      {{ .Site.Params.description }}
+      <div class="terminal">
+        <span class="command-prompt">$ </span><span class="command-text">cat welcome.txt</span>
+        <span class="cursor">_</span>
+      </div>
+    </div>
+    {{ end }}
+  </header>
+
+  <!-- Popular Topics Section -->
+  <div class="topics-container">
+    <h2>Browse by Topic</h2>
+    <div class="topics-grid">
+      {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      {{ if gt (len $taxonomy) 1 }}
+      <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}/" class="topic-card">
+        <span class="topic-name">{{ $name | humanize }}</span>
+        <span class="topic-count">{{ len $taxonomy }} posts</span>
+      </a>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2 class="recent-posts-title">Recent Articles</h2>
+  {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+  {{ $paginator := .Paginate $pages }}
+  
+  <div class="posts-list">
+    {{ range $paginator.Pages }}
+    <article class="post-entry">
+      <header class="entry-header">
+        <h2>{{ .Title }}</h2>
+      </header>
+      <div class="entry-content">
+        <p>{{ .Summary }}</p>
+      </div>
+      <footer class="entry-footer">
+        <span class="post-info">
+          <span class="post-date">{{- .Date.Format "January 2, 2006" -}}</span>
+          {{ if .Params.tags }}
+          <span class="post-tags">
+            {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="post-tag">#{{ . }}</a>
+            {{ end }}
+          </span>
+          {{ end }}
+        </span>
+        <a class="entry-link" href="{{ .Permalink }}"></a>
+      </footer>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ partial "pagination.html" . }}
+</main>
+{{ end }}

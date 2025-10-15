@@ -31,7 +31,7 @@
     <script src="{{ (resources.Get . | resources.Fingerprint "sha512").RelPermalink }}" integrity="{{ (resources.Get . | resources.Fingerprint "sha512").Data.Integrity }}"></script>
     {{- end -}}
     
-    <!-- Custom cursor effect for Studio{Linux} identity -->
+    <!-- Custom cursor effect for studiolinux identity -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Add terminal cursor to site title
@@ -42,10 +42,10 @@
                 siteTitle.appendChild(cursor);
             }
             
-            // Apply custom styling to Studio{Linux} text
+            // Apply custom styling to studiolinux text
             const siteText = document.querySelectorAll('h1, h2, .site-title');
             siteText.forEach(function(element) {
-                if (element.textContent.includes('Studio{Linux}')) {
+                if (element.textContent.toLowerCase().includes('studiolinux')) {
                     element.classList.add('site-name');
                 }
             });
