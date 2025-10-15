@@ -1,14 +1,19 @@
-// Mobile menu functionality
-console.log('Mobile menu script loading...');
+// Mobile menu and theme toggle functionality
+console.log('Mobile menu and theme script loading...');
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Mobile menu script DOM loaded');
+  console.log('Script DOM loaded');
   
+  // Mobile menu functionality
   const hamburgerMenu = document.querySelector('.hamburger-menu');
   const menu = document.getElementById('menu');
   
   console.log('Hamburger menu element:', hamburgerMenu);
   console.log('Menu element:', menu);
+  
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  console.log('Theme toggle element:', themeToggle);
   
   if (!hamburgerMenu || !menu) {
     console.error('Mobile menu elements not found! Attempting alternative selector...');
@@ -72,4 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
       hamburgerMenu.setAttribute('aria-expanded', 'false');
     }
   });
+  
+  // Fix theme toggle functionality
+  if (themeToggle) {
+    console.log('Setting up theme toggle event listener');
+    themeToggle.addEventListener('click', function() {
+      console.log('Theme toggle clicked');
+      document.body.classList.toggle('dark');
+      
+      const isDark = document.body.classList.contains('dark');
+      console.log('Dark mode:', isDark);
+      
+      localStorage.setItem('pref-theme', isDark ? 'dark' : 'light');
+    });
+  }
 });
