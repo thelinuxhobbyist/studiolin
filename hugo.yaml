@@ -36,14 +36,10 @@ params:
   mainSections:
     - posts
 
-  # Social icons in footer only
-  socialIcons:
-    - name: twitter
-      url: "https://twitter.com/studiolinuxblog"
-    - name: linkedin
-      url: "https://linkedin.com/company/studiolinux"
+  # Disable all social icons
+  socialIcons: []
       
-  # Disable social icons in header
+  # Disable social icons in header and footer
   social:
     enabled: false
 
