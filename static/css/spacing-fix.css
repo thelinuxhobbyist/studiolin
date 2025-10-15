@@ -1,0 +1,19 @@
+/* Additional style fixes for gap reduction */
+:root {
+  --gap: 14px !important; /* Reduce default gap */
+}
+
+/* Target the main post list container */
+.main {
+  padding-top: 0 !important;
+}
+
+/* Adjust margins between elements */
+.post-entry:first-child {
+  margin-top: -35px !important;  /* Pull the first post up significantly */
+}
+
+/* Reduce padding in home info */
+.home-info {
+  padding-bottom: 5px !important;
+}

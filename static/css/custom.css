@@ -1,0 +1,62 @@
+:root {
+  --primary-color: #2B7A78; /* Teal color - distinctive but professional */
+  --primary-color-dark: #17252A; /* Dark teal, almost black */
+  --primary-color-light: #3AAFA9; /* Light teal for highlights */
+  --accent-color: #DEF2F1; /* Very light teal for subtle accents */
+  --background-color: #FEFFFF; /* Almost white, with a touch of teal */
+  --text-color: #17252A; /* Dark teal, almost black */
+  --text-color-light: #5D7B7A; /* Mid-tone teal for secondary text */
+  --border-color: #DEF2F1; /* Very light teal */
+}
+
+/* Hide all social icons */
+.social-icons, .top-link .social-icons, .footer .social-icons {
+  display: none !important;
+}
+
+/* Aggressively reduce gap between description and posts */
+.first-entry {
+  margin-bottom: 0 !important;
+}
+
+.entry + .entry {
+  margin-top: 15px;
+}
+
+.home-info {
+  padding: 10px 0 !important;
+  margin-bottom: -30px !important;
+}
+
+.home-info + .post-entry {
+  margin-top: -40px !important;
+}
+
+/* Enhanced pagination styling */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination a {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: var(--primary-color-dark);
+  text-decoration: none;
+}
+
+.pagination-indicator {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
