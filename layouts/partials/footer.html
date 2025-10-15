@@ -19,6 +19,16 @@
 </a>
 {{- end }}
 
+<script>
+    // Ensure footer is a direct child of <body> so position:fixed behaves correctly
+    document.addEventListener('DOMContentLoaded', function () {
+        var footer = document.querySelector('footer.footer');
+        if (footer && footer.parentNode !== document.body) {
+            document.body.appendChild(footer);
+        }
+    });
+</script>
+
 {{- partial "extend_footer.html" . }}
 
 <script>
