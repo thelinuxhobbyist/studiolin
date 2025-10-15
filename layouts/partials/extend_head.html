@@ -2,28 +2,6 @@
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" type="text/css">
 <link rel="stylesheet" href="{{ "css/spacing-fix.css" | relURL }}" type="text/css">
 <link rel="stylesheet" href="{{ "css/responsive.css" | relURL }}" type="text/css">
-<link rel="stylesheet" href="{{ "css/theme-toggle-fix.css" | relURL }}" type="text/css">
 
 <!-- Preload the mobile menu JavaScript -->
 <script defer src="{{ "js/mobile-menu.js" | relURL }}" type="text/javascript"></script>
-
-<!-- Make sure hamburger menu is visible with inline style -->
-<style type="text/css">
-  @media (max-width: 768px) {
-    .mobile-menu-container {
-      display: block !important;
-      position: absolute !important;
-      top: 10px !important;
-      right: 15px !important;
-      z-index: 9999 !important;
-    }
-    
-    .hamburger-menu {
-      display: flex !important;
-      background-color: #2B7A78 !important;
-      color: white !important;
-      border-radius: 4px !important;
-      padding: 8px 12px !important;
-    }
-  }
-</style>

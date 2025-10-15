@@ -19,41 +19,9 @@ body.dark #sun {
   display: none;
 }
 
-/* Fix for mobile menu showing up in the center */
+/* Hide theme toggle on mobile to avoid confusion */
 @media (max-width: 768px) {
-  .theme-toggle {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-  }
-  
-  /* Hide theme toggle on mobile to avoid confusion */
   #theme-toggle {
     display: none;
-  }
-}
-
-/* Ensure mobile menu button is visible */
-.mobile-menu-container {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobile-menu-container {
-    display: block !important;
-    position: absolute !important;
-    top: 15px !important;
-    right: 15px !important;
-    z-index: 9999 !important;
-  }
-
-  .hamburger-menu {
-    display: flex !important;
-    background-color: var(--primary-color) !important;
-    color: white !important;
-    padding: 8px 12px !important;
-    border: none !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
   }
 }
