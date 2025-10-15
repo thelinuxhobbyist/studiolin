@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Linux: A Beginner's Guide"
-date: 2025-10-14
+date: 2025-06-20
 draft: false
 tags: ["Linux", "Beginners", "Tutorial"]
 categories: ["Tutorials"]

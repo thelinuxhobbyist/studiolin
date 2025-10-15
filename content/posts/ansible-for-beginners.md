@@ -1,6 +1,6 @@
 ---
 title: "Ansible for Absolute Beginners: Automation Made Simple"
-date: 2025-10-14
+date: 2024-11-05
 draft: false
 tags: ["Ansible", "Automation", "DevOps", "Beginners", "Linux"]
 categories: ["Tutorials"]
