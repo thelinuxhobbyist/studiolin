@@ -235,6 +235,17 @@
   text-decoration: underline;
 }
 
+/* Dark mode: ensure footer is readable against a dark background */
+body.dark .footer,
+:root.dark .footer {
+  color: var(--accent-color);
+}
+
+body.dark .footer a,
+:root.dark .footer a {
+  color: var(--primary-color-light);
+}
+
 /* Prevent the footer from covering important page content by adding bottom padding */
 body {
   padding-bottom: 56px; /* reserve space for the fixed footer */
