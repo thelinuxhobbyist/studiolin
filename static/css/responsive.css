@@ -30,58 +30,77 @@
   /* Show mobile menu container */
   .mobile-menu-container {
     display: block !important;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 1100;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
   }
   
-  /* Hamburger menu styling */
+  /* Hamburger menu styling - modern design */
   .hamburger-menu {
     display: flex;
     align-items: center;
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 6px;
-    padding: 10px 14px;
+    border-radius: 12px;
+    padding: 12px 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    min-width: 80px;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .hamburger-menu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  }
+  
+  .hamburger-menu:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
   }
   
   .hamburger-text {
     font-size: 14px;
     font-weight: 600;
-    margin-left: 8px;
+    color: white;
   }
   
   .hamburger-icon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 18px;
-    height: 14px;
+    width: 20px;
+    height: 16px;
   }
 
   .hamburger-icon span {
     display: block;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background-color: white;
     transition: all 0.3s ease-in-out;
-    border-radius: 1px;
+    border-radius: 2px;
   }
 
-  /* Hamburger menu animation */
+  /* Hamburger menu animation when active */
   .hamburger-menu.is-active {
-    background-color: var(--primary-color-dark);
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+  }
+  
+  .hamburger-menu.is-active:hover {
+    background: linear-gradient(135deg, #ee82ee 0%, #e94560 100%);
   }
   
   .hamburger-menu.is-active .hamburger-icon span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6.5px) rotate(45deg);
   }
 
   .hamburger-menu.is-active .hamburger-icon span:nth-child(2) {
@@ -89,7 +108,7 @@
   }
 
   .hamburger-menu.is-active .hamburger-icon span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6.5px) rotate(-45deg);
   }
 
   /* Dark mode styles */
@@ -116,23 +135,30 @@
   #menu.show {
     display: flex !important;
     position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background-color: var(--background-color);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 8px 8px;
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 20px 0;
     margin: 0;
     flex-direction: column;
     text-align: center;
-    animation: slideDown 0.3s ease-in-out;
+    animation: slideDown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(102, 126, 234, 0.1);
   }
   
   @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+      opacity: 0; 
+      transform: translateY(-30px) scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
   }
 
   #menu li {
@@ -143,11 +169,22 @@
 
   #menu li a {
     display: block;
-    padding: 15px 20px;
+    padding: 15px 25px;
     font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 5px 15px;
+  }
+  
+  #menu li a:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateX(5px);
   }
   
   #menu li + li {
-    border-top: 1px solid var(--border-color);
+    border-top: none;
   }
 }
