@@ -221,7 +221,7 @@
   left: 12px;
   z-index: 1500;
   background: transparent; /* keep it unobtrusive */
-  color: var(--text-color);
+  color: var(--primary-color); /* set footer text to site green */
   font-size: 13px;
   line-height: 1.2;
   padding: 4px 6px;
@@ -235,15 +235,12 @@
   text-decoration: underline;
 }
 
-/* Dark mode: ensure footer is readable against a dark background */
+/* Dark mode: keep footer green as well */
 body.dark .footer,
-:root.dark .footer {
-  color: var(--accent-color);
-}
-
+:root.dark .footer,
 body.dark .footer a,
 :root.dark .footer a {
-  color: var(--primary-color-light);
+  color: var(--primary-color);
 }
 
 /* Prevent the footer from covering important page content by adding bottom padding */
