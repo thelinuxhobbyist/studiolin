@@ -84,3 +84,7 @@ outputs:
     - HTML
     - RSS
     - JSON
+        - identifier: home
+          name: Home
+          url: /
+          weight: 10
