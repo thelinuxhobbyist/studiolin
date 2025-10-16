@@ -12,6 +12,7 @@ params:
   description: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
   keywords: [Linux, Open Source, Programming, Tutorials, Tech, Beginners]
   author: "Studio{Linux} Team"
+  author: "studiolinux"
   images: ["images/logo.svg"]
   defaultTheme: auto
   disableThemeToggle: false
@@ -59,14 +60,8 @@ params:
 
 menu:
   main:
-    - identifier: home
-      name: Home
-      url: /
-      weight: 10
-    - identifier: posts
-      name: Blog
-      url: /posts/
-      weight: 20
+    # Home menu item removed because blog is the homepage
+    # Blog menu item removed because blog is the homepage
     - identifier: tutorials
       name: Tutorials
       url: /tutorials/
