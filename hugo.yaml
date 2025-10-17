@@ -45,7 +45,7 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  disableSpecial1stPost: false
+  disableSpecial1stPost: true
   comments: false
   disableComments: true
   hidemeta: false
