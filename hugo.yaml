@@ -28,10 +28,6 @@ params:
   profileMode:
     enabled: false
     
-  # Enable homeInfoParams for the home page
-  homeInfoParams:
-    Title: "Explore the Linux Universe"
-    Content: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
   
   # Main sections
   mainSections:

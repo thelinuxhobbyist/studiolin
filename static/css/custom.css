@@ -14,23 +14,7 @@
   display: none !important;
 }
 
-/* Aggressively reduce gap between description and posts */
-.first-entry {
-  margin-bottom: 0 !important;
-}
-
-.entry + .entry {
-  margin-top: 15px;
-}
-
-.home-info {
-  padding: 10px 0 !important;
-  margin-bottom: -30px !important;
-}
-
-.home-info + .post-entry {
-  margin-top: -40px !important;
-}
+/* Keep natural spacing from theme; no aggressive overrides on first-entry/home-info */
 
 /* Enhanced pagination styling */
 .pagination {
