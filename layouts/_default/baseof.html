@@ -6,6 +6,10 @@
     <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ "images/favicon.svg" | relURL }}">
+    <link rel="icon" type="image/x-icon" href="{{ "images/favicon.ico" | relURL }}">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "css/color-scheme.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/homepage.css" | relURL }}">
