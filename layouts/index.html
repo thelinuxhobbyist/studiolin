@@ -1,0 +1,77 @@
+{{- define "main" }}
+
+{{- /* Hero Search Section */ -}}
+<section class="hero-search">
+    <div class="search-container">
+        <h1 class="hero-title">Explore the Linux Universe</h1>
+        <p class="hero-tagline">{{ site.Params.description }}</p>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search Linux tutorials or tools..." />
+            <button type="button" id="search-btn" aria-label="Search">🔍</button>
+        </div>
+    </div>
+</section>
+
+{{- /* Featured Article Section */ -}}
+{{- $featured := first 1 (where .Site.RegularPages "Section" "posts") }}
+{{- if gt (len $featured) 0 }}
+{{- range $featured }}
+<section class="featured-article">
+    <div class="section-header">
+        <h2>Featured Article</h2>
+    </div>
+    <article class="featured-card">
+        <div class="featured-content">
+            <div class="featured-meta">
+                <span class="category">{{ .Section | title }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            </div>
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="featured-summary">{{ .Summary | plainify | truncate 150 }}</p>
+            <a href="{{ .Permalink }}" class="read-more-btn">Read More</a>
+        </div>
+    </article>
+</section>
+{{- end }}
+{{- end }}
+
+{{- /* Latest Posts Section */ -}}
+<section class="latest-posts">
+    <div class="section-header">
+        <h2>Latest Content</h2>
+        <a href="/posts/" class="view-all">View All Posts</a>
+    </div>
+    <div class="posts-grid">
+        {{- $posts := first 6 (where .Site.RegularPages "Section" "posts") }}
+        {{- range $posts }}
+        <article class="post-card">
+            <div class="post-meta">
+                <span class="category">{{ .Section | title }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
+            </div>
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="post-summary">{{ .Summary | plainify | truncate 100 }}</p>
+            <a href="{{ .Permalink }}" class="read-more">Read More</a>
+        </article>
+        {{- end }}
+    </div>
+</section>
+
+{{- /* Popular Tools Section */ -}}
+<section class="popular-tools">
+    <div class="section-header">
+        <h2>Popular Linux Tools</h2>
+        <a href="/tools/" class="view-all">Explore All Tools</a>
+    </div>
+    <div class="tools-grid">
+        {{- range first 6 site.Data.tools }}
+        <div class="tool-card">
+            <h4>{{ .name }}</h4>
+            <p class="tool-description">{{ .description }}</p>
+            <code class="tool-example">{{ .example }}</code>
+        </div>
+        {{- end }}
+    </div>
+</section>
+
+{{- end }}

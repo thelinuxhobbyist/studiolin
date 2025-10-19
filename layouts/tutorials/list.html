@@ -1,0 +1,172 @@
+{{- define "main" }}
+
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    <p class="page-description">{{ .Content | plainify }}</p>
+</header>
+
+<div class="content-wrapper">
+    <main class="main-content">
+        {{- /* Search and Filter Section */ -}}
+        <section class="tutorials-controls">
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <input type="text" id="tutorials-search" placeholder="Find tutorials by topic or tool..." />
+                    <button type="button" id="tutorials-search-btn" aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="filter-controls">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="networking">Networking</option>
+                        <option value="shell">Shell & Scripting</option>
+                        <option value="file-systems">File Systems</option>
+                        <option value="system-admin">System Administration</option>
+                        <option value="security">Security</option>
+                        <option value="development">Development</option>
+                    </select>
+                    
+                    <label for="level-filter">Level:</label>
+                    <select id="level-filter">
+                        <option value="">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        {{- /* Tutorials List */ -}}
+        <section class="tutorials-list">
+            <div class="tutorials-header">
+                <h2>All Tutorials</h2>
+                <div class="view-options">
+                    <button id="grid-view" class="view-btn active" title="Grid View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </button>
+                    <button id="list-view" class="view-btn" title="List View">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tutorials-grid" id="tutorials-container">
+                {{- $tutorials := where .Site.RegularPages "Section" "tutorials" }}
+                {{- range $tutorials }}
+                <article class="tutorial-card" 
+                         data-category="{{ .Params.category | default "general" }}" 
+                         data-level="{{ .Params.level | default "beginner" }}"
+                         data-title="{{ .Title | lower }}"
+                         data-summary="{{ .Summary | plainify | lower }}">
+                    {{- if .Params.cover.image }}
+                    <div class="tutorial-image">
+                        <img src="{{ .Params.cover.image }}" alt="{{ .Title }}" loading="lazy">
+                    </div>
+                    {{- end }}
+                    <div class="tutorial-content">
+                        <div class="tutorial-meta">
+                            <span class="category">{{ .Params.category | default "Tutorial" | title }}</span>
+                            <span class="level {{ .Params.level | default "beginner" }}">{{ .Params.level | default "Beginner" | title }}</span>
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                        </div>
+                        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                        <p class="tutorial-summary">{{ .Summary | plainify | truncate 120 }}</p>
+                        <div class="tutorial-footer">
+                            <span class="read-time">{{ .ReadingTime }} min read</span>
+                            <a href="{{ .Permalink }}" class="read-more-btn">Read Tutorial</a>
+                        </div>
+                    </div>
+                </article>
+                {{- end }}
+            </div>
+            
+            <div id="no-tutorials" class="no-results" style="display: none;">
+                <p>No tutorials found matching your criteria. Try adjusting your search or filters.</p>
+            </div>
+        </section>
+    </main>
+
+    {{- /* Sidebar */ -}}
+    {{- partial "content-sidebar.html" . }}
+</div>
+
+<script>
+// Tutorials page functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('tutorials-search');
+    const categoryFilter = document.getElementById('category-filter');
+    const levelFilter = document.getElementById('level-filter');
+    const tutorialsContainer = document.getElementById('tutorials-container');
+    const noResults = document.getElementById('no-tutorials');
+    const gridViewBtn = document.getElementById('grid-view');
+    const listViewBtn = document.getElementById('list-view');
+
+    function filterTutorials() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCategory = categoryFilter.value;
+        const selectedLevel = levelFilter.value;
+        const tutorialCards = tutorialsContainer.querySelectorAll('.tutorial-card');
+        let visibleCount = 0;
+
+        tutorialCards.forEach(card => {
+            const title = card.dataset.title;
+            const summary = card.dataset.summary;
+            const category = card.dataset.category;
+            const level = card.dataset.level;
+
+            const matchesSearch = title.includes(searchTerm) || summary.includes(searchTerm);
+            const matchesCategory = !selectedCategory || category === selectedCategory;
+            const matchesLevel = !selectedLevel || level === selectedLevel;
+
+            if (matchesSearch && matchesCategory && matchesLevel) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function toggleView(viewType) {
+        if (viewType === 'list') {
+            tutorialsContainer.classList.add('list-view');
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+        } else {
+            tutorialsContainer.classList.remove('list-view');
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+        }
+    }
+
+    searchInput.addEventListener('input', filterTutorials);
+    categoryFilter.addEventListener('change', filterTutorials);
+    levelFilter.addEventListener('change', filterTutorials);
+    
+    gridViewBtn.addEventListener('click', () => toggleView('grid'));
+    listViewBtn.addEventListener('click', () => toggleView('list'));
+});
+</script>
+
+{{- end }}

@@ -4,7 +4,12 @@ date: 2025-10-13
 draft: false
 tags: ["Vim", "Text Editor", "Productivity", "Tools"]
 categories: ["Tutorials"]
+category: "development"
+level: "intermediate"
 description: "A comprehensive guide to mastering Vim for modern developers"
+cover:
+  image: ""
+  alt: "Vim text editor interface"
 ---
 
 # Mastering Vim: A Modern Guide

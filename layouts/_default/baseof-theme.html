@@ -1,0 +1,56 @@
+{{- if lt hugo.Version "0.146.0" }}
+{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
+{{- end -}}
+
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
+
+<head>
+    {{- partial "head.html" . }}
+    <!-- Add Google Fonts - Roboto Mono for terminal feel -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+</head>
+
+<body class="
+{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
+{{- print "list" -}}
+{{- end -}}
+{{- if eq site.Params.defaultTheme `dark` -}}
+{{- print " dark" }}
+{{- end -}}
+" id="top">
+    {{- partialCached "header.html" . .Page -}}
+    <main class="main">
+        {{- block "main" . }}{{ end }}
+    </main>
+    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    
+    <!-- Load custom scripts -->
+    {{- range site.Params.assets.customJS -}}
+    <script src="{{ (resources.Get . | resources.Fingerprint "sha512").RelPermalink }}" integrity="{{ (resources.Get . | resources.Fingerprint "sha512").Data.Integrity }}"></script>
+    {{- end -}}
+    
+    <!-- Custom cursor effect for Studio{Linux} identity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add terminal cursor to site title
+            const siteTitle = document.querySelector('.site-title, h1');
+            if (siteTitle) {
+                const cursor = document.createElement('span');
+                cursor.className = 'terminal-cursor';
+                siteTitle.appendChild(cursor);
+            }
+            
+            // Apply custom styling to Studio{Linux} text
+            const siteText = document.querySelectorAll('h1, h2, .site-title');
+            siteText.forEach(function(element) {
+                if (element.textContent.includes('Studio{Linux}')) {
+                    element.classList.add('site-name');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

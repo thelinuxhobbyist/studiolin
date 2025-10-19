@@ -1,6 +1,6 @@
 baseURL: "https://studiolinux.com/"
 title: "Studio{Linux}"
-theme: "PaperMod"
+# theme: "PaperMod"
 languageCode: "en-us"
 
 pagination:
@@ -18,7 +18,7 @@ params:
   
   assets:
     favicon: "images/favicon.svg"
-    customCSS: ["css/custom.css", "css/spacing-fix.css", "css/responsive.css"]
+    customCSS: ["css/custom.css", "css/spacing-fix.css", "css/responsive.css", "css/homepage.css", "css/tools.css", "css/tutorials.css"]
     customJS: ["js/mobile-menu.js"]
   
   label:
@@ -28,7 +28,9 @@ params:
   profileMode:
     enabled: false
     
-  
+  homeInfoParams:
+    enabled: false
+    
   # Main sections
   mainSections:
     - posts
@@ -45,7 +47,7 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  disableSpecial1stPost: true
+  disableSpecial1stPost: false
   comments: false
   disableComments: true
   hidemeta: false
@@ -59,23 +61,22 @@ menu:
       name: Home
       url: /
       weight: 10
-    # Blog menu item removed because blog is the homepage
     - identifier: tutorials
       name: Tutorials
       url: /tutorials/
+      weight: 20
+    - identifier: tools
+      name: Tools
+      url: /tools/
       weight: 30
-    - identifier: resources
-      name: Resources
-      url: /resources/
-      weight: 40
     - identifier: about
       name: About
       url: /about/
-      weight: 50
+      weight: 40
     - identifier: search
       name: Search
       url: /search/
-      weight: 60
+      weight: 50
 
 outputs:
   home:

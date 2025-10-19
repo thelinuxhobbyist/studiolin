@@ -4,7 +4,12 @@ date: 2025-10-14
 draft: false
 tags: ["Linux", "Development", "Tools", "Tutorial"]
 categories: ["Tutorials"]
+category: "development"
+level: "beginner"
 description: "A step-by-step guide to setting up a complete development environment on Linux"
+cover:
+  image: ""
+  alt: "Linux development environment setup"
 ---
 
 # Setting Up a Perfect Development Environment on Linux

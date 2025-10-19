@@ -1,56 +1,90 @@
-{{- if lt hugo.Version "0.146.0" }}
-{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
-{{- end -}}
-
 <!DOCTYPE html>
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
-
+<html lang="en">
 <head>
-    {{- partial "head.html" . }}
-    <!-- Add Google Fonts - Roboto Mono for terminal feel -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ "css/color-scheme.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/homepage.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/single-post.css" | relURL }}">
+    
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6;
+            color: var(--studio-text-primary, #333);
+        }
+        .main { 
+            min-height: 100vh; 
+        }
+        header { 
+            background: var(--studio-blue, #2563eb); 
+            color: white; 
+            padding: 1rem 0; 
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        header h1 { 
+            margin: 0; 
+        }
+        footer { 
+            background: var(--studio-gray-800, #333); 
+            color: white; 
+            padding: 2rem; 
+            text-align: center;
+        }
+    </style>
 </head>
-
-<body class="
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
-{{- print "list" -}}
-{{- end -}}
-{{- if eq site.Params.defaultTheme `dark` -}}
-{{- print " dark" }}
-{{- end -}}
-" id="top">
-    {{- partialCached "header.html" . .Page -}}
+<body>
+    <header>
+        <div class="header-content">
+            <h1><a href="/" style="color: white; text-decoration: none;">{{ .Site.Title }}</a></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/posts/">Posts</a></li>
+                    <li><a href="/tutorials/">Tutorials</a></li>
+                    <li><a href="/tools/">Tools</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
     <main class="main">
-        {{- block "main" . }}{{ end }}
+        {{ block "main" . }}{{ end }}
     </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
     
-    <!-- Load custom scripts -->
-    {{- range site.Params.assets.customJS -}}
-    <script src="{{ (resources.Get . | resources.Fingerprint "sha512").RelPermalink }}" integrity="{{ (resources.Get . | resources.Fingerprint "sha512").Data.Integrity }}"></script>
-    {{- end -}}
-    
-    <!-- Custom cursor effect for Studio{Linux} identity -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add terminal cursor to site title
-            const siteTitle = document.querySelector('.site-title, h1');
-            if (siteTitle) {
-                const cursor = document.createElement('span');
-                cursor.className = 'terminal-cursor';
-                siteTitle.appendChild(cursor);
-            }
-            
-            // Apply custom styling to Studio{Linux} text
-            const siteText = document.querySelectorAll('h1, h2, .site-title');
-            siteText.forEach(function(element) {
-                if (element.textContent.includes('Studio{Linux}')) {
-                    element.classList.add('site-name');
-                }
-            });
-        });
-    </script>
+    <footer>
+        <p>&copy; 2024 {{ .Site.Title }}. All rights reserved.</p>
+    </footer>
 </body>
-
 </html>

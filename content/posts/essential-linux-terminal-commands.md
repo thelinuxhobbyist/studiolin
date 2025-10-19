@@ -1,6 +1,6 @@
 ---
 title: "10 Essential Linux Terminal Commands for Productivity"
-date: 2025-10-13
+date: 2024-10-13
 draft: false
 tags: ["Linux", "Terminal", "Productivity", "Commands"]
 categories: ["Tips & Tricks"]

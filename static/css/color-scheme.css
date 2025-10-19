@@ -1,0 +1,163 @@
+/* StudioLinux Global Color Scheme & Variables */
+
+:root {
+  /* Primary Color Palette */
+  --studio-blue: #2563eb;
+  --studio-blue-light: #3b82f6;
+  --studio-blue-dark: #1d4ed8;
+  --studio-green: #059669;
+  --studio-green-light: #10b981;
+  --studio-green-dark: #047857;
+  
+  /* Neutral Palette */
+  --studio-gray-50: #f8fafc;
+  --studio-gray-100: #f1f5f9;
+  --studio-gray-200: #e2e8f0;
+  --studio-gray-300: #cbd5e1;
+  --studio-gray-400: #94a3b8;
+  --studio-gray-500: #64748b;
+  --studio-gray-600: #475569;
+  --studio-gray-700: #334155;
+  --studio-gray-800: #1e293b;
+  --studio-gray-900: #0f172a;
+  
+  /* Semantic Colors */
+  --studio-success: #059669;
+  --studio-warning: #d97706;
+  --studio-error: #dc2626;
+  --studio-info: #2563eb;
+  
+  /* Interactive Colors */
+  --studio-link: #2563eb;
+  --studio-link-hover: #1d4ed8;
+  --studio-button-primary: #059669;
+  --studio-button-primary-hover: #047857;
+  --studio-button-secondary: #475569;
+  --studio-button-secondary-hover: #334155;
+  
+  /* Text Colors */
+  --studio-text-primary: #0f172a;
+  --studio-text-secondary: #475569;
+  --studio-text-muted: #64748b;
+  --studio-text-inverse: #ffffff;
+  
+  /* Background Colors */
+  --studio-bg-primary: #ffffff;
+  --studio-bg-secondary: #f8fafc;
+  --studio-bg-tertiary: #f1f5f9;
+  --studio-bg-accent: #e2e8f0;
+  
+  /* Border Colors */
+  --studio-border-light: #e2e8f0;
+  --studio-border-medium: #cbd5e1;
+  --studio-border-dark: #94a3b8;
+  
+  /* Shadow Colors */
+  --studio-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --studio-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --studio-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --studio-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  /* Text Colors for Dark Theme */
+  --studio-text-primary: #f8fafc;
+  --studio-text-secondary: #cbd5e1;
+  --studio-text-muted: #94a3b8;
+  --studio-text-inverse: #0f172a;
+  
+  /* Background Colors for Dark Theme */
+  --studio-bg-primary: #0f172a;
+  --studio-bg-secondary: #1e293b;
+  --studio-bg-tertiary: #334155;
+  --studio-bg-accent: #475569;
+  
+  /* Border Colors for Dark Theme */
+  --studio-border-light: #334155;
+  --studio-border-medium: #475569;
+  --studio-border-dark: #64748b;
+}
+
+/* Global Link Styling */
+a {
+  color: var(--studio-link);
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover {
+  color: var(--studio-link-hover);
+  text-decoration: underline;
+}
+
+/* Global Button Styling */
+.btn-primary {
+  background-color: var(--studio-button-primary);
+  color: var(--studio-text-inverse);
+  border: 2px solid var(--studio-button-primary);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--studio-button-primary-hover);
+  border-color: var(--studio-button-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--studio-shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--studio-button-secondary);
+  border: 2px solid var(--studio-button-secondary);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--studio-button-secondary);
+  color: var(--studio-text-inverse);
+  transform: translateY(-1px);
+  box-shadow: var(--studio-shadow-md);
+}
+
+/* Card Styling */
+.card {
+  background: var(--studio-bg-primary);
+  border: 1px solid var(--studio-border-light);
+  border-radius: 12px;
+  box-shadow: var(--studio-shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--studio-shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--studio-border-medium);
+}
+
+/* Input Styling */
+input, textarea, select {
+  background: var(--studio-bg-primary);
+  border: 2px solid var(--studio-border-light);
+  color: var(--studio-text-primary);
+  transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--studio-blue);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+}
+
+/* Text Color Classes */
+.text-primary { color: var(--studio-text-primary); }
+.text-secondary { color: var(--studio-text-secondary); }
+.text-muted { color: var(--studio-text-muted); }
+.text-success { color: var(--studio-success); }
+.text-warning { color: var(--studio-warning); }
+.text-error { color: var(--studio-error); }
+
+/* Background Color Classes */
+.bg-primary { background-color: var(--studio-bg-primary); }
+.bg-secondary { background-color: var(--studio-bg-secondary); }
+.bg-tertiary { background-color: var(--studio-bg-tertiary); }
+.bg-accent { background-color: var(--studio-bg-accent); }

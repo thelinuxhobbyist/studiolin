@@ -1,10 +1,7 @@
 ---
 title: "Linux Tutorials"
-description: "Comprehensive tutorials on Linux, programming, and open-source software"
+description: "Comprehensive tutorials on Linux, programming, and open-source software for all skill levels"
+layout: "tutorials"
 ---
 
-Welcome to the Studio{Linux} tutorials section! Here you'll find in-depth, step-by-step guides on various Linux topics, from beginner to advanced levels.
-
-Our tutorials are designed to be practical and hands-on, allowing you to follow along and learn by doing. We cover everything from basic Linux usage to advanced system administration, development, and customization.
-
-Browse through our available tutorials below, and check back regularly as we add new content!
+Master Linux with our comprehensive, hands-on tutorials designed for users of all skill levels. From basic commands to advanced system administration, discover step-by-step guides that help you build real-world Linux expertise.

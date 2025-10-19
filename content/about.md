@@ -1,21 +1,33 @@
 ---
-title: "About"
-date: 2025-10-14
-draft: false
-description: "About Studio{Linux} blog"
+title: "About Studio{Linux}"
+description: "Learn about Studio{Linux}'s mission to provide modern Linux tutorials and promote open-source learning."
 ---
 
 # About Studio{Linux}
 
-Welcome to StudioLinux.com — where open-source meets real-world impact.
+Studio{Linux} provides clear, practical Linux tutorials for users of all skill levels.
 
-We believe Linux is more than an operating system — it’s a movement shaping the future of technology, governance, and education. At StudioLinux, we highlight how Linux and open-source solutions are empowering institutions, businesses, and individuals to innovate freely and securely.
+## Our Mission
 
-Our mission is twofold:
+We believe Linux knowledge should be accessible to everyone. Our goal is to:
 
-Explore the rise of Linux — covering its growing role in government, education, and global tech ecosystems.
+- Create clear, practical tutorials for beginners and advanced users
+- Promote open-source values and community learning  
+- Bridge traditional Linux wisdom with modern best practices
+- Build a supportive community of Linux enthusiasts
 
-Teach practical Linux skills — through clear, accessible tutorials, tips, and guides that help users of all experience levels make the most of open-source tools.
+## What We Offer
 
-Whether you’re a policymaker, student, developer, or just curious about Linux, StudioLinux.com is your space to learn, get inspired, and stay informed about the open-source world.
+- **Step-by-step Tutorials**: From basic commands to advanced configurations
+- **Tool Guides**: Essential Linux utilities and how to use them
+- **Best Practices**: Modern approaches to Linux administration
+- **Community Content**: Insights from Linux users worldwide
+
+## Get Involved
+
+- **Browse**: [Tutorials](/tutorials/) and [Tools](/tools/)
+- **Connect**: Join our community discussions
+- **Contribute**: Share your Linux knowledge and experiences
+
+*Ready to learn Linux? Start with our [beginner tutorials](/tutorials/) or explore [essential tools](/tools/).*
 

@@ -1,0 +1,19 @@
+- title: "The Linux Foundation Blog"
+  url: "https://www.linuxfoundation.org/blog"
+  description: "Latest news and insights from the Linux Foundation"
+  type: "blog"
+
+- title: "r/linux on Reddit"
+  url: "https://reddit.com/r/linux"
+  description: "Active Linux community discussions and news"
+  type: "community"
+
+- title: "Linux Weekly News"
+  url: "https://lwn.net/"
+  description: "In-depth coverage of Linux development and news"
+  type: "news"
+
+- title: "It's FOSS"
+  url: "https://itsfoss.com/"
+  description: "Tutorials, reviews, and news for Linux enthusiasts"
+  type: "blog"
