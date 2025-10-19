@@ -23,109 +23,17 @@
     margin: 0 auto;
 }
 
-.tutorials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
+/* Tutorials grid handled by post-cards.css */
 
-.tutorial-card {
-    background: white;
-    border: 1px solid var(--studio-border-light, #e2e8f0);
-    border-radius: 12px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
+/* Tutorial-specific gradient border accent */
 .tutorial-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, var(--studio-blue, #2563eb), var(--studio-green, #059669));
 }
 
-.tutorial-card:hover {
-    box-shadow: var(--studio-shadow-lg, 0 10px 15px -3px rgb(0 0 0 / 0.1));
-    transform: translateY(-4px);
-    border-color: var(--studio-blue, #2563eb);
-}
-
-.tutorial-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-}
-
-.difficulty {
-    background: var(--studio-green, #059669);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-}
-
-.tutorial-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    color: var(--studio-gray-900, #0f172a);
-}
-
-.tutorial-card h3 a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.tutorial-card h3 a:hover {
-    color: var(--studio-blue, #2563eb);
-}
-
-.tutorial-summary {
-    color: var(--studio-text-secondary, #475569);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.tutorial-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--studio-border-light, #e2e8f0);
-}
-
-.start-tutorial {
-    color: var(--studio-blue, #2563eb);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.start-tutorial:hover {
-    color: var(--studio-blue-dark, #1d4ed8);
-    text-decoration: underline;
-}
-
-.tutorial-duration {
-    color: #64748b;
-    background: transparent;
-    font-size: 0.9rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.tutorial-duration::before {
-    content: "⏱";
-    font-size: 1rem;
-}
+/* All other tutorial styling handled by post-cards.css */

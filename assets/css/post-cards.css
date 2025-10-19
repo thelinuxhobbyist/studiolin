@@ -110,20 +110,21 @@
 
 /* Read More Buttons */
 .read-more, .start-tutorial, .read-more-btn {
-    color: var(--studio-blue);
+    color: #2563eb;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
-    border: 1px solid var(--studio-blue);
+    border: 1px solid #2563eb;
     border-radius: 6px;
     transition: all 0.2s ease;
     display: inline-block;
+    background: white;
 }
 
 .read-more:hover, .start-tutorial:hover, .read-more-btn:hover {
-    background: var(--studio-blue);
-    color: white;
+    background: #2563eb !important;
+    color: white !important;
     transform: translateY(-1px);
 }
 

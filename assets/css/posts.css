@@ -86,17 +86,7 @@
     align-items: center;
 }
 
-.read-more {
-    color: var(--studio-blue, #2563eb);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.read-more:hover {
-    color: var(--studio-blue-dark, #1d4ed8);
-    text-decoration: underline;
-}
+/* Button styles now handled by post-cards.css */
 
 .reading-time {
     color: var(--studio-text-muted, #64748b);
