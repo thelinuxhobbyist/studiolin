@@ -1,6 +1,6 @@
 ---
 title: "Setting Up a Perfect Development Environment on Linux"
-date: 2025-10-14
+date: 2024-10-14
 draft: false
 tags: ["Linux", "Development", "Tools", "Tutorial"]
 categories: ["Tutorials"]

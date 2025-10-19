@@ -116,8 +116,10 @@
 }
 
 .tutorial-duration {
-    color: var(--studio-text-muted, #64748b);
+    color: #64748b;
+    background: transparent;
     font-size: 0.9rem;
+    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 0.5rem;

@@ -1,6 +1,6 @@
 ---
 title: "Mastering Vim: A Modern Guide"
-date: 2025-10-13
+date: 2024-10-13
 draft: false
 tags: ["Vim", "Text Editor", "Productivity", "Tools"]
 categories: ["Tutorials"]

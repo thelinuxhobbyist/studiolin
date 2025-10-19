@@ -116,8 +116,6 @@
 
 .featured-image {
     flex: 0 0 300px;
-    background: #f3f4f6; /* Add background for debugging */
-    border: 2px solid #e5e7eb; /* Add border for debugging */
 }
 
 .featured-image img {
