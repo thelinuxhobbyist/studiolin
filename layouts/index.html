@@ -21,6 +21,9 @@
         <h2>Featured Article</h2>
     </div>
     <article class="featured-card">
+        <div class="featured-image">
+            <img src="/images/default-post.svg" alt="{{ .Title }}" style="border: 2px solid red;" />
+        </div>
         <div class="featured-content">
             <div class="featured-meta">
                 <span class="category">{{ .Section | title }}</span>
@@ -31,6 +34,10 @@
             <a href="{{ .Permalink }}" class="read-more-btn">Read More</a>
         </div>
     </article>
+</section>
+{{- else }}
+<section class="featured-article">
+    <p>DEBUG: No posts found</p>
 </section>
 {{- end }}
 {{- end }}
