@@ -7,17 +7,24 @@
         {{- end }}
     </header>
 
-    <div class="posts-grid">
+        <div class="posts-grid">
         {{- range .Pages }}
         <article class="post-card">
-            <div class="post-meta">
+            <div class="card-image">
+                {{- if .Params.image }}
+                <img src="{{ .Params.image }}" alt="{{ .Title }}" />
+                {{- else }}
+                Studio{Linux}
+                {{- end }}
+            </div>
+            <div class="card-meta">
                 <span class="category">{{ .Section | title }}</span>
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="post-summary">{{ .Summary | plainify | truncate 120 }}</p>
-            <div class="post-footer">
-                <a href="{{ .Permalink }}" class="read-more">Read More</a>
+            <p class="card-summary">{{ .Summary | plainify | truncate 120 }}</p>
+            <div class="card-footer">
+                <a href="{{ .Permalink }}" class="read-more">Read Article</a>
                 <span class="reading-time">{{ .ReadingTime }} min read</span>
             </div>
         </article>

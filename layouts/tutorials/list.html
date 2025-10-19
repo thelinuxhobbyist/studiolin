@@ -10,13 +10,20 @@
     <div class="tutorials-grid">
         {{- range .Pages }}
         <article class="tutorial-card">
-            <div class="tutorial-meta">
+            <div class="card-image">
+                {{- if .Params.image }}
+                <img src="{{ .Params.image }}" alt="{{ .Title }}" />
+                {{- else }}
+                Studio{Linux}
+                {{- end }}
+            </div>
+            <div class="card-meta">
                 <span class="difficulty">{{ .Params.level | default "Beginner" }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="tutorial-summary">{{ .Summary | plainify | truncate 100 }}</p>
-            <div class="tutorial-footer">
+            <p class="card-summary">{{ .Summary | plainify | truncate 100 }}</p>
+            <div class="card-footer">
                 <a href="{{ .Permalink }}" class="start-tutorial">Start Tutorial</a>
                 <span class="tutorial-duration">{{ .ReadingTime }} min read</span>
             </div>

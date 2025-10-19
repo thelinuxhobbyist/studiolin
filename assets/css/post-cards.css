@@ -1,0 +1,242 @@
+/* Unified Post Card Styles */
+
+/* Base Card Styling */
+.post-card, .tutorial-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--studio-gray-200);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover, .tutorial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--studio-blue-light);
+}
+
+/* Card Image */
+.card-image {
+    width: 100%;
+    height: 200px;
+    background: var(--studio-blue);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Card Meta Information */
+.post-meta, .tutorial-meta, .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.category, .difficulty {
+    background: var(--studio-blue);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.difficulty {
+    background: var(--studio-green);
+}
+
+.card-meta time, .post-meta time, .tutorial-meta time {
+    color: var(--studio-gray-600);
+    font-size: 0.8rem;
+}
+
+/* Card Title */
+.post-card h3, .tutorial-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.post-card h3 a, .tutorial-card h3 a {
+    color: var(--studio-gray-900);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.post-card h3 a:hover, .tutorial-card h3 a:hover {
+    color: var(--studio-blue);
+}
+
+/* Card Summary */
+.post-summary, .tutorial-summary, .card-summary {
+    color: var(--studio-gray-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Card Footer */
+.post-footer, .tutorial-footer, .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--studio-gray-100);
+}
+
+/* Read More Buttons */
+.read-more, .start-tutorial, .read-more-btn {
+    color: var(--studio-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--studio-blue);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.read-more:hover, .start-tutorial:hover, .read-more-btn:hover {
+    background: var(--studio-blue);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Duration/Reading Time */
+.tutorial-duration, .reading-time {
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Grid Layouts */
+.posts-grid, .tutorials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Featured Article Specific */
+.featured-card {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto 4rem auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.featured-image {
+    flex: 0 0 400px;
+    background: var(--studio-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.featured-content {
+    flex: 1;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--studio-text-secondary);
+}
+
+.featured-content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: var(--studio-gray-900);
+}
+
+.featured-summary {
+    color: var(--studio-gray-600);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .featured-card {
+        flex-direction: column;
+        margin: 0 1rem 2rem 1rem;
+    }
+    
+    .featured-image {
+        flex: none;
+        height: 200px;
+    }
+    
+    .featured-content {
+        padding: 1.5rem;
+    }
+    
+    .posts-grid, .tutorials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .card-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .read-more, .start-tutorial, .read-more-btn {
+        text-align: center;
+    }
+}
