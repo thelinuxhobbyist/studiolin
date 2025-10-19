@@ -11,7 +11,33 @@
   }
 }
 
-/* Mobile menu container - hide by default on all screen sizes */
+/* Responsive design improvements */
+
+/* Global Mobile Layout Fixes */
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Container fixes for mobile */
+.search-container,
+.section-header,
+.latest-posts,
+.popular-tools,
+.featured-article,
+.hero-search {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+/* Mobile menu container */
 .mobile-menu-container {
   display: none !important;
 }
