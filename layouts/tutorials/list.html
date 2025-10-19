@@ -1,15 +1,14 @@
 {{- define "main" }}
-<div class="tutorials-container">
-    <header class="tutorials-header">
-        <h1>{{ .Title }}</h1>
+<section class="latest-posts">
+    <div class="section-header">
+        <h2>{{ .Title }}</h2>
         {{- if .Content }}
-        <p class="tutorials-description">{{ .Content | plainify }}</p>
+        <p>{{ .Content | plainify }}</p>
         {{- end }}
-    </header>
-
-    <div class="tutorials-grid">
+    </div>
+    <div class="posts-grid">
         {{- range .Pages }}
-        <article class="tutorial-card">
+        <article class="post-card">
             <div class="card-image">
                 {{- if .Params.image }}
                 <img src="{{ .Params.image }}" alt="{{ .Title }}" />
@@ -18,17 +17,17 @@
                 {{- end }}
             </div>
             <div class="card-meta">
-                <span class="difficulty">{{ .Params.level | default "Beginner" }}</span>
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                <span class="category">{{ .Params.level | default "Beginner" }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="card-summary">{{ .Summary | plainify | truncate 100 }}</p>
             <div class="card-footer">
-                <a href="{{ .Permalink }}" class="start-tutorial">Start Tutorial</a>
-                <span class="tutorial-duration">{{ .ReadingTime }} min read</span>
+                <a href="{{ .Permalink }}" class="read-more">Read More</a>
+                <span class="reading-time">{{ .ReadingTime }} min read</span>
             </div>
         </article>
         {{- end }}
     </div>
-</div>
+</section>
 {{- end }}
