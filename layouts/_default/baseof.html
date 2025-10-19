@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{{ "css/color-scheme.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/homepage.css" | relURL }}">
     <link rel="stylesheet" href="{{ "css/single-post.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/posts.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/tutorials.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/tools.css" | relURL }}">
     
     <style>
         body { 
@@ -24,8 +27,11 @@
         }
         header { 
             background: var(--studio-blue, #2563eb); 
-            color: white; 
+            color: white !important; 
             padding: 1rem 0; 
+        }
+        header * {
+            color: white !important;
         }
         .header-content {
             max-width: 1200px;
@@ -35,6 +41,14 @@
             align-items: center;
             padding: 0 1rem;
         }
+        .header-content h1 {
+            color: white !important;
+            margin: 0;
+        }
+        .header-content h1 a {
+            color: white !important;
+            text-decoration: none !important;
+        }
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -43,7 +57,7 @@
             padding: 0;
         }
         .nav-links a {
-            color: white;
+            color: white !important;
             text-decoration: none;
             font-weight: 500;
             transition: opacity 0.2s;

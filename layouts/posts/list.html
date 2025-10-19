@@ -1,0 +1,27 @@
+{{- define "main" }}
+<div class="page-container">
+    <header class="page-header">
+        <h1>{{ .Title }}</h1>
+        {{- if .Content }}
+        <p class="page-description">{{ .Content | plainify }}</p>
+        {{- end }}
+    </header>
+
+    <div class="posts-grid">
+        {{- range .Pages }}
+        <article class="post-card">
+            <div class="post-meta">
+                <span class="category">{{ .Section | title }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </div>
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="post-summary">{{ .Summary | plainify | truncate 120 }}</p>
+            <div class="post-footer">
+                <a href="{{ .Permalink }}" class="read-more">Read More</a>
+                <span class="reading-time">{{ .ReadingTime }} min read</span>
+            </div>
+        </article>
+        {{- end }}
+    </div>
+</div>
+{{- end }}

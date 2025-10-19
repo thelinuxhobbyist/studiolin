@@ -5,8 +5,7 @@
         <header class="post-header">
             <div class="breadcrumbs">
                 <a href="/">Home</a> →
-                <a href="/{{ .Section }}/">{{ .Section | title }}</a> →
-                <span>{{ .Title }}</span>
+                <a href="/{{ .Section }}/">{{ .Section | title }}</a>
             </div>
             
             <h1 class="post-title">{{ .Title }}</h1>
@@ -27,7 +26,9 @@
         </header>
         
         <div class="post-content">
-            {{ .Content }}
+            {{- $content := .Content -}}
+            {{- $content = $content | replaceRE "<h1[^>]*>.*?</h1>" "" -}}
+            {{ $content | safeHTML }}
         </div>
         
         {{- if .Params.tags }}
