@@ -46,10 +46,9 @@
 <section class="latest-posts">
     <div class="section-header">
         <h2>Latest Content</h2>
-        <a href="/posts/" class="view-all">View All Posts</a>
     </div>
     <div class="posts-grid">
-        {{- $posts := first 6 (where .Site.RegularPages "Section" "posts") }}
+        {{- $posts := (where .Site.RegularPages "Section" "posts") }}
         {{- range $posts }}
         <article class="post-card">
             <div class="card-image">
