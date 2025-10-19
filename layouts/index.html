@@ -7,7 +7,7 @@
         <p class="hero-tagline">{{ site.Params.description }}</p>
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Search Linux tutorials or tools..." />
-            <button type="button" id="search-btn" aria-label="Search">🔍</button>
+            <button type="button" id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
         </div>
     </div>
 </section>
@@ -30,7 +30,7 @@
         </div>
         <div class="featured-content">
             <div class="featured-meta">
-                <span class="category">{{ .Section | title }}</span>
+                <span class="category"><i class="fas fa-star"></i> {{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
@@ -59,14 +59,14 @@
                 {{- end }}
             </div>
             <div class="card-meta">
-                <span class="category">{{ .Section | title }}</span>
+                <span class="category"><i class="fas fa-folder"></i> {{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="card-summary">{{ .Summary | plainify | truncate 100 }}</p>
             <div class="card-footer">
                 <a href="{{ .Permalink }}" class="read-more">Read More</a>
-                <span class="reading-time">{{ .ReadingTime }} min read</span>
+                <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }} min read</span>
             </div>
         </article>
         {{- end }}

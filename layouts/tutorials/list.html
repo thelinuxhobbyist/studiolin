@@ -27,14 +27,14 @@
                 {{- end }}
             </div>
             <div class="card-meta">
-                <span class="category">{{ .Params.level | default "Beginner" }}</span>
+                <span class="category"><i class="fas fa-graduation-cap"></i> {{ .Params.level | default "Beginner" }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="card-summary">{{ .Summary | plainify | truncate 100 }}</p>
             <div class="card-footer">
                 <a href="{{ .Permalink }}" class="read-more">Read More</a>
-                <span class="reading-time">{{ .ReadingTime }} min read</span>
+                <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }} min read</span>
             </div>
         </article>
         {{- end }}
