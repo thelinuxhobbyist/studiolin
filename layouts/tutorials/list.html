@@ -1,10 +1,20 @@
 {{- define "main" }}
+
+{{- /* Tutorials Hero Section */ -}}
+<section class="hero-search">
+    <div class="search-container">
+        <h1 class="hero-title">{{ .Title }}</h1>
+        {{- if .Content }}
+        <p class="hero-tagline">{{ .Content | plainify }}</p>
+        {{- end }}
+    </div>
+</section>
+
+{{- /* Tutorials Grid Section */ -}}
 <section class="latest-posts">
     <div class="section-header">
-        <h2>{{ .Title }}</h2>
-        {{- if .Content }}
-        <p>{{ .Content | plainify }}</p>
-        {{- end }}
+        <h2>All Tutorials</h2>
+        <p>Choose a tutorial to start your learning journey</p>
     </div>
     <div class="posts-grid">
         {{- range .Pages }}
