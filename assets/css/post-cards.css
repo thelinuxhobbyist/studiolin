@@ -109,9 +109,10 @@
 }
 
 /* Read More Buttons */
+a.read-more, a.start-tutorial, a.read-more-btn,
 .read-more, .start-tutorial, .read-more-btn {
-    color: #2563eb;
-    text-decoration: none;
+    color: #2563eb !important;
+    text-decoration: none !important;
     font-weight: 500;
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
@@ -119,13 +120,22 @@
     border-radius: 6px;
     transition: all 0.2s ease;
     display: inline-block;
-    background: white;
+    background: white !important;
 }
 
+/* Super specific button hover styles */
+.post-card a.read-more:hover, 
+.tutorial-card a.start-tutorial:hover, 
+.featured-card a.read-more-btn:hover,
+.card-footer a.read-more:hover,
+.card-footer a.start-tutorial:hover,
+a.read-more:hover, a.start-tutorial:hover, a.read-more-btn:hover,
 .read-more:hover, .start-tutorial:hover, .read-more-btn:hover {
     background: #2563eb !important;
     color: white !important;
     transform: translateY(-1px);
+    text-decoration: none !important;
+    border-color: #2563eb !important;
 }
 
 /* Duration/Reading Time */
@@ -240,4 +250,13 @@
     .read-more, .start-tutorial, .read-more-btn {
         text-align: center;
     }
+}
+
+/* Final override to ensure button colors work */
+* a.read-more:hover,
+* a.start-tutorial:hover, 
+* a.read-more-btn:hover {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
 }

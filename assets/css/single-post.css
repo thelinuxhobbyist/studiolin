@@ -128,27 +128,30 @@
 }
 
 .post-content code {
-    background: var(--studio-bg-secondary);
+    background: #dbeafe;
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 0.9rem;
-    color: var(--studio-gray-800);
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
 }
 
 .post-content pre {
-    background: var(--studio-gray-900);
-    color: var(--studio-gray-100);
+    background: #eff6ff;
+    color: #1e40af;
     padding: 1.5rem;
     border-radius: 8px;
     overflow-x: auto;
     margin: 1.5rem 0;
+    border: 2px solid #bfdbfe;
 }
 
 .post-content pre code {
     background: none;
     padding: 0;
-    color: inherit;
+    color: #1e40af;
+    border: none;
 }
 
 .post-content blockquote {
