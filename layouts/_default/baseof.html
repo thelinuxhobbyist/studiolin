@@ -54,25 +54,27 @@
     </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="/" class="logo-link">{{ .Site.Title }}</a>
+    <!-- Minimal header/navigation rebuilt to avoid CSS conflicts -->
+    <header class="sl-header">
+        <div class="sl-header-inner">
+            <div class="sl-logo">
+                <a href="/" class="sl-logo-link">{{ .Site.Title }}</a>
             </div>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
+
+            <!-- Mobile toggle uses unique IDs to avoid CSS/JS conflicts -->
+            <button class="sl-mobile-toggle" id="sl-mobile-toggle" aria-label="Toggle Menu">
+                <span class="sl-bar"></span>
+                <span class="sl-bar"></span>
+                <span class="sl-bar"></span>
             </button>
-            
-            <nav class="main-nav" id="main-nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/tutorials/" class="nav-link">Tutorials</a></li>
-                    <li class="nav-item"><a href="/tools/" class="nav-link">Tools</a></li>
-                    <li class="nav-item"><a href="/about/" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
+
+            <nav class="sl-nav" id="sl-nav">
+                <ul class="sl-nav-list">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tutorials/">Tutorials</a></li>
+                    <li><a href="/tools/">Tools</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -87,34 +89,34 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle for the new minimal nav
         document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mainNav = document.getElementById('main-nav');
-            
-            if (mobileMenuBtn && mainNav) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenuBtn.classList.toggle('active');
-                    mainNav.classList.toggle('active');
+            const btn = document.getElementById('sl-mobile-toggle');
+            const nav = document.getElementById('sl-nav');
+
+            if (!btn || !nav) return;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                btn.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+
+            // Close when clicking a link
+            nav.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', function() {
+                    btn.classList.remove('active');
+                    nav.classList.remove('open');
                 });
-                
-                // Close menu when clicking on nav links
-                const navLinks = mainNav.querySelectorAll('.nav-link');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenuBtn.classList.remove('active');
-                        mainNav.classList.remove('active');
-                    });
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!mobileMenuBtn.contains(event.target) && !mainNav.contains(event.target)) {
-                        mobileMenuBtn.classList.remove('active');
-                        mainNav.classList.remove('active');
-                    }
-                });
-            }
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!btn.contains(event.target) && !nav.contains(event.target)) {
+                    btn.classList.remove('active');
+                    nav.classList.remove('open');
+                }
+            });
         });
     </script>
 </body>
