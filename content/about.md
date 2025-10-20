@@ -12,7 +12,7 @@ Studio{Linux} provides clear, practical Linux tutorials for users of all skill l
 We believe Linux knowledge should be accessible to everyone. Our goal is to:
 
 - Create clear, practical tutorials for beginners and advanced users
-- Promote open-source values and community learning  
+- Promote open-source values and community learning
 - Bridge traditional Linux wisdom with modern best practices
 - Build a supportive community of Linux enthusiasts
 
@@ -29,5 +29,4 @@ We believe Linux knowledge should be accessible to everyone. Our goal is to:
 - **Connect**: Join our community discussions
 - **Contribute**: Share your Linux knowledge and experiences
 
-*Ready to learn Linux? Start with our [beginner tutorials](/tutorials/) or explore [essential tools](/tools/).*
-
+_Ready to learn Linux? Start with our [beginner tutorials](/tutorials/) or explore [essential tools](/tools/)._

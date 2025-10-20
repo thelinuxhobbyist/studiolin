@@ -21,7 +21,7 @@ If you're new to Linux, these distributions (or "distros") are great places to s
 
 1. **Ubuntu** - User-friendly and widely supported
 2. **Linux Mint** - Based on Ubuntu with a more traditional desktop
-3. **Pop!_OS** - Great for developers and gamers
+3. **Pop!\_OS** - Great for developers and gamers
 4. **Elementary OS** - Beautiful, macOS-inspired design
 5. **Zorin OS** - Designed to look familiar to Windows users
 
@@ -88,4 +88,4 @@ Stay tuned for more Linux tutorials on Studio{Linux}!
 
 ---
 
-*Check out our other tutorials for more Linux guides and tips!*
+_Check out our other tutorials for more Linux guides and tips!_

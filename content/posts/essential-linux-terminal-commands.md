@@ -162,5 +162,3 @@ Mastering these terminal commands will significantly improve your productivity i
 In future posts, we'll dive deeper into each of these commands and explore more advanced usage patterns.
 
 ---
-
-*Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more Linux tips!*

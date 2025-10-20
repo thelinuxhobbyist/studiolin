@@ -42,7 +42,7 @@ Let's break this down:
 
 ```
 -rw-r--r--
-^^^^^^^^^^ 
+^^^^^^^^^^
 |||||||||└─ Other permissions (r--)
 ||||||||└── Group permissions (r--)
 |||||||└─── Owner permissions (rw-)
@@ -56,7 +56,7 @@ Let's break this down:
 ### Symbolic Notation
 
 - `r` = Read (4)
-- `w` = Write (2)  
+- `w` = Write (2)
 - `x` = Execute (1)
 
 ### Numeric Notation
@@ -320,20 +320,23 @@ chmod 600 backup.tar.gz
 ### Common Issues
 
 1. **"Permission denied" when executing script**
+
    ```bash
    chmod +x script.sh
    ```
 
 2. **Cannot write to file**
+
    ```bash
    # Check ownership and permissions
    ls -l file.txt
-   
+
    # Fix if you own it
    chmod u+w file.txt
    ```
 
 3. **Cannot enter directory**
+
    ```bash
    chmod u+x directory/
    ```

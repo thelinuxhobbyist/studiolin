@@ -285,11 +285,13 @@ uptime
 ## Practice Exercises
 
 1. **Navigation Practice**
+
    - Navigate to `/tmp`
    - Create a directory called `practice`
    - Create a file called `test.txt` inside it
 
 2. **File Operations**
+
    - Copy `/etc/passwd` to your practice directory
    - Search for your username in the copied file
    - Count how many users have `/bin/bash` as their shell

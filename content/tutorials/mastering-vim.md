@@ -197,7 +197,7 @@ Vim plugins extend functionality. Let's use vim-plug:
 # For Vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    
+
 # For Neovim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -354,4 +354,4 @@ Remember: The key to mastering Vim is practice. Consider using plugins like vim-
 
 ---
 
-*Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more Vim tips and tricks!*
+_Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more Vim tips and tricks!_

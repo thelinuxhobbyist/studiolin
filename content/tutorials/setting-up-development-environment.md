@@ -289,4 +289,4 @@ Remember to keep your tools updated regularly, and don't be afraid to explore ne
 
 ---
 
-*Check back for more development environment tutorials and tips!*
+_Check back for more development environment tutorials and tips!_

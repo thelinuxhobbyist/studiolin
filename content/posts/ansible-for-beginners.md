@@ -118,31 +118,31 @@ Create a file named `install_nginx.yml`:
 ---
 - name: Install Nginx
   hosts: allservers
-  become: yes  # This lets Ansible use sudo
-  
+  become: yes # This lets Ansible use sudo
+
   tasks:
     - name: Update apt cache
       apt:
         update_cache: yes
-      when: ansible_os_family == "Debian"  # Only on Debian/Ubuntu
-      
+      when: ansible_os_family == "Debian" # Only on Debian/Ubuntu
+
     - name: Install Nginx
       package:
         name: nginx
         state: present
-        
+
     - name: Start Nginx
       service:
         name: nginx
         state: started
         enabled: yes
-        
+
     - name: Allow Nginx through firewall
       ufw:
         rule: allow
         name: Nginx Full
       when: ansible_os_family == "Debian"
-      
+
     - name: Print success message
       debug:
         msg: "Nginx has been installed and started on {{ inventory_hostname }}"
@@ -187,11 +187,13 @@ This will prompt for your SSH password and your sudo password.
 A better way is to set up SSH keys. If you've already set up SSH keys, Ansible will use them automatically. If not, here's how:
 
 1. Generate an SSH key pair:
+
    ```bash
    ssh-keygen -t ed25519 -C "ansible"
    ```
 
 2. Copy your public key to each server:
+
    ```bash
    ssh-copy-id your_username@192.168.1.10  # For mu
    ssh-copy-id your_username@192.168.1.11  # For len
@@ -250,23 +252,23 @@ Create a file named `setup_lamp.yml`:
 - name: Set up LAMP Stack
   hosts: allservers
   become: yes
-  
+
   tasks:
     - name: Update package cache
       apt:
         update_cache: yes
       when: ansible_os_family == "Debian"
-    
+
     - name: Install Apache
       package:
         name: apache2
         state: present
-    
+
     - name: Install MySQL
       package:
         name: mysql-server
         state: present
-    
+
     - name: Install PHP and required modules
       package:
         name:
@@ -274,27 +276,27 @@ Create a file named `setup_lamp.yml`:
           - libapache2-mod-php
           - php-mysql
         state: present
-    
+
     - name: Start and enable Apache
       service:
         name: apache2
         state: started
         enabled: yes
-    
+
     - name: Start and enable MySQL
       service:
         name: mysql
         state: started
         enabled: yes
-    
+
     - name: Create info.php file
       copy:
         content: "<?php phpinfo(); ?>"
         dest: /var/www/html/info.php
         owner: www-data
         group: www-data
-        mode: '0644'
-    
+        mode: "0644"
+
     - name: Print completion message
       debug:
         msg: "LAMP stack installed on {{ inventory_hostname }}. Visit http://{{ ansible_host }}/info.php to verify PHP installation."
@@ -368,25 +370,25 @@ You can make your playbooks more flexible by using variables:
       - htop
       - curl
       - vim
-  
+
   tasks:
     - name: Install common packages
       package:
         name: "{{ common_packages }}"
         state: present
-    
+
     - name: Install web server packages
       package:
         name: nginx
         state: present
       when: inventory_hostname in groups['webservers']
-    
+
     - name: Install database packages
       package:
         name: mysql-server
         state: present
       when: inventory_hostname in groups['dbservers']
-    
+
     - name: Install application server packages
       package:
         name: nodejs
@@ -403,12 +405,12 @@ Ansible can also modify configuration files on your servers:
 - name: Configure servers
   hosts: allservers
   become: yes
-  
+
   tasks:
     - name: Set hostname
       hostname:
         name: "{{ inventory_hostname }}"
-    
+
     - name: Add hosts entries
       lineinfile:
         path: /etc/hosts
@@ -426,31 +428,37 @@ This playbook sets the hostname on each server and adds all three servers to the
 Here's a quick reference for the most common Ansible commands:
 
 **Test connectivity:**
+
 ```bash
 ansible -i inventory.ini allservers -m ping
 ```
 
 **Run a single command on all servers:**
+
 ```bash
 ansible -i inventory.ini allservers -m command -a "uptime"
 ```
 
 **Run a playbook:**
+
 ```bash
 ansible-playbook -i inventory.ini your_playbook.yml
 ```
 
 **Target specific servers:**
+
 ```bash
 ansible-playbook -i inventory.ini your_playbook.yml --limit webservers
 ```
 
 **Check what a playbook would do without making changes:**
+
 ```bash
 ansible-playbook -i inventory.ini your_playbook.yml --check
 ```
 
 **Run with verbose output for debugging:**
+
 ```bash
 ansible-playbook -i inventory.ini your_playbook.yml -v
 ```
@@ -471,5 +479,3 @@ Remember, Ansible is designed to be simple. The YAML syntax used in playbooks is
 Start small with simple tasks, get comfortable with the basics, and gradually build up to more complex automations. Before you know it, you'll be managing your entire infrastructure with a few simple commands!
 
 ---
-
-*Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more automation tips and Linux guides!*
