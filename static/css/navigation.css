@@ -96,7 +96,7 @@
     border-radius: 4px;
     transition: background 0.3s ease;
     flex: 0 0 auto;
-    margin-left: auto;
+    margin-left: 0.3rem;
 }
 
 .mobile-menu-btn:hover {
@@ -121,8 +121,8 @@
         display: flex;
     }
     
-    .main-nav {
-        position: absolute;
+            margin-left: 0.3rem;
+            margin-right: 0;
         top: 100%;
         left: 0;
         right: 0;
