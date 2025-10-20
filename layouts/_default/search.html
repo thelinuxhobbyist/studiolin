@@ -1,216 +1,90 @@
 {{- define "main" }}
 
-<div class="search-page-container">
-    <header class="search-header">
-        <h1>Search</h1>
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search Linux tutorials, posts, and tools..." />
-            <button type="button" id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
-        </div>
-    </header>
-
-    <div class="search-results-container">
-        <div id="search-results"></div>
-        <div id="no-results" style="display: none;">
-            <p>No results found. Try different keywords or browse our <a href="/posts/">latest posts</a> and <a href="/tutorials/">tutorials</a>.</p>
-        </div>
+<div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+    <h1>Search Results</h1>
+    
+    <div style="margin: 2rem 0;">
+        <input type="text" id="searchInput" placeholder="Search posts and tutorials..." 
+               style="width: 70%; padding: 12px; border: 2px solid #059669; border-radius: 4px;">
+        <button id="searchBtn" onclick="performSearch()" 
+                style="padding: 12px 20px; background: #059669; color: white; border: none; border-radius: 4px; margin-left: 10px;">
+            Search
+        </button>
     </div>
+
+    <div id="results"></div>
 </div>
 
-<style>
-.search-page-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-
-.search-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.search-header h1 {
-    color: var(--studio-text-primary, #333);
-    margin-bottom: 1.5rem;
-}
-
-.search-box {
-    display: flex;
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
-    border: 2px solid var(--studio-blue, #2563eb);
-}
-
-.search-box input {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-    background: white;
-}
-
-.search-box button {
-    background: var(--studio-blue, #2563eb);
-    color: white;
-    border: none;
-    padding: 1rem 1.25rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.search-box button:hover {
-    background: var(--studio-blue-dark, #1d4ed8);
-}
-
-.search-results-container {
-    margin-top: 2rem;
-}
-
-.search-result {
-    background: white;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--studio-green, #059669);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.search-result h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--studio-text-primary, #333);
-}
-
-.search-result h3 a {
-    color: var(--studio-blue, #2563eb);
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-}
-
-.search-result h3 a:hover {
-    text-decoration: underline;
-}
-
-.search-result-meta {
-    font-size: 0.9rem;
-    color: var(--studio-text-secondary, #64748b);
-    margin-bottom: 0.5rem;
-}
-
-.search-result p {
-    color: var(--studio-text-primary, #333);
-    line-height: 1.6;
-    margin: 0;
-}
-
-#no-results p {
-    text-align: center;
-    color: var(--studio-text-secondary, #64748b);
-    font-size: 1.1rem;
-    padding: 2rem;
-}
-
-#no-results a {
-    color: var(--studio-blue, #2563eb);
-    text-decoration: none;
-}
-
-#no-results a:hover {
-    text-decoration: underline;
-}
-</style>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
-    const searchResults = document.getElementById('search-results');
-    const noResults = document.getElementById('no-results');
+// All pages data
+const allPages = [
+{{- range .Site.RegularPages }}
+  {
+    title: {{ .Title | jsonify }},
+    url: {{ .RelPermalink | jsonify }}, 
+    summary: {{ .Summary | plainify | truncate 150 | jsonify }},
+    section: {{ .Section | jsonify }}
+  },
+{{- end }}
+];
 
-    // Simple search data - basic implementation
-    const pages = [
-        {{- range .Site.RegularPages -}}
-        {
-            title: {{ .Title | jsonify }},
-            url: {{ .RelPermalink | jsonify }},
-            summary: {{ .Summary | plainify | truncate 200 | jsonify }},
-            section: {{ .Section | title | jsonify }},
-            date: {{ .Date.Format "January 2, 2006" | jsonify }}
-        },
-        {{- end -}}
-    ];
-
-    console.log('Total pages loaded:', pages.length);
-    if (pages.length > 0) {
-        console.log('Sample page URL:', pages[0].url);
+function performSearch() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    const resultsDiv = document.getElementById('results');
+    
+    if (!query) {
+        resultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+        return;
     }
+    
+    // Simple search through titles and summaries
+    const results = allPages.filter(page => 
+        page.title.toLowerCase().includes(query) || 
+        page.summary.toLowerCase().includes(query)
+    );
+    
+    if (results.length === 0) {
+        resultsDiv.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <h3>No results found for "${query}"</h3>
+                <p>Try different keywords or browse our <a href="/posts/">latest posts</a>.</p>
+            </div>`;
+        return;
+    }
+    
+    // Display results
+    let html = `<h3>Found ${results.length} results for "${query}":</h3><br>`;
+    
+    results.forEach(result => {
+        html += `
+            <div style="border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 5px;">
+                <h4><a href="${result.url}" style="color: #059669; text-decoration: none;">${result.title}</a></h4>
+                <p style="color: #666; margin: 0.5rem 0;">${result.section}</p>
+                <p>${result.summary}</p>
+            </div>
+        `;
+    });
+    
+    resultsDiv.innerHTML = html;
+}
 
-    // Get query from URL parameter
+// Check URL for search query on page load
+window.addEventListener('load', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q');
     if (query) {
-        searchInput.value = query;
-        performSearch(query);
+        document.getElementById('searchInput').value = query;
+        performSearch();
     }
+});
 
-    function performSearch(searchQuery = null) {
-        const query = searchQuery || searchInput.value.trim();
-        if (!query) return;
-
-        // Update URL
-        const newUrl = new URL(window.location);
-        newUrl.searchParams.set('q', query);
-        window.history.pushState({}, '', newUrl);
-
-        // Simple search
-        const results = pages.filter(page => 
-            page.title.toLowerCase().includes(query.toLowerCase()) ||
-            page.summary.toLowerCase().includes(query.toLowerCase())
-        );
-
-        displayResults(results);
-    }
-
-    function displayResults(results) {
-        searchResults.innerHTML = '';
-        noResults.style.display = 'none';
-
-        if (results.length === 0) {
-            noResults.style.display = 'block';
-            return;
+// Allow Enter key to trigger search
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
         }
-
-        results.forEach(result => {
-            console.log('Search result URL:', result.url); // Debug log
-            const div = document.createElement('div');
-            div.className = 'search-result';
-            div.innerHTML = `
-                <h3><a href="${result.url}" target="_self" onclick="console.log('Link clicked:', this.href); return true;">${result.title}</a></h3>
-                <div class="search-result-meta">${result.section} • ${result.date}</div>
-                <p>${result.summary}</p>
-            `;
-            searchResults.appendChild(div);
-        });
-    }
-
-    // Event listeners
-    if (searchBtn) {
-        searchBtn.addEventListener('click', () => performSearch());
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-    }
+    });
 });
 </script>
 
