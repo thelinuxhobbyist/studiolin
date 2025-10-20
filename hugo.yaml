@@ -11,7 +11,6 @@ params:
   title: "Studio{Linux}"
   description: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
   keywords: [Linux, Open Source, Programming, Tutorials, Tech, Beginners]
-  author: "studiolinux"
   images: ["images/logo.svg"]
   defaultTheme: auto
   disableThemeToggle: false
