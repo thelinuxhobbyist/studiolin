@@ -1,5 +1,22 @@
 {{- define "main" }}
 
+<!-- Search data for JavaScript -->
+<script id="search-data" type="application/json">
+[
+{{- range $index, $page := .Site.RegularPages }}
+{{- if $index }},{{ end }}
+{
+  "title": {{ $page.Title | jsonify }},
+  "url": {{ $page.Permalink | jsonify }},
+  "content": {{ $page.Plain | jsonify }},
+  "summary": {{ $page.Summary | plainify | jsonify }},
+  "section": {{ $page.Section | jsonify }},
+  "date": {{ $page.Date.Format "January 2, 2006" | jsonify }}
+}
+{{- end }}
+]
+</script>
+
 <div class="search-page-container">
     <header class="search-header">
         <h1>Search Studio{Linux}</h1>
@@ -129,6 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResults = document.getElementById('search-results');
     const noResults = document.getElementById('no-results');
 
+    // Get the search data from the JSON script tag
+    let pages = [];
+    try {
+        const searchDataElement = document.getElementById('search-data');
+        if (searchDataElement) {
+            pages = JSON.parse(searchDataElement.textContent);
+        }
+    } catch (e) {
+        console.error('Error parsing search data:', e);
+    }
+
     // Get query from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q');
@@ -146,28 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
         newUrl.searchParams.set('q', query);
         window.history.pushState({}, '', newUrl);
 
-        // Simple client-side search through page content
+        // Search through page content
         searchInContent(query);
     }
 
     function searchInContent(query) {
         const results = [];
         const searchTerms = query.toLowerCase().split(' ');
-
-        // Search through site pages (this is a basic implementation)
-        // In a real implementation, you'd want to use Hugo's search index or a search service
-        const pages = [
-            {{- range .Site.RegularPages }}
-            {
-                title: {{ .Title | jsonify }},
-                url: {{ .Permalink | jsonify }},
-                content: {{ .Plain | jsonify }},
-                summary: {{ .Summary | plainify | jsonify }},
-                section: {{ .Section | jsonify }},
-                date: {{ .Date.Format "January 2, 2006" | jsonify }}
-            },
-            {{- end }}
-        ];
 
         pages.forEach(page => {
             const titleMatch = searchTerms.some(term => 
