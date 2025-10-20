@@ -21,7 +21,7 @@ const allPages = [
 {{- range .Site.RegularPages }}
   {
     title: {{ .Title | jsonify }},
-    url: {{ .RelPermalink | jsonify }}, 
+    url: "{{ .RelPermalink }}", 
     summary: {{ .Summary | plainify | truncate 150 | jsonify }},
     section: {{ .Section | jsonify }}
   },
