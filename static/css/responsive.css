@@ -1,85 +1,82 @@
 /* Responsive design improvements */
 
-/* Ensure desktop menu is visible on larger screens */
-@media (min-width: 769px) {
-  #menu {
-    display: flex !important;
-  }
-  
-  .mobile-menu-container {
-    display: none !important;
-  }
-}
-
-/* Responsive design improvements */
-
-/* Global Mobile Layout Fixes */
-html, body {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-    box-sizing: border-box;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Container fixes for mobile */
-.search-container,
-.section-header,
-.latest-posts,
-.popular-tools,
-.featured-article,
-.hero-search {
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
-}
-
 /* Mobile menu container */
 .mobile-menu-container {
-  display: none !important;
-}
-
-/* Desktop menu - show by default */
-#menu {
-  display: flex !important;
+  display: none;
 }
 
 /* Mobile menu enhancements */
 @media (max-width: 768px) {
-  /* Hide desktop menu on mobile - updated for our navigation */
-  .main-nav {
-    display: none;
-  }
-  
-  .main-nav.active {
-    display: block !important;
-  }
-  
-  /* Remove old mobile menu container styles - we use .mobile-menu-btn now */
+  /* Show mobile menu container */
   .mobile-menu-container {
-    display: none !important;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 1100;
   }
   
-  /* Remove old hamburger menu styles - now handled in navigation.css */
+  /* Hamburger menu styling */
+  .hamburger-menu {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .hamburger-text {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 16px;
+  }
 
-  /* Mobile layout adjustments */
-  .container {
-  
-  body.dark #menu.show {
+  .hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+  }
+
+  /* Hamburger menu animation */
+  .hamburger-menu.is-active {
     background-color: var(--primary-color-dark);
-    border-color: var(--primary-color);
   }
   
-  body.dark #menu li a {
-    color: var(--accent-color);
+  .hamburger-menu.is-active .hamburger-icon span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
   }
-  
-  body.dark #menu li a:hover {
+
+  .hamburger-menu.is-active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.is-active .hamburger-icon span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Dark mode styles */
+  body.dark .hamburger-menu {
     background-color: var(--primary-color-light);
-    color: var(--primary-color-dark);
+  }
+  
+  body.dark .hamburger-menu.is-active {
+    background-color: var(--primary-color);
   }
 
   /* Menu styling for mobile */
@@ -94,33 +91,30 @@ html, body {
     width: 100%;
   }
 
-  #menu.show {
-    display: flex !important;
+  #menu {
+    display: none; /* Hide by default on mobile */
     position: fixed;
-    top: 40px;
-    right: 15px;
-    width: 200px;
+    top: 60px;
+    left: 0;
+    right: 0;
     background-color: var(--background-color);
-    box-shadow: 0 8px 25px rgba(43, 122, 120, 0.2);
-    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
     z-index: 1000;
-    padding: 12px 0;
+    padding: 10px 0;
     margin: 0;
     flex-direction: column;
-    text-align: left;
-    animation: slideDown 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border: 1px solid var(--border-color);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
   }
   
-  @keyframes slideDown {
-    from { 
-      opacity: 0; 
-      transform: translateY(-15px) scale(0.95); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0) scale(1); 
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #menu.show {
+    display: flex !important;
   }
 
   #menu li {
@@ -131,83 +125,93 @@ html, body {
 
   #menu li a {
     display: block;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-color);
-    transition: all 0.3s ease;
-    border-radius: 6px;
-    margin: 2px 8px;
-    text-decoration: none;
+    padding: 15px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border-color);
   }
-  
+
+  #menu li:last-child a {
+    border-bottom: none;
+  }
+
   #menu li a:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateX(3px);
-  }
-  
-  #menu li a.active {
     background-color: var(--accent-color);
-    color: var(--primary-color-dark);
-    font-weight: 600;
   }
   
-  #menu li + li {
-    border-top: none;
+  /* Dark mode menu styling */
+  body.dark #menu {
+    background-color: var(--primary-color-dark);
+  }
+  
+  body.dark #menu li a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Make the header sticky on mobile */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust logo and nav for better mobile display */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
-/* Pin the site footer to the bottom-left corner without overlapping content */
-.footer {
-  position: fixed !important;
-  bottom: 12px !important;
-  left: 12px !important;
-  right: auto !important;
-  top: auto !important;
-  z-index: 99999 !important;
-  background: transparent; /* keep it unobtrusive */
-  color: var(--primary-color); /* set footer text to site green */
-  font-size: 13px;
-  line-height: 1.2;
-  padding: 4px 6px;
-  border-radius: 6px;
-  box-shadow: none;
-}
-
-/* Ensure footer links remain readable and clickable */
-.footer a {
-  color: inherit; /* match surrounding footer text */
-  text-decoration: none;
-  border-bottom: none; /* remove underline */
-}
-
-.footer a:hover {
-  color: var(--primary-color);
-  border-bottom: none;
-}
-
-/* Dark mode: keep footer green as well */
-body.dark .footer,
-:root.dark .footer,
-body.dark .footer a,
-:root.dark .footer a {
-  color: var(--primary-color);
-}
-
-/* Prevent the footer from covering important page content by adding bottom padding */
-body {
-  padding-bottom: 56px; /* reserve space for the fixed footer */
-}
-
-/* On very small screens, slightly adjust placement so it doesn't touch the edge */
-@media (max-width: 420px) {
-  .footer {
-    left: 8px;
-    bottom: 8px;
-    font-size: 12px;
+/* General responsive improvements */
+@media (max-width: 576px) {
+  .post-entry {
+    padding: 15px;
   }
+
+  .entry-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .home-info {
+    padding: 15px !important;
+  }
+
+  .home-info h1 {
+    font-size: 1.8rem;
+  }
+
+  .post-description {
+    font-size: 0.9rem;
+  }
+}
+
+/* Fix for high-dpi screens */
+@media (min-resolution: 192dpi) {
   body {
-    padding-bottom: 72px;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Fix for dark mode on mobile */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .menu-trigger span,
+  :root:not(.light) .menu-trigger span::before,
+  :root:not(.light) .menu-trigger span::after {
+    background-color: var(--accent-color);
+  }
+  
+  :root:not(.light) #menu {
+    background-color: var(--primary-color-dark);
   }
 }

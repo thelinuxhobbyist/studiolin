@@ -156,8 +156,100 @@ input:focus, textarea:focus, select:focus {
 .text-warning { color: var(--studio-warning); }
 .text-error { color: var(--studio-error); }
 
+/* Global Typography Overrides for Better Visibility */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--studio-gray-900) !important;
+  font-weight: 700 !important;
+}
+
+.section-header h2 {
+  color: var(--studio-gray-900) !important;
+  font-weight: 800 !important;
+  font-size: 1.875rem !important;
+}
+
+/* Tool cards and content visibility */
+.tool-card h4,
+.tool-description,
+.tool-example {
+  color: var(--studio-gray-800) !important;
+}
+
+.tool-description {
+  font-weight: 500 !important;
+}
+
 /* Background Color Classes */
 .bg-primary { background-color: var(--studio-bg-primary); }
 .bg-secondary { background-color: var(--studio-bg-secondary); }
 .bg-tertiary { background-color: var(--studio-bg-tertiary); }
 .bg-accent { background-color: var(--studio-bg-accent); }
+
+/* Simple Page Layouts */
+.simple-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.simple-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.simple-header h1 {
+  font-size: 2.5rem;
+  color: var(--studio-gray-900);
+  margin-bottom: 1rem;
+}
+
+.simple-header p {
+  font-size: 1.1rem;
+  color: var(--studio-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.simple-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.simple-tool-card {
+  background: var(--studio-bg-primary);
+  border: 1px solid var(--studio-border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.simple-tool-card:hover {
+  box-shadow: var(--studio-shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--studio-blue);
+}
+
+.simple-tool-card h3 {
+  color: var(--studio-gray-900);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.simple-tool-card .tool-description {
+  color: var(--studio-gray-700);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.simple-tool-card .tool-example {
+  background: var(--studio-gray-100);
+  color: var(--studio-gray-800);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  display: block;
+  overflow-x: auto;
+}
