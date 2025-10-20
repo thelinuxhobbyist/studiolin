@@ -1,22 +1,5 @@
 {{- define "main" }}
 
-<!-- Search data for JavaScript -->
-<script id="search-data" type="application/json">
-[
-{{- range $index, $page := .Site.RegularPages }}
-{{- if $index }},{{ end }}
-{
-  "title": {{ $page.Title | jsonify }},
-  "url": {{ $page.Permalink | jsonify }},
-  "content": {{ $page.Plain | jsonify }},
-  "summary": {{ $page.Summary | plainify | jsonify }},
-  "section": {{ $page.Section | jsonify }},
-  "date": {{ $page.Date.Format "January 2, 2006" | jsonify }}
-}
-{{- end }}
-]
-</script>
-
 <div class="search-page-container">
     <header class="search-header">
         <h1>Search Studio{Linux}</h1>
@@ -146,16 +129,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchResults = document.getElementById('search-results');
     const noResults = document.getElementById('no-results');
 
-    // Get the search data from the JSON script tag
-    let pages = [];
-    try {
-        const searchDataElement = document.getElementById('search-data');
-        if (searchDataElement) {
-            pages = JSON.parse(searchDataElement.textContent);
-        }
-    } catch (e) {
-        console.error('Error parsing search data:', e);
-    }
+    // Simple search data - basic implementation
+    const pages = [
+        {{- range .Site.RegularPages -}}
+        {
+            title: {{ .Title | jsonify }},
+            url: {{ .Permalink | jsonify }},
+            summary: {{ .Summary | plainify | truncate 200 | jsonify }},
+            section: {{ .Section | title | jsonify }},
+            date: {{ .Date.Format "January 2, 2006" | jsonify }}
+        },
+        {{- end -}}
+    ];
 
     // Get query from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
@@ -169,36 +154,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const query = searchQuery || searchInput.value.trim();
         if (!query) return;
 
-        // Update URL with search query
+        // Update URL
         const newUrl = new URL(window.location);
         newUrl.searchParams.set('q', query);
         window.history.pushState({}, '', newUrl);
 
-        // Search through page content
-        searchInContent(query);
+        // Simple search
+        const results = pages.filter(page => 
+            page.title.toLowerCase().includes(query.toLowerCase()) ||
+            page.summary.toLowerCase().includes(query.toLowerCase())
+        );
+
+        displayResults(results);
     }
 
-    function searchInContent(query) {
-        const results = [];
-        const searchTerms = query.toLowerCase().split(' ');
-
-        pages.forEach(page => {
-            const titleMatch = searchTerms.some(term => 
-                page.title.toLowerCase().includes(term)
-            );
-            const contentMatch = searchTerms.some(term => 
-                page.content.toLowerCase().includes(term)
-            );
-
-            if (titleMatch || contentMatch) {
-                results.push(page);
-            }
-        });
-
-        displayResults(results, query);
-    }
-
-    function displayResults(results, query) {
+    function displayResults(results) {
         searchResults.innerHTML = '';
         noResults.style.display = 'none';
 
@@ -208,23 +178,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         results.forEach(result => {
-            const resultElement = document.createElement('div');
-            resultElement.className = 'search-result';
-            resultElement.innerHTML = `
+            const div = document.createElement('div');
+            div.className = 'search-result';
+            div.innerHTML = `
                 <h3><a href="${result.url}">${result.title}</a></h3>
                 <div class="search-result-meta">${result.section} • ${result.date}</div>
                 <p>${result.summary}</p>
             `;
-            searchResults.appendChild(resultElement);
+            searchResults.appendChild(div);
         });
     }
 
-    // Handle search button click
+    // Event listeners
     if (searchBtn) {
         searchBtn.addEventListener('click', () => performSearch());
     }
 
-    // Handle Enter key press
     if (searchInput) {
         searchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
