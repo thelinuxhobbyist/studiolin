@@ -138,13 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
         {{- range .Site.RegularPages -}}
         {
             title: {{ .Title | jsonify }},
-            url: {{ .Permalink | jsonify }},
+            url: {{ .RelPermalink | jsonify }},
             summary: {{ .Summary | plainify | truncate 200 | jsonify }},
             section: {{ .Section | title | jsonify }},
             date: {{ .Date.Format "January 2, 2006" | jsonify }}
         },
         {{- end -}}
     ];
+
+    console.log('Total pages loaded:', pages.length);
+    if (pages.length > 0) {
+        console.log('Sample page URL:', pages[0].url);
+    }
 
     // Get query from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
@@ -186,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const div = document.createElement('div');
             div.className = 'search-result';
             div.innerHTML = `
-                <h3><a href="${result.url}" target="_self">${result.title}</a></h3>
+                <h3><a href="${result.url}" target="_self" onclick="console.log('Link clicked:', this.href); return true;">${result.title}</a></h3>
                 <div class="search-result-meta">${result.section} • ${result.date}</div>
                 <p>${result.summary}</p>
             `;
