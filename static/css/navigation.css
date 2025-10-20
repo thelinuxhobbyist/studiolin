@@ -115,10 +115,17 @@
 @media (max-width: 768px) {
     .header-container {
         padding: 0 1rem;
+        position: relative; /* allow absolute-positioned button */
     }
     
     .mobile-menu-btn {
         display: flex;
+        z-index: 3000;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 14px; /* move slightly left of the right edge */
+        margin-left: 0 !important;
     }
 
     .main-nav {
