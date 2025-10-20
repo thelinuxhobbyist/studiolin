@@ -88,4 +88,34 @@
     </div>
 </section>
 
+<script>
+// Search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+
+    function performSearch() {
+        const query = searchInput.value.trim();
+        if (query) {
+            // Redirect to search page with query parameter
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+        }
+    }
+
+    // Handle search button click
+    if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+    }
+
+    // Handle Enter key press in search input
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+});
+</script>
+
 {{- end }}

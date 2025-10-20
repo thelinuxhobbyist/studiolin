@@ -1,0 +1,225 @@
+{{- define "main" }}
+
+<div class="search-page-container">
+    <header class="search-header">
+        <h1>Search Studio{Linux}</h1>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search Linux tutorials, posts, and tools..." />
+            <button type="button" id="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <div class="search-results-container">
+        <div id="search-results"></div>
+        <div id="no-results" style="display: none;">
+            <p>No results found. Try different keywords or browse our <a href="/posts/">latest posts</a> and <a href="/tutorials/">tutorials</a>.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.search-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.search-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.search-header h1 {
+    color: var(--studio-text-primary, #333);
+    margin-bottom: 1.5rem;
+}
+
+.search-box {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+    border: 2px solid var(--studio-blue, #2563eb);
+}
+
+.search-box input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background: white;
+}
+
+.search-box button {
+    background: var(--studio-blue, #2563eb);
+    color: white;
+    border: none;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-box button:hover {
+    background: var(--studio-blue-dark, #1d4ed8);
+}
+
+.search-results-container {
+    margin-top: 2rem;
+}
+
+.search-result {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--studio-green, #059669);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-result h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--studio-text-primary, #333);
+}
+
+.search-result h3 a {
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
+}
+
+.search-result h3 a:hover {
+    text-decoration: underline;
+}
+
+.search-result-meta {
+    font-size: 0.9rem;
+    color: var(--studio-text-secondary, #64748b);
+    margin-bottom: 0.5rem;
+}
+
+.search-result p {
+    color: var(--studio-text-primary, #333);
+    line-height: 1.6;
+    margin: 0;
+}
+
+#no-results p {
+    text-align: center;
+    color: var(--studio-text-secondary, #64748b);
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
+#no-results a {
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
+}
+
+#no-results a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const searchResults = document.getElementById('search-results');
+    const noResults = document.getElementById('no-results');
+
+    // Get query from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q');
+    if (query) {
+        searchInput.value = query;
+        performSearch(query);
+    }
+
+    function performSearch(searchQuery = null) {
+        const query = searchQuery || searchInput.value.trim();
+        if (!query) return;
+
+        // Update URL with search query
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('q', query);
+        window.history.pushState({}, '', newUrl);
+
+        // Simple client-side search through page content
+        searchInContent(query);
+    }
+
+    function searchInContent(query) {
+        const results = [];
+        const searchTerms = query.toLowerCase().split(' ');
+
+        // Search through site pages (this is a basic implementation)
+        // In a real implementation, you'd want to use Hugo's search index or a search service
+        const pages = [
+            {{- range .Site.RegularPages }}
+            {
+                title: {{ .Title | jsonify }},
+                url: {{ .Permalink | jsonify }},
+                content: {{ .Plain | jsonify }},
+                summary: {{ .Summary | plainify | jsonify }},
+                section: {{ .Section | jsonify }},
+                date: {{ .Date.Format "January 2, 2006" | jsonify }}
+            },
+            {{- end }}
+        ];
+
+        pages.forEach(page => {
+            const titleMatch = searchTerms.some(term => 
+                page.title.toLowerCase().includes(term)
+            );
+            const contentMatch = searchTerms.some(term => 
+                page.content.toLowerCase().includes(term)
+            );
+
+            if (titleMatch || contentMatch) {
+                results.push(page);
+            }
+        });
+
+        displayResults(results, query);
+    }
+
+    function displayResults(results, query) {
+        searchResults.innerHTML = '';
+        noResults.style.display = 'none';
+
+        if (results.length === 0) {
+            noResults.style.display = 'block';
+            return;
+        }
+
+        results.forEach(result => {
+            const resultElement = document.createElement('div');
+            resultElement.className = 'search-result';
+            resultElement.innerHTML = `
+                <h3><a href="${result.url}">${result.title}</a></h3>
+                <div class="search-result-meta">${result.section} • ${result.date}</div>
+                <p>${result.summary}</p>
+            `;
+            searchResults.appendChild(resultElement);
+        });
+    }
+
+    // Handle search button click
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => performSearch());
+    }
+
+    // Handle Enter key press
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+});
+</script>
+
+{{- end }}
