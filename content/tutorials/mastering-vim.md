@@ -353,5 +353,3 @@ Vim has a steep learning curve, but the productivity gains are well worth the ef
 Remember: The key to mastering Vim is practice. Consider using plugins like vim-tutor-mode for interactive lessons, or run `vimtutor` in your terminal for a built-in tutorial.
 
 ---
-
-_Follow us on Twitter [@studiolinuxblog](https://twitter.com/studiolinuxblog) for more Vim tips and tricks!_
