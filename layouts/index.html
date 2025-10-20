@@ -51,13 +51,11 @@
         {{- $posts := (where .Site.RegularPages "Section" "posts") }}
         {{- range $posts }}
         <article class="post-card">
+            {{- if .Params.image }}
             <div class="card-image">
-                {{- if .Params.image }}
                 <img src="{{ .Params.image }}" alt="{{ .Title }}" />
-                {{- else }}
-                <img src="/images/default-post.svg" alt="{{ .Title }}" />
-                {{- end }}
             </div>
+            {{- end }}
             <div class="card-meta">
                 <span class="category"><i class="fas fa-folder"></i> {{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>

@@ -19,13 +19,11 @@
     <div class="posts-grid">
         {{- range .Pages }}
         <article class="post-card">
+            {{- if .Params.image }}
             <div class="card-image">
-                {{- if .Params.image }}
                 <img src="{{ .Params.image }}" alt="{{ .Title }}" />
-                {{- else }}
-                <img src="/images/default-post.svg" alt="{{ .Title }}" />
-                {{- end }}
             </div>
+            {{- end }}
             <div class="card-meta">
                 <span class="category"><i class="fas fa-graduation-cap"></i> {{ .Params.level | default "Beginner" }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
