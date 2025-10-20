@@ -114,29 +114,25 @@
     </style>
 </head>
 <body>
-    <!-- Minimal header/navigation rebuilt to avoid CSS conflicts -->
-    <header class="sl-header">
-        <div class="sl-header-inner">
-            <div class="sl-logo">
-                <a href="/" class="sl-logo-link">{{ .Site.Title }}</a>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="/" class="logo-link">{{ .Site.Title }}</a>
             </div>
-
-            <!-- Mobile toggle uses unique IDs to avoid CSS/JS conflicts -->
-            <button class="sl-mobile-toggle" id="sl-mobile-toggle" aria-label="Toggle Menu">
-                <span class="sl-bar"></span>
-                <span class="sl-bar"></span>
-                <span class="sl-bar"></span>
-            </button>
-
-            <nav class="sl-nav" id="sl-nav">
-                <ul class="sl-nav-list">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/tutorials/">Tutorials</a></li>
-                    <li><a href="/tools/">Tools</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/contact/">Contact</a></li>
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/tutorials/" class="nav-link">Tutorials</a></li>
+                    <li class="nav-item"><a href="/tools/" class="nav-link">Tools</a></li>
+                    <li class="nav-item"><a href="/about/" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
         </div>
     </header>
     
@@ -166,17 +162,15 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle for the new minimal nav
+        // Mobile Menu Toggle for restored nav
         document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.getElementById('sl-mobile-toggle');
-            const nav = document.getElementById('sl-nav');
-
+            const btn = document.getElementById('mobile-menu-btn');
+            const nav = document.getElementById('main-nav');
             if (!btn || !nav) return;
-
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 btn.classList.toggle('active');
-                nav.classList.toggle('open');
+                nav.classList.toggle('active');
             });
 
             // Close when clicking a link
