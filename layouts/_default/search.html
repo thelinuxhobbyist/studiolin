@@ -2,16 +2,6 @@
 
 <div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
     <h1>Search Results</h1>
-    
-    <div style="margin: 2rem 0;">
-        <input type="text" id="searchInput" placeholder="Search posts and tutorials..." 
-               style="width: 70%; padding: 12px; border: 2px solid #059669; border-radius: 4px;">
-        <button id="searchBtn" onclick="performSearch()" 
-                style="padding: 12px 20px; background: #059669; color: white; border: none; border-radius: 4px; margin-left: 10px;">
-            Search
-        </button>
-    </div>
-
     <div id="results"></div>
 </div>
 
@@ -73,19 +63,40 @@ window.addEventListener('load', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q');
     if (query) {
-        document.getElementById('searchInput').value = query;
-        performSearch();
+        performSearchFromQuery(query);
     }
 });
 
-// Allow Enter key to trigger search
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
+function performSearchFromQuery(query) {
+    const resultsDiv = document.getElementById('results');
+    if (!query) {
+        resultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+        return;
+    }
+    const results = allPages.filter(page => 
+        page.title.toLowerCase().includes(query.toLowerCase()) || 
+        page.summary.toLowerCase().includes(query.toLowerCase())
+    );
+    if (results.length === 0) {
+        resultsDiv.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <h3>No results found for "${query}"</h3>
+                <p>Try different keywords or browse our <a href="/posts/">latest posts</a>.</p>
+            </div>`;
+        return;
+    }
+    let html = `<h3>Found ${results.length} results for "${query}":</h3><br>`;
+    results.forEach(result => {
+        html += `
+            <div style="border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h4><a href="${result.url}" style="color: #059669; text-decoration: none; font-weight: 600;">${result.title}</a></h4>
+                <span style="color: #666; font-size: 0.85rem; text-transform: capitalize; background: #f8f9fa; padding: 0.3rem 0.6rem; border-radius: 12px; display: inline-block; margin: 0.5rem 0; border: 1px solid #e9ecef;">${result.section}</span>
+                <p style="color: #555; line-height: 1.5; margin: 0.5rem 0 0 0;">${result.summary}</p>
+            </div>
+        `;
     });
-});
+    resultsDiv.innerHTML = html;
+}
 </script>
 
 {{- end }}
