@@ -186,8 +186,9 @@
 .category-tabs .tab:focus, .category-tabs .tab:hover { transform: translateY(-2px); outline: none; }
 .category-tabs .tab:focus { box-shadow: 0 0 0 3px rgba(43,122,120,0.12); }
 
-/* Learning paths section */
-.learning-paths { padding: 0 1rem 2rem; margin-bottom: 2rem; }
+/* Recommended reads section */
+/* learning paths section hidden (replaced by Recommended Reads) */
+.learning-paths { display: none; }
 .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
 .path-card { background: #fff; border-radius: 8px; padding: 1rem; border: 1px solid var(--border-color, #eaf2f2); }
 .path-card a { color: var(--studio-blue); text-decoration: none; }
@@ -356,9 +357,38 @@
 
 .tool-card:hover {
     border-color: var(--primary-color, #2B7A78);
-    box-shadow: 0 4px 15px rgba(43, 122, 120, 0.1);
 }
 
+/* keep learning-paths hidden (replaced by recommended-reads) */
+.learning-paths { display: none; }
+
+/* Recommended Reads */
+.recommended-reads { padding: 0 1rem 2rem; margin-bottom: 2rem; }
+.recommended-reads .label {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+}
+.recommended-reads .label.trending { background: linear-gradient(90deg,#f59e0b,#f97316); }
+.recommended-reads .label.editor { background: linear-gradient(90deg,#06b6d4,#0ea5b7); }
+.recommended-card { display: flex; gap: 1rem; align-items: flex-start; }
+.recommended-card .card-image img { width: 90px; height: 70px; object-fit: cover; border-radius: 6px; }
+.recommended-card .card-body { flex: 1; }
+.recommended-card h4 { margin: 0 0 6px 0; font-size: 1.05rem; }
+.recommended-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+@media (max-width: 900px) {
+    .path-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .path-grid { grid-template-columns: 1fr; }
+    .recommended-card { flex-direction: row; }
+}
 .tool-card h4 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -523,7 +553,7 @@
 .featured-article,
 .latest-posts,
 .learning-paths {
-    display: block !important;
+    display: block !important; /* fallback for legacy templates */
     visibility: visible !important;
     opacity: 1 !important;
 }

@@ -5,18 +5,14 @@
     <div id="results"></div>
 </div>
 
+{{- /* Build a simple JSON dataset of pages for search (server-side) */ -}}
+{{- $.Scratch.Add "searchIndex" slice -}}
+{{- range .Site.RegularPages -}}
+    {{- $.Scratch.Add "searchIndex" (dict "title" .Title "url" .RelPermalink "summary" (.Summary | plainify | truncate 150) "section" .Section) -}}
+{{- end -}}
 <script>
-// All pages data
-const allPages = [
-{{- range .Site.RegularPages }}
-  {
-    title: {{ .Title | jsonify }},
-    url: "{{ .RelPermalink }}", 
-    summary: {{ .Summary | plainify | truncate 150 | jsonify }},
-    section: {{ .Section | jsonify }}
-  },
-{{- end }}
-];
+// All pages data (inlined JSON string parsed into object to avoid template interpolation issues)
+const allPages = JSON.parse({{ $.Scratch.Get "searchIndex" | jsonify | printf "%q" }});
 
 function performSearch() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();

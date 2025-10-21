@@ -68,7 +68,7 @@
         {{- range $posts }}
         <article class="post-card" data-category="{{- with .Params.categories -}}{{ index . 0 }}{{ else }}{{ .Section }}{{ end }}" data-tags="{{ delimit .Params.tags "," }}">
             <div class="card-image">
-                <img src="{{ .Params.image | default "/images/default-post.svg" }}" alt="{{ .Title }}" />
+                <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ .Params.image | default "/images/default-post.svg" }}{{ end }}" alt="{{ .Title }}" />
             </div>
             <div class="card-meta">
                 <span class="category"><i class="fas fa-folder"></i> {{ .Section | title }}</span>
@@ -88,28 +88,34 @@
     </div>
 </section>
 
-{{- /* Learning Paths Section */ -}}
-<section class="learning-paths">
+<section class="recommended-reads">
     <div class="section-header">
-        <h2>Learning Paths</h2>
+        <h2>Recommended Reads</h2>
+        <p>Hand-picked guides and posts for getting started and leveling up.</p>
     </div>
     <div class="path-grid">
-        <div class="path-card">
-            <h4><a href="/?category=Tutorials">Getting Started with Linux</a></h4>
-            <p>Core tutorials for beginners to get comfortable with Linux.</p>
-        </div>
-        <div class="path-card">
-            <h4><a href="/?category=Tutorials&tag=SysAdmin">Intermediate SysAdmin Skills</a></h4>
-            <p>Build out your system admin toolkit and best practices.</p>
-        </div>
-        <div class="path-card">
-            <h4><a href="/?category=Tutorials&tag=Automation">Automation & DevOps</a></h4>
-            <p>Learn automation workflows, CI/CD, and containerization.</p>
-        </div>
-        <div class="path-card">
-            <h4><a href="/?category=Tutorials&tag=Development">Linux for Developers</a></h4>
-            <p>Developer-focused guides, tools, and workflows for Linux.</p>
-        </div>
+            {{- $p1 := site.GetPage "posts/getting-started-with-linux" -}}
+            {{- $p2 := site.GetPage "posts/ansible-for-beginners" -}}
+            {{- $p3 := site.GetPage "posts/essential-linux-terminal-commands" -}}
+            {{- $p4 := site.GetPage "posts/best-linux-distributions-for-developers" -}}
+            {{- range (slice $p1 $p2 $p3 $p4) -}}
+            {{- if . }}
+            <article class="path-card recommended-card">
+                <div class="card-image">
+                    <img src="{{ .Params.image | default "/images/default-post.svg" }}" alt="{{ .Title }}" />
+                </div>
+                <div class="card-body">
+                    {{- $label := "⭐ Editor's Pick" -}}
+                    {{- if or (in .File.Path "ansible-for-beginners") (in .File.Path "essential-linux-terminal-commands") }}
+                        {{- $label = "🔥 Trending" -}}
+                    {{- end -}}
+                    <div class="label {{ if in $label "Trending" }}trending{{ else }}editor{{ end }}">{{ $label }}</div>
+                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                    <p>{{ .Summary | plainify | truncate 120 }}</p>
+                </div>
+            </article>
+            {{- end }}
+            {{- end }}
     </div>
 </section>
 
@@ -141,50 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Intercept learning path links to apply category filters without reload
-    document.querySelectorAll('.path-card a').forEach(a => {
-        a.addEventListener('click', function(e) {
-            e.preventDefault();
-            const params = new URLSearchParams(new URL(a.href, window.location.origin).search);
-            const cat = params.get('category');
-            const tag = params.get('tag');
-            // update URL and local storage
-            if (cat) {
-                const newParams = new URLSearchParams(window.location.search);
-                newParams.set('category', cat);
-                if (tag) newParams.set('tag', tag);
-                history.replaceState({}, '', `${window.location.pathname}?${newParams.toString()}`);
-                localStorage.setItem('homepage-category', cat);
-            }
-
-            // Trigger the corresponding tab click (if available) and tag click
-            if (cat) {
-                const tab = document.querySelector(`.category-tabs .tab[data-cat="${cat}"]`);
-                if (tab) tab.click();
-            }
-            if (tag) {
-                const tagBtn = document.querySelector(`.tag-btn[data-tag="${tag}"]`);
-                if (tagBtn) {
-                    tagBtn.click();
-                } else {
-                    // create a temporary tag button and trigger filter
-                    const tempBtn = document.createElement('button');
-                    tempBtn.className = 'tag-btn active';
-                    tempBtn.dataset.tag = tag;
-                    document.querySelector('.tag-cloud').appendChild(tempBtn);
-                    tempBtn.click();
-                }
-            }
-
-            // Mark active path
-            document.querySelectorAll('.path-card').forEach(pc => pc.classList.remove('active'));
-            a.closest('.path-card')?.classList.add('active');
-
-            // Scroll to filters
-            const el = document.querySelector('.filters-row');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
+    // Recommended Reads link behavior: default navigation to articles.
 });
 </script>
 
