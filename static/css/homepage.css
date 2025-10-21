@@ -424,7 +424,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 .recommended-reads .label.trending { background: linear-gradient(90deg,#f59e0b,#f97316); }
-.recommended-reads .label.editor { background: linear-gradient(90deg,#06b6d4,#0ea5b7); }
+.recommended-reads .label.editor { background: linear-gradient(90deg, var(--studio-blue, #2563eb) 0%, #60a5fa 100%); }
 .recommended-card h4 {
     margin: 0 0 8px 0;
     font-size: 1.13rem;
