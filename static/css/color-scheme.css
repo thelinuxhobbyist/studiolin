@@ -48,6 +48,8 @@
   --studio-card-bg: #f8f9fa; /* subtle off-white for cards */
   /* Accent color for emphasis (orange) */
   --studio-accent: #FFB300;
+  /* Light blue background used behind post images */
+  --studio-image-bg: #e6f2ff;
   --studio-bg-tertiary: #f1f5f9;
   --studio-bg-accent: #e2e8f0;
   

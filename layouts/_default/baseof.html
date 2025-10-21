@@ -207,5 +207,19 @@
             });
         });
     </script>
+    <script>
+        // Toggle sticky shadow when user scrolls
+        (function () {
+            var header = document.querySelector('.main-header');
+            if (!header) return;
+            var onScroll = function () {
+                if (window.scrollY > 8) header.classList.add('sticky-shadow');
+                else header.classList.remove('sticky-shadow');
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            // run once
+            onScroll();
+        })();
+    </script>
 </body>
 </html>

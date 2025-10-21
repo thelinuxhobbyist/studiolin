@@ -23,7 +23,7 @@
 .card-image {
     width: 100%;
     height: 200px;
-    background: var(--studio-blue);
+    background: var(--studio-image-bg);
     border-radius: 8px;
     margin-bottom: 1rem;
     display: flex;
@@ -175,7 +175,7 @@ a.read-more:hover, a.start-tutorial:hover, a.read-more-btn:hover,
 
 .featured-image {
     flex: 0 0 400px;
-    background: var(--studio-blue);
+    background: var(--studio-image-bg);
     display: flex;
     align-items: center;
     justify-content: center;
