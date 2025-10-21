@@ -118,11 +118,13 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(6px);
-            background: transparent; /* let navigation.css define the default gradient */
+            /* default blue gradient so nav items remain visible */
+            background: linear-gradient(135deg, var(--studio-blue) 0%, var(--studio-blue-dark) 100%);
             transition: box-shadow 0.2s ease, background 0.2s ease;
         }
         .main-header.sticky-shadow {
             box-shadow: var(--studio-shadow-md);
+            /* slightly stronger background when scrolled */
             background: linear-gradient(135deg, var(--studio-blue) 0%, var(--studio-blue-dark) 100%);
         }
     </style>
