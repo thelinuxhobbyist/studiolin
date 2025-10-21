@@ -89,6 +89,8 @@
     margin-bottom: 1rem;
     padding: 0 1rem;
 }
+.filters-row .category-tabs { flex-wrap: wrap; }
+.filters-row .tag-cloud { justify-self: end; }
 .category-tabs {
     display: flex;
     gap: 0.5rem;
@@ -97,8 +99,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: 1px solid var(--studio-border-light);
-    background: var(--studio-bg-primary);
+    border: 1px solid rgba(37,99,235,0.12);
+    background: #eef6ff; /* light blue */
     padding: 0.45rem 0.9rem;
     border-radius: 999px;
     cursor: pointer;
@@ -106,7 +108,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--studio-text-primary);
+    color: #084e8a;
     transition: background-color 0.18s ease, transform 0.12s ease, box-shadow 0.12s ease;
 }
 .category-tabs .tab.active {
@@ -124,13 +126,15 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: transparent;
-    border: 1px solid var(--studio-border-light);
+    background: #eef6ff; /* light blue */
+    border: 1px solid rgba(37,99,235,0.12);
     padding: 0.25rem 0.5rem;
     border-radius: 999px;
     cursor: pointer;
     font-size: 0.85rem;
     transition: background-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
+    display: inline-flex;
+    margin-right: 0.5rem;
 }
 
 /* Post card visuals */
