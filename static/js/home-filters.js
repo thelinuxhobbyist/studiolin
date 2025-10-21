@@ -62,7 +62,13 @@
     // Tab click
     // Read category from query params or localStorage
     const urlParams = new URLSearchParams(window.location.search);
-    const initialCategory = urlParams.get('category') || localStorage.getItem('homepage-category') || 'all';
+    let initialCategory = urlParams.get('category') || localStorage.getItem('homepage-category') || 'all';
+    // Ensure initialCategory is valid (falls back to 'all')
+    const availableCats = Array.from(tabs).map(t => (t.dataset.cat || '').toLowerCase());
+    if (initialCategory && initialCategory.toLowerCase() !== 'all' && !availableCats.includes(initialCategory.toLowerCase())) {
+      initialCategory = 'all';
+      localStorage.removeItem('homepage-category');
+    }
     const initialTag = urlParams.get('tag') || null;
 
     function setActiveTab(cat) {
@@ -111,6 +117,11 @@
     }
     setActiveTab(initialCategory);
     filterPosts(initialCategory, initialTag);
+    // If initialTag is set by learning path, mark the path active
+    if (initialTag) {
+      const pathCard = document.querySelector(`.path-card a[href*="tag=${encodeURIComponent(initialTag)}"]`);
+      if (pathCard) pathCard.closest('.path-card').classList.add('active');
+    }
 
     // Listen for programmatic category changes (e.g., learning path links)
     window.addEventListener('category-change', function(){

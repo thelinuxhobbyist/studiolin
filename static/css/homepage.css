@@ -190,6 +190,8 @@
 .learning-paths { padding: 0 1rem 2rem; margin-bottom: 2rem; }
 .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
 .path-card { background: #fff; border-radius: 8px; padding: 1rem; border: 1px solid var(--border-color, #eaf2f2); }
+.path-card a { color: var(--studio-blue); text-decoration: none; }
+.path-card.active { border-color: var(--studio-blue); box-shadow: 0 8px 20px rgba(37,99,235,0.06); transform: translateY(-2px); }
 
 .view-all {
     color: var(--studio-blue);
