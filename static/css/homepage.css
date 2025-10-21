@@ -579,3 +579,19 @@
         border-radius: 0 0 8px 8px;
     }
 }
+
+/* Additional tag and pagination styles */
+.tag-cloud .tag-btn.active {
+    background: var(--primary-color, #2B7A78);
+    color: white;
+    border-color: transparent;
+}
+.tag-cloud .tag-btn.tag-size-1 { font-size: 0.85rem; opacity: 0.9; }
+.tag-cloud .tag-btn.tag-size-2 { font-size: 0.95rem; opacity: 0.95; }
+.tag-cloud .tag-btn.tag-size-3 { font-size: 1.05rem; font-weight:700; }
+.tag-cloud .tag-btn.tag-size-4 { font-size: 1.15rem; font-weight:700; }
+.tag-cloud .tag-btn.tag-size-5 { font-size: 1.25rem; font-weight:800; }
+
+.pagination-controls { margin: 1.5rem 0; }
+.pagination-controls .load-more { background: var(--studio-blue); }
+.post-card.filtered-out { display: none !important; }

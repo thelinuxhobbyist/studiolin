@@ -1,14 +1,18 @@
 // Simple client-side pagination for homepage
 (function(){
   document.addEventListener('DOMContentLoaded', function(){
-    const posts = Array.from(document.querySelectorAll('.posts-grid .post-card'));
+  const posts = Array.from(document.querySelectorAll('.posts-grid .post-card'));
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     const pageSize = 6;
     let current = pageSize;
 
     function showRange(count){
-      posts.forEach((p, i) => { p.style.display = i < count ? '' : 'none'; });
-      if (count >= posts.length) loadMoreBtn.style.display = 'none';
+      let shown = 0;
+      posts.forEach((p) => {
+        if (p.classList.contains('filtered-out')) { p.style.display = 'none'; return; }
+        if (shown < count) { p.style.display = ''; shown++; } else { p.style.display = 'none'; }
+      });
+      if (shown >= posts.filter(p => !p.classList.contains('filtered-out')).length) loadMoreBtn.style.display = 'none';
     }
 
     showRange(current);
@@ -26,5 +30,7 @@
       current = saved;
       showRange(current);
     }
+    // Expose API for filter script
+    window.homePagination = { showRange, current };
   });
 })();
