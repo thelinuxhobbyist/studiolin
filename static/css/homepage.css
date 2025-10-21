@@ -126,15 +126,18 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: #eef6ff; /* light blue */
-    border: 1px solid rgba(37,99,235,0.12);
-    padding: 0.25rem 0.5rem;
+    background: var(--studio-blue-dark);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.18rem 0.45rem;
     border-radius: 999px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     transition: background-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
     display: inline-flex;
-    margin-right: 0.5rem;
+    margin-right: 0.35rem;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 /* Post card visuals */
@@ -341,7 +344,8 @@
     margin-bottom: 1rem;
 }
 
-.tag-cloud .tag-btn:focus, .tag-cloud .tag-btn:hover { background: var(--studio-blue); color: white; border-color: transparent; transform: translateY(-1px); }
+.tag-cloud .tag-btn:focus, .tag-cloud .tag-btn:hover { background: var(--studio-blue); color: white; border-color: transparent; transform: translateY(-1px); box-shadow: 0 6px 12px rgba(37,99,235,0.08); }
+.tag-cloud .tag-btn.active { box-shadow: 0 8px 18px rgba(37,99,235,0.12); }
 
 .category-pill { padding:0.25rem 0.6rem; border-radius: 999px; background: #eef6f6; color: #0b3b3a; font-weight:600; }
 
@@ -606,11 +610,11 @@
     color: white;
     border-color: transparent;
 }
-.tag-cloud .tag-btn.tag-size-1 { font-size: 0.85rem; opacity: 0.9; }
-.tag-cloud .tag-btn.tag-size-2 { font-size: 0.95rem; opacity: 0.95; }
-.tag-cloud .tag-btn.tag-size-3 { font-size: 1.05rem; font-weight:700; }
-.tag-cloud .tag-btn.tag-size-4 { font-size: 1.15rem; font-weight:700; }
-.tag-cloud .tag-btn.tag-size-5 { font-size: 1.25rem; font-weight:800; }
+.tag-cloud .tag-btn.tag-size-1 { font-size: 0.72rem; opacity: 0.95; }
+.tag-cloud .tag-btn.tag-size-2 { font-size: 0.78rem; opacity: 0.98; }
+.tag-cloud .tag-btn.tag-size-3 { font-size: 0.86rem; font-weight:700; }
+.tag-cloud .tag-btn.tag-size-4 { font-size: 0.94rem; font-weight:700; }
+.tag-cloud .tag-btn.tag-size-5 { font-size: 1.02rem; font-weight:800; }
 
 .pagination-controls { margin: 1.5rem 0; }
 .pagination-controls .load-more { background: var(--studio-blue); }
