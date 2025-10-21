@@ -2,6 +2,8 @@
 title: "Ansible for Absolute Beginners: Automation Made Simple"
 date: 2024-11-05
 draft: false
+recommended: "trending"
+thumbnail: "/images/default-post.svg"
 tags: ["Ansible", "Automation", "DevOps", "Beginners", "Linux"]
 categories: ["Tutorials"]
 description: "A super simple guide to Ansible automation for complete beginners, explained like you're five years old"

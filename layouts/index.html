@@ -94,28 +94,25 @@
         <p>Hand-picked guides and posts for getting started and leveling up.</p>
     </div>
     <div class="path-grid">
-            {{- $p1 := site.GetPage "posts/getting-started-with-linux" -}}
-            {{- $p2 := site.GetPage "posts/ansible-for-beginners" -}}
-            {{- $p3 := site.GetPage "posts/essential-linux-terminal-commands" -}}
-            {{- $p4 := site.GetPage "posts/best-linux-distributions-for-developers" -}}
-            {{- range (slice $p1 $p2 $p3 $p4) -}}
-            {{- if . }}
-            <article class="path-card recommended-card">
-                <div class="card-image">
-                    <img src="{{ .Params.image | default "/images/default-post.svg" }}" alt="{{ .Title }}" />
-                </div>
-                <div class="card-body">
-                    {{- $label := "⭐ Editor's Pick" -}}
-                    {{- if or (in .File.Path "ansible-for-beginners") (in .File.Path "essential-linux-terminal-commands") }}
-                        {{- $label = "🔥 Trending" -}}
-                    {{- end -}}
-                    <div class="label {{ if in $label "Trending" }}trending{{ else }}editor{{ end }}">{{ $label }}</div>
-                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                    <p>{{ .Summary | plainify | truncate 120 }}</p>
-                </div>
-            </article>
-            {{- end }}
-            {{- end }}
+        {{- $trending := where .Site.RegularPages "Params.recommended" "trending" -}}
+        {{- $editor := where .Site.RegularPages "Params.recommended" "editor" -}}
+        {{- $picks := union $trending $editor | first 4 -}}
+        {{- range $picks -}}
+        <article class="path-card recommended-card">
+            <div class="card-image">
+                <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ .Params.image | default "/images/default-post.svg" }}{{ end }}" alt="{{ .Title }}" />
+            </div>
+            <div class="card-body">
+                {{- $label := "⭐ Editor's Pick" -}}
+                {{- if eq .Params.recommended "trending" -}}
+                    {{- $label = "🔥 Trending" -}}
+                {{- end -}}
+                <div class="label {{ if eq .Params.recommended "trending" }}trending{{ else }}editor{{ end }}">{{ $label }}</div>
+                <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                <p>{{ .Summary | plainify | truncate 120 }}</p>
+            </div>
+        </article>
+        {{- end -}}
     </div>
 </section>
 
