@@ -34,7 +34,7 @@
         </div>
         <div class="featured-content">
             <div class="featured-meta">
-                <span class="category"><i class="fas fa-star"></i> {{ .Section | title }}</span>
+                <span class="category">{{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
@@ -71,7 +71,7 @@
                 <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ .Params.image | default "/images/default-post.svg" }}{{ end }}" alt="{{ .Title }}" />
             </div>
             <div class="card-meta">
-                <span class="category"><i class="fas fa-folder"></i> {{ .Section | title }}</span>
+                <span class="category">{{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
