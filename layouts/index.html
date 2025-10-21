@@ -145,21 +145,44 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.path-card a').forEach(a => {
         a.addEventListener('click', function(e) {
             e.preventDefault();
-            const params = new URLSearchParams(window.location.search);
-            const cat = new URL(a.href).searchParams.get('category');
+            const params = new URLSearchParams(new URL(a.href, window.location.origin).search);
+            const cat = params.get('category');
+            const tag = params.get('tag');
+            // update URL and local storage
             if (cat) {
-                params.set('category', cat);
-                // Update URL and set local storage
-                history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+                const newParams = new URLSearchParams(window.location.search);
+                newParams.set('category', cat);
+                if (tag) newParams.set('tag', tag);
+                history.replaceState({}, '', `${window.location.pathname}?${newParams.toString()}`);
                 localStorage.setItem('homepage-category', cat);
-                // Trigger filters
-                if (window.dispatchEvent) {
-                    window.dispatchEvent(new Event('category-change'));
-                }
-                // Scroll to filters
-                const el = document.querySelector('.filters-row');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
             }
+
+            // Trigger the corresponding tab click (if available) and tag click
+            if (cat) {
+                const tab = document.querySelector(`.category-tabs .tab[data-cat="${cat}"]`);
+                if (tab) tab.click();
+            }
+            if (tag) {
+                const tagBtn = document.querySelector(`.tag-btn[data-tag="${tag}"]`);
+                if (tagBtn) {
+                    tagBtn.click();
+                } else {
+                    // create a temporary tag button and trigger filter
+                    const tempBtn = document.createElement('button');
+                    tempBtn.className = 'tag-btn active';
+                    tempBtn.dataset.tag = tag;
+                    document.querySelector('.tag-cloud').appendChild(tempBtn);
+                    tempBtn.click();
+                }
+            }
+
+            // Mark active path
+            document.querySelectorAll('.path-card').forEach(pc => pc.classList.remove('active'));
+            a.closest('.path-card')?.classList.add('active');
+
+            // Scroll to filters
+            const el = document.querySelector('.filters-row');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
         });
     });
 });
