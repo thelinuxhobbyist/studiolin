@@ -516,6 +516,21 @@
     background: var(--primary-color-dark, #17252A);
 }
 
+/* Safeguard: ensure key homepage sections are visible */
+.hero-search,
+.featured-article,
+.latest-posts,
+.learning-paths {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.featured-image img {
+    display: block !important;
+    max-width: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
