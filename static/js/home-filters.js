@@ -106,5 +106,15 @@
     }
     setActiveTab(initialCategory);
     filterPosts(initialCategory, initialTag);
+
+    // Listen for programmatic category changes (e.g., learning path links)
+    window.addEventListener('category-change', function(){
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category') || localStorage.getItem('homepage-category') || 'all';
+      // reset tags
+      Array.from(document.querySelectorAll('.tag-btn')).forEach(b=>b.classList.remove('active'));
+      setActiveTab(cat);
+      filterPosts(cat, null);
+    });
   });
 })();

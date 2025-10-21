@@ -95,19 +95,19 @@
     </div>
     <div class="path-grid">
         <div class="path-card">
-            <h4><a href="/posts/?category=Tutorials">Getting Started with Linux</a></h4>
+            <h4><a href="/?category=Tutorials">Getting Started with Linux</a></h4>
             <p>Core tutorials for beginners to get comfortable with Linux.</p>
         </div>
         <div class="path-card">
-            <h4><a href="/posts/?category=SysAdmin">Intermediate SysAdmin Skills</a></h4>
+            <h4><a href="/?category=SysAdmin">Intermediate SysAdmin Skills</a></h4>
             <p>Build out your system admin toolkit and best practices.</p>
         </div>
         <div class="path-card">
-            <h4><a href="/posts/?category=Automation">Automation & DevOps</a></h4>
+            <h4><a href="/?category=Automation">Automation & DevOps</a></h4>
             <p>Learn automation workflows, CI/CD, and containerization.</p>
         </div>
         <div class="path-card">
-            <h4><a href="/posts/?category=Development">Linux for Developers</a></h4>
+            <h4><a href="/?category=Development">Linux for Developers</a></h4>
             <p>Developer-focused guides, tools, and workflows for Linux.</p>
         </div>
     </div>
@@ -140,6 +140,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Intercept learning path links to apply category filters without reload
+    document.querySelectorAll('.path-card a').forEach(a => {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const params = new URLSearchParams(window.location.search);
+            const cat = new URL(a.href).searchParams.get('category');
+            if (cat) {
+                params.set('category', cat);
+                // Update URL and set local storage
+                history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+                localStorage.setItem('homepage-category', cat);
+                // Trigger filters
+                if (window.dispatchEvent) {
+                    window.dispatchEvent(new Event('category-change'));
+                }
+                // Scroll to filters
+                const el = document.querySelector('.filters-row');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 });
 </script>
 
