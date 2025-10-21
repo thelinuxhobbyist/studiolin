@@ -274,6 +274,7 @@
 
 .post-card h3 a:hover {
     color: var(--primary-color, #2B7A78);
+.card-image { aspect-ratio: 16/9; height: auto; }
 }
 
 .post-summary {
@@ -282,6 +283,10 @@
     line-height: 1.5;
     margin-bottom: 1rem;
 }
+
+.tag-cloud .tag-btn:focus, .tag-cloud .tag-btn:hover { background: var(--primary-color, #2B7A78); color: white; border-color: transparent; }
+
+.category-pill { padding:0.25rem 0.6rem; border-radius: 999px; background: #eef6f6; color: #0b3b3a; font-weight:600; }
 
 /* Read more styles now handled by post-cards.css */
 

@@ -66,12 +66,10 @@
     <div class="posts-grid" id="homepagePosts">
         {{- $posts := (where .Site.RegularPages "Section" "posts") }}
         {{- range $posts }}
-        <article class="post-card" data-category="{{ .Params.type | default .Section }}" data-tags="{{ delimit .Params.tags "," }}">
-            {{- if .Params.image }}
+        <article class="post-card" data-category="{{- with .Params.categories -}}{{ index . 0 }}{{ else }}{{ .Section }}{{ end }}" data-tags="{{ delimit .Params.tags "," }}">
             <div class="card-image">
-                <img src="{{ .Params.image }}" alt="{{ .Title }}" />
+                <img src="{{ .Params.image | default "/images/default-post.svg" }}" alt="{{ .Title }}" />
             </div>
-            {{- end }}
             <div class="card-meta">
                 <span class="category"><i class="fas fa-folder"></i> {{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
@@ -85,6 +83,9 @@
         </article>
         {{- end }}
     </div>
+    <div class="pagination-controls" style="text-align:center; margin-top:1rem;">
+        <button id="loadMoreBtn" class="load-more">Load more</button>
+    </div>
 </section>
 
 {{- /* Learning Paths Section */ -}}
@@ -94,19 +95,19 @@
     </div>
     <div class="path-grid">
         <div class="path-card">
-            <h4>Getting Started with Linux</h4>
+            <h4><a href="/posts/?category=Tutorials">Getting Started with Linux</a></h4>
             <p>Core tutorials for beginners to get comfortable with Linux.</p>
         </div>
         <div class="path-card">
-            <h4>Intermediate SysAdmin Skills</h4>
+            <h4><a href="/posts/?category=SysAdmin">Intermediate SysAdmin Skills</a></h4>
             <p>Build out your system admin toolkit and best practices.</p>
         </div>
         <div class="path-card">
-            <h4>Automation & DevOps</h4>
+            <h4><a href="/posts/?category=Automation">Automation & DevOps</a></h4>
             <p>Learn automation workflows, CI/CD, and containerization.</p>
         </div>
         <div class="path-card">
-            <h4>Linux for Developers</h4>
+            <h4><a href="/posts/?category=Development">Linux for Developers</a></h4>
             <p>Developer-focused guides, tools, and workflows for Linux.</p>
         </div>
     </div>
@@ -141,5 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
+<script src="/js/home-filters.js"></script>
+<script src="/js/home-pagination.js"></script>
 
 {{- end }}
