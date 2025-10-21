@@ -145,6 +145,14 @@
     transform: translateY(-4px);
     box-shadow: 0 6px 24px rgba(0,0,0,0.08);
 }
+.post-card.animate-in {
+    animation: fadeUp 300ms ease both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .card-image img { border-radius: 0; }
 .card-meta .category { text-transform: none; }
 

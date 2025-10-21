@@ -32,6 +32,7 @@
     function filterPosts(category, tag) {
       const lowerCategory = category ? category.toLowerCase() : null;
       const lowerTag = tag ? tag.toLowerCase() : null;
+      let delay = 0;
       posts.forEach(post => {
         const postCat = (post.dataset.category || '').toLowerCase();
         const postTags = (post.dataset.tags || '').toLowerCase();
@@ -44,6 +45,10 @@
         }
         if (show) {
           post.classList.remove('filtered-out');
+          // add animation class with slight stagger
+          setTimeout(() => { post.classList.add('animate-in'); }, delay);
+          setTimeout(() => { post.classList.remove('animate-in'); }, delay + 350);
+          delay += 35;
         } else {
           post.classList.add('filtered-out');
         }
