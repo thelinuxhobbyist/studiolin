@@ -80,6 +80,65 @@
     font-weight: 800;
 }
 
+/* Filters and Tag Cloud */
+.filters-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+.category-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+.category-tabs .tab {
+    border: 1px solid var(--border-color, #DEF2F1);
+    background: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.category-tabs .tab.active {
+    background: var(--primary-color, #2B7A78);
+    color: white;
+}
+.tag-cloud {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.tag-cloud .tag-btn {
+    background: transparent;
+    border: 1px solid var(--border-color, #DEF2F1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+/* Post card visuals */
+.post-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color, #eaf2f2);
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+.card-image img { border-radius: 0; }
+.card-meta .category { text-transform: none; }
+
+/* Learning paths section */
+.learning-paths { padding: 0 1rem 2rem; margin-bottom: 2rem; }
+.path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.path-card { background: #fff; border-radius: 8px; padding: 1rem; border: 1px solid var(--border-color, #eaf2f2); }
+
 .view-all {
     color: var(--studio-blue);
     text-decoration: none;

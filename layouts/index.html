@@ -51,10 +51,22 @@
     <div class="section-header">
         <h2>Latest Content</h2>
     </div>
-    <div class="posts-grid">
+    <div class="filters-row">
+        <div class="category-tabs" role="tablist" aria-label="Filter posts">
+            <button data-cat="all" class="tab active">All</button>
+            <button data-cat="Tutorials" class="tab">Tutorials</button>
+            <button data-cat="News" class="tab">News</button>
+            <button data-cat="Reviews" class="tab">Reviews</button>
+            <button data-cat="Opinion" class="tab">Opinion</button>
+        </div>
+        <div class="tag-cloud">
+            {{/* We'll populate tags JS side. */}}
+        </div>
+    </div>
+    <div class="posts-grid" id="homepagePosts">
         {{- $posts := (where .Site.RegularPages "Section" "posts") }}
         {{- range $posts }}
-        <article class="post-card">
+        <article class="post-card" data-category="{{ .Params.type | default .Section }}" data-tags="{{ delimit .Params.tags "," }}">
             {{- if .Params.image }}
             <div class="card-image">
                 <img src="{{ .Params.image }}" alt="{{ .Title }}" />
@@ -75,20 +87,28 @@
     </div>
 </section>
 
-{{- /* Popular Tools Section */ -}}
-<section class="popular-tools">
+{{- /* Learning Paths Section */ -}}
+<section class="learning-paths">
     <div class="section-header">
-        <h2>Popular Linux Tools</h2>
-        <a href="/tools/" class="view-all">Explore All Tools</a>
+        <h2>Learning Paths</h2>
     </div>
-    <div class="tools-grid">
-        {{- range first 6 site.Data.tools }}
-        <div class="tool-card">
-            <h4>{{ .name }}</h4>
-            <p class="tool-description">{{ .description }}</p>
-            <code class="tool-example">{{ .example }}</code>
+    <div class="path-grid">
+        <div class="path-card">
+            <h4>Getting Started with Linux</h4>
+            <p>Core tutorials for beginners to get comfortable with Linux.</p>
         </div>
-        {{- end }}
+        <div class="path-card">
+            <h4>Intermediate SysAdmin Skills</h4>
+            <p>Build out your system admin toolkit and best practices.</p>
+        </div>
+        <div class="path-card">
+            <h4>Automation & DevOps</h4>
+            <p>Learn automation workflows, CI/CD, and containerization.</p>
+        </div>
+        <div class="path-card">
+            <h4>Linux for Developers</h4>
+            <p>Developer-focused guides, tools, and workflows for Linux.</p>
+        </div>
     </div>
 </section>
 
