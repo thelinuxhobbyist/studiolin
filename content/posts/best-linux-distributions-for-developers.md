@@ -2,7 +2,7 @@
 title: "The Best Linux Distributions for Developers in 2025"
 date: 2024-10-12
 draft: false
-recommended: "trending"
+recommended: "editor"
 thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Development", "Distributions", "Programming"]
 categories: ["Reviews"]

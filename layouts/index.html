@@ -94,25 +94,16 @@
         <p>Hand-picked guides and posts for getting started and leveling up.</p>
     </div>
     <div class="path-grid recommended-grid">
-        {{- $trending := (where .Site.RegularPages "Params.views" "gt" 0) | sort "Params.views" "desc" | first 2 -}}
-        {{- $editor := where .Site.RegularPages "Params.recommended" "editor" | first 2 -}}
-        {{- $picks := union $trending $editor -}}
-        {{- range $picks -}}
+        {{- $editor := where .Site.RegularPages "Params.recommended" "editor" | first 4 -}}
+        {{- range $editor -}}
         <article class="path-card recommended-card">
             <div class="card-image">
                 <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ .Params.image | default "/images/default-post.svg" }}{{ end }}" alt="{{ .Title }}" />
             </div>
             <div class="card-body">
-                {{- $label := "⭐ Editor's Pick" -}}
-                {{- $labelClass := "editor" -}}
-                {{- if and (.Params.views) (not (eq .Params.recommended "editor")) -}}
-                    {{- $label = "🔥 Trending" -}}
-                    {{- $labelClass = "trending" -}}
-                {{- end -}}
-                <div class="label {{ $labelClass }}">{{ $label }}</div>
+                <div class="label editor">⭐ Editor's Pick</div>
                 <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
                 <p>{{ .Summary | plainify | truncate 120 }}</p>
-                {{- if .Params.views }}<div class="views"><i class="fas fa-eye"></i> {{ .Params.views }} views</div>{{- end }}
             </div>
         </article>
         {{- end -}}
@@ -149,6 +140,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Recommended Reads link behavior: default navigation to articles.
 });
+</script>
+
+<script>
+// Attempt to fetch live trending from serverless endpoint; if it succeeds, reorder recommended cards
+(function(){
+    async function fetchTrending() {
+        try {
+            const res = await fetch('/.netlify/functions/views');
+            if (!res.ok) throw new Error('no views');
+            const data = await res.json();
+            // data is array of {key, views}
+            // map keys (pathname) to counts and update DOM badges
+            const map = {};
+            data.forEach(d => { map[d.key.replace(/\/$/, '')] = d.views; });
+            // find recommended-card anchors and update views/badge
+            document.querySelectorAll('.recommended-card').forEach(card => {
+                const a = card.querySelector('h4 a');
+                if (!a) return;
+                const path = a.pathname.replace(/\/$/, '');
+                const views = map[path];
+                if (views) {
+                    // add/update views element
+                    let v = card.querySelector('.views');
+                    if (!v) {
+                        v = document.createElement('div'); v.className = 'views';
+                        card.querySelector('.card-body').appendChild(v);
+                    }
+                    v.innerHTML = `<i class="fas fa-eye"></i> ${views} views`;
+                    // optionally mark as trending
+                    const label = card.querySelector('.label');
+                    if (label) { label.classList.add('trending'); label.classList.remove('editor'); label.innerText = '🔥 Trending'; }
+                }
+            });
+        } catch (e) {
+            // no live trending available; rely on front-matter
+            console.debug('live trending unavailable', e);
+        }
+    }
+    // fetch in background
+    if (window.fetch) fetchTrending();
+})();
 </script>
 
 <script src="/js/home-filters.js"></script>
