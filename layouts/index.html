@@ -93,10 +93,10 @@
         <h2>Recommended Reads</h2>
         <p>Hand-picked guides and posts for getting started and leveling up.</p>
     </div>
-    <div class="path-grid">
-        {{- $trending := where .Site.RegularPages "Params.recommended" "trending" -}}
-        {{- $editor := where .Site.RegularPages "Params.recommended" "editor" -}}
-        {{- $picks := union $trending $editor | first 4 -}}
+    <div class="path-grid recommended-grid">
+        {{- $trending := (where .Site.RegularPages "Params.views" "gt" 0) | sort "Params.views" "desc" | first 2 -}}
+        {{- $editor := where .Site.RegularPages "Params.recommended" "editor" | first 2 -}}
+        {{- $picks := union $trending $editor -}}
         {{- range $picks -}}
         <article class="path-card recommended-card">
             <div class="card-image">
@@ -104,12 +104,15 @@
             </div>
             <div class="card-body">
                 {{- $label := "⭐ Editor's Pick" -}}
-                {{- if eq .Params.recommended "trending" -}}
+                {{- $labelClass := "editor" -}}
+                {{- if and (.Params.views) (not (eq .Params.recommended "editor")) -}}
                     {{- $label = "🔥 Trending" -}}
+                    {{- $labelClass = "trending" -}}
                 {{- end -}}
-                <div class="label {{ if eq .Params.recommended "trending" }}trending{{ else }}editor{{ end }}">{{ $label }}</div>
+                <div class="label {{ $labelClass }}">{{ $label }}</div>
                 <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
                 <p>{{ .Summary | plainify | truncate 120 }}</p>
+                {{- if .Params.views }}<div class="views"><i class="fas fa-eye"></i> {{ .Params.views }} views</div>{{- end }}
             </div>
         </article>
         {{- end -}}
