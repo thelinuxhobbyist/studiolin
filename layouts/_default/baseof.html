@@ -111,18 +111,19 @@
                 align-items: center;
             }
         }
-        /* Sticky header styles */
+        /* Sticky header styles: keep original blue gradient by default (defined in navigation.css)
+           and only apply a translucent/light backdrop when .sticky-shadow is added. */
         .main-header {
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 1000;
             backdrop-filter: blur(6px);
-            background: rgba(255,255,255,0.9);
+            background: transparent; /* let navigation.css define the default gradient */
             transition: box-shadow 0.2s ease, background 0.2s ease;
         }
         .main-header.sticky-shadow {
             box-shadow: var(--studio-shadow-md);
-            background: rgba(255,255,255,0.95);
+            background: linear-gradient(135deg, var(--studio-blue) 0%, var(--studio-blue-dark) 100%);
         }
     </style>
 </head>
