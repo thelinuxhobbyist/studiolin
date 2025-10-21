@@ -44,6 +44,10 @@
   /* Background Colors */
   --studio-bg-primary: #ffffff;
   --studio-bg-secondary: #f8fafc;
+  /* Card background to add visual separation */
+  --studio-card-bg: #f8f9fa; /* subtle off-white for cards */
+  /* Accent color for emphasis (orange) */
+  --studio-accent: #FFB300;
   --studio-bg-tertiary: #f1f5f9;
   --studio-bg-accent: #e2e8f0;
   
@@ -121,7 +125,7 @@ a:hover {
 
 /* Card Styling */
 .card {
-  background: var(--studio-bg-primary);
+  background: var(--studio-card-bg);
   border: 1px solid var(--studio-border-light);
   border-radius: 12px;
   box-shadow: var(--studio-shadow-sm);
