@@ -22,6 +22,11 @@
     line-height: 1.2;
 }
 
+/* Ensure hero title is white to match site theme and contrast with background */
+.hero-title, .hero-title a { color: #ffffff !important; }
+
+.hero-tagline { color: rgba(255,255,255,0.95); }
+
 .hero-tagline {
     font-size: 1.2rem;
     margin-bottom: 2rem;
