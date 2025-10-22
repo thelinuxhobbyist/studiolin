@@ -172,16 +172,12 @@
 .post-card[data-category="News"] .category { background: #fff8e6; color: #8a5200; border-color: #fff2cc; }
 .post-card[data-category="Reviews"] .category { background: #fff5f4; color: #7a2633; border-color: #ffdcd9; }
 .post-card[data-category="Opinion"] .category { background: #f3f7e8; color: #2d5a2d; border-color: #e7f0df; }
-.post-card[data-category="Tutorials"] .category::before { content: "📘"; }
-.post-card[data-category="News"] .category::before { content: "📰"; }
-.post-card[data-category="Reviews"] .category::before { content: "⭐"; }
-.post-card[data-category="Opinion"] .category::before { content: "💬"; }
-
-/* Category tab icons */
-.category-tabs .tab[data-cat="Tutorials"]::before { content: "📘"; }
-.category-tabs .tab[data-cat="News"]::before { content: "📰"; }
-.category-tabs .tab[data-cat="Reviews"]::before { content: "⭐"; }
-.category-tabs .tab[data-cat="Opinion"]::before { content: "💬"; }
+/* Category pseudo-element icons removed to keep pills icon-free */
+.post-card .category::before,
+.category-tabs .tab::before {
+    content: none !important;
+    display: none !important;
+}
 
 .category-tabs .tab:focus, .category-tabs .tab:hover { transform: translateY(-2px); outline: none; }
 .category-tabs .tab:focus { box-shadow: 0 0 0 3px rgba(43,122,120,0.12); }
