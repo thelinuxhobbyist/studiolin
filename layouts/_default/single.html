@@ -231,7 +231,8 @@
 
 .post-tags-footer h4 {
     margin-bottom: 1rem;
-    color: var(--studio-gray-900, #0f172a);
+    /* Make the "Tags:" label white for readability on darker themes */
+    color: #ffffff !important;
 }
 
 .tag-link {
@@ -244,6 +245,9 @@
     text-decoration: none;
     transition: all 0.2s ease;
 }
+
+/* Ensure tag links remain readable when the label is white by keeping their background */
+.post-tags-footer { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
 
 .tag-link:hover {
     background: var(--studio-blue, #2563eb);
@@ -352,7 +356,5 @@
     }
 }
 </style>
-
-{{/* view-counter removed - trending disabled; editor picks only */}}
 
 {{- end }}
