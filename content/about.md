@@ -1,32 +1,15 @@
 ---
-title: "About Studio{Linux}"
-description: "Learn about Studio{Linux}'s mission to provide modern Linux tutorials and promote open-source learning."
+title: "About StudioLinux"
+description: "StudioLinux is dedicated to exploring how Linux is transforming the world and making it accessible for everyone."
 ---
 
-# About Studio{Linux}
+# About StudioLinux
 
-Studio{Linux} provides clear, practical Linux tutorials for users of all skill levels.
+StudioLinux.com is dedicated to exploring how Linux is transforming the world — from governments and education to everyday computing.
 
-## Our Mission
+Our mission is to make Linux accessible and engaging for everyone, whether you’re a beginner taking your first steps into open-source software or an experienced user looking for deeper insights.
 
-We believe Linux knowledge should be accessible to everyone. Our goal is to:
+Through in-depth articles, the latest news, and practical tutorials, we aim to show how Linux empowers innovation, security, and freedom across the technology landscape.
 
-- Create clear, practical tutorials for beginners and advanced users
-- Promote open-source values and community learning
-- Bridge traditional Linux wisdom with modern best practices
-- Build a supportive community of Linux enthusiasts
+At StudioLinux, we believe that understanding Linux isn’t just about mastering an operating system — it’s about joining a global movement that values openness, collaboration, and progress.
 
-## What We Offer
-
-- **Step-by-step Tutorials**: From basic commands to advanced configurations
-- **Tool Guides**: Essential Linux utilities and how to use them
-- **Best Practices**: Modern approaches to Linux administration
-- **Community Content**: Insights from Linux users worldwide
-
-## Get Involved
-
-- **Browse**: [Tutorials](/tutorials/) and [Tools](/tools/)
-- **Connect**: Join our community discussions
-- **Contribute**: Share your Linux knowledge and experiences
-
-_Ready to learn Linux? Start with our [beginner tutorials](/tutorials/) or explore [essential tools](/tools/)._
