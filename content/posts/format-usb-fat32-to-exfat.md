@@ -10,14 +10,14 @@ categories: ["Tutorials"]
 description: "Step-by-step guide to formatting a USB drive from FAT32 to exFAT on Linux."
 ---
 
-> ⚠️ **Warning:** This process will erase **all data** on the USB drive.  
+> **Warning:** This process will erase **all data** on the USB drive.  
 > Make sure you **back up your files** before proceeding!
 
 Formatting a USB from FAT32 to exFAT is simple on Linux — just follow these steps carefully.
 
 ---
 
-## 🧭 Step 1: Identify Your USB Device
+## Step 1: Identify Your USB Device
 
 Run the following command to list all connected drives:
 
@@ -29,7 +29,7 @@ Look for your USB device in the output (for example `/dev/sdb` or `/dev/sdc`). P
 
 ---
 
-## 🔒 Step 2: Unmount the USB Drive
+## Step 2: Unmount the USB Drive
 
 If the USB is mounted, unmount it first (replace `/dev/sdX1` with the correct partition):
 
@@ -41,7 +41,7 @@ If there are multiple partitions, unmount each one.
 
 ---
 
-## 🧰 Step 3: Install exFAT Tools (if needed)
+## Step 3: Install exFAT Tools (if needed)
 
 Modern Linux distributions provide `exfatprogs` (recommended) or `exfat-utils`. Install the appropriate package for your distro:
 
@@ -68,7 +68,7 @@ If your distro doesn't have `exfatprogs`, `exfat-utils` or `exfat-fuse` are olde
 
 ---
 
-## 🧾 Step 4: Format the Drive to exFAT
+## Step 4: Format the Drive to exFAT
 
 You can create a new exFAT filesystem on the device (this will remove existing partitions/data). Replace `/dev/sdX1` with the correct partition (or `/dev/sdX` for entire device) and `MYLABEL` with an optional label.
 
@@ -82,7 +82,7 @@ To format the entire device (wipe partition table and create a single exFAT part
 
 ---
 
-## ✅ Step 5: Verify
+## Step 5: Verify
 
 After formatting, re-run `lsblk` or mount the drive to confirm the filesystem is exFAT and accessible:
 
