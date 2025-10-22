@@ -1,3 +1,4 @@
+````markdown
 ---
 title: "How to Format a USB from FAT32 to exFAT on Linux"
 date: 2025-10-22
@@ -6,7 +7,6 @@ recommended: ""
 views: 0
 thumbnail: "/images/default-post.svg"
 tags: ["usb", "exfat", "fat32", "linux", "storage"]
-categories: ["Tutorials"]
 description: "Step-by-step guide to formatting a USB drive from FAT32 to exFAT on Linux."
 ---
 
@@ -106,3 +106,5 @@ sudo umount /mnt
 ## Final notes
 
 Formatting to exFAT is useful when you need compatibility with Windows and macOS for large files (>4GB) while keeping simple cross-platform usage. Always backup important data before formatting.
+
+````
