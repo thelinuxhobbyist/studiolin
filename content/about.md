@@ -1,6 +1,8 @@
 ---
 title: "About StudioLinux"
 description: "StudioLinux is dedicated to exploring how Linux is transforming the world and making it accessible for everyone."
+date: 2025-10-22
+lastmod: 2025-10-22
 ---
 
 # About StudioLinux
