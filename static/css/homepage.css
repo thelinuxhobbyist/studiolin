@@ -465,7 +465,25 @@
 
 @media (max-width: 600px) {
     .path-grid { grid-template-columns: 1fr; }
-    .recommended-card { flex-direction: row; }
+    /* On small screens, stack recommended cards vertically for readability */
+    .recommended-card { 
+        flex-direction: column; 
+        min-height: auto; /* let content determine height */
+    }
+    .recommended-card .card-image {
+        height: 140px; /* slightly larger touch-friendly image */
+    }
+    .recommended-card .card-body {
+        padding: 1rem; /* reduce padding for mobile */
+    }
+    .recommended-card .card-footer {
+        padding: 0.75rem 1rem;
+        display: flex;
+        gap: 0.6rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .recommended-card .card-image img { object-position: center; }
 }
 .tool-card h4 {
     font-size: 1.2rem;
