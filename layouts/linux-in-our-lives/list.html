@@ -1,0 +1,69 @@
+{{- define "main" }}
+
+<section class="blog-hero">
+	<h1 class="blog-hero-title">{{ .Title }}</h1>
+	<p class="blog-hero-desc">{{ .Params.description | default "Explore how Linux impacts the world—from infrastructure to personal freedom—through insightful articles and stories." }}</p>
+</section>
+<div class="blog-list">
+{{- range .Pages }}
+	<a href="{{ .RelPermalink }}" class="blog-card">
+		<div class="blog-card-content">
+			<h2 class="blog-card-title">{{ .Title }}</h2>
+			<div class="blog-card-date">{{ .Date.Format "January 2, 2006" }}</div>
+			<div class="blog-card-summary">{{ .Summary | plainify }}</div>
+		</div>
+	</a>
+{{- end }}
+</div>
+<style>
+.blog-hero {
+	max-width: 800px;
+	margin: 3rem auto 2rem auto;
+	text-align: center;
+}
+.blog-hero-title {
+	font-size: 2.3rem;
+	margin-bottom: 0.5rem;
+}
+.blog-hero-desc {
+	font-size: 1.15rem;
+	color: #555;
+	margin-bottom: 2rem;
+}
+.blog-list {
+	max-width: 800px;
+	margin: 0 auto;
+	padding-bottom: 3rem;
+}
+.blog-card {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	margin-bottom: 2rem;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+	transition: box-shadow 0.2s;
+}
+.blog-card:hover {
+	box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+.blog-card-content {
+	padding: 2rem;
+}
+.blog-card-title {
+	font-size: 1.5rem;
+	margin: 0 0 0.5rem 0;
+}
+.blog-card-date {
+	color: #888;
+	font-size: 0.95rem;
+	margin-bottom: 1rem;
+}
+.blog-card-summary {
+	color: #333;
+	font-size: 1.08rem;
+}
+</style>
+{{- end }}
