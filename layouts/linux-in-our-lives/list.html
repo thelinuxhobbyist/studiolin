@@ -1,6 +1,6 @@
 {{- define "main" }}
 
-<section class="blog-hero">
+<section class="blog-hero hero-bg-full">
 	<h1 class="blog-hero-title">{{ .Title }}</h1>
 	<p class="blog-hero-desc">{{ .Params.description | default "Explore how Linux impacts the world—from infrastructure to personal freedom—through insightful articles and stories." }}</p>
 </section>
@@ -16,18 +16,27 @@
 {{- end }}
 </div>
 <style>
-.blog-hero {
-	max-width: 800px;
-	margin: 3rem auto 2rem auto;
+.hero-bg-full {
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+	color: #fff;
+	padding: 3rem 2rem 2.5rem 2rem;
+	margin-bottom: 2rem;
 	text-align: center;
 }
 .blog-hero-title {
 	font-size: 2.3rem;
 	margin-bottom: 0.5rem;
+	color: #fff !important;
 }
 .blog-hero-desc {
 	font-size: 1.15rem;
-	color: #555;
+	color: #fff !important;
 	margin-bottom: 2rem;
 }
 .blog-list {
@@ -48,6 +57,7 @@
 }
 .blog-card:hover {
 	box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+	text-decoration: none;
 }
 .blog-card-content {
 	padding: 2rem;
