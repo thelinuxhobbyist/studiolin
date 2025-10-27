@@ -1,0 +1,234 @@
+{{- define "main" }}
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>{{ .Title }}</h1>
+    <p class="hero-subtitle">{{ .Params.hero_subtitle | default "The invisible engine powering your phone, your bank, your education, and the internet itself." }}</p>
+    <div class="hero-visual">
+      <!-- Simplified SVG illustration of globe with connections -->
+      <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="150" r="100" stroke="#2563eb" stroke-width="2" fill="none"/>
+        <circle cx="200" cy="150" r="80" stroke="#2563eb" stroke-width="1" fill="none"/>
+        <path d="M200 50 L200 250" stroke="#2563eb" stroke-width="1"/>
+        <path d="M100 150 L300 150" stroke="#2563eb" stroke-width="1"/>
+        <!-- Server icon -->
+        <rect x="180" y="130" width="20" height="10" fill="#2563eb"/>
+        <rect x="185" y="125" width="10" height="5" fill="#2563eb"/>
+        <!-- Satellite -->
+        <circle cx="250" cy="80" r="10" fill="#2563eb"/>
+        <line x1="240" y1="80" x2="260" y2="80" stroke="#2563eb" stroke-width="2"/>
+        <!-- Phone -->
+        <rect x="150" y="200" width="15" height="25" fill="#2563eb"/>
+        <rect x="152" y="202" width="11" height="18" fill="white"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- The Invisible Backbone -->
+<section class="backbone-section">
+  <div class="container">
+    <h2>The World Runs on Linux</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">90%+</div>
+        <p>Of all Cloud Infrastructure.</p>
+        <i class="fas fa-cloud"></i>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">ALL</div>
+        <p>Of the World's Top 500 Supercomputers.</p>
+        <i class="fas fa-server"></i>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">~80%</div>
+        <p>Of all Mobile Device Kernels (via Android).</p>
+        <i class="fas fa-mobile-alt"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Global Adoption -->
+<section class="adoption-section">
+  <div class="container">
+    <div class="adoption-grid">
+      <div class="adoption-column">
+        <h3>Empowering the Next Generation</h3>
+        <p>Highlights of major educational systems (e.g., Kerala, India, or European countries) that have moved millions of students to Linux desktops for cost, security, and digital literacy.</p>
+      </div>
+      <div class="adoption-column">
+        <h3>Sovereignty and Security</h3>
+        <p>Highlights of cities or agencies (e.g., Munich, French Gendarmerie) using Linux to gain digital autonomy and enhance system security.</p>
+        <a href="/posts/?category=government-education" class="cta-link">Filter Articles for Government & Education</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Personal Freedom -->
+<section class="freedom-section">
+  <div class="container">
+    <h2>Linux is a Choice. Open Source is a Philosophy.</h2>
+    <p>A brief paragraph celebrating the user control, collaboration, and customization that defines the Linux universe.</p>
+    <a href="/tutorials/" class="cta-button">Start Your Linux Journey</a>
+  </div>
+</section>
+
+<style>
+.hero-section {
+  background: linear-gradient(135deg, var(--studio-blue, #2563eb) 0%, var(--studio-blue-dark, #1d4ed8) 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-visual {
+  margin-top: 2rem;
+}
+
+.backbone-section {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.backbone-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--studio-gray-900, #0f172a);
+  margin-bottom: 3rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid var(--studio-border-light, #e2e8f0);
+  border-radius: 12px;
+  background: var(--studio-gray-50, #f8fafc);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--studio-blue, #2563eb);
+  margin-bottom: 1rem;
+}
+
+.stat-card p {
+  font-size: 1.1rem;
+  color: var(--studio-gray-700, #334155);
+}
+
+.stat-card i {
+  font-size: 2rem;
+  color: var(--studio-blue, #2563eb);
+  margin-top: 1rem;
+}
+
+.adoption-section {
+  padding: 4rem 2rem;
+  background: var(--studio-gray-100, #f1f5f9);
+}
+
+.adoption-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.adoption-column h3 {
+  font-size: 2rem;
+  color: var(--studio-gray-900, #0f172a);
+  margin-bottom: 1rem;
+}
+
+.adoption-column p {
+  font-size: 1.1rem;
+  color: var(--studio-gray-700, #334155);
+  line-height: 1.6;
+}
+
+.cta-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--studio-blue, #2563eb);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.cta-link:hover {
+  border-bottom-color: var(--studio-blue, #2563eb);
+}
+
+.freedom-section {
+  padding: 4rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.freedom-section h2 {
+  font-size: 2.5rem;
+  color: var(--studio-gray-900, #0f172a);
+  margin-bottom: 2rem;
+}
+
+.freedom-section p {
+  font-size: 1.2rem;
+  color: var(--studio-gray-700, #334155);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--studio-blue, #2563eb);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background: var(--studio-blue-dark, #1d4ed8);
+}
+
+@media (max-width: 768px) {
+  .adoption-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+</style>
+
+{{- end }}
