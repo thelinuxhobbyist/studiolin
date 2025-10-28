@@ -2,6 +2,7 @@
 title: "Linux in the Cloud Era"
 date: 2025-10-23
 description: "Exploring Linux's dominance in cloud computing and infrastructure."
+sector: "business"
 ---
 
 As cloud computing continues to reshape the tech landscape, Linux remains at the forefront, powering the majority of cloud infrastructure worldwide.

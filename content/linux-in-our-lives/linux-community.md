@@ -2,6 +2,7 @@
 title: "Community and Collaboration in Linux"
 date: 2025-10-22
 description: "The heart of Linux: its vibrant community and collaborative spirit."
+sector: "community"
 ---
 
 What sets Linux apart from other operating systems is not just its technical excellence, but the incredible community that supports and develops it.

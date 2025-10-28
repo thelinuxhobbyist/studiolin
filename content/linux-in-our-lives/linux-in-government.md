@@ -2,6 +2,7 @@
 title: "The Rise of Linux in Government"
 date: 2025-10-26
 description: "How governments worldwide are adopting Linux for security, sovereignty, and cost savings."
+sector: "government"
 ---
 
 Governments around the world are increasingly turning to Linux for their IT infrastructure. This shift is driven by the need for greater digital sovereignty, enhanced security, and significant cost reductions.

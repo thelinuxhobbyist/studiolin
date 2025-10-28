@@ -2,6 +2,7 @@
 title: "Linux for Beginners: Getting Started"
 date: 2025-10-25
 description: "A comprehensive guide for newcomers to the Linux world."
+sector: "personal"
 ---
 
 If you're new to Linux, this guide will help you get started on your journey. Linux is a powerful, flexible operating system that powers everything from smartphones to supercomputers.

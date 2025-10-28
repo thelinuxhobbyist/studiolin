@@ -2,6 +2,7 @@
 title: "The Economic Impact of Linux"
 date: 2025-10-24
 description: "How Linux drives innovation and saves costs across industries."
+sector: "business"
 ---
 
 Linux's open-source nature has created a ripple effect throughout the global economy, fostering innovation and reducing costs in ways that benefit everyone.

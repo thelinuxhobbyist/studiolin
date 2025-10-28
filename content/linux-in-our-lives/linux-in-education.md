@@ -5,6 +5,7 @@ date: 2025-10-28
 author: "Alex Green"
 excerpt: "Discover how Linux is transforming classrooms, empowering students, and shaping the future of education."
 featured_image: "/images/linux-education.jpg"
+sector: "education"
 ---
 
 ## Introduction
