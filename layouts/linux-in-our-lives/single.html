@@ -1,59 +1,56 @@
 {{- define "main" }}
+<link rel="stylesheet" href="/css/blog-article.css">
 
 
-</style>
+<!-- Cleaned up: removed duplicate </style> tags -->
+{{/* Hero section for article page */}}
 <section class="blog-hero hero-bg-full">
 	<h1 class="blog-hero-title">{{ .Title }}</h1>
-	<div class="blog-hero-date">{{ .Date.Format "January 2, 2006" }}</div>
+	{{ with .Params.excerpt }}<p class="blog-hero-excerpt">{{ . }}</p>{{ end }}
+	<div class="blog-hero-meta">
+		{{ with .Params.author }}<span class="blog-hero-author">{{ . }}</span> • {{ end }}
+		<span class="blog-hero-date">{{ .Date.Format "January 2, 2006" }}</span> •
+		<span class="blog-hero-read">{{ .WordCount | div 200 | add 1 }} min read</span>
+	</div>
 </section>
-<div class="blog-single-content">
-	{{ .Content | safeHTML }}
-	<div><a href="/linux-in-our-lives/" class="blog-single-back">← Back to Linux in Our Lives</a></div>
+<div class="blog-article-wrap">
+	{{ with .Params.featured_image }}<img src="{{ . }}" alt="Featured image" class="blog-hero-image" />{{ end }}
+	<div class="blog-article-content">
+		{{ .Content | safeHTML }}
+	</div>
+	<hr class="blog-divider" />
+	<div class="blog-author-share">
+		<div class="blog-author-card">
+			<img src="/images/avatar.png" alt="Author avatar" class="author-avatar" />
+			<div>
+				<div class="author-name">Written by {{ .Params.author | default "Alex Green" }}</div>
+				<div class="author-bio">Open-source advocate and tech writer</div>
+				<a href="/linux-in-our-lives/" class="author-link">More articles</a>
+			</div>
+		</div>
+		<div class="blog-share">
+			<span>Share:</span>
+			<a href="#" class="share-btn">Twitter</a>
+			<a href="#" class="share-btn">LinkedIn</a>
+			<a href="#" class="share-btn">Reddit</a>
+		</div>
+	</div>
+	<div class="blog-related">
+		<h3>Continue Reading:</h3>
+		<div class="related-list">
+			{{ range first 3 (where .Site.RegularPages "Section" "linux-in-our-lives") }}
+				{{ if ne .Title $.Title }}
+				<a href="{{ .RelPermalink }}" class="related-card">
+					{{ with .Params.featured_image }}<img src="{{ . }}" alt="Related image" class="related-thumb" />{{ end }}
+					<span>{{ .Title }}</span>
+				</a>
+				{{ end }}
+			{{ end }}
+		</div>
+	</div>
+	<div class="blog-article-back">
+		<a href="/linux-in-our-lives/" class="blog-single-back">← Back to Linux in Our Lives</a>
+	</div>
 </div>
-<style>
-.hero-bg-full {
-	width: 100vw;
-	position: relative;
-	left: 50%;
-	right: 50%;
-	margin-left: -50vw;
-	margin-right: -50vw;
-	background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-	color: #fff;
-	padding: 3rem 2rem 2.5rem 2rem;
-	margin-bottom: 2rem;
-	text-align: center;
-}
-.blog-hero-title {
-	font-size: 2.3rem;
-	margin-bottom: 0.5rem;
-	color: #fff !important;
-}
-.blog-hero-date {
-	color: #fff !important;
-	font-size: 1rem;
-	margin-bottom: 1.5rem;
-}
-.blog-single-content {
-	max-width: 800px;
-	margin: 0 auto 2rem auto;
-	color: #333;
-	font-size: 1.08rem;
-	line-height: 1.7;
-	margin-bottom: 2rem;
-}
-.blog-single-back {
-	display: inline-block;
-	color: #2563eb;
-	text-decoration: none;
-	font-weight: 600;
-	border-bottom: 1px solid transparent;
-	transition: border-color 0.3s;
-}
-.blog-single-back:hover {
-	border-bottom-color: #2563eb;
-}
-</style>
-</style>
 
 {{- end }}
