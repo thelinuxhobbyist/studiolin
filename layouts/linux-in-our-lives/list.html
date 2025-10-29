@@ -22,17 +22,29 @@
 
 {{- range $sectorKey, $sectorName := $sectors }}
 <section class="sector-section" id="sector-{{ $sectorKey }}" data-sector="{{ $sectorKey }}">
-	<h2 class="sector-title">{{ $sectorName }}</h2>
-	<div class="blog-list">
+	<div class="sector-header">
+		<h2 class="sector-title">{{ $sectorName }}</h2>
+		<a href="/linux-in-our-lives/{{ $sectorKey }}/" class="view-all-btn">View All →</a>
+	</div>
+	<div class="blog-list" data-sector-list="{{ $sectorKey }}">
+		{{- $posts := where $.Pages "Params.sector" $sectorKey }}
 		{{- $hasPosts := false }}
-		{{- range $.Pages }}
-			{{- if eq .Params.sector $sectorKey }}
+		{{- range $index, $post := $posts }}
+			{{- if lt $index 6 }}
 				{{- $hasPosts = true }}
-				<a href="{{ .RelPermalink }}" class="blog-card" data-sector="{{ .Params.sector }}">
+				<a href="{{ $post.RelPermalink }}" class="blog-card" data-sector="{{ $post.Params.sector }}">
 					<div class="blog-card-content">
-						<h3 class="blog-card-title">{{ .Title }}</h3>
-						<div class="blog-card-date">{{ .Date.Format "January 2, 2006" }}</div>
-						<div class="blog-card-summary">{{ with .Params.excerpt }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}</div>
+						<h3 class="blog-card-title">{{ $post.Title }}</h3>
+						<div class="blog-card-date">{{ $post.Date.Format "January 2, 2006" }}</div>
+						<div class="blog-card-summary">{{ with $post.Params.excerpt }}{{ . }}{{ else }}{{ $post.Summary | plainify }}{{ end }}</div>
+					</div>
+				</a>
+			{{- else }}
+				<a href="{{ $post.RelPermalink }}" class="blog-card hidden-card" data-sector="{{ $post.Params.sector }}" style="display: none;">
+					<div class="blog-card-content">
+						<h3 class="blog-card-title">{{ $post.Title }}</h3>
+						<div class="blog-card-date">{{ $post.Date.Format "January 2, 2006" }}</div>
+						<div class="blog-card-summary">{{ with $post.Params.excerpt }}{{ . }}{{ else }}{{ $post.Summary | plainify }}{{ end }}</div>
 					</div>
 				</a>
 			{{- end }}
@@ -41,6 +53,11 @@
 			<p class="no-posts">No articles in this sector yet. Check back soon!</p>
 		{{- end }}
 	</div>
+	{{- if gt (len $posts) 6 }}
+	<div class="load-more-container">
+		<button class="load-more-btn" data-sector="{{ $sectorKey }}">Load More ({{ sub (len $posts) 6 }} more)</button>
+	</div>
+	{{- end }}
 </section>
 {{- end }}
 <style>
@@ -114,13 +131,56 @@
 .sector-section.hidden {
 	display: none;
 }
+.sector-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
 .sector-title {
 	font-size: 1.8rem;
 	font-weight: 700;
 	color: #1e293b;
-	margin-bottom: 1.5rem;
 	padding-bottom: 0.5rem;
 	border-bottom: 3px solid #2563eb;
+	margin: 0;
+}
+.view-all-btn {
+	background: #2563eb;
+	color: #fff;
+	padding: 0.6rem 1.2rem;
+	border-radius: 6px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+	transition: background 0.2s;
+	white-space: nowrap;
+}
+.view-all-btn:hover {
+	background: #1d4ed8;
+	text-decoration: none;
+}
+.load-more-container {
+	text-align: center;
+	margin-top: 2rem;
+}
+.load-more-btn {
+	background: #fff;
+	border: 2px solid #2563eb;
+	color: #2563eb;
+	padding: 0.8rem 2rem;
+	border-radius: 6px;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.load-more-btn:hover {
+	background: #2563eb;
+	color: #fff;
+}
+.load-more-btn.hidden {
+	display: none;
 }
 .blog-list {
 	display: grid;

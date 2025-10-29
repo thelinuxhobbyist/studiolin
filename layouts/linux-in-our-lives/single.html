@@ -36,12 +36,16 @@
 		</div>
 	</div>
 	<div class="blog-related">
-		<h3>Continue Reading:</h3>
+		<h3>Continue Reading</h3>
 		<div class="related-list">
 			{{ range first 3 (where .Site.RegularPages "Section" "linux-in-our-lives") }}
 				{{ if ne .Title $.Title }}
 				<a href="{{ .RelPermalink }}" class="related-card">
-					{{ with .Params.featured_image }}<img src="{{ . }}" alt="Related image" class="related-thumb" />{{ end }}
+					{{ with .Params.featured_image }}
+						<img src="{{ . }}" alt="{{ $.Title }}" class="related-thumb" />
+					{{ else }}
+						<div class="related-thumb"></div>
+					{{ end }}
 					<span>{{ .Title }}</span>
 				</a>
 				{{ end }}

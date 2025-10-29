@@ -1,0 +1,250 @@
+{{- define "main" }}
+
+<section class="blog-hero hero-bg-full">
+	<h1 class="blog-hero-title">{{ .Params.sectorName }}</h1>
+	<p class="blog-hero-desc">{{ .Params.description }}</p>
+</section>
+
+<div class="view-all-container">
+	<div class="view-all-controls">
+		<div class="breadcrumb-nav">
+			<a href="/linux-in-our-lives/">← Back to All Sectors</a>
+		</div>
+		<div class="sort-controls">
+			<label for="sort-select">Sort by:</label>
+			<select id="sort-select" class="sort-dropdown">
+				<option value="recent">Most Recent</option>
+				<option value="oldest">Oldest First</option>
+				<option value="title-asc">Title (A-Z)</option>
+				<option value="title-desc">Title (Z-A)</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="articles-grid" id="articles-grid">
+		{{- $sector := .Params.sector }}
+		{{- $allPosts := where .Site.RegularPages "Section" "linux-in-our-lives" }}
+		{{- $sectorPosts := where $allPosts "Params.sector" $sector }}
+		
+		{{- if eq (len $sectorPosts) 0 }}
+			<p class="no-articles">No articles found in this sector yet. Check back soon!</p>
+		{{- else }}
+			{{- range $sectorPosts }}
+			<article class="article-card" data-date="{{ .Date.Unix }}" data-title="{{ .Title }}">
+				<a href="{{ .RelPermalink }}" class="article-card-link">
+					{{ with .Params.featured_image }}
+						<img src="{{ . }}" alt="{{ $.Title }}" class="article-card-image" />
+					{{ else }}
+						<div class="article-card-image placeholder"></div>
+					{{ end }}
+					<div class="article-card-content">
+						<h3 class="article-card-title">{{ .Title }}</h3>
+						<div class="article-card-meta">
+							<span class="article-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+							{{ with .Params.author }}
+								<span class="article-author">• {{ . }}</span>
+							{{ end }}
+						</div>
+						<p class="article-card-excerpt">{{ with .Params.excerpt }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 150 }}{{ end }}</p>
+					</div>
+				</a>
+			</article>
+			{{- end }}
+		{{- end }}
+	</div>
+
+	<div class="article-count">
+		Showing <span id="article-count">{{ len $sectorPosts }}</span> article{{ if ne (len $sectorPosts) 1 }}s{{ end }}
+	</div>
+</div>
+
+<style>
+.hero-bg-full {
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+	color: #fff;
+	padding: 3rem 2rem 2.5rem 2rem;
+	margin-bottom: 3rem;
+	text-align: center;
+}
+.blog-hero-title {
+	font-size: 2.3rem;
+	margin-bottom: 0.5rem;
+	color: #fff !important;
+}
+.blog-hero-desc {
+	font-size: 1.15rem;
+	color: #fff !important;
+}
+.view-all-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem 3rem 1rem;
+}
+.view-all-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.breadcrumb-nav a {
+	color: #2563eb;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1rem;
+}
+.breadcrumb-nav a:hover {
+	text-decoration: underline;
+}
+.sort-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.sort-controls label {
+	font-weight: 600;
+	color: #475569;
+}
+.sort-dropdown {
+	padding: 0.5rem 1rem;
+	border: 2px solid #e2e8f0;
+	border-radius: 6px;
+	background: #fff;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: #475569;
+	cursor: pointer;
+	transition: border-color 0.2s;
+}
+.sort-dropdown:hover, .sort-dropdown:focus {
+	border-color: #2563eb;
+	outline: none;
+}
+.articles-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 2rem;
+	margin-bottom: 2rem;
+}
+.article-card {
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: all 0.2s;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.article-card:hover {
+	box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+	transform: translateY(-3px);
+	border-color: #2563eb;
+}
+.article-card-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+.article-card-image {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	display: block;
+}
+.article-card-image.placeholder {
+	background: linear-gradient(135deg, #f6f8fa 0%, #e2e8f0 100%);
+}
+.article-card-content {
+	padding: 1.5rem;
+}
+.article-card-title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #1e293b;
+	margin-bottom: 0.5rem;
+	line-height: 1.3;
+}
+.article-card-meta {
+	font-size: 0.9rem;
+	color: #64748b;
+	margin-bottom: 0.8rem;
+}
+.article-card-excerpt {
+	font-size: 0.95rem;
+	color: #475569;
+	line-height: 1.6;
+	margin: 0;
+}
+.no-articles {
+	text-align: center;
+	color: #64748b;
+	font-size: 1.1rem;
+	padding: 3rem;
+	font-style: italic;
+}
+.article-count {
+	text-align: center;
+	color: #64748b;
+	font-size: 0.95rem;
+	padding: 1rem;
+	border-top: 1px solid #e2e8f0;
+}
+@media (max-width: 768px) {
+	.articles-grid {
+		grid-template-columns: 1fr;
+	}
+	.view-all-controls {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const sortSelect = document.getElementById('sort-select');
+	const articlesGrid = document.getElementById('articles-grid');
+	const articleCards = Array.from(articlesGrid.querySelectorAll('.article-card'));
+	
+	sortSelect.addEventListener('change', function() {
+		const sortType = this.value;
+		let sortedCards = [...articleCards];
+		
+		switch(sortType) {
+			case 'recent':
+				sortedCards.sort((a, b) => {
+					return parseInt(b.dataset.date) - parseInt(a.dataset.date);
+				});
+				break;
+			case 'oldest':
+				sortedCards.sort((a, b) => {
+					return parseInt(a.dataset.date) - parseInt(b.dataset.date);
+				});
+				break;
+			case 'title-asc':
+				sortedCards.sort((a, b) => {
+					return a.dataset.title.localeCompare(b.dataset.title);
+				});
+				break;
+			case 'title-desc':
+				sortedCards.sort((a, b) => {
+					return b.dataset.title.localeCompare(a.dataset.title);
+				});
+				break;
+		}
+		
+		// Re-append cards in new order
+		sortedCards.forEach(card => {
+			articlesGrid.appendChild(card);
+		});
+	});
+});
+</script>
+
+{{- end }}
