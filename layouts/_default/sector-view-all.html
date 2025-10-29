@@ -24,6 +24,7 @@
 	<div class="articles-grid" id="articles-grid">
 		{{- $sector := .Params.sector }}
 		{{- $allPosts := where .Site.RegularPages "Section" "linux-in-our-lives" }}
+		{{- $allPosts = where $allPosts "Kind" "page" }}
 		{{- $sectorPosts := where $allPosts "Params.sector" $sector }}
 		
 		{{- if eq (len $sectorPosts) 0 }}

@@ -28,6 +28,7 @@
 	</div>
 	<div class="blog-list" data-sector-list="{{ $sectorKey }}">
 		{{- $posts := where $.Pages "Params.sector" $sectorKey }}
+		{{- $posts = where $posts "Kind" "page" }}
 		{{- $hasPosts := false }}
 		{{- range $index, $post := $posts }}
 			{{- if lt $index 6 }}
