@@ -147,13 +147,10 @@
   align-items: center;
 }
 .share-btn {
-  color: #fff;
   background: #2563eb;
   border-radius: 6px;
   padding: 0.45rem 0.9rem;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
   transition: background 0.15s, transform 0.15s;
 }
 .share-btn:hover {
