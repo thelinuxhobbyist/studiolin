@@ -15,24 +15,31 @@
 </section>
 <div class="blog-article-wrap">
 	{{ with .Params.featured_image }}<img src="{{ . }}" alt="Featured image" class="blog-hero-image" />{{ end }}
-	<div class="blog-article-content">
-		{{ .Content | safeHTML }}
-	</div>
-	<hr class="blog-divider" />
-	<div class="blog-author-share">
-		<div class="blog-author-card">
-			<img src="/images/avatar.png" alt="Author avatar" class="author-avatar" />
-			<div>
-				<div class="author-name">Written by {{ .Params.author | default "Alex Green" }}</div>
-				<div class="author-bio">Open-source advocate and tech writer</div>
-				<a href="/linux-in-our-lives/" class="author-link">More articles</a>
-			</div>
+	<div style="position:relative;">
+		<div class="share-floating" aria-hidden="true">
+			<a class="share-btn small" href="https://twitter.com/intent/tweet?text={{ urlquery .Title }}&amp;url={{ .Permalink }}" target="_blank" rel="noopener" aria-label="Share on Twitter">T</a>
+			<a class="share-btn small" href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">in</a>
+			<a class="share-btn small" href="https://www.reddit.com/submit?url={{ .Permalink }}&amp;title={{ urlquery .Title }}" target="_blank" rel="noopener" aria-label="Share on Reddit">R</a>
 		</div>
-		<div class="blog-share">
-			<span>Share:</span>
-			<a href="#" class="share-btn">Twitter</a>
-			<a href="#" class="share-btn">LinkedIn</a>
-			<a href="#" class="share-btn">Reddit</a>
+
+		<div class="blog-article-content">
+			{{ .Content | safeHTML }}
+		</div>
+
+		<hr class="blog-divider" />
+
+		<div class="blog-author-share">
+			<div class="blog-author-card">
+				<img src="/images/avatar.png" alt="Author avatar" class="author-avatar" />
+				<div class="author-meta">
+					<div class="author-name">{{ .Params.author | default "Alex Green" }}</div>
+					<div class="author-bio">Open-source advocate and tech writer — I write about Linux, open-source tools, and practical tips for curious developers.</div>
+					<a href="/linux-in-our-lives/" class="author-link">More articles</a>
+				</div>
+			</div>
+			<div class="blog-share" role="group" aria-label="Share article">
+				<a class="share-btn" href="https://twitter.com/intent/tweet?text={{ urlquery .Title }}&amp;url={{ .Permalink }}" target="_blank" rel="noopener">Share</a>
+			</div>
 		</div>
 	</div>
 	<div class="blog-related">
