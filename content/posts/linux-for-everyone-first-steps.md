@@ -1,6 +1,6 @@
 ---
 title: "Linux for Everyone: Your First Steps into a World of Choice"
-date: 2025-11-01
+date: 2025-10-27
 author: "Alex Green"
 sector: "education"
 excerpt: "New to Linux? Discover what makes this powerful operating system special, how it's used everywhere from smartphones to supercomputers, and why it might be perfect for your next computing adventure."
