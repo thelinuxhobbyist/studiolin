@@ -17,7 +17,8 @@
 </section>
 
 {{- /* Featured Article Section */ -}}
-{{- $featured := first 1 (where .Site.RegularPages "Section" "posts") }}
+{{- $now := now }}
+{{- $featured := first 1 (where (where .Site.RegularPages "Section" "posts") "Date" "le" $now).ByDate.Reverse }}
 {{- if gt (len $featured) 0 }}
 {{- range $featured }}
 <section class="featured-article">
@@ -64,8 +65,10 @@
         </div>
     </div>
     <div class="posts-grid" id="homepagePosts">
-        {{- $posts := (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
-        {{- range $posts }}
+        {{- $now := now }}
+        {{- $posts := where (where .Site.RegularPages "Section" "posts") "Date" "le" $now }}
+        {{- $sortedPosts := $posts.ByDate.Reverse }}
+        {{- range $sortedPosts }}
         <article class="post-card" data-category="{{- with .Params.categories -}}{{ index . 0 }}{{ else }}{{ .Section }}{{ end }}" data-tags="{{ delimit .Params.tags "," }}">
             <div class="card-image">
                 <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ .Params.image | default "/images/default-post.svg" }}{{ end }}" alt="{{ .Title }}" />
