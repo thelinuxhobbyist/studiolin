@@ -6,7 +6,7 @@ recommended: "editor"
 views: 1200
 thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Beginners", "Tutorial"]
-categories: ["Tutorials"]
+categories: ["Personal Computing", "Education"]
 description: "Everything you need to know to get started with Linux as a complete beginner"
 ---
 

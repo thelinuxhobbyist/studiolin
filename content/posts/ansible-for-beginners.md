@@ -5,7 +5,7 @@ draft: false
 recommended: "editor"
 thumbnail: "/images/default-post.svg"
 tags: ["Ansible", "Automation", "DevOps", "Beginners", "Linux"]
-categories: ["Tutorials"]
+categories: ["Education", "Business & Enterprise"]
 description: "A super simple guide to Ansible automation for complete beginners, explained like you're five years old"
 ---
 

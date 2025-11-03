@@ -2,7 +2,7 @@
 title: "Why Linux is the Go-To OS for Cybersecurity Professionals"
 date: 2025-10-12
 author: "Alex Green"
-sector: "business"
+categories: ["Business & Enterprise"]
 excerpt: "Discover why cybersecurity professionals overwhelmingly choose Linux as their operating system of choice, from its robust security features to its powerful ecosystem of specialized tools."
 tags:
   [

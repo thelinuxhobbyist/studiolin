@@ -6,7 +6,7 @@ recommended: ""
 views: 0
 thumbnail: "/images/default-post.svg"
 tags: ["virtualization", "QEMU", "KVM", "Linux"]
-categories: ["Tutorials"]
+categories: ["Education", "Personal Computing"]
 description: "A simple car analogy to explain how QEMU and KVM work together for virtualization on Linux."
 ---
 

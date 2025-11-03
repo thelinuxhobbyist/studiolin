@@ -5,7 +5,7 @@ draft: false
 recommended: "editor"
 thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Terminal", "Productivity", "Commands"]
-categories: ["Tips & Tricks"]
+categories: ["Personal Computing", "Education"]
 description: "Master these powerful terminal commands to boost your productivity on Linux"
 ---
 

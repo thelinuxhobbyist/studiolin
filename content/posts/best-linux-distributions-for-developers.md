@@ -5,7 +5,7 @@ draft: false
 recommended: "editor"
 thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Development", "Distributions", "Programming"]
-categories: ["Reviews"]
+categories: ["Personal Computing", "Education"]
 description: "A comprehensive review of the best Linux distributions for software developers in 2025"
 ---
 
