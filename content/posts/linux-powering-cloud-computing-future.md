@@ -1,8 +1,8 @@
 ---
 title: "How Linux is Powering the Future of Cloud Computing"
-date: 2025-10-15
+date: 2025-07-15
 author: "Alex Green"
-sector: "government"
+categories: ["Government", "Business & Enterprise"]
 excerpt: "Explore how Linux has become the backbone of modern cloud computing, with a focus on AWS's major UK government contracts and the role of open-source in public sector digital transformation."
 tags: ["cloud-computing", "linux", "aws", "government", "infrastructure"]
 ---

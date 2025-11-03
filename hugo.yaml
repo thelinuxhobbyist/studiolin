@@ -90,3 +90,7 @@ outputs:
     - HTML
     - RSS
     - JSON
+
+taxonomies:
+  category: categories
+  tag: tags

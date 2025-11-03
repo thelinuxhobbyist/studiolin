@@ -1,4 +1,3 @@
-
 ---
 title: "Linux in Education: Empowering the Next Generation"
 date: 2025-10-28

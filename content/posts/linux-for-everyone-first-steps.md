@@ -1,8 +1,8 @@
 ---
 title: "Linux for Everyone: Your First Steps into a World of Choice"
-date: 2025-10-27
+date: 2025-09-18
 author: "Alex Green"
-sector: "education"
+categories: ["Education"]
 excerpt: "New to Linux? Discover what makes this powerful operating system special, how it's used everywhere from smartphones to supercomputers, and why it might be perfect for your next computing adventure."
 tags: ["linux", "beginners", "open-source", "raspberry-pi", "education", "distros"]
 ---
@@ -28,12 +28,15 @@ The crucial distinction: Linux is built around the **Linux kernel**, the fundame
 The biggest difference between Linux and proprietary systems like Windows or macOS is its **open-source philosophy**.
 
 ### Open Source Defined
+
 "Open source" means the underlying code is freely available for anyone to **view, modify, and share**. Unlike closed-source software, you're not restricted from understanding or changing how Linux works.
 
 ### Collaboration and Innovation
+
 This openness fosters a global community of developers and users who constantly inspect, improve, and extend Linux. Bugs are fixed quickly, new features are developed collaboratively, and the system evolves at a phenomenal pace. This "many eyes" approach often results in robust security and innovative solutions.
 
 ### Freedom and Control
+
 Linux offers **unprecedented control**. You can change how your desktop looks, explore how programs work, and customize your system to suit your needs. This level of freedom is empowering for those who enjoy tinkering and truly owning their digital environment.
 
 ---
@@ -99,7 +102,7 @@ Linux distributions, or **distros**, are unique combinations of the Linux kernel
 There's a distro for everyone:
 
 - **Linux Mint / Ubuntu:** Beginner-friendly, Windows-like.
-- **Pop!_OS:** Modern aesthetic and usability.
+- **Pop!\_OS:** Modern aesthetic and usability.
 - **Arch Linux:** For users who love to tinker and build from the ground up.
 
 ---

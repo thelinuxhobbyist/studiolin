@@ -4,7 +4,8 @@ date: 2025-11-01
 author: "Alex Green"
 sector: "community"
 excerpt: "From government infrastructure to healthcare and education, discover how open-source software and Linux are transforming industries worldwide by providing flexible, secure, and cost-effective solutions."
-tags: ["open-source", "linux", "technology", "community", "government", "education"]
+tags:
+  ["open-source", "linux", "technology", "community", "government", "education"]
 ---
 
 # The Role of Open-Source Software in Modern Tech

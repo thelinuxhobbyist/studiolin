@@ -1,45 +1,70 @@
 {{- define "main" }}
 
 <section class="blog-hero hero-bg-full">
-	<h1 class="blog-hero-title">{{ .Title }}</h1>
-	<p class="blog-hero-desc">{{ .Params.description | default "Explore how Linux impacts the world—from infrastructure to personal freedom—through insightful articles and stories." }}</p>
+    <h1 class="blog-hero-title">{{ .Title }}</h1>
+    <p class="blog-hero-desc">{{ .Params.description | default "Explore how Linux impacts the world—from education to enterprise—through insightful articles and stories." }}</p>
 </section>
+
+{{/* Define our main categories */}}
+{{- $categories := dict 
+    "Education" "education"
+    "Government" "government"
+    "Business & Enterprise" "business"
+    "Personal Computing" "personal"
+    "Community & Open Source" "community"
+}}
 
 {{/* Sector Navigation */}}
 <nav class="sector-nav">
-	<div class="sector-nav-container">
-		<button class="sector-filter-btn active" data-sector="all">All</button>
-		<button class="sector-filter-btn" data-sector="education">Education</button>
-		<button class="sector-filter-btn" data-sector="government">Government</button>
-		<button class="sector-filter-btn" data-sector="business">Business & Enterprise</button>
-		<button class="sector-filter-btn" data-sector="personal">Personal Computing</button>
-		<button class="sector-filter-btn" data-sector="community">Community & Open Source</button>
-	</div>
+    <div class="sector-nav-container">
+        <button class="sector-filter-btn active" data-sector="all">All</button>
+        {{- range $title, $key := $categories }}
+            <button class="sector-filter-btn" data-sector="{{ $key }}">{{ $title }}</button>
+        {{- end }}
+    </div>
 </nav>
 
-{{/* Build sector groups */}}
-{{- $sectors := dict "education" "Education" "government" "Government" "business" "Business & Enterprise" "personal" "Personal Computing" "community" "Community & Open Source" }}
+{{/* Get all posts */}}
+{{- $allPosts := where .Site.RegularPages "Section" "posts" }}
 
-{{- range $sectorKey, $sectorName := $sectors }}
-<section class="sector-section" id="sector-{{ $sectorKey }}" data-sector="{{ $sectorKey }}">
-	<div class="sector-header">
-		<h2 class="sector-title">{{ $sectorName }}</h2>
-		<a href="/linux-in-our-lives/{{ $sectorKey }}/" class="view-all-btn">View All →</a>
-	</div>
-	<div class="blog-list" data-sector-list="{{ $sectorKey }}">
-		{{- $posts := where $.Pages "Params.sector" $sectorKey }}
-		{{- $posts = where $posts "Kind" "page" }}
+{{/* Loop through each category and display its posts */}}
+{{- range $title, $key := $categories }}
+    {{/* Filter posts for this category */}}
+    {{- $categoryPosts := where $allPosts "Params.categories" "intersect" (slice $title) }}
+    
+    <section class="sector-section" id="sector-{{ $key }}" data-sector="{{ $key }}">
+        <div class="sector-header">
+            <h2 class="sector-title">{{ $title }}</h2>
+            {{/* Only show view all if there are more than 6 posts */}}
+            {{- if gt (len $categoryPosts) 6 }}
+                <a href="#" class="view-all-btn" data-category="{{ $key }}">View All →</a>
+            {{- end }}
+        </div>
+        <div class="blog-list" data-sector-list="{{ $key }}">
+            {{- $hasPosts := false }}
+            {{- range $index, $post := first 6 $categoryPosts }}
 		{{- $hasPosts := false }}
 		{{- range $index, $post := $posts }}
 			{{- if lt $index 6 }}
 				{{- $hasPosts = true }}
-				<a href="{{ $post.RelPermalink }}" class="blog-card" data-sector="{{ $post.Params.sector }}">
-					<div class="blog-card-content">
-						<h3 class="blog-card-title">{{ $post.Title }}</h3>
-						<div class="blog-card-date">{{ $post.Date.Format "January 2, 2006" }}</div>
-						<div class="blog-card-summary">{{ with $post.Params.excerpt }}{{ . }}{{ else }}{{ $post.Summary | plainify }}{{ end }}</div>
-					</div>
-				</a>
+                {{- $hasPosts = true }}
+                <article class="blog-card" data-sector="{{ $key }}">
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "January 2, 2006" }}</time>
+                            {{- with $post.Params.tags }}
+                            <div class="blog-card-tags">
+                                {{- range first 3 . }}
+                                <span class="tag">#{{ . }}</span>
+                                {{- end }}
+                            </div>
+                            {{- end }}
+                        </div>
+                        <h3 class="blog-card-title"><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
+                        <div class="blog-card-summary">{{ with $post.Params.description }}{{ . }}{{ else }}{{ $post.Summary | plainify | truncate 160 }}{{ end }}</div>
+                        <a href="{{ $post.RelPermalink }}" class="read-more">Read Article →</a>
+                    </div>
+                </article>
 			{{- else }}
 				<a href="{{ $post.RelPermalink }}" class="blog-card hidden-card" data-sector="{{ $post.Params.sector }}" style="display: none;">
 					<div class="blog-card-content">
