@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="posts-grid" id="homepagePosts">
-        {{- $posts := (where .Site.RegularPages "Section" "posts") }}
+        {{- $posts := (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
         {{- range $posts }}
         <article class="post-card" data-category="{{- with .Params.categories -}}{{ index . 0 }}{{ else }}{{ .Section }}{{ end }}" data-tags="{{ delimit .Params.tags "," }}">
             <div class="card-image">
