@@ -57,8 +57,8 @@
                             {{- end }}
                         </div>
                         <h3 class="blog-card-title"><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
-                        <div class="blog-card-summary">{{ with $post.Params.description }}{{ . }}{{ else }}{{ $post.Summary | plainify }}{{ end }}</div>
-                        <a href="{{ $post.RelPermalink }}" class="read-more">Read Article →</a>
+                        <div class="blog-card-summary">{{ .Summary | plainify }}</div>
+                        <a href="{{ $post.RelPermalink }}" class="read-more">Read Full Article →</a>
                     </div>
                 </article>
             {{- end }}
