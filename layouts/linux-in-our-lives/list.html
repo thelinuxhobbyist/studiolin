@@ -43,10 +43,6 @@
         <div class="blog-list" data-sector-list="{{ $key }}">
             {{- $hasPosts := false }}
             {{- range $index, $post := first 6 $categoryPosts }}
-		{{- $hasPosts := false }}
-		{{- range $index, $post := $posts }}
-			{{- if lt $index 6 }}
-				{{- $hasPosts = true }}
                 {{- $hasPosts = true }}
                 <article class="blog-card" data-sector="{{ $key }}">
                     <div class="blog-card-content">
@@ -61,29 +57,21 @@
                             {{- end }}
                         </div>
                         <h3 class="blog-card-title"><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
-                        <div class="blog-card-summary">{{ with $post.Params.description }}{{ . }}{{ else }}{{ $post.Summary | plainify | truncate 160 }}{{ end }}</div>
+                        <div class="blog-card-summary">{{ with $post.Params.description }}{{ . }}{{ else }}{{ $post.Summary | plainify }}{{ end }}</div>
                         <a href="{{ $post.RelPermalink }}" class="read-more">Read Article →</a>
                     </div>
                 </article>
-			{{- else }}
-				<a href="{{ $post.RelPermalink }}" class="blog-card hidden-card" data-sector="{{ $post.Params.sector }}" style="display: none;">
-					<div class="blog-card-content">
-						<h3 class="blog-card-title">{{ $post.Title }}</h3>
-						<div class="blog-card-date">{{ $post.Date.Format "January 2, 2006" }}</div>
-						<div class="blog-card-summary">{{ with $post.Params.excerpt }}{{ . }}{{ else }}{{ $post.Summary | plainify }}{{ end }}</div>
-					</div>
-				</a>
-			{{- end }}
-		{{- end }}
-		{{- if not $hasPosts }}
-			<p class="no-posts">No articles in this sector yet. Check back soon!</p>
-		{{- end }}
-	</div>
-	{{- if gt (len $posts) 6 }}
-	<div class="load-more-container">
-		<button class="load-more-btn" data-sector="{{ $sectorKey }}">Load More ({{ sub (len $posts) 6 }} more)</button>
-	</div>
-	{{- end }}
+            {{- end }}
+            {{- if not $hasPosts }}
+                <p class="no-posts">No articles in this category yet. Check back soon!</p>
+            {{- end }}
+        </div>
+
+        {{- if gt (len $categoryPosts) 6 }}
+        <div class="load-more-container">
+            <button class="load-more-btn" data-sector="{{ $key }}">Load More ({{ sub (len $categoryPosts) 6 }} more)</button>
+        </div>
+        {{- end }}
 </section>
 {{- end }}
 <style>
