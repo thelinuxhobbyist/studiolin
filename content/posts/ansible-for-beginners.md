@@ -1,6 +1,6 @@
 ---
 title: "Ansible for Absolute Beginners: Automation Made Simple"
-date: 2024-11-05
+date: 2025-10-30
 draft: false
 recommended: "editor"
 thumbnail: "/images/default-post.svg"
