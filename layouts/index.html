@@ -75,7 +75,7 @@
             </div>
             <div class="card-meta">
                 <span class="category">{{ .Section | title }}</span>
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
             </div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="card-summary">{{ .Summary | plainify | truncate 100 }}</p>
