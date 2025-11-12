@@ -38,22 +38,15 @@
   {{- $large := $img.Resize "1200x" -}}
   {{- $medium := $img.Resize "800x" -}}
   {{- $small := $img.Resize "400x" -}}
-  {{- /* WebP variants (smaller, modern browsers) */ -}}
-  {{- $largeWebp := $img.Resize "1200x webp q=75" -}}
-  {{- $mediumWebp := $img.Resize "800x webp q=75" -}}
-  {{- $smallWebp := $img.Resize "400x webp q=75" -}}
-  <picture>
-    <source type="image/webp" srcset="{{ $smallWebp.RelPermalink }} 400w, {{ $mediumWebp.RelPermalink }} 800w, {{ $largeWebp.RelPermalink }} 1200w" sizes="(max-width: 800px) 100vw, 800px" />
-    <img
-      src="{{ $medium.RelPermalink }}"
-      srcset="{{ $small.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w"
-      sizes="(max-width: 800px) 100vw, 800px"
-      class="{{ $class }}"
-      alt="{{ $alt }}"
-      loading="lazy"
-      decoding="async"
-    />
-  </picture>
+  <img
+    src="{{ $medium.RelPermalink }}"
+    srcset="{{ $small.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w"
+    sizes="(max-width: 800px) 100vw, 800px"
+    class="{{ $class }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    decoding="async"
+  />
 {{- else if $externalSrc }}
   <img
     src="{{ $externalSrc }}"
