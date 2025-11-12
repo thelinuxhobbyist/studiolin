@@ -1,6 +1,7 @@
 /* Footer — multi-column layout matching design reference */
 .footer--columns {
-  background: var(--color-surface, #0f1720);
+  /* Force a dark footer background to ensure contrast with headings */
+  background: #0f1720 !important;
   color: var(--color-on-surface, #e6eef8);
   padding: 3rem 1rem 1rem;
   font-family: var(--site-font, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
@@ -51,7 +52,7 @@
   font-weight: 700;
   margin: 0 0 1rem 0;
   letter-spacing: 0.5px;
-  color: #e6eef8; /* ensure visible on dark background */
+  color: #e6eef8 !important; /* force high contrast */
 }
 
 .footer__column-link {
