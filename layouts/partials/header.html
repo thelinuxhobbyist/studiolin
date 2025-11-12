@@ -117,6 +117,8 @@
         {{- $currentPage := . }}
         <ul id="menu">
             {{- range site.Menus.main }}
+            {{- /* Defensive: skip About/Contact links if they appear in the menu (ensure navbar doesn't show them) */ -}}
+            {{- if and (not (strings.Contains .URL "about")) (not (strings.Contains .URL "contact")) }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL)) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
@@ -135,6 +137,7 @@
                     </svg>{{- end }}
                 </a>
             </li>
+            {{- end }}
             {{- end }}
         </ul>
     </nav>

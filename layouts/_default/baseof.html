@@ -145,11 +145,17 @@
             </div>
             <nav class="main-nav" id="main-nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/linux-in-our-lives/" class="nav-link">Linux in Our Lives</a></li>
-                    <li class="nav-item"><a href="/tutorials/" class="nav-link">Tutorials</a></li>
-                    <li class="nav-item"><a href="/about/" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
+                    {{- /* Render configured main menu. Skip about/contact defensively. */ -}}
+                    {{- $currentPage := . -}}
+                    {{- range site.Menus.main }}
+                        {{- if and (not (strings.Contains .URL "about")) (not (strings.Contains .URL "contact")) }}
+                            {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL)) | absLangURL }}
+                            {{- $page_url := $currentPage.Permalink | absLangURL }}
+                            <li class="nav-item">
+                                <a href="{{ .URL | absLangURL }}" class="nav-link" {{- if eq $menu_item_url $page_url }} aria-current="page" {{- end }}>{{ .Name }}</a>
+                            </li>
+                        {{- end }}
+                    {{- end }}
                 </ul>
             </nav>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">

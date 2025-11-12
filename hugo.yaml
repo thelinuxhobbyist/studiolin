@@ -76,10 +76,6 @@ menu:
       name: Tools
       url: /tools/
       weight: 30
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 40
     - identifier: search
       name: Search
       url: /search/
