@@ -33,11 +33,8 @@
 			{{- range $sectorPosts }}
 			<article class="article-card" data-date="{{ .Date.Unix }}" data-title="{{ .Title }}">
 				<a href="{{ .RelPermalink }}" class="article-card-link">
-					{{ with .Params.featured_image }}
-						<img src="{{ . }}" alt="{{ $.Title }}" class="article-card-image" />
-					{{ else }}
-						<div class="article-card-image placeholder"></div>
-					{{ end }}
+					{{/* Use partial to render a responsive image or fallback placeholder */}}
+					{{ partial "featured-image.html" (dict "page" . "class" "article-card-image" "alt" .Title) }}
 					<div class="article-card-content">
 						<h3 class="article-card-title">{{ .Title }}</h3>
 						<div class="article-card-meta">

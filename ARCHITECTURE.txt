@@ -1,0 +1,266 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              STUDIOLINUX ADMIN PANEL - SYSTEM ARCHITECTURE                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          YOUR BROWSER (Client)                              │
+│                                                                             │
+│  ┌──────────────────────────────────────────────────────────────────────┐  │
+│  │ https://studiolinux.com/admin/login                                 │  │
+│  │                                                                      │  │
+│  │  ┌─ LOGIN SECTION ─────────────────────────────────────────────┐   │  │
+│  │  │                                                             │   │  │
+│  │  │  [Authenticate with GitHub] ──────┐                        │   │  │
+│  │  │                                    │                        │   │  │
+│  │  └────────────────────────────────────┼────────────────────────┘   │  │
+│  │                                       │                            │  │
+│  │  ┌─ ARTICLE FORM (after login) ──────▼────────────────────────┐   │  │
+│  │  │                                                             │   │  │
+│  │  │  Title:        [My Article Title]                          │   │  │
+│  │  │  Section:      [posts ▼]                                   │   │  │
+│  │  │  Categories:   [Education, Government]                     │   │  │
+│  │  │  Tags:         [linux, open-source]                        │   │  │
+│  │  │  Excerpt:      [Brief summary...]                          │   │  │
+│  │  │  Featured?     [☑] Mark as featured                        │   │  │
+│  │  │  On Homepage?  [☑] Publish to homepage                     │   │  │
+│  │  │  Image:        [Choose File] featured.jpg                  │   │  │
+│  │  │  Content:      [Write markdown...]                         │   │  │
+│  │  │                                                             │   │  │
+│  │  │  [Publish Article] [Preview]                               │   │  │
+│  │  │                                                             │   │  │
+│  │  └─────────────────────────────────────────────────────────────┘   │  │
+│  │                                                                      │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (1) Click "Authenticate with GitHub"
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        GITHUB OAUTH (oauth.github.com)                       │
+│                                                                             │
+│  User authorizes app to access repo                                        │
+│                                                                             │
+│  Returns: authorization code                                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (2) Redirect to callback URL
+                                    │ /api/auth/callback?code=xxx&state=yyy
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    CLOUDFLARE WORKER (TypeScript)                            │
+│                  functions/src/index.ts runs here                            │
+│                                                                             │
+│  (3) Validate state token                                                  │
+│  (4) Exchange code for GitHub token                                        │
+│  (5) Store token in KV with 1-hour TTL                                     │
+│  (6) Generate token ID (random string)                                     │
+│  (7) Redirect user back with token ID in URL hash                          │
+│                                                                             │
+│  Result: #token=abc123def456                                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (8) User redirected to /admin/login#token=xxx
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   ADMIN JS (admin.js running in browser)                     │
+│                                                                             │
+│  (9) Extract token ID from URL                                             │
+│  (10) Call Worker: /api/auth/token/abc123def456                            │
+│  (11) Retrieve actual GitHub token from KV                                 │
+│  (12) Store token in sessionStorage (memory only)                          │
+│  (13) Show article form                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (14) User fills form and clicks "Publish"
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│               ADMIN JS calls GitHub REST API v3                              │
+│                                                                             │
+│  (15) Create article directory: content/posts/my-article-slug/             │
+│  (16) Commit featured image (if provided)                                  │
+│       → content/posts/my-article-slug/featured.jpg                         │
+│  (17) Commit article file with front matter                                │
+│       → content/posts/my-article-slug/index.md                             │
+│                                                                             │
+│  Uses: GitHub Personal Access Token (via OAuth)                            │
+│  Endpoint: PUT https://api.github.com/repos/thelinuxhobbyist/studiolin     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (18) New commits appear in repo
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    GITHUB REPOSITORY (GitHub.com)                            │
+│                                                                             │
+│  ✅ New files appear in:                                                   │
+│    - content/posts/my-article-slug/index.md                                │
+│    - content/posts/my-article-slug/featured.jpg                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (19) Webhook triggers Cloudflare Pages
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   CLOUDFLARE PAGES BUILD PIPELINE                            │
+│                                                                             │
+│  (20) Clone repo                                                            │
+│  (21) Run Hugo: hugo --minify                                               │
+│  (22) Image processing:                                                    │
+│       ├─ featured.jpg → 1200px JPEG (q=75)                                 │
+│       ├─ featured.jpg → 1200px WebP (q=75)                                 │
+│       ├─ featured.jpg → 800px JPEG (q=75)                                  │
+│       ├─ featured.jpg → 800px WebP (q=75)                                  │
+│       ├─ featured.jpg → 400px JPEG (q=75)                                  │
+│       └─ featured.jpg → 400px WebP (q=75)                                  │
+│  (23) Generate HTML with responsive srcset                                 │
+│  (24) Minify CSS & JavaScript                                              │
+│  (25) Deploy to Cloudflare CDN                                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    │ (26) Site goes live (~2 minutes)
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                  YOUR STUDIOLINUX.COM LIVE WEBSITE                           │
+│                                                                             │
+│  ✅ Article appears:                                                       │
+│    - On homepage (if published_on_home: true)                              │
+│    - On section page (/posts/, /tutorials/, etc.)                          │
+│    - Full page with featured image                                         │
+│    - Images optimized (WebP for modern browsers, JPEG fallback)            │
+│    - All cached by Cloudflare CDN globally                                 │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           DATA FLOW SUMMARY                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Article Data Journey:
+  Admin Form (your browser)
+    ↓
+  GitHub REST API
+    ↓
+  GitHub Repository (thelinuxhobbyist/studiolin)
+    ↓
+  Cloudflare Pages Build
+    ↓
+  Hugo Image Processing
+    ↓
+  Cloudflare CDN
+    ↓
+  Reader's Browser
+    ↓
+  Article Viewed ✅
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         SECURITY FLOW                                        ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Token Flow (Never exposed to anyone):
+  1. GitHub generates OAuth token
+  2. Worker receives token (secure connection)
+  3. Worker stores in Cloudflare KV (encrypted, server-side)
+  4. Worker returns token ID only to browser
+  5. Browser retrieves token via token ID
+  6. Browser uses token to commit to GitHub
+  7. Token expires after 1 hour automatically
+  8. User logs out → token discarded
+
+Result: Your GitHub credentials stay safe ✅
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                      KEY COMPONENTS DEPLOYED                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+1. ADMIN PAGE
+   Location: /admin/login (public URL)
+   Technology: Hugo static page + React-like vanilla JS
+   Size: ~8KB HTML (minified)
+
+2. CLOUDFLARE WORKER
+   Location: Cloudflare Edge Network
+   Technology: TypeScript / JavaScript (Workers runtime)
+   Function: OAuth token exchange & validation
+   Triggers: POST /api/auth/login, GET /api/auth/callback, GET /api/auth/token/:id
+
+3. CLOUDFLARE KV
+   Location: Cloudflare's distributed KV store
+   Purpose: Store temporary OAuth tokens (1-hour TTL)
+   Size: Minimal (tokens are small)
+   Cost: Free tier included
+
+4. FEATURED IMAGE PARTIAL
+   Location: /layouts/partials/featured-image.html
+   Technology: Hugo template language
+   Function: Image resizing + WebP generation
+   Triggers: On every Hugo build
+
+5. GITHUB INTEGRATION
+   Location: Admin JS (client-side)
+   Purpose: Commit articles to repo
+   Auth: OAuth token from admin
+   Endpoints: GitHub REST API v3
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         DEPLOYMENT CHECKLIST                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+STEP 1: GitHub OAuth App Setup
+  ├─ Visit https://github.com/settings/developers
+  ├─ Create OAuth app
+  ├─ Set callback: https://studiolinux.com/api/auth/callback
+  └─ Save Client ID & Client Secret
+
+STEP 2: Cloudflare KV Setup
+  ├─ Visit https://dash.cloudflare.com
+  ├─ Workers & Pages → KV
+  ├─ Create "studiolinux-tokens-prod" namespace
+  ├─ Create "studiolinux-tokens-preview" namespace
+  └─ Note both namespace IDs
+
+STEP 3: Configure wrangler.toml
+  ├─ Update GITHUB_CLIENT_ID
+  ├─ Update KV namespace IDs (prod & preview)
+  └─ Save file
+
+STEP 4: Store OAuth Secret
+  ├─ Run: wrangler secret put GITHUB_CLIENT_SECRET --env production
+  ├─ Paste: Client Secret from GitHub
+  └─ Confirm upload
+
+STEP 5: Deploy Worker
+  ├─ Run: npm install
+  ├─ Run: wrangler deploy --env production
+  └─ Wait for success message
+
+STEP 6: Test Admin Panel
+  ├─ Visit: https://studiolinux.com/admin/login
+  ├─ Click: "Authenticate with GitHub"
+  ├─ Authorize app
+  ├─ See: Article form appears
+  └─ Success! ✅
+
+STEP 7: Create Test Article
+  ├─ Fill form with test data
+  ├─ Click: "Publish Article"
+  ├─ Wait: ~2 minutes for site rebuild
+  ├─ Visit: https://studiolinux.com
+  └─ Verify: Article appears on site
+
+STEP 8: Clean Up
+  ├─ Delete test article from GitHub
+  └─ Ready for real articles!
+
+
+Time estimate: ~25 minutes total
+See DEPLOY_CHECKLIST.md for detailed steps.
+

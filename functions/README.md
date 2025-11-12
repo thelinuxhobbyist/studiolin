@@ -1,14 +1,46 @@
-This folder contains a demo Netlify function `views.js` which implements a simple view counter API.
+# Cloudflare Workers Setup for StudioLinux Admin
 
-Endpoints:
-- POST /.netlify/functions/views with JSON { key: "/posts/my-post" } will increment the view counter for that key.
-- GET /.netlify/functions/views returns an array of top keys and their counts.
+This directory contains the Cloudflare Worker code for OAuth token exchange.
 
-Notes:
-- The provided implementation stores counts in-memory (COUNTS) which is only suitable for local testing. For production you should persist counts to a database (DynamoDB, Fauna, Redis) or S3.
-- To deploy on Netlify, place this folder at `functions/` in your repository root and Netlify will auto-deploy it.
-- You will likely want to secure the POST endpoint or use a token to avoid abuse. Another option is to rate-limit on the client side and use server-side verification.
+## Quick Start
 
-Suggested production architecture:
-- Use DynamoDB or Redis for counts; the function increments the count atomically.
-- Optionally, aggregate counts periodically and store top N in a `data/trending.yaml` for Hugo builds.
+```bash
+# Install dependencies
+npm install
+
+# Test locally
+wrangler dev
+
+# Deploy to production
+wrangler deploy --env production
+```
+
+## Files
+
+- `src/index.ts` - OAuth handler that exchanges GitHub authorization codes for tokens
+- `wrangler.toml` - Configuration (fill in your GitHub app credentials and KV namespace IDs)
+- `tsconfig.json` - TypeScript configuration
+
+## Configuration
+
+See `../ADMIN_SETUP.md` for full setup instructions, including:
+1. Creating a GitHub OAuth app
+2. Setting up Cloudflare KV namespaces
+3. Configuring secrets with wrangler
+4. Deploying the Worker
+
+## Environment Variables
+
+Set these before deploying:
+
+- `GITHUB_CLIENT_ID` - Your GitHub OAuth app Client ID (in wrangler.toml)
+- `GITHUB_CLIENT_SECRET` - Your GitHub OAuth app Client Secret (via `wrangler secret put`)
+
+## KV Namespace
+
+The Worker uses Cloudflare KV to store OAuth tokens with a 1-hour TTL:
+
+- Stores state tokens during OAuth flow (10 min TTL)
+- Stores access tokens after exchange (1 hour TTL)
+
+Tokens are automatically cleaned up by KV's expiration.

@@ -16,9 +16,10 @@
     </div>
 </section>
 
-{{- /* Featured Article Section */ -}}
+{{- /* Featured Article Section - prioritizes published_on_home flag */ -}}
 {{- $now := now }}
-{{- $featured := first 1 (where (where .Site.RegularPages "Section" "posts") "Date" "le" $now).ByDate.Reverse }}
+{{- $homeFeatures := where (where .Site.RegularPages "Section" "posts") "Params.published_on_home" true }}
+{{- $featured := cond (gt (len $homeFeatures) 0) (first 1 $homeFeatures) (first 1 (where (where .Site.RegularPages "Section" "posts") "Date" "le" $now).ByDate.Reverse) }}
 {{- if gt (len $featured) 0 }}
 {{- range $featured }}
 <section class="featured-article">
@@ -27,11 +28,7 @@
     </div>
     <article class="featured-card">
         <div class="featured-image">
-            {{- if .Params.image }}
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" />
-            {{- else }}
-            <img src="/images/default-post.svg" alt="Studio{Linux} Featured Article" />
-            {{- end }}
+            {{- partial "featured-image.html" (dict "page" . "class" "featured-img" "alt" .Title) }}
         </div>
         <div class="featured-content">
             <div class="featured-meta">

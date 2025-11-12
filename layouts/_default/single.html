@@ -25,6 +25,11 @@
             </div>
         </header>
         
+        {{/* Featured image (page-bundled or fallback) */}}
+        <div class="post-featured-image">
+            {{ partial "featured-image.html" (dict "page" . "class" "post-featured" "alt" .Title) }}
+        </div>
+
         <div class="post-content">
             {{- $content := .Content -}}
             {{ $content | safeHTML }}

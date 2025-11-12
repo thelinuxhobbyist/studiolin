@@ -1,0 +1,73 @@
+{{- /*
+  Partial: featured-image.html
+  Usage: {{ partial "featured-image.html" (dict "page" . "class" "blog-hero-image" "alt" .Title) }}
+  - Tries to use a page bundle image (Resources.GetMatch "featured*")
+  - Falls back to .Params.featured_image (external or static path)
+  - Falls back to a default image at /images/default-featured.jpg
+  - If a page resource is found, creates resized variants and emits a responsive <img> with srcset
+*/ -}}
+{{- $ctx := . -}}
+{{- $page := cond (isset $ctx "page") (index $ctx "page") $ctx -}}
+{{- $class := cond (isset $ctx "class") (index $ctx "class") "featured-image" -}}
+{{- $alt := cond (isset $ctx "alt") (index $ctx "alt") $page.Title -}}
+{{- $default := "/images/default-post.svg" -}}
+
+{{- /* Try page bundle resource first (named like featured* or any image attached) */ -}}
+{{- $img := $page.Resources.GetMatch "featured*" -}}
+
+{{- $externalSrc := "" -}}
+{{- if not $img -}}
+  {{- with $page.Params.featured_image }}
+    {{- $p := . -}}
+    {{- if or (hasPrefix $p "http") (hasPrefix $p "//") }}
+      {{- $externalSrc = $p -}}
+    {{- else }}
+      {{- /* Try to find a page resource by the provided filename */ -}}
+      {{- $img = $page.Resources.GetMatch (printf "*%s" $p) -}}
+      {{- if not $img }}
+        {{- /* treat as a static or absolute path */ -}}
+        {{- $externalSrc = $p -}}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- if $img }}
+  {{- /* Create resized variants with quality control and WebP alternatives. */ -}}
+  {{- /* JPEG variants (fallback) with q=75 for good quality/size balance */ -}}
+  {{- $large := $img.Resize "1200x" -}}
+  {{- $medium := $img.Resize "800x" -}}
+  {{- $small := $img.Resize "400x" -}}
+  {{- /* WebP variants (smaller, modern browsers) */ -}}
+  {{- $largeWebp := $img.Resize "1200x webp q=75" -}}
+  {{- $mediumWebp := $img.Resize "800x webp q=75" -}}
+  {{- $smallWebp := $img.Resize "400x webp q=75" -}}
+  <picture>
+    <source type="image/webp" srcset="{{ $smallWebp.RelPermalink }} 400w, {{ $mediumWebp.RelPermalink }} 800w, {{ $largeWebp.RelPermalink }} 1200w" sizes="(max-width: 800px) 100vw, 800px" />
+    <img
+      src="{{ $medium.RelPermalink }}"
+      srcset="{{ $small.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w"
+      sizes="(max-width: 800px) 100vw, 800px"
+      class="{{ $class }}"
+      alt="{{ $alt }}"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
+{{- else if $externalSrc }}
+  <img
+    src="{{ $externalSrc }}"
+    class="{{ $class }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    decoding="async"
+  />
+{{- else }}
+  <img
+    src="{{ $default }}"
+    class="{{ $class }}"
+    alt="{{ $alt }}"
+    loading="lazy"
+    decoding="async"
+  />
+{{- end }}

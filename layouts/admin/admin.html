@@ -1,0 +1,131 @@
+{{- define "main" -}}
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/admin/admin.css">
+
+<div class="admin-shell">
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <h1>StudioLinux Admin</h1>
+      <p class="admin-sub">Manage articles and content for your website.</p>
+    </div>
+    <div id="user-info" class="user-info hidden">
+      <span id="user-email"></span>
+      <button id="logout-btn" class="small-btn">Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <!-- Login Section -->
+    <section id="login-section" class="panel">
+      <h2>Admin Login</h2>
+  <form id="login-form" class="login-form" autocomplete="off">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" name="admin_email" type="email" required placeholder="Enter your email" autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" name="admin_password" type="password" required placeholder="Enter your password" autocomplete="new-password" />
+        </div>
+        <div class="form-group">
+          <label for="github-token">GitHub Personal Access Token</label>
+          <input id="github-token" name="github_token" type="password" required placeholder="ghp_xxxxxxxxxxxx" autocomplete="new-password" />
+          <p class="form-hint">Create a token at <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a> with 'repo' scope</p>
+        </div>
+        <button type="submit" class="primary-btn">Login</button>
+      </form>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="panel hidden">
+      <div id="status" class="status-message hidden"></div>
+
+      <!-- Articles List -->
+      <div class="articles-section">
+        <h3>Manage Articles</h3>
+        <div id="articles-list" class="articles-grid">
+          <p>Articles will appear here once you have articles published.</p>
+        </div>
+      </div>
+
+      <hr style="margin: 2rem 0;">
+
+      <!-- New Article Form -->
+      <div class="article-form-section">
+        <h3>Create New Article</h3>
+        <form id="new-article-form" class="article-form">
+          <div class="form-row">
+            <div class="form-col">
+              <label>Title *</label>
+              <input type="text" name="title" required />
+            </div>
+            <div class="form-col">
+              <label>Date</label>
+              <input type="datetime-local" name="date" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label>Section *</label>
+              <select name="section" required>
+                <option value="">-- Select a section --</option>
+                <option value="posts">Home / Posts</option>
+                <option value="linux-in-our-lives">Linux in Our Lives</option>
+                <option value="tutorials">Tutorials</option>
+                <option value="tools">Tools</option>
+              </select>
+            </div>
+            <div class="form-col">
+              <label>Categories</label>
+              <input type="text" name="categories" placeholder="comma, separated, values" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label>Tags</label>
+              <input type="text" name="tags" placeholder="comma, separated, values" />
+            </div>
+            <div class="form-col">
+              <label>Excerpt</label>
+              <input type="text" name="excerpt" placeholder="Brief summary" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label>Featured Image</label>
+              <input type="file" name="image" accept="image/*" />
+            </div>
+            <div class="form-col checkbox-group">
+              <label>
+                <input type="checkbox" name="featured" /> Mark as featured
+              </label>
+              <label>
+                <input type="checkbox" name="published_on_home" /> Publish on homepage
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Content (Markdown) *</label>
+            <textarea name="content" required rows="15" placeholder="Write your article in Markdown..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-btn">Create Article</button>
+            <button type="button" id="preview-btn" class="secondary-btn">Preview</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="admin-footer">
+    <p>StudioLinux Admin Panel</p>
+  </footer>
+</div>
+
+<script src="/admin/admin.js"></script>
+{{- end -}}

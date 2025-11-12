@@ -14,7 +14,8 @@
 	</div>
 </section>
 <div class="blog-article-wrap">
-	{{ with .Params.featured_image }}<img src="{{ . }}" alt="Featured image" class="blog-hero-image" />{{ end }}
+	{{/* Use the featured-image partial which handles page-bundled images, external URLs, and a default fallback. It also resizes page resources. */}}
+	{{ partial "featured-image.html" (dict "page" . "class" "blog-hero-image" "alt" .Title) }}
 	<div style="position:relative;">
 
 		<div class="blog-article-content">
@@ -44,11 +45,8 @@
 			{{ range first 3 (where .Site.RegularPages "Section" "linux-in-our-lives") }}
 				{{ if ne .Title $.Title }}
 				<a href="{{ .RelPermalink }}" class="related-card">
-					{{ with .Params.featured_image }}
-						<img src="{{ . }}" alt="{{ $.Title }}" class="related-thumb" />
-					{{ else }}
-						<div class="related-thumb"></div>
-					{{ end }}
+						{{/* Render a small responsive thumb for related posts */}}
+						{{ partial "featured-image.html" (dict "page" . "class" "related-thumb" "alt" .Title) }}
 					<span>{{ .Title }}</span>
 				</a>
 				{{ end }}
