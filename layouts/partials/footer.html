@@ -16,7 +16,6 @@
         <nav aria-label="Company links">
           <a class="footer__column-link" href="{{ "about" | absLangURL }}">About</a>
           <a class="footer__column-link" href="{{ "contact" | absLangURL }}">Contact</a>
-          <a class="footer__column-link" href="#">Careers</a>
         </nav>
       </div>
 
@@ -25,7 +24,6 @@
         <nav aria-label="Legal links">
           <a class="footer__column-link" href="{{ "terms" | absLangURL }}">Terms</a>
           <a class="footer__column-link" href="{{ "privacy" | absLangURL }}">Privacy</a>
-          <a class="footer__column-link" href="#">Cookies</a>
         </nav>
       </div>
 
@@ -33,8 +31,6 @@
         <h3 class="footer__column-title">Resources</h3>
         <nav aria-label="Resources links">
           <a class="footer__column-link" href="{{ "resources" | absLangURL }}">Resources</a>
-          <a class="footer__column-link" href="#">Documentation</a>
-          <a class="footer__column-link" href="#">Community</a>
         </nav>
       </div>
     </div>
@@ -48,6 +44,28 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <title>X</title>
             <path d="M22.162 5.656c-.66.293-1.37.49-2.12.578.763-.457 1.347-1.18 1.624-2.04-.714.423-1.505.73-2.345.895A4.083 4.083 0 0 0 12.94 8.5c0 .32.036.632.106.93-3.395-.17-6.406-1.793-8.422-4.26-.352.604-.554 1.303-.554 2.048 0 1.414.72 2.662 1.815 3.393-.67-.02-1.302-.205-1.854-.51v.05c0 1.976 1.405 3.625 3.271 4.002-.342.093-.703.143-1.075.143-.263 0-.52-.025-.77-.073.521 1.603 2.032 2.77 3.824 2.803A8.202 8.202 0 0 1 3 19.54a11.57 11.57 0 0 0 6.29 1.84c7.55 0 11.684-6.28 11.684-11.725 0-.18-.005-.36-.013-.538.802-.582 1.5-1.31 2.052-2.137l-.001-.001z"/>
+          </svg>
+        </a>
+
+      {{- with .Site.Params.social_youtube }}
+        <a class="footer__social-link" href="{{ . }}" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+      {{- else }}
+        <a class="footer__social-link" href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+      {{- end }}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <title>YouTube</title>
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+
+      {{- with .Site.Params.social_facebook }}
+        <a class="footer__social-link" href="{{ . }}" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+      {{- else }}
+        <a class="footer__social-link" href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+      {{- end }}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <title>Facebook</title>
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
         </a>
     </div>
