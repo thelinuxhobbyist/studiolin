@@ -68,6 +68,10 @@ menu:
       name: Home
       url: /
       weight: 10
+    - identifier: linux-in-our-lives
+      name: Linux in Our Lives
+      url: /linux-in-our-lives/
+      weight: 15
     - identifier: tutorials
       name: Tutorials
       url: /tutorials/
