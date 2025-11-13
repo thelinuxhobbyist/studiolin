@@ -55,6 +55,13 @@
   color: #e6eef8 !important; /* force high contrast */
 }
 
+/* Strong fallback to ensure headings are visible even if other site CSS tries to override */
+.footer--columns h3.footer__column-title,
+.footer--columns h3.footer__column-title a {
+  color: #e6eef8 !important;
+  opacity: 1 !important;
+}
+
 .footer--columns .footer__column-link {
   color: rgba(230, 238, 248, 0.85);
   text-decoration: none;
