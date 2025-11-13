@@ -215,12 +215,22 @@
    (hero, related thumbnails, cards, posts) scale correctly on small screens.
 */
 .featured-image img,
+.featured-image,
+.featured-img img,
+.featured-img,
 .post-featured img,
+img.post-featured,
+.post-featured,
+.post-featured-image img,
 .blog-hero-image,
+img.blog-hero-image,
 .blog-hero-image img,
 .related-thumb img,
+img.related-thumb,
+.related-thumb,
 .article-card-image img,
-.featured-img img {
+img.article-card-image,
+.article-card-image {
   width: 100% !important;
   height: auto !important;
   max-width: 100% !important;
