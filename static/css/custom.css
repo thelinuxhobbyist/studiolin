@@ -209,3 +209,22 @@
   .footer--compact .footer__brand { order: 1; }
   .footer--compact .footer__social { order: 3; }
 }
+
+/* Fix: make all featured images responsive across templates (mobile-safe)
+   Targets classes used by the featured-image partial so all appearances
+   (hero, related thumbnails, cards, posts) scale correctly on small screens.
+*/
+.featured-image img,
+.post-featured img,
+.blog-hero-image,
+.blog-hero-image img,
+.related-thumb img,
+.article-card-image img,
+.featured-img img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+  object-fit: cover;
+}
+
