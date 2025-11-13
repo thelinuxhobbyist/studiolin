@@ -192,21 +192,13 @@
   color: rgba(230,238,248,0.95);
   text-decoration: none !important;
   font-size: 0.95rem;
-  padding: 0.15rem 0.25rem;
-  border-bottom: 2px solid transparent;
-  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+  padding: 0.2rem 0.4rem;
+  transition: color 160ms ease;
 }
-
-.footer--compact .footer__sep { color: rgba(230,238,248,0.45); margin: 0 0.2rem; }
-
-/* Hide the visual separator (dot) — links are spaced instead */
-.footer--compact .footer__sep { display: none; }
 
 .footer--compact .footer__center-link:hover,
 .footer--compact .footer__center-link:focus {
   color: var(--color-accent, #6ee7b7);
-  border-bottom-color: var(--color-accent, #6ee7b7);
-  transform: translateY(-1px);
 }
 
 .footer--compact .footer__social { display: flex; gap: 0.6rem; align-items: center; }
