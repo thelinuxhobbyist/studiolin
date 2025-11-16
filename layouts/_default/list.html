@@ -1,4 +1,8 @@
 {{- define "main" }}
+{{- if or .IsHome (eq .RelPermalink "/") }}
+    {{/* Home page: render unified partial and exit */}}
+    {{ partial "home-main.html" . }}
+{{- else }}
 <div class="page-container">
     <header class="page-header">
         <h1>{{ .Title }}</h1>
@@ -130,4 +134,5 @@
     font-size: 0.9rem;
 }
 </style>
+{{- end }}
 {{- end }}
