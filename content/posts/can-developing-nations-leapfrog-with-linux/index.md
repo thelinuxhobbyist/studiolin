@@ -86,8 +86,4 @@ Linux isn't just software—it's a mindset. It's the belief that collaboration, 
 
 For developing nations, that mindset might be the key to unlocking the next phase of digital progress. Instead of following the old road paved by proprietary systems, they can chart their own path—open, adaptable, and sovereign.  
 
-And in doing so, they won't just catch up—they'll leap ahead.
-
----
-
-*Up next on StudioLinux: How open-source learning tools are transforming classrooms in rural schools across Asia and Africa.*
+And in doing so, they won't just catch up—they'll lead.

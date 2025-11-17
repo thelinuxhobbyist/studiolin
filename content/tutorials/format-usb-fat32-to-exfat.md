@@ -1,19 +1,18 @@
 ````markdown
 ---
-title: "How to Format a USB from FAT32 to exFAT on Linux"
+title: "Format a USB Drive to exFAT on Linux"
 date: 2025-10-22
 draft: false
 recommended: ""
 views: 0
 thumbnail: "/images/default-post.svg"
 tags: ["usb", "exfat", "fat32", "linux", "storage"]
-description: "Step-by-step guide to formatting a USB drive from FAT32 to exFAT on Linux."
+description: "How to convert a USB drive from FAT32 to exFAT on Linux"
 ---
 
-> **Warning:** This process will erase **all data** on the USB drive.  
-> Make sure you **back up your files** before proceeding!
+**Warning:** Formatting erases all data on the USB drive. Back up your files first.
 
-Formatting a USB from FAT32 to exFAT is simple on Linux — just follow these steps carefully.
+If you need to format a USB drive to exFAT on Linux—whether for compatibility with Windows and macOS or to support files larger than 4GB—here's how to do it safely.
 
 ---
 

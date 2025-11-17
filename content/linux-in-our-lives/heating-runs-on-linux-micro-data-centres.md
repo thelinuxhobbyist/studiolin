@@ -33,72 +33,19 @@ It's a win-win: homeowners get low-cost heat, and companies get a greener, distr
 
 ---
 
-## **How This Saves Money: A Plain-English Walkthrough for a Normal Homeowner**
+## How the Economics Work
 
-One of the biggest questions people ask is:  
-**"Who pays for what? And why does the homeowner's bill drop so much?"**
+The key question is: who pays for the electricity that runs the servers? There are two main models in practice:
 
-So let's break it down in the simplest, real-world terms.
+**Model A: The Company Pays**
+The hosting company covers all electricity costs. The heat from their servers becomes free heating for your home. Your gas or heating bill drops significantly because the servers are now your primary heat source.
 
-### **Imagine you're a homeowner.**
-A hosting company approaches you and says:
+**Model B: Shared Cost**
+You run your own hardware (or the company installs it). The electricity costs come from you, but the heat that would normally be wasted now heats your home, directly offsetting your heating bills. In winter, a powerful server can generate more heat than you need, potentially powering a significant portion of your home's climate control.
 
-> "We want to install a small data centre in your home.  
-> The heat from our servers will warm your house, and you pay much less for heating."
+The savings come from this simple principle: instead of paying for heating and computing separately, you're combining them. A server consuming £40/month in electricity produces useful heat instead of waste. Your boiler runs less. Your heating bill drops proportionally.
 
-### **Who pays the electricity for the computers?**
-
-There are **two main models** depending on the project:
-
-### **Model A — The Company Pays for All Server Electricity**  
-(Like the 2023 Surrey hot-water trial)
-
-- You pay **nothing** to run the servers.
-- The company pays the electrical cost for the computing.
-- All the heat the servers produce becomes *free heating* for you.
-- Your gas or electric boiler barely needs to run.
-
-Your heating bill drops because the "heat source" in your home is no longer gas or your own electric heater — it's the company's computers.
-
-### **Model B — You Pay for the Electricity, But You Get Heating in Return**  
-(Like the newer 2025-style homelab/heat-shell systems)
-
-- You choose your own hardware (homelab, AI rig, servers).
-- You pay for the electricity to run your machines.
-- But normally, all that heat would be *wasted*.
-- Instead, it is captured and reused to heat your home.
-- This offsets your heating bill almost completely.
-
-In winter, a powerful homelab can produce *more than enough heat* to replace your radiators or boiler.
-
-### **Why does this matter?**
-
-Let's compare a normal home vs. a home with heat-reuse servers:
-
-#### **Without server-heat reuse**
-- You run your servers → the heat is wasted.
-- You heat your home separately → high gas/electric bills.
-
-#### **With server-heat reuse**
-- The heat from your servers *becomes your heating system*.
-- Your boiler stays off most of the day.
-- That's where savings like **£300 → £40** come from.
-
-### **Simple Example**
-Let's say your home used to need £300/month to stay warm.
-
-Now:
-
-- Your server uses around £40 of electricity per month.  
-- That £40 of electricity becomes *useful heat* instead of wasted heat.
-- Your boiler barely runs because the server heat keeps the house warm.
-
-You pay **£40 total**, not **£300 + your homelab costs**.
-
-That's the magic:  
-**You turn something you were already paying for (computing) into something else you were paying for (heating).**
-
-And for Model A, where the company pays the electricity, you often get heated water or heating **completely free**.
+In the Essex trial, a home's heating costs fell from £350/month to under £60. That's the difference between central heating alone and central heating supplemented by distributed compute.
 
 ---
 
@@ -200,7 +147,3 @@ If this model continues to scale, the implications are enormous:
 
 Linux isn't just powering servers and phones.  
 It's quietly helping reinvent energy, infrastructure, and how heat and computing fit into our lives.
-
----
-
-*Coming up on StudioLinux: How homelab culture and low-cost Linux hardware are inspiring a new generation of community-scale computing projects across Europe and the Global South.*
