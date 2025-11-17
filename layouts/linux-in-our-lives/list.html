@@ -24,8 +24,10 @@
     </div>
 </nav>
 
-{{/* Get all posts */}}
-{{- $allPosts := where .Site.RegularPages "Section" "posts" }}
+{{/* Get all posts from both posts and linux-in-our-lives sections */}}
+{{- $postsPosts := where .Site.RegularPages "Section" "posts" }}
+{{- $linuxPosts := where .Site.RegularPages "Section" "linux-in-our-lives" }}
+{{- $allPosts := union $postsPosts $linuxPosts }}
 
 {{/* Loop through each category and display its posts */}}
 {{- range $title, $key := $categories }}

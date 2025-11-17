@@ -1,6 +1,6 @@
 ---
 title: "When Your Heating Runs on Linux: How Micro Data Centres Could Transform Home Energy"
-date: 2025-11-16
+date: 2025-11-16T00:00:00Z
 description: "A look at how tiny Linux-powered computers are being used to heat homes, cut bills, and reshape ideas about data centres and sustainable infrastructure."
 categories: ["Business & Enterprise", "Government"]
 tags: ["Linux", "Raspberry Pi", "Edge Computing", "Distributed Computing", "Sustainability", "Energy Efficiency", "Green Tech"]

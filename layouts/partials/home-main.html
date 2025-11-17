@@ -61,10 +61,11 @@
 
 {{- /* Featured Article Section - prioritizes published_on_home flag */ -}}
 {{- $now := now }}
-{{- $postsOnly := where .Site.RegularPages "Section" "eq" "posts" }}
-{{- $publishedPosts := where $postsOnly "Date" "le" $now }}
-{{- $homeFeatures := where $publishedPosts "Params.published_on_home" true }}
-{{- $featured := cond (gt (len $homeFeatures) 0) (first 1 $homeFeatures) (first 1 $publishedPosts.ByDate.Reverse) }}
+{{- /* Query ALL articles from entire site, not just specific sections */ -}}
+{{- $allArticles := .Site.RegularPages }}
+{{- $publishedArticles := where $allArticles "Date" "le" $now }}
+{{- $homeFeatures := where $publishedArticles "Params.published_on_home" true }}
+{{- $featured := cond (gt (len $homeFeatures) 0) (first 1 $homeFeatures) (first 1 $publishedArticles.ByDate.Reverse) }}
 {{- if gt (len $featured) 0 }}
 {{- range $featured }}
 <section class="featured-article">
@@ -95,7 +96,8 @@
         <h2>Latest Content</h2>
     </div>
     <div class="posts-grid" id="homepagePosts">
-        {{- $posts := where $postsOnly "Date" "le" $now }}
+        {{- /* Query ALL posts from entire site */ -}}
+        {{- $posts := where $allArticles "Date" "le" $now }}
         {{- range $posts.ByDate.Reverse }}
         <article class="post-card" data-category="{{ with .Params.categories }}{{ if gt (len .) 0 }}{{ index . 0 }}{{ else }}{{ $.Section | title }}{{ end }}{{ else }}{{ .Section | title }}{{ end }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
             <div class="card-image">
@@ -116,18 +118,19 @@
     </div>
 </section>
 
+{{- /* Recommended Reads Section */ -}}
 <section class="recommended-reads">
     <div class="section-header">
         <h2>Recommended Reads</h2>
         <p>Hand-picked guides and posts for getting started and leveling up.</p>
     </div>
     <div class="path-grid recommended-grid">
-        {{- $allPosts := where .Site.RegularPages "Section" "eq" "posts" }}
-        {{- $editorPicks := where $allPosts "Params.recommended" "eq" "editor" }}
+        {{- /* Query ALL articles from entire site for recommendations */ -}}
+        {{- $editorPicks := where $publishedArticles "Params.recommended" "eq" "editor" }}
         {{- $recommendedPosts := first 4 $editorPicks }}
         {{- if eq (len $recommendedPosts) 0 }}
-            {{- /* Fallback: if no editor picks, show 4 latest posts */ -}}
-            {{- $recommendedPosts = first 4 ($allPosts.ByDate.Reverse) }}
+            {{- /* Fallback: if no editor picks, show 4 latest articles from any section */ -}}
+            {{- $recommendedPosts = first 4 ($publishedArticles.ByDate.Reverse) }}
         {{- end }}
         {{- range $recommendedPosts -}}
         <article class="path-card recommended-card">
