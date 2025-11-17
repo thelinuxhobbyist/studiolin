@@ -97,8 +97,11 @@
     </div>
     <div class="posts-grid" id="homepagePosts">
         {{- /* Query ALL posts from entire site */ -}}
+        {{- /* Blacklist: exclude pages that shouldn't appear in latest posts */ -}}
+        {{- $blacklist := slice "privacy" "terms" "about" "contact" "search" "resources" }}
         {{- $posts := where $allArticles "Date" "le" $now }}
         {{- range $posts.ByDate.Reverse }}
+        {{- if not (in $blacklist (lower .File.BaseFileName)) }}
         <article class="post-card" data-category="{{ with .Params.categories }}{{ if gt (len .) 0 }}{{ index . 0 }}{{ else }}{{ $.Section | title }}{{ end }}{{ else }}{{ .Section | title }}{{ end }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
             <div class="card-image">
                 <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ with .Params.image }}{{ . }}{{ else }}/images/default-post.svg{{ end }}{{ end }}" alt="{{ .Title }}" loading="lazy" />
@@ -114,6 +117,7 @@
                 <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }} min read</span>
             </div>
         </article>
+        {{- end }}
         {{- end }}
     </div>
 </section>
