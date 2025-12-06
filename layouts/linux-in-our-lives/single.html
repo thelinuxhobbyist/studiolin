@@ -29,6 +29,17 @@
 
 		<hr class="blog-divider" />
 
+		{{- if .Params.tags }}
+		<footer class="post-footer">
+			<div class="post-tags-footer">
+				<h4>Tags:</h4>
+				{{- range .Params.tags }}
+				<a href="/tags/{{ . | urlize }}/" class="tag-link">{{ . }}</a>
+				{{- end }}
+			</div>
+		</footer>
+		{{- end }}
+
 		<div class="blog-author-share">
 			<div class="blog-author-card">
 				<img src="/images/avatar.png" alt="Author avatar" class="author-avatar" />
