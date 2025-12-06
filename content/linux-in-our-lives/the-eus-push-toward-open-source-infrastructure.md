@@ -1,4 +1,3 @@
-````markdown
 ---
 title: "The EU’s Push Toward Open-Source Infrastructure"
 date: 2025-12-06
@@ -48,5 +47,3 @@ If the 20th century was shaped by the question of who controlled a nation’s la
 ---
 
 _Published in Linux in Our Lives (secondary: Government)_
-
-````
