@@ -10,7 +10,12 @@
 	<div class="blog-hero-meta">
 		{{ with .Params.author }}<span class="blog-hero-author">{{ . }}</span> • {{ end }}
 		<span class="blog-hero-date">{{ .Date.Format "January 2, 2006" }}</span> •
-		<span class="blog-hero-read">{{ .WordCount | div 200 | add 1 }} min read</span>
+		{{ $wc := .WordCount }}
+		{{ if gt $wc 0 }}
+		<span class="blog-hero-read">{{ add (div $wc 200) 1 }} min read</span>
+		{{ else }}
+		<span class="blog-hero-read">1 min read</span>
+		{{ end }}
 	</div>
 </section>
 <div class="blog-article-wrap">
