@@ -3,9 +3,13 @@
 
 <div class="blog-single-wrapper">
 	{{/* Header with title, date, and reading time - NO tags */}}
-	<div class="blog-header-clean">
-		<h1 class="blog-header-title">{{ .Title }}</h1>
-		<div class="blog-header-meta">
+	<header class="post-header">
+		<div class="breadcrumbs">
+			<a href="/">Home</a> →
+			<a href="/linux-in-our-lives/">Linux in Our Lives</a>
+		</div>
+		<h1 class="post-title">{{ .Title }}</h1>
+		<div class="post-meta">
 			{{ with .Params.author }}<span class="blog-header-author">{{ . }}</span> • {{ end }}
 			<span class="blog-header-date">{{ .Date.Format "January 2, 2006" }}</span> •
 			{{ $wc := .WordCount }}
@@ -15,64 +19,49 @@
 			<span class="blog-header-read">1 min read</span>
 			{{ end }}
 		</div>
-	</div>
+	</header>
 
 	{{/* Featured image */}}
-	{{ partial "featured-image.html" (dict "page" . "class" "blog-hero-image" "alt" .Title) }}
+	<div class="post-featured-image">
+		{{ partial "featured-image.html" (dict "page" . "class" "post-featured" "alt" .Title) }}
+	</div>
 
 	{{/* Article content wrapper */}}
-	<div class="blog-article-wrap">
-		<div class="blog-article-content">
-			{{ .Content | safeHTML }}
-		</div>
-
-		<hr class="blog-divider" />
-
-		{{- if .Params.tags }}
-		<footer class="post-footer">
-			<div class="post-tags-footer">
-				<h4>Tags:</h4>
-				{{- range .Params.tags }}
-				<a href="/tags/{{ . | urlize }}/" class="tag-link">{{ . }}</a>
-				{{- end }}
-			</div>
-		</footer>
-		{{- end }}
-
-		<div class="blog-author-share">
-			<div class="blog-author-card">
-				<img src="/images/avatar.png" alt="Author avatar" class="author-avatar" />
-				<div class="author-meta">
-					<div class="author-name">{{ .Params.author | default "Alex Green" }}</div>
-					<div class="author-bio">Open-source advocate and tech writer — I write about Linux, open-source tools, and practical tips for curious developers.</div>
-					<a href="/linux-in-our-lives/" class="author-link">More articles</a>
-				</div>
-			</div>
-			<div class="blog-share" role="group" aria-label="Share article">
-				<a class="share-btn small" href="https://twitter.com/intent/tweet?text={{ urlquery .Title }}&amp;url={{ .Permalink }}" target="_blank" rel="noopener" aria-label="Share on X"><i class="fa-brands fa-x-twitter"></i></a>
-				<a class="share-btn small" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener" aria-label="Share on Facebook"><i class="fa-brands fa-facebook"></i></a>
-			</div>
-		</div>
+	<div class="post-content">
+		{{ .Content | safeHTML }}
 	</div>
-
-	<div class="blog-related">
-		<h3>Continue Reading</h3>
-		<div class="related-list">
-			{{ range first 3 (where .Site.RegularPages "Section" "linux-in-our-lives") }}
-				{{ if ne .Title $.Title }}
-				<a href="{{ .RelPermalink }}" class="related-card">
-						{{/* Render a small responsive thumb for related posts */}}
-						{{ partial "featured-image.html" (dict "page" . "class" "related-thumb" "alt" .Title) }}
-					<span>{{ .Title }}</span>
-				</a>
-				{{ end }}
-			{{ end }}
+	
+	{{- if .Params.tags }}
+	<footer class="post-footer">
+		<div class="post-tags-footer">
+			<h4>Tags:</h4>
+			{{- range .Params.tags }}
+			<a href="/tags/{{ . | urlize }}/" class="tag-link">{{ . }}</a>
+			{{- end }}
 		</div>
-	</div>
-
-	<div class="blog-article-back">
-		<a href="/linux-in-our-lives/" class="blog-single-back">← Back to Linux in Our Lives</a>
-	</div>
+	</footer>
+	{{- end }}
 </div>
+
+{{- /* Related Posts Section */ -}}
+<section class="related-posts">
+	<h3>You Might Also Like</h3>
+	<div class="related-posts-grid">
+		{{- $related := (where .Site.RegularPages "Section" .Section | shuffle | first 4) }}
+		{{- range $related }}
+		{{- if ne .Permalink $.Permalink }}
+		<article class="related-post-card">
+			<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+			<div class="related-meta">
+				<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+				<span class="read-time">{{ .ReadingTime }} min read</span>
+			</div>
+			<p class="related-excerpt">{{ .Summary | plainify | truncate 100 }}</p>
+			<a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
+		</article>
+		{{- end }}
+		{{- end }}
+	</div>
+</section>
 
 {{- end }}
