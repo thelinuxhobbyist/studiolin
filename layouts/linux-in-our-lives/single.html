@@ -1,67 +1,64 @@
 {{- define "main" }}
-<link rel="stylesheet" href="/css/blog-article.css">
 
-<div class="blog-single-wrapper">
-	{{/* Header with title, date, and reading time - NO tags */}}
-	<header class="post-header">
-		<div class="breadcrumbs">
-			<a href="/">Home</a> →
-			<a href="/linux-in-our-lives/">Linux in Our Lives</a>
+<div class="post-single-container">
+	<article class="post-single">
+		<header class="post-header">
+			<div class="breadcrumbs">
+				<a href="/">Home</a> →
+				<a href="/linux-in-our-lives/">Linux in Our Lives</a>
+			</div>
+			<h1 class="post-title">{{ .Title }}</h1>
+			<div class="post-meta">
+				{{ with .Params.author }}<span>{{ . }}</span> • {{ end }}
+				<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+					{{ .Date.Format "January 2, 2006" }}
+				</time>
+				<span class="reading-time">{{ .ReadingTime }} min read</span>
+			</div>
+		</header>
+
+		{{/* Featured image (page-bundled or fallback) */}}
+		<div class="post-featured-image">
+			{{ partial "featured-image.html" (dict "page" . "class" "post-featured" "alt" .Title) }}
 		</div>
-		<h1 class="post-title">{{ .Title }}</h1>
-		<div class="post-meta">
-			{{ with .Params.author }}<span class="blog-header-author">{{ . }}</span> • {{ end }}
-			<span class="blog-header-date">{{ .Date.Format "January 2, 2006" }}</span> •
-			{{ $wc := .WordCount }}
-			{{ if gt $wc 0 }}
-			<span class="blog-header-read">{{ add (div $wc 200) 1 }} min read</span>
-			{{ else }}
-			<span class="blog-header-read">1 min read</span>
-			{{ end }}
+
+		<div class="post-content">
+			{{- $content := .Content -}}
+			{{ $content | safeHTML }}
 		</div>
-	</header>
-
-	{{/* Featured image */}}
-	<div class="post-featured-image">
-		{{ partial "featured-image.html" (dict "page" . "class" "post-featured" "alt" .Title) }}
-	</div>
-
-	{{/* Article content wrapper */}}
-	<div class="post-content">
-		{{ .Content | safeHTML }}
-	</div>
+		
+		{{- if .Params.tags }}
+		<footer class="post-footer">
+			<div class="post-tags-footer">
+				<h4>Tags:</h4>
+				{{- range .Params.tags }}
+				<a href="/tags/{{ . | urlize }}/" class="tag-link">{{ . }}</a>
+				{{- end }}
+			</div>
+		</footer>
+		{{- end }}
+	</article>
 	
-	{{- if .Params.tags }}
-	<footer class="post-footer">
-		<div class="post-tags-footer">
-			<h4>Tags:</h4>
-			{{- range .Params.tags }}
-			<a href="/tags/{{ . | urlize }}/" class="tag-link">{{ . }}</a>
+	{{- /* Related Posts Section */ -}}
+	<section class="related-posts">
+		<h3>You Might Also Like</h3>
+		<div class="related-posts-grid">
+			{{- $related := (where .Site.RegularPages "Section" .Section | shuffle | first 4) }}
+			{{- range $related }}
+			{{- if ne .Permalink $.Permalink }}
+			<article class="related-post-card">
+				<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+				<div class="related-meta">
+					<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+					<span class="read-time">{{ .ReadingTime }} min read</span>
+				</div>
+				<p class="related-excerpt">{{ .Summary | plainify | truncate 100 }}</p>
+				<a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
+			</article>
+			{{- end }}
 			{{- end }}
 		</div>
-	</footer>
-	{{- end }}
+	</section>
 </div>
-
-{{- /* Related Posts Section */ -}}
-<section class="related-posts">
-	<h3>You Might Also Like</h3>
-	<div class="related-posts-grid">
-		{{- $related := (where .Site.RegularPages "Section" .Section | shuffle | first 4) }}
-		{{- range $related }}
-		{{- if ne .Permalink $.Permalink }}
-		<article class="related-post-card">
-			<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-			<div class="related-meta">
-				<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-				<span class="read-time">{{ .ReadingTime }} min read</span>
-			</div>
-			<p class="related-excerpt">{{ .Summary | plainify | truncate 100 }}</p>
-			<a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
-		</article>
-		{{- end }}
-		{{- end }}
-	</div>
-</section>
 
 {{- end }}
