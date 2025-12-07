@@ -2,77 +2,33 @@
 
 <div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
     <h1>Search Results</h1>
-    <div id="results"></div>
+    <div id="results">Loading...</div>
 </div>
 
 {{- /* Build a simple JSON dataset of pages for search (server-side) */ -}}
 {{- $.Scratch.Add "searchIndex" slice -}}
 {{- range .Site.RegularPages -}}
+    {{- if ne .Section "admin" -}}
     {{- $.Scratch.Add "searchIndex" (dict "title" .Title "url" .RelPermalink "summary" (.Summary | plainify | truncate 150) "section" .Section) -}}
+    {{- end -}}
 {{- end -}}
 <script>
-// All pages data (inlined JSON string parsed into object to avoid template interpolation issues)
-const allPages = JSON.parse({{ $.Scratch.Get "searchIndex" | jsonify | printf "%q" }});
-
-function performSearch() {
-    const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    const resultsDiv = document.getElementById('results');
-    
-    if (!query) {
-        resultsDiv.innerHTML = '<p>Please enter a search term.</p>';
-        return;
-    }
-    
-    // Simple search through titles and summaries
-    const results = allPages.filter(page => 
-        page.title.toLowerCase().includes(query) || 
-        page.summary.toLowerCase().includes(query)
-    );
-    
-    if (results.length === 0) {
-        resultsDiv.innerHTML = `
-            <div style="text-align: center; padding: 2rem;">
-                <h3>No results found for "${query}"</h3>
-                <p>Try different keywords or browse our <a href="/posts/">latest posts</a>.</p>
-            </div>`;
-        return;
-    }
-    
-    // Display results
-    let html = `<h3>Found ${results.length} results for "${query}":</h3><br>`;
-    
-    results.forEach(result => {
-        html += `
-            <div style="border: 1px solid #ddd; padding: 1rem; margin: 1rem 0; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <h4><a href="${result.url}" style="color: #059669; text-decoration: none; font-weight: 600;">${result.title}</a></h4>
-                <span style="color: #666; font-size: 0.85rem; text-transform: capitalize; background: #f8f9fa; padding: 0.3rem 0.6rem; border-radius: 12px; display: inline-block; margin: 0.5rem 0; border: 1px solid #e9ecef;">${result.section}</span>
-                <p style="color: #555; line-height: 1.5; margin: 0.5rem 0 0 0;">${result.summary}</p>
-            </div>
-        `;
-    });
-    
-    resultsDiv.innerHTML = html;
-}
-
-// Check URL for search query on page load
-window.addEventListener('load', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('q');
-    if (query) {
-        performSearchFromQuery(query);
-    }
-});
+// All pages data (inlined JSON array)
+const allPages = {{ $.Scratch.Get "searchIndex" | jsonify | safeJS }};
 
 function performSearchFromQuery(query) {
     const resultsDiv = document.getElementById('results');
-    if (!query) {
+    
+    if (!query || query.trim() === '') {
         resultsDiv.innerHTML = '<p>Please enter a search term.</p>';
         return;
     }
+    
     const results = allPages.filter(page => 
         page.title.toLowerCase().includes(query.toLowerCase()) || 
         page.summary.toLowerCase().includes(query.toLowerCase())
     );
+    
     if (results.length === 0) {
         resultsDiv.innerHTML = `
             <div style="text-align: center; padding: 2rem;">
@@ -81,6 +37,7 @@ function performSearchFromQuery(query) {
             </div>`;
         return;
     }
+    
     let html = `<h3>Found ${results.length} results for "${query}":</h3><br>`;
     results.forEach(result => {
         html += `
@@ -93,6 +50,18 @@ function performSearchFromQuery(query) {
     });
     resultsDiv.innerHTML = html;
 }
+
+// Check URL for search query immediately
+(function executeSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q');
+    if (query) {
+        // Use setTimeout to ensure DOM is fully ready
+        setTimeout(function() {
+            performSearchFromQuery(query);
+        }, 0);
+    }
+})();
 </script>
 
 {{- end }}
