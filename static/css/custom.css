@@ -231,10 +231,14 @@ img.related-thumb,
 .article-card-image img,
 img.article-card-image,
 .article-card-image {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  display: block !important;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
   object-fit: cover;
+}
+
+.post-featured-image {
+  max-width: 100%;
 }
 
