@@ -1,4 +1,34 @@
 /* Blog Article Page Styles */
+
+/* Clean white header section (no blue background, no tags) */
+.blog-header-clean {
+  width: 100%;
+  background: #ffffff;
+  padding: 3rem 2rem 2rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.blog-header-title {
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #1E1E1E;
+  margin: 0 0 1rem 0;
+}
+
+.blog-header-meta {
+  font-size: 1rem;
+  color: #666;
+  opacity: 1;
+}
+
+.blog-single-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Legacy hero styles for backward compatibility */
 .hero-bg-full {
   width: 100vw;
   position: relative;
@@ -12,12 +42,30 @@
   margin-bottom: 0;
   text-align: center;
 }
+
+.hero-bg-clean {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #ffffff;
+  color: #1E1E1E;
+  padding: 3rem 2rem 2rem 2rem;
+  margin-bottom: 0;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
 .blog-hero-title {
   font-size: 2.7rem;
   margin-bottom: 0.5rem;
-  color: #fff !important;
+  color: #1E1E1E;
   font-weight: 700;
   letter-spacing: -1px;
+}
+.hero-bg-full .blog-hero-title {
+  color: #fff !important;
 }
 .blog-hero-excerpt {
   font-size: 1.25rem;
@@ -26,6 +74,11 @@
 }
 .blog-hero-meta {
   font-size: 1.05rem;
+  color: #666;
+  opacity: 1;
+  margin-bottom: 0;
+}
+.hero-bg-full .blog-hero-meta {
   color: #fff;
   opacity: 0.9;
   margin-bottom: 1.5rem;

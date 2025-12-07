@@ -1,28 +1,27 @@
 {{- define "main" }}
 <link rel="stylesheet" href="/css/blog-article.css">
 
-
-<!-- Cleaned up: removed duplicate </style> tags -->
-{{/* Hero section for article page */}}
-<section class="blog-hero hero-bg-full">
-	<h1 class="blog-hero-title">{{ .Title }}</h1>
-	{{ with .Params.excerpt }}<p class="blog-hero-excerpt">{{ . }}</p>{{ end }}
-	<div class="blog-hero-meta">
-		{{ with .Params.author }}<span class="blog-hero-author">{{ . }}</span> • {{ end }}
-		<span class="blog-hero-date">{{ .Date.Format "January 2, 2006" }}</span> •
-		{{ $wc := .WordCount }}
-		{{ if gt $wc 0 }}
-		<span class="blog-hero-read">{{ add (div $wc 200) 1 }} min read</span>
-		{{ else }}
-		<span class="blog-hero-read">1 min read</span>
-		{{ end }}
+<div class="blog-single-wrapper">
+	{{/* Header with title, date, and reading time - NO tags */}}
+	<div class="blog-header-clean">
+		<h1 class="blog-header-title">{{ .Title }}</h1>
+		<div class="blog-header-meta">
+			{{ with .Params.author }}<span class="blog-header-author">{{ . }}</span> • {{ end }}
+			<span class="blog-header-date">{{ .Date.Format "January 2, 2006" }}</span> •
+			{{ $wc := .WordCount }}
+			{{ if gt $wc 0 }}
+			<span class="blog-header-read">{{ add (div $wc 200) 1 }} min read</span>
+			{{ else }}
+			<span class="blog-header-read">1 min read</span>
+			{{ end }}
+		</div>
 	</div>
-</section>
-<div class="blog-article-wrap">
-	{{/* Use the featured-image partial which handles page-bundled images, external URLs, and a default fallback. It also resizes page resources. */}}
-	{{ partial "featured-image.html" (dict "page" . "class" "blog-hero-image" "alt" .Title) }}
-	<div style="position:relative;">
 
+	{{/* Featured image */}}
+	{{ partial "featured-image.html" (dict "page" . "class" "blog-hero-image" "alt" .Title) }}
+
+	{{/* Article content wrapper */}}
+	<div class="blog-article-wrap">
 		<div class="blog-article-content">
 			{{ .Content | safeHTML }}
 		</div>
@@ -55,6 +54,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="blog-related">
 		<h3>Continue Reading</h3>
 		<div class="related-list">
@@ -69,6 +69,7 @@
 			{{ end }}
 		</div>
 	</div>
+
 	<div class="blog-article-back">
 		<a href="/linux-in-our-lives/" class="blog-single-back">← Back to Linux in Our Lives</a>
 	</div>
