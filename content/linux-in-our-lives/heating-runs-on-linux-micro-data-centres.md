@@ -6,7 +6,7 @@ recommended: "editor"
 views: 0
 thumbnail: ""
 categories: ["Linux in Our Lives"]
-tags: ["heating", "micro data centres", "raspberry pi", "energy efficiency", "distributed computing", "linux", "sustainability"]
+tags: ["linux", "raspberry pi", "data centres", "green computing", "sustainable technology", "home energy", "renewable energy", "distributed computing", "open-source", "climate tech"]
 ---
 
 Most people still imagine data centres as vast, sealed-off warehouses humming with machines, burning through electricity and dumping huge amounts of waste heat into the air. They picture a world of industrial cooling towers and power-hungry server farms, not something that belongs in an ordinary suburban garden. But in a quiet part of Essex, an experiment is turning that picture upside down — and it's doing so with Linux, Raspberry Pis and a radically different idea about what computing infrastructure should look like.
