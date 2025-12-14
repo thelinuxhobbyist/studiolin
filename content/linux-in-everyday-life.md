@@ -1,10 +1,9 @@
 ---
 title: "Linux in Everyday Life"
+date: 2025-12-14
 description: "Discover how Linux and open-source technology shape the everyday experiences that surround us—from home devices to sustainability."
 layout: "section"
 ---
-
-## Linux: Technology That's Already Part of Your Life
 
 Most people don't realize how deeply Linux is woven into everyday life. It powers the smart home devices in your apartment, manages the infrastructure behind streaming services, secures your financial transactions, and increasingly influences decisions about privacy, security, and personal computing.
 

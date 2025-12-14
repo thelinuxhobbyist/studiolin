@@ -1,10 +1,9 @@
 ---
 title: "Linux in Government"
+date: 2025-12-14
 description: "Explore how Linux and open-source technologies are transforming public sector infrastructure, digital sovereignty, and government IT systems worldwide."
 layout: "section"
 ---
-
-## Linux: Powering Public Sector Infrastructure
 
 Linux has become instrumental in modernizing government IT infrastructure across the globe. From digital sovereignty initiatives to cost-effective public sector computing, open-source technology is reshaping how governments build, secure, and maintain their technology systems.
 

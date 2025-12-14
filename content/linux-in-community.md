@@ -1,10 +1,9 @@
 ---
 title: "Linux & Open-Source Community"
+date: 2025-12-14
 description: "Explore the global open-source community, collaborative development, and the cultural movement that drives Linux forward."
 layout: "section"
 ---
-
-## The Global Open-Source Community: Powered by Linux
 
 Open-source software thrives because of community—thousands of developers, maintainers, and advocates collaborating globally to build technology that's free, transparent, and powerful. Linux is at the heart of this movement, driving innovation and democratizing technology access.
 

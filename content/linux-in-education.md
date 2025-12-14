@@ -1,10 +1,9 @@
 ---
 title: "Linux in Education"
+date: 2025-12-14
 description: "Discover how Linux empowers students, educators, and institutions through accessible, free, and open learning platforms and tools."
 layout: "section"
 ---
-
-## Linux: Democratizing Education Through Open Technology
 
 Linux and open-source software have fundamentally changed access to education. By removing cost barriers and providing powerful, customizable tools, Linux enables students and educators worldwide to learn, teach, and innovate without proprietary software licensing constraints.
 
