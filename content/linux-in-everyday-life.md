@@ -1,6 +1,6 @@
 ---
 title: "Linux in Everyday Life"
-date: 2025-12-14
+date: 2025-12-14T00:00:00Z
 description: "Discover how Linux and open-source technology shape the everyday experiences that surround us—from home devices to sustainability."
 layout: "section"
 ---

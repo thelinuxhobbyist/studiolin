@@ -1,6 +1,6 @@
 ---
 title: "Linux & Open-Source Community"
-date: 2025-12-14
+date: 2025-12-14T00:00:00Z
 description: "Explore the global open-source community, collaborative development, and the cultural movement that drives Linux forward."
 layout: "section"
 ---

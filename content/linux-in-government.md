@@ -1,6 +1,6 @@
 ---
 title: "Linux in Government"
-date: 2025-12-14
+date: 2025-12-14T00:00:00Z
 description: "Explore how Linux and open-source technologies are transforming public sector infrastructure, digital sovereignty, and government IT systems worldwide."
 layout: "section"
 ---
