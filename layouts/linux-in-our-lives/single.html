@@ -40,6 +40,22 @@
 	
 	{{- /* Related Posts Section */ -}}
 	<section class="related-posts">
+		<div class="section-breadcrumb">
+			{{- if .Params.categories }}
+				{{- $category := index .Params.categories 0 }}
+				{{- if eq $category "Government" }}
+					<a href="/linux-in-government/" class="back-to-section">← Back to Linux in Government</a>
+				{{- else if eq $category "Education" }}
+					<a href="/linux-in-education/" class="back-to-section">← Back to Linux in Education</a>
+				{{- else if eq $category "Business & Enterprise" }}
+					<a href="/linux-in-enterprise/" class="back-to-section">← Back to Linux in Enterprise</a>
+				{{- else if eq $category "Personal Computing" }}
+					<a href="/linux-in-everyday-life/" class="back-to-section">← Back to Everyday Life</a>
+				{{- else if eq $category "Community & Open Source" }}
+					<a href="/linux-in-community/" class="back-to-section">← Back to Community & Open Source</a>
+				{{- end }}
+			{{- end }}
+		</div>
 		<h3>You Might Also Like</h3>
 		<div class="related-posts-grid">
 			{{- $related := (where .Site.RegularPages "Section" .Section | shuffle | first 4) }}
@@ -238,6 +254,22 @@
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 2px solid var(--studio-border-light, #e2e8f0);
+}
+
+.section-breadcrumb {
+    margin-bottom: 1.5rem;
+}
+
+.back-to-section {
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.back-to-section:hover {
+    color: var(--studio-blue-dark, #1d4ed8);
+    text-decoration: underline;
 }
 
 .related-posts h3 {
