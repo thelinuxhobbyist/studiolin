@@ -17,10 +17,12 @@
 {{/* Sector Navigation */}}
 <nav class="sector-nav">
     <div class="sector-nav-container">
-        <button class="sector-filter-btn active" data-sector="all">All</button>
-        {{- range $title, $key := $categories }}
-            <button class="sector-filter-btn" data-sector="{{ $key }}">{{ $title }}</button>
-        {{- end }}
+        <a href="/linux-in-our-lives/" class="sector-filter-btn active">All</a>
+        <a href="/linux-in-government/" class="sector-filter-btn">Government</a>
+        <a href="/linux-in-education/" class="sector-filter-btn">Education</a>
+        <a href="/linux-in-enterprise/" class="sector-filter-btn">Business & Enterprise</a>
+        <a href="/linux-in-everyday-life/" class="sector-filter-btn">Personal Computing</a>
+        <a href="/linux-in-community/" class="sector-filter-btn">Community & Open Source</a>
     </div>
 </nav>
 
