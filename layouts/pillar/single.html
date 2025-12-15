@@ -59,13 +59,15 @@
 
         {{- /* Sidebar */ -}}
         <aside class="pillar-sidebar">
-            {{- /* Most Viewed Articles Sidebar */ -}}
+            {{- /* Latest Articles Widget - Limited to 5 articles */ -}}
             {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
             {{- $recentArticles := $categoryArticles.ByDate.Reverse }}
+            {{- /* Only show widget if there are articles in this category */ -}}
             {{- if gt (len $recentArticles) 0 }}
             <section class="sidebar-widget featured-widget">
                 <h3 class="widget-title">Latest Articles</h3>
                 <div class="sidebar-articles-list">
+                    {{- /* Display maximum 5 most recent articles by publication date */ -}}
                     {{- range first 5 $recentArticles }}
                     <article class="sidebar-article-item">
                         <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
@@ -192,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 2rem;
 }
 /* Sidebar Widgets */
 .sidebar-widget {
