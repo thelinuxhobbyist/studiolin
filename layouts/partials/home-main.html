@@ -59,6 +59,48 @@
     </script>
 </section>
 
+{{- /* Editorial Trust Statement */ -}}
+<section class="editorial-statement">
+    <div class="statement-container">
+        <p>StudioLinux is an independent editorial project exploring how Linux quietly powers governments, education, business, and everyday life. We focus on real-world impact, not hype.</p>
+    </div>
+    <style>
+        .editorial-statement {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .statement-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .editorial-statement p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #475569;
+            margin: 0;
+            text-align: center;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .editorial-statement {
+                padding: 1.5rem 1rem;
+            }
+            
+            .editorial-statement p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</section>
+
 {{- /* Featured Article Section - prioritizes published_on_home flag */ -}}
 {{- $now := now }}
 {{- /* Query ALL articles from entire site, not just specific sections */ -}}
@@ -72,12 +114,10 @@
     {{- $validArticles = $validArticles | append . }}
   {{- end }}
 {{- end }}
-{{- /* First try to find explicitly featured articles */ -}}
+{{- /* Only display Featured Article if explicitly marked with published_on_home: true */ -}}
 {{- $homeFeatures := where $validArticles "Params.published_on_home" true }}
-{{- /* Fall back to most recent if no explicit featured article */ -}}
-{{- $featured := cond (gt (len $homeFeatures) 0) (first 1 $homeFeatures) (first 1 ($validArticles.ByDate.Reverse)) }}
-{{- if gt (len $featured) 0 }}
-{{- range $featured }}
+{{- if gt (len $homeFeatures) 0 }}
+{{- range (first 1 $homeFeatures) }}
 <section class="featured-article">
     <div class="section-header">
         <h2>Featured Article</h2>

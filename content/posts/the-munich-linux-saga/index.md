@@ -4,8 +4,9 @@ date: 2025-11-12T00:00:00Z
 categories: ["Government", "Community & Open Source"]
 tags: ["Linux", "Open Source", "Government IT", "Digital Sovereignty", "LiMux", "Case Study"]
 excerpt: "How one city's move toward open source reshaped the conversation about technology in government"
-featured: false
-published_on_home: false
+featured: true
+published_on_home: true
+featured_image: "/images/munich-linux.jpg"
 ---
 
 ## A City Chooses Freedom

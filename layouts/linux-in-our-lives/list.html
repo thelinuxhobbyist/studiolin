@@ -5,6 +5,13 @@
     <p class="blog-hero-desc">{{ .Params.description | default "Explore how Linux impacts the world—from education to enterprise—through insightful articles and stories." }}</p>
 </section>
 
+{{/* Intro Paragraph */}}
+<section class="section-intro">
+    <div class="intro-container">
+        <p>This section collects all our editorial content exploring Linux's impact across five key areas: government & policy, education & learning, enterprise & business, community & open source, and everyday life. Browse by category below or explore the dedicated pillar pages for deeper dives into each topic.</p>
+    </div>
+</section>
+
 {{/* Define our main categories */}}
 {{- $categories := dict 
     "Education" "education"
@@ -102,7 +109,30 @@
 	color: #fff !important;
 	margin-bottom: 2rem;
 }
-.sector-nav {
+
+/* Intro Section */
+.section-intro {
+	background: #f8fafc;
+	border-top: 1px solid #e2e8f0;
+	border-bottom: 1px solid #e2e8f0;
+	padding: 2rem 1rem;
+	margin-bottom: 3rem;
+}
+
+.intro-container {
+	max-width: 850px;
+	margin: 0 auto;
+}
+
+.section-intro p {
+	font-size: 1.05rem;
+	line-height: 1.7;
+	color: #475569;
+	margin: 0;
+	text-align: center;
+}
+
+/* Sector Sections */.sector-nav {
 	background: #f6f8fa;
 	padding: 1.5rem 0;
 	margin-bottom: 3rem;
@@ -143,7 +173,7 @@
 }
 .sector-section {
 	max-width: 1000px;
-	margin: 0 auto 4rem auto;
+	margin: 0 auto 5.5rem auto;
 	padding: 0 1rem;
 }
 .sector-section.hidden {
