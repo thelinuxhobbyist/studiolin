@@ -6,16 +6,6 @@ type: "pillar"
 category_name: "Community & Open Source"
 summary: "The Linux community is its greatest strength. From individual contributors to massive collaborative projects, Linux thrives because of people who believe in open-source principles and shared innovation. This community continues to drive Linux forward and transform technology globally."
 featured_image: "/images/community-collaboration.jpg"
-featured_articles:
-  - title: "The Modern Role of Open-Source Software in Technology"
-    url: "/posts/open-source-software-modern-tech-role/"
-    teaser: "Understand how open-source has become foundational to modern technology. Explore the benefits, challenges, and future of collaborative development."
-  - title: "When PewDiePie's Linux Switch Sparked Open-Source Adoption"
-    url: "/posts/pewdiepie-linux-switch-open-source-adoption/"
-    teaser: "See how a famous content creator's switch to Linux sparked conversations about accessibility and open-source adoption in mainstream culture."
-  - title: "Why Without Linux There Is No AI"
-    url: "/linux-in-our-lives/without-linux-there-is-no-ai/"
-    teaser: "Explore the fundamental role Linux plays in the AI revolution. Discover why every major AI initiative depends on Linux infrastructure and open-source tools."
 ---
 
 The Linux community is its greatest strength. From individual contributors to massive collaborative projects, Linux thrives because of people who believe in open-source principles and shared innovation.

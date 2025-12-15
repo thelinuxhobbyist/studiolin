@@ -6,16 +6,6 @@ type: "pillar"
 category_name: "Personal Computing"
 summary: "Linux isn't just for servers and developers—it's woven into the fabric of everyday life. Every smartphone, smart TV, connected car, and cloud service likely runs on Linux. Understanding Linux helps you make better technology decisions and take greater control of your digital life."
 featured_image: "/images/everyday-computing.jpg"
-featured_articles:
-  - title: "When Your Heating Runs on Linux: Micro Data Centers Warming Your Home"
-    url: "/linux-in-our-lives/heating-runs-on-linux-micro-data-centres/"
-    teaser: "Explore the innovative intersection of sustainable computing and heating technology. Learn how Linux-powered micro data centers are changing home infrastructure."
-  - title: "Without Linux There Is No AI"
-    url: "/linux-in-our-lives/without-linux-there-is-no-ai/"
-    teaser: "Discover how Linux enables the AI revolution we experience daily. From chatbots to recommendations, Linux is the invisible foundation."
-  - title: "Linux File Permissions and Security: A Complete Guide for Everyone"
-    url: "/tutorials/linux-file-permissions-security/"
-    teaser: "Master the security concepts that protect your data. Learn file permissions, ownership, and security best practices in simple terms."
 ---
 
 Linux isn't just for servers and developers—it's woven into the fabric of everyday life. Every smartphone, smart TV, connected car, and cloud service likely runs on Linux. Understanding Linux helps you make better technology decisions for your personal computing needs.

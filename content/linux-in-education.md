@@ -6,16 +6,6 @@ type: "pillar"
 category_name: "Education"
 summary: "Linux is transforming education by providing free, powerful tools that prepare students for real-world technology careers. From computer labs to research institutions, Linux enables institutions to teach technology fundamentals while reducing costs and promoting digital literacy."
 featured_image: "/images/education-learning.jpg"
-featured_articles:
-  - title: "Linux for Everyone: Your First Steps into a World of Choice"
-    url: "/posts/linux-for-everyone-first-steps/"
-    teaser: "A welcoming introduction to Linux for learners of all backgrounds. Discover why Linux is the perfect starting point for understanding modern computing."
-  - title: "Getting Started with Linux: A Beginner's Guide"
-    url: "/posts/getting-started-with-linux/"
-    teaser: "Everything you need to know to install, configure, and start using Linux as your daily OS. No prior experience required."
-  - title: "Bash Scripting for Beginners"
-    url: "/tutorials/bash-scripting-for-beginners/"
-    teaser: "Master the fundamentals of bash scripting. Learn to automate tasks and unlock the full power of the Linux command line."
 ---
 
 Linux and open-source software have fundamentally changed access to education. By removing cost barriers and providing powerful, customizable tools, Linux enables students and educators worldwide to learn, teach, and innovate without proprietary software licensing constraints.

@@ -6,16 +6,6 @@ type: "pillar"
 category_name: "Government"
 summary: "Governments worldwide are adopting Linux to strengthen digital infrastructure, reduce costs, and establish technological sovereignty. Open-source technology enables public institutions to serve citizens more effectively while maintaining control over critical systems."
 featured_image: "/images/government-infrastructure.jpg"
-featured_articles:
-  - title: "The EU's Push Toward Open-Source Infrastructure"
-    url: "/linux-in-our-lives/the-eus-push-toward-open-source-infrastructure/"
-    teaser: "A strategic examination of how European institutions are shifting public services to open-source software for sovereignty and independence."
-  - title: "The Munich Linux Saga: A Historic Case Study"
-    url: "/posts/the-munich-linux-saga/"
-    teaser: "The legendary story of Munich's government-wide Linux migration—lessons learned and the fight for digital independence."
-  - title: "How Linux is Powering the Future of Cloud Computing"
-    url: "/posts/linux-powering-cloud-computing-future/"
-    teaser: "Explore how Linux dominates cloud infrastructure from AWS to government datacenters."
 ---
 
 Linux has become instrumental in modernizing government IT infrastructure across the globe. From digital sovereignty initiatives to cost-effective public sector computing, open-source technology is reshaping how governments build, secure, and maintain their technology systems.
