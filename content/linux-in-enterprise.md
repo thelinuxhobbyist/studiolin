@@ -2,7 +2,7 @@
 title: "Linux in Enterprise & Business"
 date: 2025-12-14T00:00:00Z
 description: "Explore how enterprises leverage Linux for robust infrastructure, development, DevOps, and competitive advantage in modern business."
-layout: "pillar"
+type: "pillar"
 category_name: "Business & Enterprise"
 featured_articles:
   - title: "Getting Started with Ansible"

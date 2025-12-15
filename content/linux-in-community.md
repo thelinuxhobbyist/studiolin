@@ -2,7 +2,7 @@
 title: "Linux in Community & Open Source"
 date: 2025-12-14T00:00:00Z
 description: "Discover the vibrant community driving Linux innovation, adoption trends, and the transformative power of open-source collaboration."
-layout: "pillar"
+type: "pillar"
 category_name: "Community & Open Source"
 featured_articles:
   - title: "The Modern Role of Open-Source Software in Technology"

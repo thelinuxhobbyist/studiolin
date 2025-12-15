@@ -2,7 +2,7 @@
 title: "Linux in Education"
 date: 2025-12-14T00:00:00Z
 description: "Discover how Linux empowers students, educators, and institutions through accessible, free, and open learning platforms and tools."
-layout: "pillar"
+type: "pillar"
 category_name: "Education"
 featured_articles:
   - title: "Linux for Everyone: Your First Steps into a World of Choice"

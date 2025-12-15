@@ -2,7 +2,7 @@
 title: "Linux in Everyday Life"
 date: 2025-12-14T00:00:00Z
 description: "Discover how Linux powers the everyday technologies you use, from smart homes to data centers, and how to get started with Linux yourself."
-layout: "pillar"
+type: "pillar"
 category_name: "Personal Computing"
 featured_articles:
   - title: "When Your Heating Runs on Linux: Micro Data Centers Warming Your Home"
