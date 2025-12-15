@@ -6,11 +6,15 @@
             <h1 class="pillar-title">{{ .Title }}</h1>
             
             <div class="pillar-summary">
-                {{- $content := .Content -}}
-                {{- /* Extract only the first paragraph (summary) */ -}}
-                {{- $paragraphs := split $content "</p>" -}}
-                {{- if gt (len $paragraphs) 0 -}}
-                    {{- index $paragraphs 0 }}</p>
+                {{- /* Extract summary text (first paragraph only) */ -}}
+                {{- with .Params.summary }}
+                    {{ . }}
+                {{- else }}
+                    {{- /* Fallback: use first paragraph of content */ -}}
+                    {{- $para := .Content | replaceRE "(<p>|</p>)" "" | split "\n" -}}
+                    {{- if gt (len $para) 0 -}}
+                        <p>{{ index $para 0 }}</p>
+                    {{- end -}}
                 {{- end -}}
             </div>
         </header>
@@ -33,33 +37,31 @@
         {{- end }}
 
         {{- /* Full Category Article List */ -}}
+        {{- $category := .Params.category_name }}
+        {{- $allPages := where .Site.RegularPages "Type" "!=" "pillar" }}
+        {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
+        {{- $sortedArticles := $categoryArticles.ByDate.Reverse }}
+        
+        {{- if gt (len $sortedArticles) 0 }}
         <section class="category-articles-section">
             <h2>All {{ .Title }} Articles</h2>
             <div class="articles-list">
-                {{- $category := .Params.category_name }}
-                {{- $allPages := where .Site.RegularPages "Type" "page" }}
-                {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
-                {{- $sortedArticles := $categoryArticles.ByDate.Reverse }}
-                
-                {{- if gt (len $sortedArticles) 0 }}
-                    {{- range $sortedArticles }}
-                    <article class="article-list-item">
-                        <div class="article-list-header">
-                            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                            <div class="article-list-meta">
-                                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-                                <span class="reading-time">{{ .ReadingTime }} min read</span>
-                            </div>
+                {{- range $sortedArticles }}
+                <article class="article-list-item">
+                    <div class="article-list-header">
+                        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                        <div class="article-list-meta">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                            <span class="reading-time">{{ .ReadingTime }} min read</span>
                         </div>
-                        <p class="article-snippet">{{ with .Summary }}{{ . | plainify | truncate 150 }}{{ end }}</p>
-                        <a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
-                    </article>
-                    {{- end }}
-                {{- else }}
-                <p class="no-articles">No articles found in this category yet. Check back soon!</p>
+                    </div>
+                    <p class="article-snippet">{{ with .Summary }}{{ . | plainify | truncate 150 }}{{ end }}</p>
+                    <a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
+                </article>
                 {{- end }}
             </div>
         </section>
+        {{- end }}
 
         {{- /* Related Pillar Pages */ -}}
         <section class="related-pillars">

@@ -4,6 +4,7 @@ date: 2025-12-14T00:00:00Z
 description: "Discover how Linux empowers students, educators, and institutions through accessible, free, and open learning platforms and tools."
 type: "pillar"
 category_name: "Education"
+summary: "Linux is transforming education by providing free, powerful tools that prepare students for real-world technology careers. From computer labs to research institutions, Linux enables institutions to teach technology fundamentals while reducing costs and promoting digital literacy."
 featured_articles:
   - title: "Linux for Everyone: Your First Steps into a World of Choice"
     url: "/posts/linux-for-everyone-first-steps/"
