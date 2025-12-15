@@ -57,8 +57,8 @@
             {{- end }}
         </article>
 
-        {{- /* Sidebar */ -}}
-        <aside class="pillar-sidebar">
+        {{- /* Desktop Sidebar (hidden on mobile) */ -}}
+        <aside class="pillar-sidebar desktop-sidebar">
             {{- /* Latest Articles Widget - Limited to 5 articles */ -}}
             {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
             {{- $recentArticles := $categoryArticles.ByDate.Reverse }}
@@ -103,6 +103,61 @@
             </section>
         </aside>
     </div>
+
+    {{- /* Mobile Collapsible Sidebar (hidden on desktop) */ -}}
+    <details class="mobile-sidebar-collapse">
+        <summary class="mobile-sidebar-summary">
+            <span class="summary-text">Browse Related Content</span>
+            <span class="summary-icon">+</span>
+        </summary>
+        
+        <div class="mobile-sidebar-content">
+            {{- /* Latest Articles Widget - Limited to 5 articles */ -}}
+            {{- $categoryArticles := where .Site.RegularPages "Type" "!=" "pillar" }}
+            {{- $categoryArticles := where $categoryArticles "Params.categories" "intersect" (slice $category) }}
+            {{- $recentArticles := $categoryArticles.ByDate.Reverse }}
+            {{- /* Only show widget if there are articles in this category */ -}}
+            {{- if gt (len $recentArticles) 0 }}
+            <section class="mobile-sidebar-widget">
+                <h3 class="mobile-widget-title">Latest Articles</h3>
+                <div class="mobile-articles-list">
+                    {{- /* Display maximum 5 most recent articles by publication date */ -}}
+                    {{- range first 5 $recentArticles }}
+                    <article class="mobile-article-item">
+                        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                        <div class="mobile-article-meta">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                        </div>
+                    </article>
+                    {{- end }}
+                </div>
+            </section>
+            {{- end }}
+
+            {{- /* Related Pillar Pages Widget */ -}}
+            <section class="mobile-sidebar-widget">
+                <h3 class="mobile-widget-title">Explore Other Topics</h3>
+                <div class="mobile-pillar-links">
+                    <a href="/linux-in-government/" class="mobile-pillar-link">
+                        Linux in Government
+                    </a>
+                    <a href="/linux-in-education/" class="mobile-pillar-link">
+                        Linux in Education
+                    </a>
+                    <a href="/linux-in-enterprise/" class="mobile-pillar-link">
+                        Linux in Enterprise
+                    </a>
+                    <a href="/linux-in-community/" class="mobile-pillar-link">
+                        Linux & Open-Source Community
+                    </a>
+                    <a href="/linux-in-everyday-life/" class="mobile-pillar-link">
+                        Linux in Everyday Life
+                    </a>
+                </div>
+            </section>
+        </div>
+    </details>
+</div>
 </div><script>
 document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
@@ -471,6 +526,144 @@ document.addEventListener('DOMContentLoaded', function() {
     flex-grow: 1;
 }
 
+/* Mobile Collapsible Sidebar */
+.mobile-sidebar-collapse {
+    display: none;
+    margin: 2rem 0 0 0;
+    padding: 0;
+}
+
+.mobile-sidebar-collapse[open] {
+    display: block;
+}
+
+.mobile-sidebar-summary {
+    display: none;
+    padding: 1rem;
+    background: var(--studio-bg-secondary, #f8fafc);
+    border: 1px solid var(--studio-border-light, #e2e8f0);
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    color: var(--studio-gray-900, #0f172a);
+    transition: all 0.3s ease;
+}
+
+.mobile-sidebar-collapse[open] > .mobile-sidebar-summary {
+    background: var(--studio-blue, #2563eb);
+    color: white;
+    border-color: var(--studio-blue, #2563eb);
+}
+
+.mobile-sidebar-summary:hover {
+    background: var(--studio-border-light, #e2e8f0);
+}
+
+.mobile-sidebar-collapse[open] > .mobile-sidebar-summary:hover {
+    background: var(--studio-blue-dark, #1d4ed8);
+}
+
+.summary-text {
+    flex: 1;
+}
+
+.summary-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.mobile-sidebar-collapse[open] .summary-icon {
+    transform: rotate(45deg);
+}
+
+.mobile-sidebar-content {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.mobile-sidebar-widget {
+    background: var(--studio-bg-secondary, #f8fafc);
+    border: 1px solid var(--studio-border-light, #e2e8f0);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.mobile-widget-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: var(--studio-gray-900, #0f172a);
+    border-bottom: 2px solid var(--studio-blue, #2563eb);
+    padding-bottom: 0.5rem;
+}
+
+.mobile-articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-article-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--studio-border-light, #e2e8f0);
+}
+
+.mobile-article-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.mobile-article-item h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.mobile-article-item h4 a {
+    color: var(--studio-gray-900, #0f172a);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mobile-article-item h4 a:hover {
+    color: var(--studio-blue, #2563eb);
+}
+
+.mobile-article-meta {
+    font-size: 0.75rem;
+    color: var(--studio-text-secondary, #475569);
+}
+
+.mobile-pillar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mobile-pillar-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: white;
+    border: 1px solid var(--studio-border-light, #e2e8f0);
+    border-radius: 4px;
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.mobile-pillar-link:active {
+    background: var(--studio-blue, #2563eb);
+    color: white;
+    border-color: var(--studio-blue, #2563eb);
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .pillar-container {
@@ -481,14 +674,25 @@ document.addEventListener('DOMContentLoaded', function() {
         font-size: 2rem;
     }
 
+    /* Hide desktop sidebar on mobile */
+    .desktop-sidebar {
+        display: none;
+    }
+
+    /* Show mobile collapsible on mobile */
+    .mobile-sidebar-collapse {
+        display: block;
+    }
+
+    .mobile-sidebar-summary {
+        display: flex;
+        align-items: center;
+    }
+
     /* Stack columns on mobile */
     .pillar-content-wrapper {
         grid-template-columns: 1fr;
         gap: 2rem;
-    }
-    
-    .pillar-sidebar {
-        order: -1; /* Move sidebar above main content on mobile */
     }
     
     .featured-articles-grid {
