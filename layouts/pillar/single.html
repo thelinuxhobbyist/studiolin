@@ -1,107 +1,107 @@
 {{- define "main" }}
 
 <div class="pillar-container">
-    <article class="pillar-page">
-        <header class="pillar-header">
-            <h1 class="pillar-title">{{ .Title }}</h1>
-            
-            <div class="pillar-summary">
-                {{- /* Extract summary text (first paragraph only) */ -}}
-                {{- with .Params.summary }}
-                    {{ . }}
-                {{- else }}
-                    {{- /* Fallback: use first paragraph of content */ -}}
-                    {{- $para := .Content | replaceRE "(<p>|</p>)" "" | split "\n" -}}
-                    {{- if gt (len $para) 0 -}}
-                        <p>{{ index $para 0 }}</p>
-                    {{- end -}}
+    <header class="pillar-header">
+        <h1 class="pillar-title">{{ .Title }}</h1>
+        
+        <div class="pillar-summary">
+            {{- /* Extract summary text (first paragraph only) */ -}}
+            {{- with .Params.summary }}
+                {{ . }}
+            {{- else }}
+                {{- /* Fallback: use first paragraph of content */ -}}
+                {{- $para := .Content | replaceRE "(<p>|</p>)" "" | split "\n" -}}
+                {{- if gt (len $para) 0 -}}
+                    <p>{{ index $para 0 }}</p>
                 {{- end -}}
-            </div>
-        </header>
+            {{- end -}}
+        </div>
+    </header>
 
-        {{- /* Most Viewed Articles Section */ -}}
-        {{- $category := .Params.category_name }}
-        {{- $allPages := where .Site.RegularPages "Type" "!=" "pillar" }}
-        {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
-        {{- if gt (len $categoryArticles) 0 }}
-        <section class="featured-articles-section">
-            <h2>Most Viewed Articles</h2>
-            <div class="featured-articles-grid">
-                {{- range first 3 $categoryArticles }}
-                    <article class="featured-article-card">
-                        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                        <p class="featured-article-teaser">{{ with .Summary }}{{ . | plainify | truncate 120 }}{{ end }}</p>
+    <div class="pillar-content-wrapper">
+        {{- /* Main Content Column */ -}}
+        <article class="pillar-page">
+            {{- /* Full Category Article List */ -}}
+            {{- $category := .Params.category_name }}
+            {{- $allPages := where .Site.RegularPages "Type" "!=" "pillar" }}
+            {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
+            {{- $sortedArticles := $categoryArticles.ByDate.Reverse }}
+        
+            
+            {{- if gt (len $sortedArticles) 0 }}
+            <section class="category-articles-section">
+                <h2>All {{ .Title }} Articles</h2>
+                <div class="articles-list" id="articles-list">
+                    {{- range first 10 $sortedArticles }}
+                    <article class="article-list-item">
+                        <div class="article-list-header">
+                            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                            <div class="article-list-meta">
+                                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                                <span class="reading-time">{{ .ReadingTime }} min read</span>
+                            </div>
+                        </div>
+                        <p class="article-snippet">{{ with .Summary }}{{ . | plainify | truncate 150 }}{{ end }}</p>
                         <a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
                     </article>
+                    {{- end }}
+                </div>
+                {{- if gt (len $sortedArticles) 10 }}
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="load-more-btn" data-remaining="{{ sub (len $sortedArticles) 10 }}" data-category="{{ $category }}">
+                        Load More ({{ sub (len $sortedArticles) 10 }} more articles)
+                    </button>
+                </div>
                 {{- end }}
-            </div>
-        </section>
-        {{- end }}
-
-        {{- /* Full Category Article List */ -}}
-        {{- $category := .Params.category_name }}
-        {{- $allPages := where .Site.RegularPages "Type" "!=" "pillar" }}
-        {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
-        {{- $sortedArticles := $categoryArticles.ByDate.Reverse }}
-        
-        {{- if gt (len $sortedArticles) 0 }}
-        <section class="category-articles-section">
-            <h2>All {{ .Title }} Articles</h2>
-            <div class="articles-list" id="articles-list">
-                {{- range first 10 $sortedArticles }}
-                <article class="article-list-item">
-                    <div class="article-list-header">
-                        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                        <div class="article-list-meta">
-                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-                            <span class="reading-time">{{ .ReadingTime }} min read</span>
-                        </div>
-                    </div>
-                    <p class="article-snippet">{{ with .Summary }}{{ . | plainify | truncate 150 }}{{ end }}</p>
-                    <a href="{{ .Permalink }}" class="read-more-link">Read More →</a>
-                </article>
-                {{- end }}
-            </div>
-            {{- if gt (len $sortedArticles) 10 }}
-            <div class="load-more-container">
-                <button id="load-more-btn" class="load-more-btn" data-remaining="{{ sub (len $sortedArticles) 10 }}" data-category="{{ $category }}">
-                    Load More ({{ sub (len $sortedArticles) 10 }} more articles)
-                </button>
-            </div>
+            </section>
             {{- end }}
-        </section>
-        {{- end }}
+        </article>
 
-        {{- /* Related Pillar Pages */ -}}
-        <section class="related-pillars">
-            <h2>Explore Other Topics</h2>
-            <div class="pillar-links-grid">
-                <a href="/linux-in-government/" class="pillar-link-card">
-                    <h4>Linux in Government</h4>
-                    <p>Digital sovereignty, public sector infrastructure, and policy</p>
-                </a>
-                <a href="/linux-in-education/" class="pillar-link-card">
-                    <h4>Linux in Education</h4>
-                    <p>Learning resources, accessibility, and tech education</p>
-                </a>
-                <a href="/linux-in-enterprise/" class="pillar-link-card">
-                    <h4>Linux in Enterprise</h4>
-                    <p>DevOps, development, and business infrastructure</p>
-                </a>
-                <a href="/linux-in-community/" class="pillar-link-card">
-                    <h4>Linux & Open-Source Community</h4>
-                    <p>Adoption trends, collaboration, and global impact</p>
-                </a>
-                <a href="/linux-in-everyday-life/" class="pillar-link-card">
-                    <h4>Linux in Everyday Life</h4>
-                    <p>Smart homes, personal computing, real-world applications</p>
-                </a>
-            </div>
-        </section>
-    </article>
-</div>
+        {{- /* Sidebar */ -}}
+        <aside class="pillar-sidebar">
+            {{- /* Most Viewed Articles Sidebar */ -}}
+            {{- $categoryArticles := where $allPages "Params.categories" "intersect" (slice $category) }}
+            {{- $recentArticles := $categoryArticles.ByDate.Reverse }}
+            {{- if gt (len $recentArticles) 0 }}
+            <section class="sidebar-widget featured-widget">
+                <h3 class="widget-title">Latest Articles</h3>
+                <div class="sidebar-articles-list">
+                    {{- range first 5 $recentArticles }}
+                    <article class="sidebar-article-item">
+                        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                        <div class="sidebar-article-meta">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                        </div>
+                    </article>
+                    {{- end }}
+                </div>
+            </section>
+            {{- end }}
 
-<script>
+            {{- /* Related Pillar Pages Widget */ -}}
+            <section class="sidebar-widget related-widget">
+                <h3 class="widget-title">Explore Other Topics</h3>
+                <div class="sidebar-pillar-links">
+                    <a href="/linux-in-government/" class="sidebar-pillar-link">
+                        <span>Linux in Government</span>
+                    </a>
+                    <a href="/linux-in-education/" class="sidebar-pillar-link">
+                        <span>Linux in Education</span>
+                    </a>
+                    <a href="/linux-in-enterprise/" class="sidebar-pillar-link">
+                        <span>Linux in Enterprise</span>
+                    </a>
+                    <a href="/linux-in-community/" class="sidebar-pillar-link">
+                        <span>Linux & Open-Source Community</span>
+                    </a>
+                    <a href="/linux-in-everyday-life/" class="sidebar-pillar-link">
+                        <span>Linux in Everyday Life</span>
+                    </a>
+                </div>
+            </section>
+        </aside>
+    </div>
+</div><script>
 document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
     if (!loadMoreBtn) return;
@@ -143,17 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 /* Pillar Page Container */
 .pillar-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
 
-.pillar-page {
-    background: white;
-    margin-bottom: 3rem;
-}
-
-/* Pillar Header */
 .pillar-header {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
@@ -182,60 +176,120 @@ document.addEventListener('DOMContentLoaded', function() {
     margin: 0;
 }
 
-/* Featured Articles Section */
-.featured-articles-section {
-    margin-bottom: 4rem;
-}
-
-.featured-articles-section h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--studio-gray-900, #0f172a);
-    border-bottom: 2px solid var(--studio-blue, #2563eb);
-    padding-bottom: 0.5rem;
-}
-
-.featured-articles-grid {
+/* Two-Column Layout */
+.pillar-content-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
-.featured-article-card {
+.pillar-page {
+    background: white;
+}
+
+.pillar-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+/* Sidebar Widgets */
+.sidebar-widget {
     background: var(--studio-bg-secondary, #f8fafc);
     border: 1px solid var(--studio-border-light, #e2e8f0);
     border-radius: 8px;
     padding: 1.5rem;
-    transition: all 0.3s ease;
 }
 
-.featured-article-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: var(--studio-blue, #2563eb);
-    transform: translateY(-2px);
-}
-
-.featured-article-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
+.widget-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 1.25rem 0;
     color: var(--studio-gray-900, #0f172a);
+    border-bottom: 2px solid var(--studio-blue, #2563eb);
+    padding-bottom: 0.75rem;
 }
 
-.featured-article-card h3 a {
+/* Latest Articles Widget */
+.featured-widget {
+}
+
+.sidebar-articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-article-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--studio-border-light, #e2e8f0);
+    transition: all 0.2s ease;
+}
+
+.sidebar-article-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.sidebar-article-item h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.sidebar-article-item h4 a {
     color: var(--studio-gray-900, #0f172a);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.featured-article-card h3 a:hover {
+.sidebar-article-item h4 a:hover {
     color: var(--studio-blue, #2563eb);
 }
 
-.featured-article-teaser {
-    font-size: 0.95rem;
-    line-height: 1.6;
+.sidebar-article-meta {
+    font-size: 0.8rem;
+    color: var(--studio-text-secondary, #475569);
+}
+
+/* Related Pillar Pages Widget */
+.related-widget {
+}
+
+.sidebar-pillar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.sidebar-pillar-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: white;
+    border: 1px solid var(--studio-border-light, #e2e8f0);
+    border-radius: 4px;
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-pillar-link:hover {
+    background: var(--studio-blue, #2563eb);
+    color: white;
+    border-color: var(--studio-blue, #2563eb);
+    transform: translateX(4px);
+}
+
+/* Featured Articles Section - REMOVED but kept for reference */
+.featured-articles-section {
+    display: none;
+}
+
+.featured-articles-grid {
+    display: none;
+}
     color: var(--studio-text-secondary, #475569);
     margin-bottom: 1rem;
 }
@@ -423,6 +477,16 @@ document.addEventListener('DOMContentLoaded', function() {
     .pillar-title {
         font-size: 2rem;
     }
+
+    /* Stack columns on mobile */
+    .pillar-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .pillar-sidebar {
+        order: -1; /* Move sidebar above main content on mobile */
+    }
     
     .featured-articles-grid {
         grid-template-columns: 1fr;
@@ -438,6 +502,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gap: 0.25rem;
     }
 }
+
 </style>
 
 {{- end }}
