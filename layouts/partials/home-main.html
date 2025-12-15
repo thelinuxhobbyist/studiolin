@@ -191,17 +191,19 @@
 {{- $now := now }}
 {{- /* Query ALL articles from entire site, not just specific sections */ -}}
 {{- $allArticles := .Site.RegularPages }}
-{{- /* Blacklist: exclude utility pages from featured selection */ -}}
-{{- $utilityBlacklist := slice "privacy" "terms" "about" "contact" "search" "resources" "linux-in-government" "linux-in-education" "linux-in-enterprise" "linux-in-community" "linux-in-everyday-life" }}
+{{- /* Filter out utility/admin pages */ -}}
 {{- $publishedArticles := where $allArticles "Date" "le" $now }}
-{{- $filteredArticles := slice }}
+{{- $validArticles := slice }}
 {{- range $publishedArticles }}
-  {{- if not (in $utilityBlacklist (lower .File.BaseFileName)) }}
-    {{- $filteredArticles = $filteredArticles | append . }}
+  {{- $isUtility := or (eq .Layout "search") (eq .Type "search") (in (slice "privacy" "terms" "about" "contact" "resources" "linux-in-government" "linux-in-education" "linux-in-enterprise" "linux-in-community" "linux-in-everyday-life") (lower .File.BaseFileName)) }}
+  {{- if not $isUtility }}
+    {{- $validArticles = $validArticles | append . }}
   {{- end }}
 {{- end }}
-{{- $homeFeatures := where $filteredArticles "Params.published_on_home" true }}
-{{- $featured := cond (gt (len $homeFeatures) 0) (first 1 $homeFeatures) (first 1 ($filteredArticles.ByDate.Reverse)) }}
+{{- /* First try to find explicitly featured articles */ -}}
+{{- $homeFeatures := where $validArticles "Params.published_on_home" true }}
+{{- /* Fall back to most recent if no explicit featured article */ -}}
+{{- $featured := cond (gt (len $homeFeatures) 0) (first 1 $homeFeatures) (first 1 ($validArticles.ByDate.Reverse)) }}
 {{- if gt (len $featured) 0 }}
 {{- range $featured }}
 <section class="featured-article">
