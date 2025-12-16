@@ -104,7 +104,7 @@
 }
 
 .author {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--studio-gray-600);
     font-style: italic;
 }
@@ -115,14 +115,15 @@
 }
 
 .author-name-link .author {
-    color: var(--studio-blue, #2563eb);
+    color: var(--studio-gray-600);
+    font-size: 0.8rem;
     font-style: italic;
-    font-size: 0.85rem;
+    text-decoration: none;
 }
 
 .author-name-link:hover .author {
-    color: var(--studio-blue-dark, #1d4ed8);
-    text-decoration: underline;
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
 }
 
 /* Card Footer */
