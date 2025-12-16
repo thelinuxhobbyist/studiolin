@@ -4,8 +4,6 @@ date: 2025-12-16
 draft: false
 layout: author
 type: author
-slug: neil-cass
-url: /author/neil-cass/
 ---
 
 Neil Cass is a software engineer with over 20 years of experience working with Linux. He uses Linux daily in both professional and personal environments, with a focus on open-source software and real-world systems.
