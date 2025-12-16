@@ -109,7 +109,7 @@
 {{- $publishedArticles := where $allArticles "Date" "le" $now }}
 {{- $validArticles := slice }}
 {{- range $publishedArticles }}
-  {{- $isUtility := or (eq .Layout "search") (eq .Type "search") (in (slice "privacy" "terms" "about" "contact" "resources" "linux-in-government" "linux-in-education" "linux-in-enterprise" "linux-in-community" "linux-in-everyday-life") (lower .File.BaseFileName)) }}
+  {{- $isUtility := or (eq .Layout "search") (eq .Type "search") (eq .Type "author") (eq .Layout "author") (in (slice "privacy" "terms" "about" "contact" "resources" "linux-in-government" "linux-in-education" "linux-in-enterprise" "linux-in-community" "linux-in-everyday-life") (lower .File.BaseFileName)) }}
   {{- if not $isUtility }}
     {{- $validArticles = $validArticles | append . }}
   {{- end }}
@@ -156,7 +156,7 @@
         {{- $blacklist := slice "privacy" "terms" "about" "contact" "search" "resources" "linux-in-government" "linux-in-education" "linux-in-enterprise" "linux-in-community" "linux-in-everyday-life" }}
         {{- $posts := where $allArticles "Date" "le" $now }}
         {{- range $posts.ByDate.Reverse }}
-        {{- if not (in $blacklist (lower .File.BaseFileName)) }}
+        {{- if and (not (in $blacklist (lower .File.BaseFileName))) (not (eq .Type "author")) (not (eq .Layout "author")) }}
         <article class="post-card" data-category="{{ with .Params.categories }}{{ if gt (len .) 0 }}{{ index . 0 }}{{ else }}{{ $.Section | title }}{{ end }}{{ else }}{{ .Section | title }}{{ end }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
             <div class="card-image">
                 <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ with .Params.image }}{{ . }}{{ else }}/images/default-post.svg{{ end }}{{ end }}" alt="{{ .Title }}" loading="lazy" />
