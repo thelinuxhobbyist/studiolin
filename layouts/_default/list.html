@@ -20,7 +20,12 @@
             </div>
             {{- if .Params.author }}
             <div class="post-author">
+                {{- $authorPage := .Site.GetPage (printf "/author/%s" (.Params.author | lower | replace " " "-")) }}
+                {{- if $authorPage }}
+                <a href="{{ $authorPage.Permalink }}" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                {{- else }}
                 <span class="author">By {{ .Params.author }}</span>
+                {{- end }}
             </div>
             {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>

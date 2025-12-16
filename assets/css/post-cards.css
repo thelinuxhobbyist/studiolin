@@ -109,12 +109,20 @@
     font-style: italic;
 }
 
-.post-author .author,
-.card-author .author,
-.featured-author .author,
-.recommended-author .author {
-    color: var(--studio-gray-600);
+.author-name-link {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.author-name-link .author {
+    color: var(--studio-blue, #2563eb);
+    font-style: italic;
     font-size: 0.85rem;
+}
+
+.author-name-link:hover .author {
+    color: var(--studio-blue-dark, #1d4ed8);
+    text-decoration: underline;
 }
 
 /* Card Footer */

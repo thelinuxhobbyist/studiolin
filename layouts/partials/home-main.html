@@ -133,7 +133,12 @@
             </div>
             {{- if .Params.author }}
             <div class="featured-author">
+                {{- $authorPage := .Site.GetPage (printf "/author/%s" (.Params.author | lower | replace " " "-")) }}
+                {{- if $authorPage }}
+                <a href="{{ $authorPage.Permalink }}" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                {{- else }}
                 <span class="author">By {{ .Params.author }}</span>
+                {{- end }}
             </div>
             {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
@@ -167,7 +172,12 @@
             </div>
             {{- if .Params.author }}
             <div class="card-author">
+                {{- $authorPage := .Site.GetPage (printf "/author/%s" (.Params.author | lower | replace " " "-")) }}
+                {{- if $authorPage }}
+                <a href="{{ $authorPage.Permalink }}" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                {{- else }}
                 <span class="author">By {{ .Params.author }}</span>
+                {{- end }}
             </div>
             {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
@@ -205,7 +215,12 @@
                 <div class="label editor">⭐ Editor's Pick</div>
                 {{- if .Params.author }}
                 <div class="recommended-author">
+                    {{- $authorPage := .Site.GetPage (printf "/author/%s" (.Params.author | lower | replace " " "-")) }}
+                    {{- if $authorPage }}
+                    <a href="{{ $authorPage.Permalink }}" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                    {{- else }}
                     <span class="author">By {{ .Params.author }}</span>
+                    {{- end }}
                 </div>
                 {{- end }}
                 <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
