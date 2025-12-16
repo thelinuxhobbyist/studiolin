@@ -1,0 +1,256 @@
+{{- define "main" }}
+
+<div class="author-page-container">
+    <article class="author-page">
+        <header class="author-header">
+            <h1 class="author-title">{{ .Title }}</h1>
+            
+            <div class="author-page-content">
+                {{- $content := .Content -}}
+                {{ $content | safeHTML }}
+            </div>
+        </header>
+
+        {{- /* Articles by this author */ -}}
+        {{- $authorName := .Title }}
+        {{- $allPages := .Site.RegularPages }}
+        {{- $authorArticles := where $allPages "Params.author" "==" $authorName }}
+        {{- $sortedArticles := $authorArticles.ByDate.Reverse }}
+
+        {{- if gt (len $sortedArticles) 0 }}
+        <section class="author-articles">
+            <h2>Articles by {{ .Title }}</h2>
+            <div class="author-articles-grid">
+                {{- range $sortedArticles }}
+                {{- if and (ne .Type "author") (ne .Layout "author") }}
+                <article class="author-article-card">
+                    <div class="article-card-image">
+                        <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}/images/default-post.svg{{ end }}" alt="{{ .Title }}" loading="lazy" />
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-meta">
+                            <span class="category">{{ .Section | title }}</span>
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                        </div>
+                        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                        <p class="article-card-summary">{{ with .Summary }}{{ . | plainify | truncate 120 }}{{ end }}</p>
+                    </div>
+                    <div class="article-card-footer">
+                        <a href="{{ .Permalink }}" class="read-more">Read More</a>
+                        <span class="reading-time"><i class="far fa-clock"></i> {{ .ReadingTime }} min read</span>
+                    </div>
+                </article>
+                {{- end }}
+                {{- end }}
+            </div>
+        </section>
+        {{- end }}
+    </article>
+</div>
+
+<style>
+/* Author Page Styles */
+.author-page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.author-page {
+    background: white;
+    margin-bottom: 3rem;
+}
+
+.author-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--studio-border-light, #e2e8f0);
+}
+
+.author-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--studio-gray-900, #0f172a);
+    letter-spacing: -0.5px;
+}
+
+.author-page-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--studio-text-primary, #0f172a);
+}
+
+.author-page-content p {
+    margin-bottom: 1.5rem;
+}
+
+/* Articles by Author Section */
+.author-articles {
+    margin-top: 3rem;
+}
+
+.author-articles h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--studio-gray-900, #0f172a);
+    margin-bottom: 2rem;
+}
+
+.author-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.author-article-card {
+    background: white;
+    border: 1px solid var(--studio-border-light, #e2e8f0);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.author-article-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--studio-blue-light, #3b82f6);
+}
+
+.article-card-image {
+    width: 100%;
+    height: 200px;
+    background: var(--studio-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.article-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.article-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    gap: 1rem;
+}
+
+.category {
+    background: var(--studio-blue);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.article-card-meta time {
+    color: var(--studio-text-secondary, #475569);
+    font-size: 0.8rem;
+}
+
+.author-article-card h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.author-article-card h3 a {
+    color: var(--studio-gray-900, #0f172a);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.author-article-card h3 a:hover {
+    color: var(--studio-blue, #2563eb);
+}
+
+.article-card-summary {
+    color: var(--studio-text-secondary, #475569);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0 0 1rem 0;
+}
+
+.article-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--studio-border-light, #e2e8f0);
+}
+
+.read-more {
+    color: var(--studio-blue, #2563eb);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--studio-blue, #2563eb);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: inline-block;
+    background: white;
+}
+
+.read-more:hover {
+    background: var(--studio-blue, #2563eb);
+    color: white;
+}
+
+.reading-time {
+    color: var(--studio-text-secondary, #475569);
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .author-page-container {
+        padding: 1rem;
+    }
+
+    .author-title {
+        font-size: 1.8rem;
+    }
+
+    .author-articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .article-card-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .read-more {
+        text-align: center;
+    }
+}
+</style>
+
+{{- end }}
