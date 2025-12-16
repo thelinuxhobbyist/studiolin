@@ -3,7 +3,6 @@ title: "Getting Started with Ansible"
 date: 2025-10-30
 draft: false
 recommended: "editor"
-thumbnail: "/images/default-post.svg"
 tags: ["Ansible", "Automation", "DevOps", "Beginners", "Linux"]
 categories: ["Education", "Business & Enterprise"]
 description: "A practical introduction to Ansible for managing multiple servers"

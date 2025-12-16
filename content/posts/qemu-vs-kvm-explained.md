@@ -4,7 +4,6 @@ date: 2025-10-22
 draft: false
 recommended: ""
 views: 0
-thumbnail: "/images/default-post.svg"
 tags: ["virtualization", "QEMU", "KVM", "Linux"]
 categories: ["Education", "Personal Computing"]
 description: "How QEMU and KVM work together to provide fast, flexible virtualization on Linux"
