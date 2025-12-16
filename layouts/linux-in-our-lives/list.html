@@ -38,6 +38,35 @@
 {{- $linuxPosts := where .Site.RegularPages "Section" "linux-in-our-lives" }}
 {{- $allPosts := union $postsPosts $linuxPosts }}
 
+{{/* All Articles Section - sorted by date */}}
+{{- $allSorted := $allPosts.ByDate.Reverse }}
+<section class="sector-section" id="sector-all" data-sector="all">
+    <div class="sector-header">
+        <h2 class="sector-title">All Articles</h2>
+    </div>
+    <div class="blog-list" data-sector-list="all">
+        {{- range first 12 $allSorted }}
+        <article class="blog-card" data-sector="all">
+            <div class="blog-card-content">
+                <div class="blog-card-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                    {{- with .Params.tags }}
+                    <div class="blog-card-tags">
+                        {{- range first 3 . }}
+                        <span class="tag">#{{ . }}</span>
+                        {{- end }}
+                    </div>
+                    {{- end }}
+                </div>
+                <h3 class="blog-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <div class="blog-card-summary">{{ .Summary | plainify }}</div>
+                <a href="{{ .RelPermalink }}" class="read-more">Read Full Article →</a>
+            </div>
+        </article>
+        {{- end }}
+    </div>
+</section>
+
 {{/* Loop through each category and display its posts */}}
 {{- range $title, $key := $categories }}
     {{/* Filter posts for this category and sort by date (most recent first) */}}
