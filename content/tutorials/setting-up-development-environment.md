@@ -10,6 +10,7 @@ description: "A step-by-step guide to setting up a complete development environm
 cover:
   image: ""
   alt: "Linux development environment setup"
+author: "Neil Cass"
 ---
 
 # Setting Up a Perfect Development Environment on Linux

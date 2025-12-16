@@ -8,6 +8,7 @@ thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Beginners", "Tutorial"]
 categories: ["Personal Computing", "Education"]
 description: "Everything you need to know to get started with Linux as a complete beginner"
+author: "Neil Cass"
 ---
 
 # Getting Started with Linux: A Beginner's Guide

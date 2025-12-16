@@ -18,6 +18,11 @@
                 <span class="category">{{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
             </div>
+            {{- if .Params.author }}
+            <div class="post-author">
+                <span class="author">By {{ .Params.author }}</span>
+            </div>
+            {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="post-summary">{{ .Summary | plainify | truncate 120 }}</p>
             <div class="post-footer">

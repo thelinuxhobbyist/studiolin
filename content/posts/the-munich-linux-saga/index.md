@@ -7,6 +7,7 @@ excerpt: "How one city's move toward open source reshaped the conversation about
 featured: true
 published_on_home: true
 featured_image: "/images/munich-linux.jpg"
+author: "Neil Cass"
 ---
 
 ## A City Chooses Freedom

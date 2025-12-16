@@ -12,6 +12,7 @@ tags:
   - open-source
   - trends
   - adoption
+author: "Neil Cass"
 ---
 
 Trying to figure out how many people use Linux on their desktop is always a pain. When we talk about servers, Linux is the undisputed king—running everything from the cloud to the world's fastest supercomputers. But on the desktop? That footprint has historically been elusive, hidden behind shaky analytics, limited surveys, and a lot of guesswork.

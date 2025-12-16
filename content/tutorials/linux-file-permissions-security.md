@@ -7,6 +7,7 @@ categories: ["Tutorials"]
 category: "security"
 level: "intermediate"
 description: "Master Linux file permissions, ownership, and security fundamentals"
+author: "Neil Cass"
 ---
 
 # Linux File Permissions and Security

@@ -8,6 +8,7 @@ thumbnail: "/images/default-post.svg"
 tags: ["Open Source Infrastructure", "Linux in Government", "Digital Sovereignty", "EU Technology Policy", "Public Sector Computing", "Open Source Adoption", "Europe & Linux", "Privacy and Security"]
 categories: ["Linux in Our Lives", "Government"]
 description: "How European institutions are shifting public services to open-source software for sovereignty, cost, and privacy."
+author: "Neil Cass"
 ---
 
 When officials in Brussels talk about “digital sovereignty,” it can sound like one of those lofty political phrases that drift through speeches without ever touching the ground. But in recent years, the phrase has acquired a very concrete meaning inside European institutions, where something unusual is happening behind the scenes: governments are quietly rewriting the technological foundations of their public services, and they are increasingly doing it on open-source software.

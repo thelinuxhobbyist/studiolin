@@ -59,10 +59,10 @@
     </script>
 </section>
 
-{{- /* Editorial Trust Statement */ -}}
+{{- /* Editorial Bridge Line */ -}}
 <section class="editorial-statement">
     <div class="statement-container">
-        <p>StudioLinux is an independent editorial publication dedicated to understanding how Linux and open-source software create real-world value. We examine the technology's role in government, education, enterprise, and daily life—cutting through the hype to focus on genuine impact.</p>
+        <p>Independent reporting and analysis on Linux, open-source software, and their real-world impact across government, education, enterprise, and everyday life.</p>
     </div>
     <style>
         .editorial-statement {
@@ -131,6 +131,11 @@
                 <span class="category">{{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
             </div>
+            {{- if .Params.author }}
+            <div class="featured-author">
+                <span class="author">By {{ .Params.author }}</span>
+            </div>
+            {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="featured-summary">{{ .Summary | plainify | truncate 150 }}</p>
             <a href="{{ .Permalink }}" class="read-more-btn">Read More</a>
@@ -160,6 +165,11 @@
                 <span class="category">{{ .Section | title }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
             </div>
+            {{- if .Params.author }}
+            <div class="card-author">
+                <span class="author">By {{ .Params.author }}</span>
+            </div>
+            {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
             <p class="card-summary">{{ with .Summary }}{{ . | plainify | truncate 100 }}{{ end }}</p>
             <div class="card-footer">
@@ -193,6 +203,11 @@
             </div>
             <div class="card-body">
                 <div class="label editor">⭐ Editor's Pick</div>
+                {{- if .Params.author }}
+                <div class="recommended-author">
+                    <span class="author">By {{ .Params.author }}</span>
+                </div>
+                {{- end }}
                 <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
                 <p>{{ with .Summary }}{{ . | plainify | truncate 120 }}{{ end }}</p>
             </div>

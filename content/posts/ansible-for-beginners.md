@@ -7,6 +7,7 @@ thumbnail: "/images/default-post.svg"
 tags: ["Ansible", "Automation", "DevOps", "Beginners", "Linux"]
 categories: ["Education", "Business & Enterprise"]
 description: "A practical introduction to Ansible for managing multiple servers"
+author: "Neil Cass"
 ---
 
 # Getting Started with Ansible

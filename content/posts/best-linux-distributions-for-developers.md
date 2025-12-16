@@ -7,6 +7,7 @@ thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Development", "Distributions", "Programming"]
 categories: ["Personal Computing", "Education"]
 description: "A comprehensive review of the best Linux distributions for software developers in 2025"
+author: "Neil Cass"
 ---
 
 # The Best Linux Distributions for Developers in 2025

@@ -4,6 +4,7 @@ date: 2025-12-15T00:00:00Z
 description: "Explore how Linux and open-source software are reducing education budgets while improving institutional control, transparency, and student learning outcomes."
 categories: ["Education"]
 tags: ["open-source", "cost-reduction", "schools", "universities", "Linux", "budgets"]
+author: "Neil Cass"
 ---
 
 When schools talk about budget shortfalls, the conversation usually turns to staffing, buildings, or class sizes. Less visible—but just as expensive—is the software quietly draining education budgets year after year.

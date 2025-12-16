@@ -10,6 +10,7 @@ description: "A comprehensive guide to mastering Vim for modern developers"
 cover:
   image: ""
   alt: "Vim text editor interface"
+author: "Neil Cass"
 ---
 
 # Mastering Vim: A Modern Guide

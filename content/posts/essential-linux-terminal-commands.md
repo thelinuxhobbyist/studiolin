@@ -7,6 +7,7 @@ thumbnail: "/images/default-post.svg"
 tags: ["Linux", "Terminal", "Productivity", "Commands"]
 categories: ["Personal Computing", "Education"]
 description: "Master these powerful terminal commands to boost your productivity on Linux"
+author: "Neil Cass"
 ---
 
 # 10 Essential Linux Terminal Commands for Productivity

@@ -7,6 +7,7 @@ categories: ["Tutorials"]
 category: "system-admin"
 level: "beginner"
 description: "Learn the essential Linux command line skills every user should know"
+author: "Neil Cass"
 ---
 
 # Linux Command Line Fundamentals

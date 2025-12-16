@@ -8,6 +8,7 @@ thumbnail: "/images/default-post.svg"
 tags: ["virtualization", "QEMU", "KVM", "Linux"]
 categories: ["Education", "Personal Computing"]
 description: "How QEMU and KVM work together to provide fast, flexible virtualization on Linux"
+author: "Neil Cass"
 ---
 
 # QEMU and KVM: Understanding Linux Virtualization

@@ -6,6 +6,7 @@ tags: ["Linux", "Open Source", "Developing Nations", "Digital Sovereignty", "Tec
 excerpt: "How open-source technology could help emerging economies skip costly digital hurdles"
 featured: false
 published_on_home: false
+author: "Neil Cass"
 ---
 
 ## How open-source technology could help emerging economies skip costly digital hurdles

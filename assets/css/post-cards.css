@@ -98,6 +98,25 @@
     flex-grow: 1;
 }
 
+/* Author Attribution */
+.post-author, .card-author, .featured-author, .recommended-author {
+    margin-bottom: 0.75rem;
+}
+
+.author {
+    font-size: 0.85rem;
+    color: var(--studio-gray-600);
+    font-style: italic;
+}
+
+.post-author .author,
+.card-author .author,
+.featured-author .author,
+.recommended-author .author {
+    color: var(--studio-gray-600);
+    font-size: 0.85rem;
+}
+
 /* Card Footer */
 .post-footer, .tutorial-footer, .card-footer {
     display: flex;

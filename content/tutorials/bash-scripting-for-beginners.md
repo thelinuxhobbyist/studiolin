@@ -7,6 +7,7 @@ categories: ["Tutorials"]
 category: "shell"
 level: "intermediate"
 description: "Learn to automate tasks with powerful Bash scripts"
+author: "Neil Cass"
 ---
 
 # Bash Scripting for Beginners
