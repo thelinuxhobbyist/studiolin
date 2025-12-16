@@ -160,7 +160,7 @@
         {{- if and (not (in $blacklist (lower .File.BaseFileName))) (not (eq .Type "author")) (not (eq .Layout "author")) }}
         <article class="post-card" data-category="{{ with .Params.categories }}{{ if gt (len .) 0 }}{{ index . 0 }}{{ else }}{{ $.Section | title }}{{ end }}{{ else }}{{ .Section | title }}{{ end }}" data-tags="{{ with .Params.tags }}{{ delimit . "," }}{{ end }}">
             <div class="card-image">
-                <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ with .Params.image }}{{ . }}{{ else }}/images/default-post.svg{{ end }}{{ end }}" alt="{{ .Title }}" loading="lazy" />
+                {{- partial "featured-image.html" (dict "page" . "class" "post-card-featured-img" "alt" .Title) }}
             </div>
             <div class="card-meta">
                 <span class="category">{{ .Section | title }}</span>
