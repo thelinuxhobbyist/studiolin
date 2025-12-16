@@ -3,6 +3,7 @@ title: "The Real Story Behind the \"6.3%\": Why Linux is Now Impossible to Ignor
 date: 2025-12-08
 draft: false
 description: "Exploring what Linux's 6.3% desktop share really means and why this data matters for the future of open-source."
+categories: ["Personal Computing"]
 tags:
   - linux
   - desktop
