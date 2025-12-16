@@ -17,7 +17,8 @@
         <p>Choose a tutorial to start your learning journey</p>
     </div>
     <div class="posts-grid">
-        {{- range .Pages }}
+        {{- $sortedPages := .Pages.ByDate.Reverse }}
+        {{- range $sortedPages }}
         <article class="post-card">
             {{- if .Params.image }}
             <div class="card-image">

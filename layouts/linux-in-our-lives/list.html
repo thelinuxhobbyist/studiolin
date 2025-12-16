@@ -40,20 +40,21 @@
 
 {{/* Loop through each category and display its posts */}}
 {{- range $title, $key := $categories }}
-    {{/* Filter posts for this category */}}
+    {{/* Filter posts for this category and sort by date (most recent first) */}}
     {{- $categoryPosts := where $allPosts "Params.categories" "intersect" (slice $title) }}
+    {{- $sortedPosts := $categoryPosts.ByDate.Reverse }}
     
     <section class="sector-section" id="sector-{{ $key }}" data-sector="{{ $key }}">
         <div class="sector-header">
             <h2 class="sector-title">{{ $title }}</h2>
             {{/* Only show view all if there are more than 6 posts */}}
-            {{- if gt (len $categoryPosts) 6 }}
+            {{- if gt (len $sortedPosts) 6 }}
                 <a href="#" class="view-all-btn" data-category="{{ $key }}">View All →</a>
             {{- end }}
         </div>
         <div class="blog-list" data-sector-list="{{ $key }}">
             {{- $hasPosts := false }}
-            {{- range $index, $post := first 6 $categoryPosts }}
+            {{- range $index, $post := first 6 $sortedPosts }}
                 {{- $hasPosts = true }}
                 <article class="blog-card" data-sector="{{ $key }}">
                     <div class="blog-card-content">

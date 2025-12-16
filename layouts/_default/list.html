@@ -12,7 +12,8 @@
     </header>
 
     <div class="posts-grid">
-        {{- range .Pages }}
+        {{- $sortedPages := .Pages.ByDate.Reverse }}
+        {{- range $sortedPages }}
         <article class="post-card">
             <div class="post-meta">
                 <span class="category">{{ .Section | title }}</span>
