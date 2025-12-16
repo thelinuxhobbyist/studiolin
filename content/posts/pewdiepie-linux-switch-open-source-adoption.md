@@ -1,7 +1,7 @@
 ---
 title: "Why PewDiePie's Switch to Linux Could Spark a New Era of Open-Source Adoption"
 date: 2025-08-23
-author: "Alex Green"
+author: "Neil Cass"
 categories: ["Personal Computing", "Community & Open Source"]
 excerpt: "PewDiePie's move to Arch Linux has reignited global interest in open-source computing. Discover how the world's biggest individual YouTuber is reshaping perceptions of Linux in gaming and content creation."
 tags:

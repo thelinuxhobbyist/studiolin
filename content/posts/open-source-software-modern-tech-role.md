@@ -1,7 +1,7 @@
 ---
 title: "The Role of Open-Source Software in Modern Tech"
 date: 2025-11-01
-author: "Alex Green"
+author: "Neil Cass"
 categories: ["Community & Open Source", "Government", "Business & Enterprise", "Education"]
 excerpt: "From government infrastructure to healthcare and education, discover how open-source software and Linux are transforming industries worldwide by providing flexible, secure, and cost-effective solutions."
 tags:

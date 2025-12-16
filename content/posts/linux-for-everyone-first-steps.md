@@ -1,7 +1,7 @@
 ---
 title: "Linux for Everyone: Your First Steps into a World of Choice"
 date: 2025-09-18
-author: "Alex Green"
+author: "Neil Cass"
 categories: ["Education"]
 excerpt: "New to Linux? Discover what makes this powerful operating system special, how it's used everywhere from smartphones to supercomputers, and why it might be perfect for your next computing adventure."
 tags: ["linux", "beginners", "open-source", "raspberry-pi", "education", "distros"]
