@@ -8,6 +8,7 @@ views: 0
 thumbnail: "/images/default-post.svg"
 tags: ["usb", "exfat", "fat32", "linux", "storage"]
 description: "How to convert a USB drive from FAT32 to exFAT on Linux"
+author: "Neil Cass"
 ---
 
 **Warning:** Formatting erases all data on the USB drive. Back up your files first.
