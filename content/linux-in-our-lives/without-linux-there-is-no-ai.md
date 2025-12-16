@@ -2,7 +2,7 @@
 title: "Without Linux, There Is No AI: Here's Why"
 date: 2025-11-17T00:00:00Z
 description: "AI is advancing at lightning speed — but none of it would exist without the open-source operating system running quietly underneath it all."
-categories: ["Linux in Our Lives", "Business & Enterprise", "Community & Open Source"]
+categories: ["Business & Enterprise", "Community & Open Source"]
 tags: ["Linux", "AI", "Machine Learning", "Cloud", "GPUs", "Open Source", "Infrastructure"]
 author: "Neil Cass"
 ---

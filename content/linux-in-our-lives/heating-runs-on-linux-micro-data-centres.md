@@ -5,7 +5,7 @@ draft: false
 recommended: "editor"
 views: 0
 thumbnail: ""
-categories: ["Linux in Our Lives"]
+categories: ["Personal Computing"]
 tags: ["linux", "raspberry pi", "data centres", "green computing", "sustainable technology", "home energy", "renewable energy", "distributed computing", "open-source", "climate tech"]
 author: "Neil Cass"
 ---

@@ -6,7 +6,7 @@ recommended: "editor"
 views: 0
 thumbnail: "/images/default-post.svg"
 tags: ["Open Source Infrastructure", "Linux in Government", "Digital Sovereignty", "EU Technology Policy", "Public Sector Computing", "Open Source Adoption", "Europe & Linux", "Privacy and Security"]
-categories: ["Linux in Our Lives", "Government"]
+categories: ["Government"]
 description: "How European institutions are shifting public services to open-source software for sovereignty, cost, and privacy."
 author: "Neil Cass"
 ---
