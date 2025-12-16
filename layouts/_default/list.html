@@ -21,7 +21,8 @@
             </div>
             {{- if .Params.author }}
             <div class="post-author">
-                <a href="/author/{{ .Params.author | lower | replace " " "-" }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                {{- $authorSlug := .Params.author | lower | replaceRE " " "-" }}
+                <a href="/author/{{ $authorSlug }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
             </div>
             {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>

@@ -46,7 +46,8 @@
             
             {{- if gt (len $sortedArticles) 6 }}
             <div class="author-articles-footer">
-                <a href="{{ printf "/author/%s/articles/" (.Title | lower | replace " " "-") }}" class="view-all-btn">View All Articles</a>
+                {{- $authorSlug := .Title | lower | replaceRE " " "-" }}
+                <a href="/author/{{ $authorSlug }}/articles/" class="view-all-btn">View All Articles</a>
                 <p class="article-count">Showing 6 of {{ len $sortedArticles }} articles</p>
             </div>
             {{- end }}

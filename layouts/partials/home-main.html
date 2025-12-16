@@ -133,7 +133,8 @@
             </div>
             {{- if .Params.author }}
             <div class="featured-author">
-                <a href="/author/{{ .Params.author | lower | replace " " "-" }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                {{- $authorSlug := .Params.author | lower | replaceRE " " "-" }}
+                <a href="/author/{{ $authorSlug }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
             </div>
             {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
@@ -167,7 +168,8 @@
             </div>
             {{- if .Params.author }}
             <div class="card-author">
-                <a href="/author/{{ .Params.author | lower | replace " " "-" }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                {{- $authorSlug := .Params.author | lower | replaceRE " " "-" }}
+                <a href="/author/{{ $authorSlug }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
             </div>
             {{- end }}
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
@@ -205,7 +207,8 @@
                 <div class="label editor">⭐ Editor's Pick</div>
                 {{- if .Params.author }}
                 <div class="recommended-author">
-                    <a href="/author/{{ .Params.author | lower | replace " " "-" }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
+                    {{- $authorSlug := .Params.author | lower | replaceRE " " "-" }}
+                    <a href="/author/{{ $authorSlug }}/" class="author-name-link"><span class="author">By {{ .Params.author }}</span></a>
                 </div>
                 {{- end }}
                 <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
