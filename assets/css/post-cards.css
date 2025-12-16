@@ -104,26 +104,31 @@
 }
 
 .author {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     color: var(--studio-gray-600);
     font-style: italic;
 }
 
 .author-name-link {
     text-decoration: none;
+    border: none;
     transition: color 0.2s ease;
 }
 
 .author-name-link .author {
     color: var(--studio-gray-600);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-style: italic;
     text-decoration: none;
+    border: none;
+    border-bottom: none;
 }
 
 .author-name-link:hover .author {
     color: var(--studio-blue, #2563eb);
     text-decoration: none;
+    border: none;
+    border-bottom: none;
 }
 
 /* Card Footer */
