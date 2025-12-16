@@ -201,7 +201,7 @@
         {{- range $recommendedPosts -}}
         <article class="path-card recommended-card">
             <div class="card-image">
-                <img src="{{ with .Params.thumbnail }}{{ . }}{{ else }}{{ with .Params.image }}{{ . }}{{ else }}/images/default-post.svg{{ end }}{{ end }}" alt="{{ .Title }}" loading="lazy" />
+                {{- partial "featured-image.html" (dict "page" . "class" "post-card-featured-img" "alt" .Title) }}
             </div>
             <div class="card-body">
                 <div class="label editor">⭐ Editor's Pick</div>
