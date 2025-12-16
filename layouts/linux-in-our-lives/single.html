@@ -11,12 +11,7 @@
 		<div class="post-meta">
 			{{- if .Params.author }}
 			<div class="post-byline">
-				{{- $authorPage := .Site.GetPage (printf "/author/%s" (.Params.author | lower | replace " " "-")) }}
-				{{- if $authorPage }}
-				<span class="byline-text">By <a href="{{ $authorPage.Permalink }}" class="author-link">{{ .Params.author }}</a></span>
-				{{- else }}
-				<span class="byline-text">By {{ .Params.author }}</span>
-				{{- end }}
+				<span class="byline-text">By <a href="/author/{{ .Params.author | lower | replace " " "-" }}/" class="author-link">{{ .Params.author }}</a></span>
 			</div>
 			{{- end }}
 			<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
