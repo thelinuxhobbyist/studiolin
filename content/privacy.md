@@ -2,6 +2,7 @@
 title: "Privacy Policy"
 date: 2025-12-17T00:00:00Z
 layout: "single"
+no_featured_image: true
 ---
 
 **Effective: December 17, 2025**
