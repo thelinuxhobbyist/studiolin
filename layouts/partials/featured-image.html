@@ -63,7 +63,7 @@
                 {{- $allImages = $allImages | append $imagePath }}
                 
                 {{- /* Try to match image filename to article tags or title */ -}}
-                {{- $imageBasename := strings.TrimSuffix (path.Ext .Name) .Name | strings.ToLower }}
+                {{- $imageBasename := strings.ToLower (strings.TrimSuffix (path.Ext .Name) .Name) }}
                 {{- $titleLower := strings.ToLower $page.Title }}
                 {{- $matched := false }}
                 
