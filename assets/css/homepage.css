@@ -116,21 +116,21 @@
 }
 
 .featured-image {
-    flex: 0 0 auto;
-    width: 350px;
+    flex: 0 0 45%;
+    width: auto;
     min-height: 280px;
-    overflow: hidden;
     background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: auto;
 }
 
 .featured-image img,
 .featured-img {
-    width: auto;
+    width: 100%;
+    height: auto;
     max-width: 100%;
-    max-height: 100%;
     object-fit: contain;
     display: block;
 }
