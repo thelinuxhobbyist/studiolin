@@ -1,7 +1,7 @@
 ---
 title: "The Linux Devices You Use Every Day Without Ever Noticing"
-date: 2025-12-17T10:00:00Z
-lastmod: 2025-12-17T10:00:00Z
+date: 2025-12-17T09:15:31Z
+lastmod: 2025-12-17T09:15:31Z
 description: "Discover how Linux quietly powers your phone, TV, router, appliances, and everything in between - even when you have no idea it's there."
 categories: ["Personal Computing"]
 tags: ["Linux", "devices", "everyday", "infrastructure", "hidden-tech", "routers", "smart-home", "education", "business"]
