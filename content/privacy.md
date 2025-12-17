@@ -1,59 +1,34 @@
 ---
 title: "Privacy Policy"
-date: 2025-11-12T00:00:00Z
+date: 2025-12-17T00:00:00Z
 layout: "single"
 ---
 
-## Effective: November 12, 2025
+**Effective: December 17, 2025**
 
-### Introduction
+Studio Linux is an editorial website about Linux, open-source software, and their growing role in government, education, and public institutions. This site is designed to be read without accounts, logins, or sign-ups.
 
-At Studio Linux, your privacy matters.
-This website shares stories and ideas about open-source software, but we don’t collect personal data, create accounts, or ask for sign-ups. Our goal is to inform — not to track.
+We do not ask for personal details such as names or email addresses, and we do not maintain user profiles or mailing lists. Our intention is to publish information, not to track individuals.
 
-We do, however, use a few standard analytics tools to understand how visitors interact with the site so we can make it better.
+Like most websites, StudioLinux.com relies on a small number of third-party services to operate reliably, understand general readership patterns, and help cover basic operating costs.
 
-### What’s Collected (and What’s Not)
+When you visit the site, limited technical information may be collected automatically by these services. This can include your browser type, device type, approximate geographic region, and which pages are viewed. This data is processed in an aggregated and non-personal way.
 
-We don’t ask for names, logins, or emails.
-When you visit studiolinux.com, a few services automatically collect basic technical data — like browser type, device, and pages viewed — the same as nearly every website today.
+We currently use Google Analytics to understand which articles are read and how visitors navigate the site. Cloudflare is used to provide security, performance improvements, and protection against malicious traffic. Studio Linux may also display advertising supplied by Google AdSense, either now or in the future.
 
-Those services are:
+Advertising provided by Google AdSense may use cookies, including the DoubleClick cookie, to display ads that are relevant based on visits to this and other websites. Google's use of data from sites that use its services is explained here:
+https://policies.google.com/technologies/partner-sites
 
-- Google Analytics — to understand which articles are read most often.
-- Cloudflare — to secure the site and protect against spam or attacks.
+If you prefer not to see personalized advertising, you can manage or opt out of ad personalization through Google's ad settings at:
+https://adssettings.google.com
 
-These tools may set cookies, but all data is aggregated and anonymized. We don’t sell, share, or monetize any of it.
+The information collected through analytics and advertising services is used only to understand how the site is used, improve performance and reliability, maintain security, and support the site through advertising. Studio Linux does not sell personal data or share it for marketing purposes.
 
-### How We Use This Information
+Articles on Studio Linux may link to external websites, such as Linux distributions, open-source projects, or documentation resources. Once you leave this site, the privacy practices of those websites apply.
 
-We use analytics to:
+If you prefer to limit tracking, you may enable "Do Not Track" in your browser, block cookies, or use privacy-focused browser extensions. All content on Studio Linux remains accessible even if cookies or advertising are blocked.
 
-- See what content readers enjoy most,
-- Fix performance issues,
-- Keep the site fast and secure.
+If new features are introduced in the future — such as comments, newsletters, or user accounts — this privacy policy will be updated before any additional data collection takes place.
 
-That’s it. No advertising IDs, no profiling, no mailing lists.
-
-### Third-Party Links
-
-Studio Linux occasionally links to other websites — especially open-source projects and documentation. Once you follow those links, their privacy policies apply, not ours.
-
-### Your Options
-
-If you prefer not to be tracked at all:
-
-- Use a browser’s Do Not Track feature,
-- Block cookies or scripts for analytics,
-- Or use privacy extensions like uBlock or Privacy Badger.
-
-Our content remains fully accessible either way.
-
-### Changes
-
-If we add new features (like comments or a newsletter), this policy will be updated before any personal data is collected.
-
-### Contact
-
-Questions or concerns?
+Questions or concerns about privacy on Studio Linux can be sent to:
 contact@studiolinux.com
