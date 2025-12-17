@@ -1,18 +1,10 @@
-# Pillar images by category
-# This file maps categories to their pillar images for fallback display
-# Images are listed in order and selection is based on article date for consistency
+# Pillar images by category folder
+# Add images to each folder and they will be automatically picked randomly
+# Images are selected using article date as seed for consistency within articles
+# but variety across articles as more images are added
 
-business:
-  - /images/pillars/business/business.webp
-
-education:
-  - /images/pillars/education/linux-education.webp
-
-government:
-  - /images/pillars/government/linux-government.webp
-
-opensource:
-  - /images/pillars/opensource/opensource.webp
-
-personal:
-  - /images/pillars/personal/personal.webp
+business_folder: business
+education_folder: education
+government_folder: government
+opensource_folder: opensource
+personal_folder: personal
