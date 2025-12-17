@@ -63,25 +63,24 @@
                 {{- $allImages = $allImages | append $imagePath }}
                 
                 {{- /* Try to match image filename to article tags or title */ -}}
-                {{- $imageBasename := strings.ToLower (path.BaseName .Name) }}
+                {{- $imageBasename := strings.TrimSuffix (path.Ext .Name) .Name | strings.ToLower }}
                 {{- $titleLower := strings.ToLower $page.Title }}
                 {{- $matched := false }}
                 
-                {{- /* Check against tags */ -}}
+                {{- /* Check against tags - see if tag contains image keyword */ -}}
                 {{- with $page.Params.tags }}
                   {{- range . }}
-                    {{- if strings.Contains $imageBasename (strings.ToLower .) }}
+                    {{- $tagLower := strings.ToLower . }}
+                    {{- if strings.Contains $tagLower $imageBasename }}
                       {{- $matched = true }}
                     {{- end }}
                   {{- end }}
                 {{- end }}
                 
-                {{- /* Check against title */ -}}
+                {{- /* Check against title - see if title contains image keyword */ -}}
                 {{- if not $matched }}
-                  {{- range (split $titleLower " ") }}
-                    {{- if and (gt (len .) 4) (strings.Contains $imageBasename .) }}
-                      {{- $matched = true }}
-                    {{- end }}
+                  {{- if strings.Contains $titleLower $imageBasename }}
+                    {{- $matched = true }}
                   {{- end }}
                 {{- end }}
                 
