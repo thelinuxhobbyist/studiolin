@@ -42,7 +42,7 @@
     {{- end }}
   {{- end }}
   
-  {{- /* If no featured image, check for category fallback with random image selection */ -}}
+  {{- /* If no featured image, check for category fallback with keyword-based matching */ -}}
   {{- if not $externalSrc }}
     {{- with $page.Params.categories }}
       {{- if gt (len .) 0 }}
@@ -52,22 +52,56 @@
           {{- /* Build the static path for the category folder */ -}}
           {{- $staticPath := printf "images/pillars/%s" $folderName }}
           {{- /* Scan the directory for image files */ -}}
-          {{- $images := slice }}
+          {{- $allImages := slice }}
+          {{- $matchedImages := slice }}
           {{- $dir := os.ReadDir (printf "static/%s" $staticPath) }}
           {{- if $dir }}
             {{- range $dir }}
               {{- $ext := strings.ToLower (path.Ext .Name) }}
               {{- if in (slice ".webp" ".jpg" ".jpeg" ".png" ".gif") $ext }}
                 {{- $imagePath := printf "/%s/%s" $staticPath .Name }}
-                {{- $images = $images | append $imagePath }}
+                {{- $allImages = $allImages | append $imagePath }}
+                
+                {{- /* Try to match image filename to article tags or title */ -}}
+                {{- $imageBasename := strings.ToLower (path.BaseName .Name) }}
+                {{- $titleLower := strings.ToLower $page.Title }}
+                {{- $matched := false }}
+                
+                {{- /* Check against tags */ -}}
+                {{- with $page.Params.tags }}
+                  {{- range . }}
+                    {{- if strings.Contains $imageBasename (strings.ToLower .) }}
+                      {{- $matched = true }}
+                    {{- end }}
+                  {{- end }}
+                {{- end }}
+                
+                {{- /* Check against title */ -}}
+                {{- if not $matched }}
+                  {{- range (split $titleLower " ") }}
+                    {{- if and (gt (len .) 4) (strings.Contains $imageBasename .) }}
+                      {{- $matched = true }}
+                    {{- end }}
+                  {{- end }}
+                {{- end }}
+                
+                {{- if $matched }}
+                  {{- $matchedImages = $matchedImages | append $imagePath }}
+                {{- end }}
               {{- end }}
             {{- end }}
           {{- end }}
-          {{- /* If images found, select one based on article date for consistency */ -}}
-          {{- if gt (len $images) 0 }}
+          
+          {{- /* Prefer matched images; fall back to random selection */ -}}
+          {{- $selectedImages := $matchedImages }}
+          {{- if eq (len $selectedImages) 0 }}
+            {{- $selectedImages = $allImages }}
+          {{- end }}
+          
+          {{- if gt (len $selectedImages) 0 }}
             {{- $seed := $page.Date.Unix }}
-            {{- $index := mod $seed (len $images) }}
-            {{- $categoryFallback = index $images $index }}
+            {{- $index := mod $seed (len $selectedImages) }}
+            {{- $categoryFallback = index $selectedImages $index }}
           {{- end }}
         {{- end }}
       {{- end }}
