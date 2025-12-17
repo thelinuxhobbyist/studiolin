@@ -6,7 +6,6 @@ tags: ["Linux", "Open Source", "Government IT", "Digital Sovereignty", "LiMux", 
 excerpt: "How one city's move toward open source reshaped the conversation about technology in government"
 featured: true
 published_on_home: true
-featured_image: "/images/munich.jpg"
 author: "Neil Cass"
 ---
 

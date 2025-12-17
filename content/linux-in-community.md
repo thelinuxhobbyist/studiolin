@@ -5,7 +5,6 @@ description: "Discover the vibrant community driving Linux innovation, adoption 
 type: "pillar"
 category_name: "Community & Open Source"
 summary: "The Linux community is its greatest strength. From individual contributors to massive collaborative projects, Linux thrives because of people who believe in open-source principles and shared innovation. This community continues to drive Linux forward and transform technology globally."
-featured_image: "/images/community-collaboration.jpg"
 ---
 
 The Linux community is its greatest strength. From individual contributors to massive collaborative projects, Linux thrives because of people who believe in open-source principles and shared innovation.

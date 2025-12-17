@@ -5,7 +5,6 @@ description: "Explore how Linux and open-source technologies are transforming pu
 type: "pillar"
 category_name: "Government"
 summary: "Governments worldwide are adopting Linux to strengthen digital infrastructure, reduce costs, and establish technological sovereignty. Open-source technology enables public institutions to serve citizens more effectively while maintaining control over critical systems."
-featured_image: "/images/government-infrastructure.jpg"
 ---
 
 Linux has become instrumental in modernizing government IT infrastructure across the globe. From digital sovereignty initiatives to cost-effective public sector computing, open-source technology is reshaping how governments build, secure, and maintain their technology systems.

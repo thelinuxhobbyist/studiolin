@@ -5,7 +5,6 @@ description: "Discover how Linux empowers students, educators, and institutions 
 type: "pillar"
 category_name: "Education"
 summary: "Linux is transforming education by providing free, powerful tools that prepare students for real-world technology careers. From computer labs to research institutions, Linux enables institutions to teach technology fundamentals while reducing costs and promoting digital literacy."
-featured_image: "/images/education-learning.jpg"
 ---
 
 Linux and open-source software have fundamentally changed access to education. By removing cost barriers and providing powerful, customizable tools, Linux enables students and educators worldwide to learn, teach, and innovate without proprietary software licensing constraints.

@@ -5,7 +5,6 @@ description: "Discover how Linux powers the everyday technologies you use, from 
 type: "pillar"
 category_name: "Personal Computing"
 summary: "Linux isn't just for servers and developers—it's woven into the fabric of everyday life. Every smartphone, smart TV, connected car, and cloud service likely runs on Linux. Understanding Linux helps you make better technology decisions and take greater control of your digital life."
-featured_image: "/images/everyday-computing.jpg"
 ---
 
 Linux isn't just for servers and developers—it's woven into the fabric of everyday life. Every smartphone, smart TV, connected car, and cloud service likely runs on Linux. Understanding Linux helps you make better technology decisions for your personal computing needs.
