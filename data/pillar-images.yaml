@@ -1,0 +1,18 @@
+# Pillar images by category
+# This file maps categories to their pillar images for fallback display
+# Images are listed in order and selection is based on article date for consistency
+
+business:
+  - /images/pillars/business/business.webp
+
+education:
+  - /images/pillars/education/linux-education.webp
+
+government:
+  - /images/pillars/government/linux-government.webp
+
+opensource:
+  - /images/pillars/opensource/opensource.webp
+
+personal:
+  - /images/pillars/personal/personal.webp
