@@ -67,20 +67,21 @@
                 {{- $titleLower := strings.ToLower $page.Title }}
                 {{- $matched := false }}
                 
-                {{- /* Check against tags - see if tag contains image keyword */ -}}
-                {{- with $page.Params.tags }}
-                  {{- range . }}
-                    {{- $tagLower := strings.ToLower . }}
-                    {{- if strings.Contains $tagLower $imageBasename }}
-                      {{- $matched = true }}
-                    {{- end }}
-                  {{- end }}
+                {{- /* Check if image keyword appears anywhere in title or tags */ -}}
+                {{- /* First check title - full word or substring match */ -}}
+                {{- if strings.Contains $titleLower $imageBasename }}
+                  {{- $matched = true }}
                 {{- end }}
                 
-                {{- /* Check against title - see if title contains image keyword */ -}}
+                {{- /* Then check tags */ -}}
                 {{- if not $matched }}
-                  {{- if strings.Contains $titleLower $imageBasename }}
-                    {{- $matched = true }}
+                  {{- with $page.Params.tags }}
+                    {{- range . }}
+                      {{- $tagLower := strings.ToLower . }}
+                      {{- if strings.Contains $tagLower $imageBasename }}
+                        {{- $matched = true }}
+                      {{- end }}
+                    {{- end }}
                   {{- end }}
                 {{- end }}
                 
