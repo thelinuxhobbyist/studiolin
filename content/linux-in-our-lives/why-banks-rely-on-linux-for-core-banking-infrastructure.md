@@ -4,7 +4,6 @@ date: 2025-12-19T00:00:00Z
 description: "Discover how Linux powers the world's financial systems, from payment processing to fraud detection."
 categories: ["Business & Enterprise"]
 tags: ["Linux", "Banking", "Finance", "Core Banking", "Payment Systems", "Trading", "Infrastructure", "Enterprise", "Security", "bank", "finance"]
-featured_image: "/images/pillars/business/bank-finance.webp"
 author: "Neil Cass"
 ---
 
