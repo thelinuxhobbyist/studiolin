@@ -113,6 +113,10 @@
     margin-bottom: 1rem;
 }
 
+.post-content hr {
+    display: none;
+}
+
 .post-content h2 {
     font-size: 1.8rem;
 }
