@@ -11,13 +11,15 @@ StudioLinux is an independent editorial project dedicated to exploring how Linux
 
 Our mission is to make Linux accessible and relevant beyond the terminal. Through in-depth articles, analysis, and practical guides, StudioLinux examines the real-world impact of open-source software on public infrastructure, digital sovereignty, privacy, and innovation.
 
-We focus on clarity over hype. Rather than chasing trends or market share debates, StudioLinux explains not only how Linux works, but why it matters — for institutions, professionals, and individuals alike.
+We focus on clarity over hype. Rather than chasing trends or market-share debates, StudioLinux explains not only how Linux works, but why it matters — for institutions, professionals, and individuals alike.
 
 ## Who Runs StudioLinux
 
-StudioLinux is founded, edited, and operated by Neil Cass, a software engineer with over 20 years of experience working with Linux and open-source systems. He uses Linux daily in both professional and personal environments, with hands-on experience across infrastructure, enterprise systems, and real-world deployments.
+StudioLinux is founded, edited, and operated by Neil Cass, a software engineer with over 20 years of experience working with Linux and open-source systems.
 
-All content published on StudioLinux is written and reviewed with an emphasis on technical accuracy, practical relevance, and long-term value.
+He uses Linux daily in both professional and personal environments, with hands-on experience across infrastructure, enterprise systems, and real-world deployments.
+
+All content published on StudioLinux is written and edited with an emphasis on technical accuracy, practical relevance, and long-term value.
 
 ## Editorial Responsibility & Approach
 
@@ -25,7 +27,7 @@ StudioLinux is independently operated and maintains full editorial control over 
 
 All articles are:
 
-- Written and reviewed for technical accuracy
+- Written and edited for technical accuracy
 - Based on real-world use, industry practice, and public documentation
 - Intended to inform and explain, not promote products or vendors
 - Supported by official documentation, public reports, and primary sources where appropriate
@@ -44,5 +46,5 @@ StudioLinux is written for:
 
 Whether you're exploring Linux for the first time or deepening existing knowledge, StudioLinux aims to provide thoughtful, independent coverage that supports informed digital choices.
 
-StudioLinux is independently operated and based in the United Kingdom
+StudioLinux is an independently operated editorial publication based in the United Kingdom.
 
