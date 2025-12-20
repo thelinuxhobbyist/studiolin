@@ -5,8 +5,6 @@ date: 2025-10-22
 lastmod: 2025-12-20
 ---
 
-# About StudioLinux
-
 StudioLinux is an independent editorial project dedicated to exploring how Linux and open-source software are transforming the world — from governments and education to enterprise technology and everyday computing.
 
 Our mission is to make Linux accessible and relevant beyond the terminal. Through in-depth articles, analysis, and practical guides, StudioLinux examines the real-world impact of open-source software on public infrastructure, digital sovereignty, privacy, and innovation.
