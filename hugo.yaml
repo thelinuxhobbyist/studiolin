@@ -98,7 +98,3 @@ outputFormats:
 taxonomies:
   category: categories
   tag: tags
-
-# Disable indexing of archive, tag, and category pages
-params:
-  disableTaxonomy: false
