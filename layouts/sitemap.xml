@@ -1,9 +1,18 @@
 {{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- /* Home page */ -}}
+  <url>
+    <loc>https://studiolinux.com/</loc>
+    <lastmod>{{ now.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  {{- /* All regular pages except drafts and noindex pages */ -}}
   {{- range .Site.RegularPages }}
     {{- if and (not .Draft) (not .Params.noindex) }}
   <url>
-    <loc>https://studiolinux.com{{ .Permalink }}</loc>
+    <loc>{{ .Permalink }}</loc>
     <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
     {{- if .Params.changefreq }}
     <changefreq>{{ .Params.changefreq }}</changefreq>
@@ -18,24 +27,4 @@
   </url>
     {{- end }}
   {{- end }}
-  
-  {{- /* Home page */ }}
-  <url>
-    <loc>https://studiolinux.com/</loc>
-    <lastmod>{{ now.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  {{- /* Main section pages */ }}
-  {{- range $section, $pages := .Site.RegularPages.GroupBySection }}
-    {{- if $section }}
-  <url>
-    <loc>https://studiolinux.com/{{ $section }}/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-    {{- end }}
-  {{- end }}
 </urlset>
-{{- /* vim: set noet sw=2 ts=2: */ -}}
