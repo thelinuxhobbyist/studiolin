@@ -1,0 +1,15 @@
+{{- /* 
+  noindex.html partial
+  
+  This partial adds noindex robots meta tag for pages that should not be indexed.
+  Usage in front matter:
+    noindex: true
+    
+  Automatically applied to:
+    - Admin pages (/admin/*)
+    - Archive pages (auto-generated tag/category pages)
+*/ -}}
+
+{{- if or .Params.noindex (eq .Type "admin") -}}
+<meta name="robots" content="noindex, follow" />
+{{- end -}}

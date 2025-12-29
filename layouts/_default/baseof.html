@@ -15,6 +15,12 @@
     <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
     
+    <!-- Canonical URL - Critical for SEO and deduplication -->
+    <link rel="canonical" href="https://studiolinux.com{{ .Permalink }}" />
+    
+    <!-- Robots meta tag for noindex control -->
+    {{ partial "noindex.html" . }}
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ "images/favicon.svg" | relURL }}">
     <link rel="icon" type="image/x-icon" href="{{ "images/favicon.ico" | relURL }}">

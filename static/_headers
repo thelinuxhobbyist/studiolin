@@ -1,0 +1,40 @@
+# Cloudflare Pages Security and Cache Headers
+
+# Apply to all pages
+/*
+  # Security headers
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  
+  # Cache control for HTML (no-cache so changes are picked up, but browser may cache)
+  Cache-Control: public, max-age=3600, must-revalidate
+  
+  # Add Vary header to prevent cache issues with content negotiation
+  Vary: Accept-Encoding
+
+# CSS and JS - longer cache with version busting
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+  
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images - moderate cache
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# XML feeds - shorter cache
+/index.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/rss+xml
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/xml
+
+# API endpoints - no cache
+/api/*
+  Cache-Control: no-cache, no-store, must-revalidate
+

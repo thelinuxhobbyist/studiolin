@@ -1,0 +1,27 @@
+# Studio{Linux} robots.txt
+# See https://en.wikipedia.org/wiki/Robots_exclusion_standard for syntax
+
+# Allow all crawlers by default
+User-agent: *
+Allow: /
+
+# Disallow common spam/scanner paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /?*
+Disallow: /*?*
+Disallow: /*.json
+Disallow: /search*
+
+# Specific rules for search engine bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Point to sitemap
+Sitemap: https://studiolinux.com/sitemap.xml
+

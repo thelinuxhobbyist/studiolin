@@ -81,7 +81,24 @@ outputs:
     - HTML
     - RSS
     - JSON
+    - SITEMAP
+
+# Sitemap configuration
+sitemap:
+  changefreq: weekly
+  filename: sitemap.xml
+  priority: -1
+
+outputFormats:
+  SITEMAP:
+    mediaType: application/xml
+    baseName: sitemap
+    isHTML: false
 
 taxonomies:
   category: categories
   tag: tags
+
+# Disable indexing of archive, tag, and category pages
+params:
+  disableTaxonomy: false
