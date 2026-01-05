@@ -5,6 +5,7 @@ description: "Explore how locked-down educational systems teach compliance over 
 categories: ["Education"]
 tags: ["Linux", "education", "digital-literacy", "schools", "learning", "technology"]
 author: "Neil Cass"
+featured_image: education-clicking.webp
 ---
 
 Walk into any typical UK secondary school today and the scene is identical from Land's End to John o' Groats. You'll see rows of Chromebooks, kids signed into managed Google accounts, and coursework being funneled through Microsoft Teams. Files just "work," appearing in a list of "Recent Documents," but if you asked a Year 9 student where that data actually sits—is it on the laptop? Is it in a data center in Dublin? Is it a physical file at all?—you'd get a blank stare. It's all very smooth, very compliant, and totally locked down.
