@@ -2,6 +2,7 @@
 title: "Linux File Permissions and Security"
 date: 2024-10-08
 draft: false
+noindex: true
 tags: ["Linux", "Security", "Permissions", "System Administration"]
 categories: ["Tutorials"]
 category: "security"

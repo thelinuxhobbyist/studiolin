@@ -9,8 +9,8 @@ pagination:
 params:
   env: production
   title: "Studio{Linux}"
-  description: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and hands-on tutorials for every level of user."
-  keywords: [Linux, Open Source, Programming, Tutorials, Tech, Beginners]
+  description: "StudioLinux.com explores how Linux is changing the world — from government and education to everyday computing — through insightful articles, news, and in-depth analysis for every level of user."
+  keywords: [Linux, Open Source, Programming, Analysis, Tech, Beginners]
   images: ["images/logos.svg"]
   defaultTheme: auto
   disableThemeToggle: false
@@ -23,7 +23,6 @@ params:
         "css/spacing-fix.css",
         "css/responsive.css",
         "css/homepage.css",
-        "css/tutorials.css",
       ]
     customJS: ["js/mobile-menu.js"]
 
@@ -71,10 +70,6 @@ menu:
       name: Linux in Our Lives
       url: /linux-in-our-lives/
       weight: 15
-    - identifier: tutorials
-      name: Tutorials
-      url: /tutorials/
-      weight: 20
 
 outputs:
   home:

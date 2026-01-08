@@ -1,23 +1,5 @@
-{{- /* Sidebar with Popular Tutorials and Recent Posts */ -}}
+{{- /* Sidebar with Featured Content and Recent Posts */ -}}
 <aside class="content-sidebar">
-    {{- /* Popular Tutorials Section */ -}}
-    <div class="sidebar-section">
-        <h3>Popular Tutorials</h3>
-        <div class="sidebar-list">
-            {{- $popularTutorials := where .Site.RegularPages "Section" "tutorials" | first 5 }}
-            {{- range $popularTutorials }}
-            <div class="sidebar-item">
-                <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                <p class="sidebar-meta">
-                    <span class="category">{{ .Params.category | default "Tutorial" | title }}</span>
-                    <span class="level {{ .Params.level | default "beginner" }}">{{ .Params.level | default "Beginner" | title }}</span>
-                </p>
-                <p class="sidebar-excerpt">{{ .Summary | plainify | truncate 80 }}</p>
-            </div>
-            {{- end }}
-        </div>
-    </div>
-
     {{- /* Recent Posts Section */ -}}
     <div class="sidebar-section">
         <h3>Latest Posts</h3>
@@ -41,7 +23,6 @@
         <h3>Quick Links</h3>
         <ul class="quick-links">
             <li><a href="/posts/">All Posts</a></li>
-            <li><a href="/tutorials/">Browse Tutorials</a></li>
             <li><a href="/tools/">Linux Tools</a></li>
             <li><a href="/about/">About Us</a></li>
             <li><a href="/contact/">Contact</a></li>

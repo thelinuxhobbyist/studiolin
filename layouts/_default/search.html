@@ -8,7 +8,7 @@
 {{- /* Build a simple JSON dataset of pages for search (server-side) */ -}}
 {{- $.Scratch.Add "searchIndex" slice -}}
 {{- range .Site.RegularPages -}}
-    {{- if ne .Section "admin" -}}
+    {{- if and (ne .Section "admin") (ne .Section "tutorials") -}}
     {{- $.Scratch.Add "searchIndex" (dict "title" .Title "url" .RelPermalink "summary" (.Summary | plainify | truncate 150) "section" .Section) -}}
     {{- end -}}
 {{- end -}}

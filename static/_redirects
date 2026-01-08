@@ -4,15 +4,19 @@
 # 1. Redirect www.studiolinux.com to studiolinux.com (without www)
 https://www.studiolinux.com/* https://studiolinux.com/:splat 301
 
-# 2. Ensure trailing slash consistency for directories
+# 2. Redirect removed tutorials to homepage
+https://studiolinux.com/tutorials/ https://studiolinux.com/ 301
+https://studiolinux.com/tutorials/* https://studiolinux.com/ 301
+
+# 3. Ensure trailing slash consistency for directories
 # Note: Hugo naturally adds trailing slashes; this prevents double-slashes
 # For any path without extension that doesn't have a trailing slash, add one
 # https://:domain/*[!.* ] https://:domain/:1/ 301
 
-# 3. HTTP to HTTPS redirect (usually handled by Cloudflare, but explicit for clarity)
+# 4. HTTP to HTTPS redirect (usually handled by Cloudflare, but explicit for clarity)
 http://studiolinux.com/* https://studiolinux.com/:splat 301
 http://www.studiolinux.com/* https://studiolinux.com/:splat 301
 
-# 4. Preserve all other requests as-is
+# 5. Preserve all other requests as-is
 /* /index.html 200
 

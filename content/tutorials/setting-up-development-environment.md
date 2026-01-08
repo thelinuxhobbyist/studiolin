@@ -2,6 +2,7 @@
 title: "Setting Up a Perfect Development Environment on Linux"
 date: 2024-10-14
 draft: false
+noindex: true
 tags: ["Linux", "Development", "Tools", "Tutorial"]
 categories: ["Tutorials"]
 category: "development"

@@ -2,6 +2,7 @@
 title: "Linux Command Line Fundamentals"
 date: 2024-10-12
 draft: false
+noindex: true
 tags: ["Linux", "Command Line", "Terminal", "Basics"]
 categories: ["Tutorials"]
 category: "system-admin"

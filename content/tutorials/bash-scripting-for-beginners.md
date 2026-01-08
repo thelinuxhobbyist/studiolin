@@ -2,6 +2,7 @@
 title: "Bash Scripting for Beginners"
 date: 2024-10-10
 draft: false
+noindex: true
 tags: ["Bash", "Scripting", "Automation", "Linux"]
 categories: ["Tutorials"]
 category: "shell"
