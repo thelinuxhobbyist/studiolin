@@ -149,7 +149,7 @@ a.read-more:hover, a.start-tutorial:hover, a.read-more-btn:hover,
 }
 
 /* Grid Layouts */
-.posts-grid, .tutorials-grid {
+.posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -236,7 +236,7 @@ a.read-more:hover, a.start-tutorial:hover, a.read-more-btn:hover,
         padding: 1.5rem;
     }
     
-    .posts-grid, .tutorials-grid {
+    .posts-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
