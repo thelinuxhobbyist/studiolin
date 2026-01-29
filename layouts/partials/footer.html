@@ -2,43 +2,28 @@
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
 
-<footer class="footer footer--compact" role="contentinfo">
-  <div class="footer__container">
-    <div class="footer__brand">
-      <a href="{{ "" | absLangURL }}" class="footer__brand-link" aria-label="Studio{Linux}">
-        <span class="footer__brand-text">Studio{Linux}</span>
-      </a>
+<footer style="background: #1e1e1e; color: #d4d4d4; padding: 40px 20px; font-family: 'Courier New', monospace; border-top: 3px solid #333;">
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+        
+        <div>
+            <p style="margin: 0; color: #4ec9b0; font-weight: bold;">user@linuxdive:~$ <span style="color: #fff;">ls ./navigation</span></p>
+            <nav style="margin-top: 10px;">
+                <a href="{{ "about" | absLangURL }}" style="color: #ce9178; text-decoration: none; margin-right: 15px;">./about</a>
+                <a href="{{ "contact" | absLangURL }}" style="color: #ce9178; text-decoration: none; margin-right: 15px;">./contact</a>
+                <a href="{{ "terms" | absLangURL }}" style="color: #ce9178; text-decoration: none; margin-right: 15px;">./terms</a>
+                <a href="{{ "privacy" | absLangURL }}" style="color: #ce9178; text-decoration: none;">./privacy</a>
+            </nav>
+        </div>
+
+        <div style="text-align: right;">
+            <p style="margin: 0; font-size: 0.9em; opacity: 0.8;">Uptime: 2024-{{ now.Year }}</p>
+        </div>
+
     </div>
-
-    <div class="footer__center-links" aria-label="Footer links">
-      <a class="footer__center-link" href="{{ "about" | absLangURL }}">About</a>
-      <a class="footer__center-link" href="{{ "contact" | absLangURL }}">Contact</a>
-      <a class="footer__center-link" href="{{ "terms" | absLangURL }}">Terms of Use</a>
-      <a class="footer__center-link" href="{{ "privacy" | absLangURL }}">Privacy Policy</a>
+    
+    <div style="max-width: 1000px; margin: 20px auto 0; border-top: 1px solid #333; padding-top: 20px; font-size: 0.75em; color: #555;">
+        <span>&copy; {{ now.Year }} LinuxDive.com</span> | <span>Content licensed under CC BY-SA 4.0</span>
     </div>
-
-    <div class="footer__social">
-      {{- with .Site.Params.social_x }}
-        <a class="footer__social-link" href="{{ . }}" aria-label="X" target="_blank" rel="noopener noreferrer">
-      {{- else }}
-        <a class="footer__social-link" href="https://twitter.com/StudioLinuxBlog" aria-label="X" target="_blank" rel="noopener noreferrer">
-      {{- end }}
-          <i class="fa fa-x" aria-hidden="true"></i>
-        </a>
-
-      {{- with .Site.Params.social_facebook }}
-        <a class="footer__social-link" href="{{ . }}" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-      {{- else }}
-        <a class="footer__social-link" href="https://www.facebook.com/StudioLinux" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-      {{- end }}
-          <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-  </div>
-
-  <div class="footer__bottom">
-    <div class="footer__copyright">&copy; {{ now.Year }} StudioLinux. All rights reserved.</div>
-  </div>
 </footer>
 {{- if (not site.Params.disableScrollToTop) }}
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g"></a>

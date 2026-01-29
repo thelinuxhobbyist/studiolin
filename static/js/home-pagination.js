@@ -3,7 +3,7 @@
   document.addEventListener('DOMContentLoaded', function(){
   const posts = Array.from(document.querySelectorAll('.posts-grid .post-card'));
     const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const pageSize = 6;
+    const pageSize = 9;
     let current = pageSize;
 
     function showRange(count){
